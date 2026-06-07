@@ -1,0 +1,36 @@
+# Metadata de ejecución — Lovable, Prompt 1
+
+tool: lovable
+plan: free
+tool_version: ""          # versión/build de Lovable visible en la UI
+model_underlying: ""      # si Lovable expone el modelo (GPT-4, Claude, etc.); si no, dejar vacío
+prompt_id: 1
+
+timestamp_start: ""       # formato ISO 8601, ej: 2026-06-09T10:00:00+02:00
+timestamp_end: ""
+elapsed_minutes: 0
+
+num_turns: 0              # nº de intercambios totales
+num_iterations_auto: 0    # iteraciones automáticas del propio Lovable
+
+stop_reason: ""           # "completed_by_tool" | "error" | "timeout_90min"
+
+researcher_intervention: false
+intervention_notes: ""    # si has tenido que responder algo, qué fue
+
+deployed: false
+deployed_url: ""
+
+supabase:
+  project_id: ""
+  url: ""
+  anon_key_exposed_in_client: false   # se rellenará tras revisión
+  rls_enabled: null                   # true | false | partial
+
+github:
+  repo_url: ""
+  pushed_via_lovable_integration: false
+
+observations: |
+  Notas cualitativas en vivo durante la ejecución.
+  Cosas raras, decisiones del tool, advertencias, etc.
