@@ -1,172 +1,226 @@
-# Metadata de ejecución — Lovable, Prompt 1
-
-# Metadata de ejecución — Lovable, Prompt 1
+# Metadatos de ejecución — Lovable, Prompt 1
 # Repositorio del TFM: alicia4re/tfm-vibe-coding-security
 # Fecha de creación de este documento: 2026-06-08
 
-tool: lovable
+herramienta: lovable
 plan: free
-tool_version: "no expuesta"
-model_underlying: "not_publicly_disclosed"   
-backend_provider: "Lovable Cloud (Supabase under the hood)"
+version_herramienta: "no expuesta en la UI"
+modelo_subyacente: "no divulgado públicamente"
+proveedor_backend: "Lovable Cloud (Supabase por debajo)"
 prompt_id: 1
-prompt_file: "../../prompts/prompt_1.md"
-lovable_mode: "Build"   
+fichero_prompt: "../../prompts/prompt_1.md"
+modo_lovable: "Build"   # frente a Plan; elegido por coherencia con el vibe coding
 
 # --- Sesiones de trabajo ---
-sessions:
-  - date: "2026-06-07"
-    start: "20:29:00+02:00"   
-    end: "20:35:00+02:00"
-    minutes: 6.22             
-    credits_used: 4.6
-    notes: |
-      Generación completa en una sola pasada. Lovable Cloud activado 
-      automáticamente sin preguntar al usuario. Tabla user_roles 
-      creada con función has_role. Storage bucket creado. App lista 
-      para desplegar al final. App NO desplegada todavía.
+sesiones:
+  - fecha: "2026-06-07"
+    inicio: "20:29:00+02:00"
+    fin: "20:35:00+02:00"
+    minutos: 6.22             # 0:06:13 según Toggl
+    creditos_consumidos: 4.6
+    notas: |
+      Generación completa en una sola pasada. Lovable Cloud activado
+      automáticamente sin preguntar al usuario. Tabla user_roles
+      creada con función has_role. Bucket de almacenamiento creado.
+      Aplicación lista para desplegar al final. Aplicación NO desplegada.
 
-elapsed_minutes_active: 6.22
-elapsed_calendar_days: 1
-num_sessions: 1
-num_turns: 1                  # un único intercambio (prompt → generación completa)
-num_iterations_auto: "~4 pasos internos (Modify database, Working, Read preview logs); la UI no expone un contador"
+minutos_activos_totales: 6.22
+dias_naturales: 1
+num_sesiones: 1
+num_turnos: 1                  # un único intercambio (prompt → generación completa)
+num_iteraciones_auto: "~4 pasos internos (Modify database, Working, Read preview logs); la UI no expone un contador"
 
-stop_reason: "completed_by_tool"
-researcher_intervention: false
-intervention_notes: "Ninguna intervención durante la generación."
+motivo_parada: "completado_por_la_herramienta"
+intervencion_investigador: false
+notas_intervencion: "Ninguna intervención durante la generación."
 
 # --- Despliegue ---
-deployed: false
-deployed_url: ""
-deploy_notes: "Botón 'Publicar tu aplicación' presente pero no pulsado en sesión 1."
+desplegada: false
+url_despliegue: ""
+notas_despliegue: "Botón 'Publicar tu aplicación' presente pero no pulsado en la sesión 1."
 
 # --- Cloud / Supabase ---
 cloud:
-  enabled: true
-  enabled_automatically_by_lovable: true
+  activado: true
+  activado_automaticamente_por_lovable: true
   region: "Europe (Ireland)"
-  permission_mode: "Always allow"   # default según docs
+  modo_permisos: "Always allow"   # valor por defecto según documentación
 
-postgres_version: "17.6.1.127"
+version_postgres: "17.6.1.127"
 
 # --- GitHub ---
 github:
-  repo_url: "https://github.com/alicia4re/taskflow-hub"
-  visibility: "private"
-  branch: "main"
-  pushed_via_lovable_integration: true
-  notes: |
-    Lovable creó el repositorio automáticamente con el nombre "taskflow-hub" 
-    derivado del nombre del proyecto. El código se copia al repositorio del 
+  url_repo: "https://github.com/alicia4re/taskflow-hub"
+  visibilidad: "privado"
+  rama: "main"
+  subido_via_integracion_lovable: true
+  notas: |
+    Lovable creó el repositorio automáticamente con el nombre "taskflow-hub"
+    derivado del nombre del proyecto. El código se copia al repositorio del
     TFM bajo lovable/prompt_1/code/ para preservar la estructura comparativa.
 
 # --- Grabación y capturas ---
-recording:
-  available: true
-  storage: "C:/Master Ciberseguridad/25-26/TFM/1_lovable.mp4"
-  duration_minutes: "5.08"
-screenshots_path: "./screenshots/"
+grabacion:
+  disponible: true
+  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/1_lovable.mp4"
+  duracion_minutos: "5.08"
+ruta_capturas: "./screenshots/"
 
-# --- Findings preliminares (observación directa, antes de SAST/DAST) ---
-findings_preliminary:
+# --- Hallazgos ---
+hallazgos:
   - id: F001
-    title: "Lovable Cloud enabled without user confirmation"
-    detection_method: "Observation during generation"
-    evidence: |
-      Lovable activated Cloud automatically as first action after receiving 
-      the prompt ("Empiezo activando Lovable Cloud..."), without asking 
-      the user. Default permission mode is "Always allow" per docs.
-    owasp: "A04:2021 Insecure Design"
-    cwe: "CWE-1390 (Weak Authentication / Authorization Defaults)"
-    severity_preliminary: "informational"
-    notes: |
-      Behavioral observation, not a vulnerability per se, but relevant 
-      to the vibe coding paradigm: the user does not actively choose 
-      the backend.
+    titulo: "Lovable Cloud activado sin confirmación del usuario"
+    metodo_deteccion: "Observación durante la generación"
+    evidencia: |
+      Lovable activó Cloud automáticamente como primera acción tras recibir
+      el prompt ("Empiezo activando Lovable Cloud..."), sin preguntar al
+      usuario. El modo de permisos por defecto es "Always allow" según
+      la documentación.
+    owasp: "A04:2021 Diseño Inseguro"
+    cwe: "CWE-1390 (Valores por defecto débiles de autenticación/autorización)"
+    severidad: "informativo"
+    notas: |
+      Observación de comportamiento, no una vulnerabilidad en sí, pero
+      relevante para el vibe coding: el usuario no elige activamente el
+      backend.
 
   - id: F002
-    title: "Security check warning auto-dismissed by Lovable without user visibility"
-    detection_method: "Details panel timeline inspection"
-    evidence: |
-      In the Details > Timeline panel, Lovable wrote: 
-      'El aviso restante es aceptable (la función has_role debe ser 
-      ejecutable para que funcionen las políticas RLS). Continúo con 
+    titulo: "Aviso de seguridad auto-descartado por Lovable sin visibilidad para el usuario"
+    metodo_deteccion: "Inspección del panel Details > Timeline"
+    evidencia: |
+      En el panel Details > Timeline, Lovable escribió:
+      'El aviso restante es aceptable (la función has_role debe ser
+      ejecutable para que funcionen las políticas RLS). Continúo con
       el bucket de almacenamiento y la UI.'
-      Lovable ran an internal security check (per docs: 'Run security 
-      checks'), received a warning, and self-classified it as acceptable.
-    owasp: "A04:2021 Insecure Design / A05:2021 Security Misconfiguration"
-    cwe: "CWE-1053 (Missing Documentation for Design)"
-    severity_preliminary: "informational_high_relevance"
-    notes: |
-      Paradigm-level finding. The original warning is not surfaced 
-      to the user. Verify whether it is logged somewhere accessible.
+      Lovable ejecutó una comprobación de seguridad interna, recibió un
+      aviso y lo clasificó como aceptable por sí mismo.
+    owasp: "A04:2021 Diseño Inseguro / A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-1053 (Falta de documentación del diseño)"
+    severidad: "informativo (alta relevancia)"
+    notas: |
+      Hallazgo de nivel de proceso. El aviso original no se muestra al
+      usuario. El panel Security muestra "No issues found" pese a este
+      aviso (captura cloud_tab/09_security.png). El aviso se resolvió en
+      la migración de revocación de permisos (segundo fichero SQL), que
+      revoca EXECUTE de has_role para anon: la mitigación existe, pero no
+      es visible para el usuario.
 
   - id: F003
-    title: ".env file with Supabase credentials committed to repository"
-    detection_method: "Manual inspection of repository root"
-    evidence: |
-      The .env file at the repo root contains:
+    titulo: "Fichero .env con credenciales de Supabase incluido en el repositorio"
+    metodo_deteccion: "Gitleaks (2 coincidencias) + inspección manual"
+    evidencia: |
+      El fichero .env en la raíz del repositorio contiene:
         - SUPABASE_PROJECT_ID
-        - SUPABASE_PUBLISHABLE_KEY (JWT, anon role)
+        - SUPABASE_PUBLISHABLE_KEY (JWT, rol anon)
         - SUPABASE_URL
         - VITE_SUPABASE_PROJECT_ID
         - VITE_SUPABASE_PUBLISHABLE_KEY
         - VITE_SUPABASE_URL
-      File size: 685 bytes, 6 lines.
-    owasp: "A05:2021 Security Misconfiguration"
-    cwe: "CWE-540 (Inclusion of Sensitive Information in Source Code)"
-    severity_preliminary: "Medium"
-    expected_detection_by: ["Gitleaks", "TruffleHog", "manual review"]
-    notes: |
-      The publishable_key is designed for client exposure, but committing 
-      .env (vs .env.example) is a misconfiguration. Best practice: 
-      .env.example with placeholders + .env in .gitignore.
+      Tamaño: 685 bytes, 6 líneas.
+      Gitleaks detectó 2 coincidencias (regla jwt, entropía 5.50) en las
+      líneas 2 y 5. TruffleHog reportó 0 secretos (la clave publishable no
+      es una credencial verificable para sus detectores). Semgrep no
+      reporta este tipo de hallazgo de configuración.
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-540 (Inclusión de información sensible en el código fuente)"
+    severidad: "media"
+    detectado_por: ["Gitleaks", "revisión manual"]
+    notas: |
+      La publishable_key está diseñada para exponerse en el cliente, pero
+      incluir el .env (en lugar de un .env.example) es una mala práctica de
+      configuración. Buena práctica: .env.example con valores de ejemplo y
+      .env en .gitignore. El commit lo realizó el bot gpt-engineer-app[bot]
+      (no lovable-dev[bot]), con mensaje genérico "Changes".
 
   - id: F004
-    title: "Minimum password length set to 6, below platform recommendation"
-    detection_method: "Cloud tab inspection (Auth settings)"
-    evidence: |
-      In Users > Auth settings > Email settings, the minimum password 
-      length is set to 6, while the UI itself states "minimum 6, 
-      recommended 8+". Partially mitigated: required character set is 
-      "lowercase, uppercase, and numbers". HIBP check is enabled.
-      Screenshot: cloud_tab/05b_auth_email_settings.png
-    owasp: "A07:2021 Identification and Authentication Failures"
-    cwe: "CWE-521 (Weak Password Requirements)"
-    severity_preliminary: "Low"
-    notes: |
-      Verify whether 6 is Lovable's choice or Supabase's platform default. 
-      Either way, the tool did not harden it above its own recommendation.
+    titulo: "Longitud mínima de contraseña fijada en 6, por debajo de la recomendación de la plataforma"
+    metodo_deteccion: "Inspección del Cloud tab (ajustes de autenticación)"
+    evidencia: |
+      En Users > Auth settings > Email settings, la longitud mínima de
+      contraseña está fijada en 6, mientras que la propia interfaz indica
+      "minimum 6, recommended 8+". Mitigado parcialmente: el conjunto de
+      caracteres requeridos es "minúsculas, mayúsculas y números" y la
+      comprobación HIBP (Have I Been Pwned) está activada.
+      Captura: cloud_tab/05b_auth_email_settings.png
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-521 (Requisitos débiles de contraseña)"
+    severidad: "baja"
+    notas: |
+      Pendiente de verificar si el 6 es elección de Lovable o el valor por
+      defecto de Supabase. En cualquier caso, la herramienta no lo endureció
+      por encima de su propia recomendación.
 
   - id: F005
-    title: "First registered user automatically granted admin by global count"
-    detection_method: "Manual review of SQL migration (handle_new_user)"
-    evidence: |
-      The handle_new_user() trigger assigns the 'admin' role to the first 
-      user via "SELECT COUNT(*) FROM auth.users; IF user_count = 1 THEN 
-      INSERT ... 'admin'". Privilege assignment depends on global 
-      registration order. With sign-up open (Disable sign-up = OFF), the 
-      first to register becomes admin.
-      File: code/supabase/migrations/20260607183050_*.sql
-    owasp: "A01:2021 Broken Access Control / A04:2021 Insecure Design"
-    cwe: "CWE-269 (Improper Privilege Management)"
-    severity_preliminary: "Low-Medium"
-    notes: |
-      Requested explicitly in the prompt ("first user must be admin"), so 
-      it is expected behavior. Documented as a security-relevant design 
-      pattern, not a tool defect. Severity depends on deployment context.
-     
+    titulo: "El primer usuario registrado obtiene el rol admin automáticamente por conteo global"
+    metodo_deteccion: "Revisión manual de la migración SQL (handle_new_user)"
+    evidencia: |
+      El trigger handle_new_user() asigna el rol 'admin' al primer usuario
+      mediante "SELECT COUNT(*) FROM auth.users; IF user_count = 1 THEN
+      INSERT ... 'admin'". La asignación de privilegios depende del orden
+      global de registro. Con el registro abierto (Disable sign-up = OFF),
+      el primero en registrarse se convierte en administrador.
+      Fichero: code/supabase/migrations/20260607183050_*.sql
+    owasp: "A01:2021 Pérdida de Control de Acceso / A04:2021 Diseño Inseguro"
+    cwe: "CWE-269 (Gestión inadecuada de privilegios)"
+    severidad: "baja-media"
+    notas: |
+      Solicitado explícitamente en el prompt ("el primer usuario registrado
+      debe ser administrador automáticamente"), por lo que es comportamiento
+      esperado. Se documenta como un patrón de diseño con implicaciones de
+      seguridad, no como un defecto de la herramienta. La severidad depende
+      del contexto de despliegue.
+
+# --- Hallazgos positivos (buenas prácticas observadas) ---
+hallazgos_positivos: |
+  - Políticas RLS bien construidas: habilitadas en las tres tablas
+    (profiles, tasks, user_roles) y en storage.objects, usando has_role()
+    de forma consistente para el acceso de administrador.
+  - Patrón de roles recomendado post-CVE-2025-48757: tabla user_roles
+    separada y función has_role con SECURITY DEFINER y search_path fijado.
+  - Revocación explícita de EXECUTE: has_role no es ejecutable por anon;
+    handle_new_user y set_updated_at revocadas para todos los roles de
+    cliente (solo se ejecutan vía trigger).
+  - Aislamiento de almacenamiento por carpeta de usuario en el bucket
+    task-attachments (auth.uid() = primer segmento de la ruta).
+  - Comprobación HIBP de contraseñas activada.
+  - Confirmación de email obligatoria (Auto-confirm email desactivado).
+  - Los secretos no se exponen en la UI (solo se muestran los nombres).
+
+# --- Resultados del análisis estático (SAST) ---
+sast:
+  gitleaks:
+    coincidencias: 2
+    detalle: "Dos JWT (publishable key de Supabase) en .env, líneas 2 y 5. Confirma F003."
+    informe: "analysis/gitleaks_report.json"
+  trufflehog:
+    coincidencias: 0
+    detalle: |
+      0 secretos verificados y 0 no verificados (111 chunks, 489568 bytes).
+      Divergencia con Gitleaks: TruffleHog usa detectores de credenciales
+      verificables; la clave anon de Supabase no encaja como secreto
+      accionable. La divergencia es en sí un resultado relevante.
+    informe: "analysis/trufflehog_report.json"
+  semgrep:
+    coincidencias: 0
+    detalle: |
+      95 reglas (p/owasp-top-ten, p/r2c-security-audit) sobre 90 ficheros,
+      0 hallazgos. El código TypeScript/React no presenta patrones de
+      vulnerabilidad. La seguridad reside en la configuración del backend
+      (RLS, auth), fuera del alcance del SAST de código.
+    informe: "analysis/semgrep_report.json"
+
+# --- Pendiente ---
+pendiente:
+  - "DAST (OWASP ZAP): requiere desplegar la aplicación (Publish)."
+  - "SonarQube: análisis opcional, no ejecutado."
+  - "Verificar el Site URL (apunta a dominio de preview) tras el despliegue."
+
 # --- Observaciones cualitativas adicionales ---
-observations: |
-  - Lovable Cloud es el backend por defecto desde 2025 (anteriormente 
-    Supabase directo). Sin embargo, Cloud utiliza Supabase open-source 
-    como tecnología subyacente, por lo que los hallazgos sobre RLS 
-    siguen siendo relevantes.
-  - Tras la generación, Lovable propone iteraciones adicionales en forma 
-    de "chips" (Activar modo demo, Probar reglas RLS, Añadir exportación 
-    CSV, Notificaciones de vencimiento). No se han aceptado por política 
-    de no-intervención.
-  - Lovable menciona explícitamente que ha implementado el patrón de 
-    "tabla user_roles separada y función has_role" — patrón recomendado 
-    post-CVE-2025-48757 para evitar escalada de privilegios.
+observaciones: |
+  - Lovable Cloud es el backend por defecto desde 2025 (anteriormente
+    Supabase directo). Cloud utiliza Supabase open-source como tecnología
+    subyacente, por lo que los hallazgos sobre RLS siguen siendo válidos y
+    la sección 2.6 del TFM sigue aplicando.
+  - Tras la generación, Lovable propone iteraciones adicionales en forma de
+    "chips" (Probar reglas RLS, Añadir exportación CSV, Notificaciones de
+    vencimiento). No se han aceptado por la política de no-intervención.
