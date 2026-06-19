@@ -40,10 +40,16 @@ Despliega la aplicación para que pueda probarla.
 ## Generación
 
 Lovable generó la aplicación completa en una sola pasada, sin formular ninguna
-pregunta al usuario ni requerir intervención. Según el panel Details > Timeline,
-los pasos automáticos incluyeron la activación de Lovable Cloud, la creación de
-las tablas profiles, tasks y user_roles con la función has_role, un security
-check, y la creación del bucket de almacenamiento task-attachments junto con la UI.
+pregunta al usuario ni requerir intervención. Según el chat y el panel Details,
+Lovable ejecutó la generación en pasos 
+automáticos sucesivos: configuración de base de datos y autenticación, 
+desarrollo de rutas e interfaz autenticada, y lectura de logs de preview. 
+Al terminar mostró el botón "Publicar tu aplicación" y un resumen de lo 
+construido (autenticación con recuperación por email, tabla user_roles 
+con función has_role, primer usuario administrador vía trigger, adjuntos 
+privados de máximo 5 MB, validación con Zod). No se aceptó ninguna de las 
+iteraciones sugeridas (Probar reglas RLS, Añadir exportación CSV, 
+Notificaciones de vencimiento).
 
 Durante el security check, Lovable auto-descartó un aviso sin mostrarlo al
 usuario. Texto literal registrado por la herramienta:

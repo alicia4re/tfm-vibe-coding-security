@@ -6,19 +6,19 @@
 
 tool: lovable
 plan: free
-tool_version: "[REVISAR: no expuesta en la UI]"
-model_underlying: "not_publicly_disclosed"   # ver docs.lovable.dev
+tool_version: "no expuesta"
+model_underlying: "not_publicly_disclosed"   
 backend_provider: "Lovable Cloud (Supabase under the hood)"
 prompt_id: 1
 prompt_file: "../../prompts/prompt_1.md"
-lovable_mode: "Build"   # vs Plan; elegido por coherencia con vibe coding
+lovable_mode: "Build"   
 
 # --- Sesiones de trabajo ---
 sessions:
   - date: "2026-06-07"
-    start: "20:29:00+02:00"   # confirmado por Toggl
+    start: "20:29:00+02:00"   
     end: "20:35:00+02:00"
-    minutes: 6.22             # 0:06:13 según Toggl
+    minutes: 6.22             
     credits_used: 4.6
     notes: |
       Generación completa en una sola pasada. Lovable Cloud activado 
@@ -30,7 +30,7 @@ elapsed_minutes_active: 6.22
 elapsed_calendar_days: 1
 num_sessions: 1
 num_turns: 1                  # un único intercambio (prompt → generación completa)
-num_iterations_auto: "[REVISAR vídeo: contar 'Modified database' y 'Thought for Xs']"
+num_iterations_auto: "~4 pasos internos (Modify database, Working, Read preview logs); la UI no expone un contador"
 
 stop_reason: "completed_by_tool"
 researcher_intervention: false
@@ -45,8 +45,10 @@ deploy_notes: "Botón 'Publicar tu aplicación' presente pero no pulsado en sesi
 cloud:
   enabled: true
   enabled_automatically_by_lovable: true
-  region: "[REVISAR en Cloud tab → Overview]"
+  region: "Europe (Ireland)"
   permission_mode: "Always allow"   # default según docs
+
+postgres_version: "17.6.1.127"
 
 # --- GitHub ---
 github:
@@ -62,8 +64,8 @@ github:
 # --- Grabación y capturas ---
 recording:
   available: true
-  storage: "[RELLENAR: ruta local del vídeo]"
-  duration_minutes: "[REVISAR]"
+  storage: "C:/Master Ciberseguridad/25-26/TFM/1_lovable.mp4"
+  duration_minutes: "5.08"
 screenshots_path: "./screenshots/"
 
 # --- Findings preliminares (observación directa, antes de SAST/DAST) ---
@@ -134,4 +136,3 @@ observations: |
   - Lovable menciona explícitamente que ha implementado el patrón de 
     "tabla user_roles separada y función has_role" — patrón recomendado 
     post-CVE-2025-48757 para evitar escalada de privilegios.
-  - [PENDIENTE de ver el vídeo: detalles adicionales que se hayan perdido]
