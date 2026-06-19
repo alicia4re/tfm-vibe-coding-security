@@ -123,6 +123,40 @@ findings_preliminary:
       .env (vs .env.example) is a misconfiguration. Best practice: 
       .env.example with placeholders + .env in .gitignore.
 
+  - id: F004
+    title: "Minimum password length set to 6, below platform recommendation"
+    detection_method: "Cloud tab inspection (Auth settings)"
+    evidence: |
+      In Users > Auth settings > Email settings, the minimum password 
+      length is set to 6, while the UI itself states "minimum 6, 
+      recommended 8+". Partially mitigated: required character set is 
+      "lowercase, uppercase, and numbers". HIBP check is enabled.
+      Screenshot: cloud_tab/05b_auth_email_settings.png
+    owasp: "A07:2021 Identification and Authentication Failures"
+    cwe: "CWE-521 (Weak Password Requirements)"
+    severity_preliminary: "Low"
+    notes: |
+      Verify whether 6 is Lovable's choice or Supabase's platform default. 
+      Either way, the tool did not harden it above its own recommendation.
+
+  - id: F005
+    title: "First registered user automatically granted admin by global count"
+    detection_method: "Manual review of SQL migration (handle_new_user)"
+    evidence: |
+      The handle_new_user() trigger assigns the 'admin' role to the first 
+      user via "SELECT COUNT(*) FROM auth.users; IF user_count = 1 THEN 
+      INSERT ... 'admin'". Privilege assignment depends on global 
+      registration order. With sign-up open (Disable sign-up = OFF), the 
+      first to register becomes admin.
+      File: code/supabase/migrations/20260607183050_*.sql
+    owasp: "A01:2021 Broken Access Control / A04:2021 Insecure Design"
+    cwe: "CWE-269 (Improper Privilege Management)"
+    severity_preliminary: "Low-Medium"
+    notes: |
+      Requested explicitly in the prompt ("first user must be admin"), so 
+      it is expected behavior. Documented as a security-relevant design 
+      pattern, not a tool defect. Severity depends on deployment context.
+     
 # --- Observaciones cualitativas adicionales ---
 observations: |
   - Lovable Cloud es el backend por defecto desde 2025 (anteriormente 
