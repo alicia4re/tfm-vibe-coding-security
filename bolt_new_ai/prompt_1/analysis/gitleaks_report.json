@@ -1,0 +1,22 @@
+[
+ {
+  "RuleID": "jwt",
+  "Description": "Uncovered a JSON Web Token, which may lead to unauthorized access to web applications and sensitive user data.",
+  "StartLine": 2,
+  "EndLine": 2,
+  "StartColumn": 25,
+  "EndColumn": 232,
+  "Match": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpaXJ3cnpiZXdqZGFteGF3dmRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5MzY3NjksImV4cCI6MjA5NzUxMjc2OX0.uY5llfbXE_8Dr1Gpp4zlNiBU6o3qkPgedf0Ct7ngmbQ",
+  "Secret": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpaXJ3cnpiZXdqZGFteGF3dmRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5MzY3NjksImV4cCI6MjA5NzUxMjc2OX0.uY5llfbXE_8Dr1Gpp4zlNiBU6o3qkPgedf0Ct7ngmbQ",
+  "File": "code/.env",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 5.546638,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "code/.env:jwt:2"
+ }
+]
