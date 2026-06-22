@@ -151,30 +151,97 @@ hallazgos:
       por encima de su propia recomendación.
 
   - id: F005
-    titulo: "El primer usuario registrado obtiene el rol admin automáticamente por conteo global"
-    metodo_deteccion: "Revisión manual de la migración SQL (handle_new_user)"
+    titulo: "Escalada de privilegios: control de acceso de user_roles sin policy INSERT restrictiva"
+    metodo_deteccion: "Scanner de seguridad de Lovable (al publicar). NO detectado por Semgrep ni por la revisión manual inicial"
     evidencia: |
-      El trigger handle_new_user() asigna el rol 'admin' al primer usuario
-      mediante "SELECT COUNT(*) FROM auth.users; IF user_count = 1 THEN
-      INSERT ... 'admin'". La asignación de privilegios depende del orden
-      global de registro. Con el registro abierto (Disable sign-up = OFF),
-      el primero en registrarse se convierte en administrador.
+      La tabla user_roles no define ninguna policy RLS que restrinja el
+      INSERT a administradores. La policy "Admins manage roles" es FOR ALL
+      con WITH CHECK de admin, pero al ser permisiva no bloquea por sí sola
+      el INSERT de no-admin. Su protección efectiva depende únicamente de
+      que el GRANT de tabla concede solo SELECT a authenticated
+      ("GRANT SELECT ON public.user_roles TO authenticated"). Configuración
+      frágil: ante cualquier ampliación del GRANT (patrón aplicado en
+      profiles y tasks), un usuario autenticado podría insertar una fila
+      asignándose el rol 'admin'.
       Fichero: code/supabase/migrations/20260607183050_*.sql
-    owasp: "A01:2021 Pérdida de Control de Acceso / A04:2021 Diseño Inseguro"
+      Detectado por el scanner de Lovable como "Critical: Any authenticated
+      user can grant themselves admin role".
+    owasp: "A01:2021 Pérdida de Control de Acceso"
     cwe: "CWE-269 (Gestión inadecuada de privilegios)"
-    severidad: "baja-media"
+    severidad: "alta"
     notas: |
-      Solicitado explícitamente en el prompt ("el primer usuario registrado
-      debe ser administrador automáticamente"), por lo que es comportamiento
-      esperado. Se documenta como un patrón de diseño con implicaciones de
-      seguridad, no como un defecto de la herramienta. La severidad depende
-      del contexto de despliegue.
+      Matización técnica: en el estado generado, el GRANT (solo SELECT)
+      mitiga la explotación directa. El fallo es de defensa en profundidad:
+      la capa RLS no protege user_roles, solo el GRANT. Hallazgo clave del
+      TFM: ni el SAST ni la revisión manual lo detectaron; sí el scanner de
+      la plataforma. Sustituye la formulación anterior de F005 (admin al
+      primer usuario), que era comportamiento solicitado en el prompt.
+
+  - id: F006
+    titulo: "Ausencia de policy INSERT en profiles permite suplantación de perfiles"
+    metodo_deteccion: "Scanner de seguridad de Lovable (al publicar)"
+    evidencia: |
+      La tabla profiles no tiene policy de INSERT definida, pero el GRANT sí
+      concede INSERT a authenticated ("GRANT SELECT, INSERT, UPDATE, DELETE
+      ON public.profiles TO authenticated"). Sin policy con
+      WITH CHECK (auth.uid() = id), un usuario autenticado podría insertar
+      perfiles con cualquier id, suplantando a otros usuarios. A diferencia
+      de F005, aquí el GRANT no mitiga: el vector está abierto.
+      Detectado como "Warning: No INSERT policy on profiles table allows
+      uncontrolled profile creation".
+    owasp: "A01:2021 Pérdida de Control de Acceso"
+    cwe: "CWE-284 (Control de acceso inadecuado)"
+    severidad: "media-alta"
+    notas: |
+      Lovable lo marca como warning, pero técnicamente el vector está más
+      abierto que el crítico F005, porque profiles sí tiene INSERT en el
+      GRANT. Inversión interesante para la discusión.
+
+# --- Resultados del análisis dinámico (DAST) ---
+dast:
+  herramienta: "OWASP ZAP 2.17.0"
+  fecha: "2026-06-22"
+  url_objetivo: "https://task-keeper-deluxe.lovable.app"
+  tipo_escaneo: "Escaneo automatizado (spider tradicional + ajax spider con Chrome Headless)"
+  scan_policy: "Dev Standard"
+  informe: "analysis/zap_report.html"
+  total_alertas: 7
+  alertas:
+    - nombre: "Content Security Policy (CSP) no configurada"
+      severidad: "media"
+      instancias: 4
+    - nombre: "Falta de cabecera Anti-Clickjacking"
+      severidad: "media"
+      instancias: 2
+    - nombre: "Cookie con atributo SameSite a None"
+      severidad: "baja"
+      instancias: 3
+    - nombre: "Divulgación de marcas de tiempo Unix"
+      severidad: "informativa"
+      instancias: 4
+    - nombre: "Loosely Scoped Cookie"
+      severidad: "informativa"
+      instancias: 3
+    - nombre: "Reexaminar las directivas de control de caché"
+      severidad: "informativa"
+      instancias: 2
+    - nombre: "Respuesta de gestión de sesión identificada"
+      severidad: "informativa"
+      instancias: 4
+  interpretacion: |
+    ZAP detectó exclusivamente debilidades de capa web (cabeceras HTTP de
+    seguridad ausentes y configuración de cookies), todas de severidad media
+    o inferior. No detectó el fallo crítico de escalada de privilegios (F005),
+    que reside en la lógica RLS del backend y no es visible para un escaneo
+    dinámico no autenticado desde el exterior. Confirma que el DAST, por sí
+    solo, no cubre la superficie de riesgo principal de esta aplicación.
 
 # --- Hallazgos positivos (buenas prácticas observadas) ---
 hallazgos_positivos: |
-  - Políticas RLS bien construidas: habilitadas en las tres tablas
-    (profiles, tasks, user_roles) y en storage.objects, usando has_role()
-    de forma consistente para el acceso de administrador.
+  - Políticas RLS habilitadas en las tres tablas (profiles, tasks,
+    user_roles) y en storage.objects, usando has_role() de forma
+    consistente. No obstante, la cobertura es incompleta: faltan policies
+    INSERT restrictivas en user_roles y profiles (ver F005 y F006).
   - Patrón de roles recomendado post-CVE-2025-48757: tabla user_roles
     separada y función has_role con SECURITY DEFINER y search_path fijado.
   - Revocación explícita de EXECUTE: has_role no es ejecutable por anon;
