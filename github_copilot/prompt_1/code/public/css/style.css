@@ -1,0 +1,87 @@
+:root {
+  color-scheme: light;
+  font-family: 'Inter', sans-serif;
+  background: #f3f6fc;
+  color: #212529;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f7f9ff 0%, #eef2f7 100%);
+}
+
+.site-header {
+  background: rgba(255, 255, 255, 0.97);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-brand {
+  letter-spacing: -0.02em;
+}
+
+.auth-card,
+.task-editor-card,
+.card {
+  border: none;
+  border-radius: 22px;
+}
+
+.auth-card {
+  max-width: 420px;
+  background: #ffffff;
+  padding: 2rem;
+  box-shadow: 0 24px 60px rgba(17, 24, 39, 0.08);
+}
+
+.task-editor-card {
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.task-card {
+  border-radius: 20px;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-actions {
+  min-width: 140px;
+}
+
+@media (max-width: 767px) {
+  .task-actions {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+input,
+textarea,
+select {
+  border-radius: 14px;
+}
+
+.btn {
+  border-radius: 14px;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+.card .form-control,
+.card .form-select {
+  background: #f8fafc;
+}
+
+footer {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  text-align: center;
+  color: #6b7280;
+}
