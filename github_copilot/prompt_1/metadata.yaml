@@ -1,0 +1,234 @@
+# Metadatos de ejecución — GitHub Copilot, Prompt 1
+# Repositorio del TFM: alicia4re/tfm-vibe-coding-security
+# Fecha de creación de este documento: 2026-06-30
+
+herramienta: GitHub Copilot
+plan: free
+version_herramienta: "no expuesta en la UI"
+modelo_subyacente: "no divulgado públicamente"
+proveedor_backend: ""
+prompt_id: 1
+fichero_prompt: "../../prompts/prompt_1.md"
+modo_lovable: "Standard"  
+# --- Sesiones de trabajo ---
+sesiones:
+  - fecha: "2026-06-24"
+    inicio: "20:38:00+02:00"
+    fin: "20:44:00+02:00"
+    minutos: 10.29           # 0:06:13 según Toggl
+    creditos_consumidos: 4.6
+    notas: |
+      Generación completa a partir de un único prompt, sin intervención.
+      GitHub Copilot mostró un "Plan" con los pasos previstos y los ejecutó de forma
+      automática. Activó Bolt Database (Supabase) y generó dos migraciones
+      SQL (esquema + RLS + storage, y funciones RPC de estadísticas).
+      Aplicación no desplegada en esta sesión.
+
+minutos_activos_totales: 10.29 
+dias_naturales: 1
+num_sesiones: 1
+num_turnos: 1                  # un único intercambio (prompt → generación completa)
+
+motivo_parada: "completado_por_la_herramienta"
+intervencion_investigador: false
+notas_intervencion: "Ninguna intervención durante la generación."
+
+# --- Despliegue ---
+desplegada: true
+url_despliegue: "https://task-management-web-f3p2.bolt.host"
+fecha_despliegue: "2026-06-22"
+notas_despliegue: |
+  Publicada en plan free como sitio público (.bolt.host). Bolt avisó de
+  "8 security issues detected" pero permitió publicar sin obligar a
+  resolverlos (botón Publish activo). No se aplicó ninguna corrección:
+  se publicó el estado generado para el análisis dinámico. El plan free
+  solo permite publicación pública (la opción privada requiere upgrade).
+
+# --- Backend / Supabase (Bolt Database) ---
+backend:
+  activado: true
+  activado_automaticamente: true
+  tablas: ["profiles", "tasks"]
+  patron_roles: "columna 'role' en la tabla profiles + función is_admin()"
+  bucket_storage: "task-attachments (privado)"
+  funciones_rpc: ["task_counts_by_status", "user_task_stats"]
+  auth:
+    metodos: "Email (habilitado), Google (deshabilitado)"
+    permitir_registro: true        # Allow new users to sign up = ON
+    usuarios_anonimos: false
+    longitud_min_password: 6
+    site_url: "http://localhost:3000"   # apunta a localhost, no al dominio publicado
+  security_audit_propio:
+    disponible: true
+    avisos: 8
+    detalle: |
+      El panel "Security Audit" de Bolt reporta 8 avisos (warnings), todos
+      del tipo "Public/Signed-In Users Can Execute SECURITY DEFINER Function"
+      sobre handle_new_user, is_admin, task_counts_by_status y user_task_stats.
+      No marca ningún hallazgo como crítico.
+
+# --- GitHub ---
+github:
+  repo_url: "no creado automáticamente (a diferencia de Lovable)"
+  notas: |
+    Bolt no crea un repositorio en GitHub de forma automática. El código se
+    exportó manualmente (descarga ZIP) y se copió a bolt_new_ai/prompt_1/code/.
+
+# --- Grabación y capturas ---
+grabacion:
+  disponible: true
+  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/1_lovable.mp4"
+  duracion_minutos: "5.08"
+ruta_capturas: "./screenshots/"
+
+# --- Hallazgos ---
+hallazgos:
+  - id: B-F001
+    titulo: "Escalada de privilegios: un usuario puede ascenderse a admin editando su propio perfil"
+    metodo_deteccion: "Revisión manual de la migración SQL"
+    evidencia: |
+      El rol se almacena como columna 'role' en la tabla profiles. La policy
+      "profiles_update_own" permite UPDATE con USING/ WITH CHECK
+      (auth.uid() = id), comprobando solo que el usuario edite su propia fila,
+      sin impedir que modifique la columna 'role'. Un usuario autenticado puede
+      ejecutar UPDATE profiles SET role = 'admin' WHERE id = auth.uid() y
+      ascenderse a administrador.
+      Fichero: code/supabase/migrations/20260620102557_*.sql
+    owasp: "A01:2021 Pérdida de Control de Acceso"
+    cwe: "CWE-269 (Gestión inadecuada de privilegios)"
+    severidad: "alta"
+    notas: |
+      No detectado por el Security Audit propio de Bolt ni por SAST. Se
+      corresponde con el escenario del CVE-2025-48757 (rol en tabla de
+      perfiles editable por el propio usuario).
+ 
+  - id: B-F002
+    titulo: "Fichero .env con clave de Supabase incluido en el código"
+    metodo_deteccion: "Gitleaks (1 coincidencia) + inspección manual"
+    evidencia: |
+      El fichero code/.env contiene la clave SUPABASE_ANON_KEY (JWT, rol anon).
+      Gitleaks detectó 1 coincidencia (regla jwt, entropía 5.55) en la línea 2.
+      TruffleHog reportó 0 secretos verificables.
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-540 (Inclusión de información sensible en el código fuente)"
+    severidad: "media"
+    detectado_por: ["Gitleaks", "revisión manual"]
+    notas: |
+      La clave anon está diseñada para exposición en cliente; el problema es
+      incluir el .env en el código en lugar de un .env.example.
+ 
+  - id: B-F003
+    titulo: "Funciones SECURITY DEFINER ejecutables por anon y authenticated sin REVOKE"
+    metodo_deteccion: "Security Audit de Bolt + revisión manual del SQL"
+    evidencia: |
+      Las funciones handle_new_user, is_admin, task_counts_by_status y
+      user_task_stats son SECURITY DEFINER y no se revoca EXECUTE para anon
+      ni authenticated. El Security Audit de Bolt lo reporta como 8 warnings.
+      Las funciones de estadísticas mitigan el acceso a datos con un
+      WHERE is_admin() interno, pero la superficie de ejecución queda abierta.
+    owasp: "A01:2021 Pérdida de Control de Acceso"
+    cwe: "CWE-732 (Asignación de permisos incorrecta a un recurso crítico)"
+    severidad: "media"
+    notas: |
+      El guard interno (WHERE is_admin()) protege los datos de las funciones de
+      estadísticas, pero no hay defensa en profundidad a nivel de permisos de
+      ejecución.
+ 
+  - id: B-F004
+    titulo: "Longitud mínima de contraseña de 6 caracteres"
+    metodo_deteccion: "Inspección del panel Authentication"
+    evidencia: |
+      El formulario de registro indica "Mínimo 6 caracteres". Registro abierto
+      (Allow new users to sign up = ON).
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-521 (Requisitos débiles de contraseña)"
+    severidad: "baja"
+    notas: |
+      Pendiente de verificar si hay requisitos de complejidad adicionales.
+ 
+  - id: B-F005
+    titulo: "Site URL de autenticación apunta a localhost en una app publicada"
+    metodo_deteccion: "Inspección del panel Authentication > Advanced"
+    evidencia: |
+      El campo Site URL (redirect por defecto) es http://localhost:3000,
+      pese a que la app está publicada en task-management-web-f3p2.bolt.host.
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-1188 (Inicialización insegura de recurso)"
+    severidad: "baja"
+    notas: |
+      Configuración de redirect inconsistente con el dominio de producción.
+ 
+# --- Hallazgos positivos (buenas prácticas observadas) ---
+hallazgos_positivos: |
+  - Policy de INSERT en profiles con WITH CHECK (auth.uid() = id): impide crear
+    perfiles con un id ajeno (a diferencia de Lovable, que carecía de ella).
+  - RLS habilitada en profiles y tasks.
+  - is_admin() con SECURITY DEFINER y search_path fijado.
+  - INSERT de tasks restringido al propietario (auth.uid() = user_id).
+  - Aislamiento de almacenamiento por carpeta de usuario en task-attachments.
+  - Bucket task-attachments configurado como privado.
+  - Las funciones de estadísticas filtran datos con WHERE is_admin().
+ 
+# --- Análisis estático (SAST) ---
+sast:
+  gitleaks:
+    coincidencias: 1
+    detalle: "JWT (SUPABASE_ANON_KEY) en code/.env, línea 2. Confirma B-F002."
+    informe: "analysis/gitleaks_report.json"
+  trufflehog:
+    coincidencias: 0
+    detalle: "0 secretos verificados/no verificados (50 chunks). La clave anon no es credencial verificable para sus detectores."
+    informe: "analysis/trufflehog_report.json"
+  semgrep:
+    coincidencias: 0
+    detalle: |
+      103 reglas (p/owasp-top-ten, p/r2c-security-audit) sobre 35 ficheros,
+      0 hallazgos. La seguridad reside en la configuración del backend, fuera
+      del alcance del SAST de código.
+    informe: "analysis/semgrep_report.json"
+ 
+# --- Análisis dinámico (DAST) ---
+dast:
+  herramienta: "OWASP ZAP 2.17.0"
+  fecha: "2026-06-22"
+  url_objetivo: "https://task-management-web-f3p2.bolt.host"
+  tipo_escaneo: "Escaneo automatizado (solo spider tradicional)"
+  scan_policy: "Dev Standard"
+  informe: "analysis/zap_report.html"
+  total_alertas: 10
+  resumen_severidad:
+    media: 3
+    baja: 4
+    informativa: 3
+    alta: 0
+  alertas:
+    - {nombre: "Content Security Policy (CSP) no configurada", severidad: "media"}
+    - {nombre: "Falta de cabecera Anti-Clickjacking", severidad: "media"}
+    - {nombre: "Strict-Transport-Security no establecido", severidad: "media-baja"}
+    - {nombre: "Falta atributo de integridad de recursos (SRI)", severidad: "baja"}
+    - {nombre: "El servidor divulga información mediante cabecera", severidad: "baja"}
+    - {nombre: "Falta cabecera X-Content-Type-Options", severidad: "baja"}
+    - {nombre: "Inclusión de archivos JavaScript entre dominios", severidad: "informativa"}
+    - {nombre: "Aplicación Web Moderna", severidad: "informativa"}
+    - {nombre: "Recuperado de la caché", severidad: "informativa"}
+    - {nombre: "Reexaminar las directivas de control de caché", severidad: "informativa"}
+  nota_metodologica: |
+    El ajax spider no pudo ejecutarse (Chrome Headless no arrancó), por lo que
+    el escaneo se realizó solo con el spider tradicional. En Lovable sí corrió
+    el ajax spider. Esta diferencia en las condiciones del escaneo debe tenerse
+    en cuenta al comparar el número de alertas entre herramientas.
+  interpretacion: |
+    ZAP detectó exclusivamente debilidades de capa web (cabeceras HTTP y
+    cookies), todas de severidad media o inferior. No detectó la escalada de
+    privilegios (B-F001) ni los avisos de funciones SECURITY DEFINER, que
+    residen en la lógica del backend.
+ 
+# --- Observaciones cualitativas adicionales ---
+observaciones: |
+  - Bolt usa Bolt Database (Supabase por debajo), igual que Lovable Cloud usa
+    Supabase. La sección 2.6 del TFM sobre RLS aplica también a esta herramienta.
+  - Bolt incorpora un Security Audit propio (equivalente al scanner de Lovable),
+    pero con cobertura distinta: detecta los warnings de SECURITY DEFINER pero
+    no la escalada de privilegios vía UPDATE de profiles.
+  - Bolt no crea repositorio de GitHub automáticamente; el código se exporta
+    manualmente.
