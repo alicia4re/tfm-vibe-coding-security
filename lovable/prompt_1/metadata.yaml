@@ -197,6 +197,27 @@ hallazgos:
       abierto que el crítico F005, porque profiles sí tiene INSERT en el
       GRANT. Inversión interesante para la discusión.
 
+  - id: F007
+    titulo: "Dependencia de servidor (@tanstack/start-server-core) con deserialización insegura de peticiones a server-functions"
+    metodo_deteccion: "bun audit"
+    evidencia: |
+      @tanstack/start-server-core es dependencia directa de @tanstack/react-start
+      (declarado en el registro de npm: react-start 1.167.50 depende de
+      start-server-core 1.167.22), confirmado independientemente del registro
+      público, no solo por la instalación local. GHSA-9m65-766c-r333: una petición
+      entrante a una server-function podría invocar una función de servidor
+      distinta a la esperada, por deserialización insegura.
+    owasp: "A06:2021 Componentes vulnerables y desactualizados"
+    cwe: "CWE-502 (Deserialización de datos no confiables)"
+    severidad: "media"
+    detectado_por: ["bun audit"]
+    notas: |
+      A diferencia del resto de paquetes con CVE en este proyecto (todos en
+      devDependencies: babel, esbuild, vite, etc.), este forma parte del
+      servidor Node que TanStack Start ejecuta en producción. Bolt.new, al ser
+      un SPA sin servidor propio, no tiene equivalente — diferencia
+      arquitectónica entre ambas herramientas, no solo de dependencias.
+
 # --- Resultados del análisis dinámico (DAST) ---
 dast:
   herramienta: "OWASP ZAP 2.17.0"
