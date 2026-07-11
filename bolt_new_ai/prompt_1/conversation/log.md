@@ -1,4 +1,4 @@
-# Conversación con Lovable — Prompt 1
+# Conversación con Bolt.new — Prompt 1
 
 **Fecha**: 2026-06-20
 **Tool version**: No expuesta en la UI
