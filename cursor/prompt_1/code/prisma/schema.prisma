@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String               @id @default(cuid())
+  email        String               @unique
+  password     String
+  name         String?
+  role         String               @default("USER")
+  active       Boolean              @default(true)
+  createdAt    DateTime             @default(now())
+  tasks        Task[]
+  resetTokens  PasswordResetToken[]
+}
+
+model Task {
+  id          String      @id @default(cuid())
+  title       String
+  description String?
+  createdAt   DateTime    @default(now())
+  dueDate     DateTime?
+  priority    String      @default("MEDIUM")
+  status      String      @default("PENDING")
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  attachment  Attachment?
+}
+
+model Attachment {
+  id        String   @id @default(cuid())
+  filename  String
+  filepath  String
+  mimetype  String
+  size      Int
+  taskId    String   @unique
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
