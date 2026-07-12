@@ -80,7 +80,7 @@ github:
 grabacion:
   disponible: true
   ubicacion: "C:/Master Ciberseguridad/25-26/TFM/1_githubcopilot.mp4"
-  duracion_minutos: "por confirmar"   # el valor anterior (5.08) era el de Lovable, verifica el real
+  duracion_minutos: "12.35"
 ruta_capturas: "./screenshots/"
 
 # --- Hallazgos ---
