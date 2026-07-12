@@ -1,234 +1,146 @@
 # Metadatos de ejecución — GitHub Copilot, Prompt 1
 # Repositorio del TFM: alicia4re/tfm-vibe-coding-security
-# Fecha de creación de este documento: 2026-06-30
+# Fecha de creación de este documento: 2026-07-11 (reescrito; la versión anterior tenía datos de Bolt.new pegados por error)
 
 herramienta: GitHub Copilot
 plan: free
 version_herramienta: "no expuesta en la UI"
 modelo_subyacente: "no divulgado públicamente"
-proveedor_backend: ""
+proveedor_backend: "SQLite local (sin backend gestionado tipo BaaS)"
 prompt_id: 1
 fichero_prompt: "../../prompts/prompt_1.md"
-modo_lovable: "Standard"  
+modo_herramienta: "Agent"
+
 # --- Sesiones de trabajo ---
 sesiones:
   - fecha: "2026-06-24"
     inicio: "20:38:00+02:00"
     fin: "20:44:00+02:00"
-    minutos: 10.29           # 0:06:13 según Toggl
-    creditos_consumidos: 4.6
+    minutos: 5.02              
+    creditos_consumidos: "no aplica (Copilot Chat no expone consumo por créditos en la UI)"
     notas: |
-      Generación completa a partir de un único prompt, sin intervención.
-      GitHub Copilot mostró un "Plan" con los pasos previstos y los ejecutó de forma
-      automática. Activó Bolt Database (Supabase) y generó dos migraciones
-      SQL (esquema + RLS + storage, y funciones RPC de estadísticas).
-      Aplicación no desplegada en esta sesión.
+      notas: 
+      Turno 1 (4:27): generación completa a partir de un único prompt, sin
+      preguntas de vuelta. Copilot ejecutó en modo Agent y seleccionó como
+      stack Node.js + Express + EJS (SSR) + SQLite + express-session
+      (almacén SQLite) + Nodemailer + Multer. No creó ficheros .env con
+      credenciales reales, solo .env.example con placeholders.
+      Turno 2: al ejecutar npm start, cualquier petición devolvía error 500
+      por sintaxis EJS obsoleta (`<% include %>`, eliminada desde EJS 3.0.0)
+      en views/partials/header.ejs, pese a declarar ejs ^3.1.10 en
+      package.json. Copilot corrigió la sintaxis a
+      `<%- include('partials/messages') %>`, pero mantuvo la misma ruta
+      relativa.
+      Turno 3: la sintaxis ya era correcta, pero la ruta 'partials/messages'
+      escrita desde dentro de views/partials/header.ejs resolvía a
+      views/partials/partials/messages.ejs (inexistente), produciendo un
+      segundo error ("Could not find the include file"). Copilot corrigió
+      la ruta a 'messages' (fichero hermano). Tras este segundo fix la app
+      arrancó sin errores y /login renderizó correctamente.
+      Turnos 2 y 3 juntos: 0:34 según Toggl (no se registró por separado).
 
-minutos_activos_totales: 10.29 
+minutos_activos_totales: 5.02
 dias_naturales: 1
 num_sesiones: 1
-num_turnos: 1                  # un único intercambio (prompt → generación completa)
+num_turnos: 3                  # generación inicial + 1 turno de fix funcional
 
-motivo_parada: "completado_por_la_herramienta"
+motivo_parada: "app funcional tras el segundo turno"
 intervencion_investigador: false
-notas_intervencion: "Ninguna intervención durante la generación."
+notas_intervencion: "Sin intervención manual en el código; el segundo turno fue una petición de fix, no una edición directa."
 
 # --- Despliegue ---
-desplegada: true
-url_despliegue: "https://task-management-web-f3p2.bolt.host"
-fecha_despliegue: "2026-06-22"
+desplegada: false
+url_despliegue: ""
 notas_despliegue: |
-  Publicada en plan free como sitio público (.bolt.host). Bolt avisó de
-  "8 security issues detected" pero permitió publicar sin obligar a
-  resolverlos (botón Publish activo). No se aplicó ninguna corrección:
-  se publicó el estado generado para el análisis dinámico. El plan free
-  solo permite publicación pública (la opción privada requiere upgrade).
+  A diferencia de Lovable y Bolt.new, GitHub Copilot Chat en modo Agent no
+  publica la aplicación en una URL pública. La app se ejecuta localmente
+  (http://localhost:3000) para el análisis dinámico.
 
-# --- Backend / Supabase (Bolt Database) ---
+# --- Backend / datos ---
 backend:
   activado: true
-  activado_automaticamente: true
-  tablas: ["profiles", "tasks"]
-  patron_roles: "columna 'role' en la tabla profiles + función is_admin()"
-  bucket_storage: "task-attachments (privado)"
-  funciones_rpc: ["task_counts_by_status", "user_task_stats"]
+  tipo: "Servidor Node.js propio (Express) + SQLite local, sin backend gestionado"
+  tablas: ["users", "tasks"]
+  patron_roles: "columna 'role' en la tabla users; primer usuario = admin por COUNT(*) = 0"
+  control_acceso: "autorización aplicada en el código de la aplicación (middleware ensureAuth/ensureAdmin), no a nivel de base de datos — no existe equivalente a RLS en este backend"
   auth:
-    metodos: "Email (habilitado), Google (deshabilitado)"
-    permitir_registro: true        # Allow new users to sign up = ON
-    usuarios_anonimos: false
-    longitud_min_password: 6
-    site_url: "http://localhost:3000"   # apunta a localhost, no al dominio publicado
-  security_audit_propio:
-    disponible: true
-    avisos: 8
-    detalle: |
-      El panel "Security Audit" de Bolt reporta 8 avisos (warnings), todos
-      del tipo "Public/Signed-In Users Can Execute SECURITY DEFINER Function"
-      sobre handle_new_user, is_admin, task_counts_by_status y user_task_stats.
-      No marca ningún hallazgo como crítico.
+    hashing: "bcryptjs, coste 12"
+    almacen_sesion: "express-session con almacén SQLite"
+    longitud_min_password: "no verificada aún — pendiente de revisión manual adicional si se quiere confirmar"
 
 # --- GitHub ---
 github:
-  repo_url: "no creado automáticamente (a diferencia de Lovable)"
+  repo_url: "no creado automáticamente"
   notas: |
-    Bolt no crea un repositorio en GitHub de forma automática. El código se
-    exportó manualmente (descarga ZIP) y se copió a bolt_new_ai/prompt_1/code/.
+    Copilot Chat en VS Code no publica repositorio propio; el código se
+    tomó directamente del workspace local y se copió a
+    github_copilot/prompt_1/code/.
 
 # --- Grabación y capturas ---
 grabacion:
   disponible: true
-  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/1_lovable.mp4"
-  duracion_minutos: "5.08"
+  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/1_githubcopilot.mp4"
+  duracion_minutos: "por confirmar"   # el valor anterior (5.08) era el de Lovable, verifica el real
 ruta_capturas: "./screenshots/"
 
 # --- Hallazgos ---
 hallazgos:
-  - id: B-F001
-    titulo: "Escalada de privilegios: un usuario puede ascenderse a admin editando su propio perfil"
-    metodo_deteccion: "Revisión manual de la migración SQL"
+  - id: GC-F001
+    titulo: "Cookie de sesión (express-session) sin flags de seguridad configurados"
+    metodo_deteccion: "Semgrep (6 reglas, misma línea de código)"
     evidencia: |
-      El rol se almacena como columna 'role' en la tabla profiles. La policy
-      "profiles_update_own" permite UPDATE con USING/ WITH CHECK
-      (auth.uid() = id), comprobando solo que el usuario edite su propia fila,
-      sin impedir que modifique la columna 'role'. Un usuario autenticado puede
-      ejecutar UPDATE profiles SET role = 'admin' WHERE id = auth.uid() y
-      ascenderse a administrador.
-      Fichero: code/supabase/migrations/20260620102557_*.sql
-    owasp: "A01:2021 Pérdida de Control de Acceso"
-    cwe: "CWE-269 (Gestión inadecuada de privilegios)"
+      La llamada a express-session() en app.js (líneas 25-31) no configura
+      name, domain, expires, httpOnly, path ni secure. Usa el nombre de
+      cookie por defecto (connect.sid) y no marca la cookie como HttpOnly
+      ni Secure, lo que la expone a robo vía XSS o a envío sobre HTTP.
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-522 (Credenciales insuficientemente protegidas) — clasificación asignada por el propio Semgrep"
+    severidad: "media"
+    detectado_por: ["Semgrep"]
+    notas: |
+      6 reglas distintas de Semgrep (p/r2c-security-audit, familia
+      express-cookie-settings) apuntan todas a la misma llamada; se
+      documenta como un único hallazgo, no seis.
+
+  - id: GC-F002
+    titulo: "nodemailer con múltiples CVE conocidas, incluida inyección CRLF relevante para el flujo de recuperación de contraseña"
+    metodo_deteccion: "npm audit"
+    evidencia: |
+      nodemailer es dependencia directa (usada en el flujo de "olvidé mi
+      contraseña"). La versión instalada acumula 8 CVE: inyección CRLF en
+      cabeceras SMTP y en cabeceras List-* (CWE-93), DoS por recursión en
+      el parser de direcciones (CWE-703, CVSS 7.5), validación insuficiente
+      de certificado TLS en OAuth2 (CWE-295), y bypass de
+      disableFileAccess/disableUrlAccess permitiendo lectura de fichero y
+      SSRF (CWE-73/918, CVSS 7.1). El resto de paquetes vulnerables
+      (node-gyp, tar, cacache, make-fetch-happen, http-proxy-agent,
+      @tootallnate/once, sqlite3) son cadena de compilación nativa de
+      sqlite3, usados solo al instalar, no en el servidor en ejecución.
+    owasp: "A06:2021 Componentes vulnerables y desactualizados"
+    cwe: "CWE-93 (Neutralización inadecuada de CRLF)"
     severidad: "alta"
+    detectado_por: ["npm audit"]
     notas: |
-      No detectado por el Security Audit propio de Bolt ni por SAST. Se
-      corresponde con el escenario del CVE-2025-48757 (rol en tabla de
-      perfiles editable por el propio usuario).
- 
-  - id: B-F002
-    titulo: "Fichero .env con clave de Supabase incluido en el código"
-    metodo_deteccion: "Gitleaks (1 coincidencia) + inspección manual"
+      Único paquete de los 8 flagged con relevancia real en producción;
+      los otros 7 son herramientas de instalación de sqlite3, no alcanzables
+      en tiempo de ejecución.
+
+  - id: GC-F003
+    titulo: "Validación de subida de archivos basada solo en mimetype declarado por el cliente"
+    metodo_deteccion: "Revisión manual de app.js"
     evidencia: |
-      El fichero code/.env contiene la clave SUPABASE_ANON_KEY (JWT, rol anon).
-      Gitleaks detectó 1 coincidencia (regla jwt, entropía 5.55) en la línea 2.
-      TruffleHog reportó 0 secretos verificables.
-    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
-    cwe: "CWE-540 (Inclusión de información sensible en el código fuente)"
-    severidad: "media"
-    detectado_por: ["Gitleaks", "revisión manual"]
-    notas: |
-      La clave anon está diseñada para exposición en cliente; el problema es
-      incluir el .env en el código en lugar de un .env.example.
- 
-  - id: B-F003
-    titulo: "Funciones SECURITY DEFINER ejecutables por anon y authenticated sin REVOKE"
-    metodo_deteccion: "Security Audit de Bolt + revisión manual del SQL"
-    evidencia: |
-      Las funciones handle_new_user, is_admin, task_counts_by_status y
-      user_task_stats son SECURITY DEFINER y no se revoca EXECUTE para anon
-      ni authenticated. El Security Audit de Bolt lo reporta como 8 warnings.
-      Las funciones de estadísticas mitigan el acceso a datos con un
-      WHERE is_admin() interno, pero la superficie de ejecución queda abierta.
-    owasp: "A01:2021 Pérdida de Control de Acceso"
-    cwe: "CWE-732 (Asignación de permisos incorrecta a un recurso crítico)"
-    severidad: "media"
-    notas: |
-      El guard interno (WHERE is_admin()) protege los datos de las funciones de
-      estadísticas, pero no hay defensa en profundidad a nivel de permisos de
-      ejecución.
- 
-  - id: B-F004
-    titulo: "Longitud mínima de contraseña de 6 caracteres"
-    metodo_deteccion: "Inspección del panel Authentication"
-    evidencia: |
-      El formulario de registro indica "Mínimo 6 caracteres". Registro abierto
-      (Allow new users to sign up = ON).
-    owasp: "A07:2021 Fallos de Identificación y Autenticación"
-    cwe: "CWE-521 (Requisitos débiles de contraseña)"
-    severidad: "baja"
-    notas: |
-      Pendiente de verificar si hay requisitos de complejidad adicionales.
- 
-  - id: B-F005
-    titulo: "Site URL de autenticación apunta a localhost en una app publicada"
-    metodo_deteccion: "Inspección del panel Authentication > Advanced"
-    evidencia: |
-      El campo Site URL (redirect por defecto) es http://localhost:3000,
-      pese a que la app está publicada en task-management-web-f3p2.bolt.host.
-    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
-    cwe: "CWE-1188 (Inicialización insegura de recurso)"
-    severidad: "baja"
-    notas: |
-      Configuración de redirect inconsistente con el dominio de producción.
- 
-# --- Hallazgos positivos (buenas prácticas observadas) ---
-hallazgos_positivos: |
-  - Policy de INSERT en profiles con WITH CHECK (auth.uid() = id): impide crear
-    perfiles con un id ajeno (a diferencia de Lovable, que carecía de ella).
-  - RLS habilitada en profiles y tasks.
-  - is_admin() con SECURITY DEFINER y search_path fijado.
-  - INSERT de tasks restringido al propietario (auth.uid() = user_id).
-  - Aislamiento de almacenamiento por carpeta de usuario en task-attachments.
-  - Bucket task-attachments configurado como privado.
-  - Las funciones de estadísticas filtran datos con WHERE is_admin().
- 
-# --- Análisis estático (SAST) ---
-sast:
-  gitleaks:
-    coincidencias: 1
-    detalle: "JWT (SUPABASE_ANON_KEY) en code/.env, línea 2. Confirma B-F002."
-    informe: "analysis/gitleaks_report.json"
-  trufflehog:
-    coincidencias: 0
-    detalle: "0 secretos verificados/no verificados (50 chunks). La clave anon no es credencial verificable para sus detectores."
-    informe: "analysis/trufflehog_report.json"
-  semgrep:
-    coincidencias: 0
-    detalle: |
-      103 reglas (p/owasp-top-ten, p/r2c-security-audit) sobre 35 ficheros,
-      0 hallazgos. La seguridad reside en la configuración del backend, fuera
-      del alcance del SAST de código.
-    informe: "analysis/semgrep_report.json"
- 
-# --- Análisis dinámico (DAST) ---
-dast:
-  herramienta: "OWASP ZAP 2.17.0"
-  fecha: "2026-06-22"
-  url_objetivo: "https://task-management-web-f3p2.bolt.host"
-  tipo_escaneo: "Escaneo automatizado (solo spider tradicional)"
-  scan_policy: "Dev Standard"
-  informe: "analysis/zap_report.html"
-  total_alertas: 10
-  resumen_severidad:
-    media: 3
-    baja: 4
-    informativa: 3
-    alta: 0
-  alertas:
-    - {nombre: "Content Security Policy (CSP) no configurada", severidad: "media"}
-    - {nombre: "Falta de cabecera Anti-Clickjacking", severidad: "media"}
-    - {nombre: "Strict-Transport-Security no establecido", severidad: "media-baja"}
-    - {nombre: "Falta atributo de integridad de recursos (SRI)", severidad: "baja"}
-    - {nombre: "El servidor divulga información mediante cabecera", severidad: "baja"}
-    - {nombre: "Falta cabecera X-Content-Type-Options", severidad: "baja"}
-    - {nombre: "Inclusión de archivos JavaScript entre dominios", severidad: "informativa"}
-    - {nombre: "Aplicación Web Moderna", severidad: "informativa"}
-    - {nombre: "Recuperado de la caché", severidad: "informativa"}
-    - {nombre: "Reexaminar las directivas de control de caché", severidad: "informativa"}
-  nota_metodologica: |
-    El ajax spider no pudo ejecutarse (Chrome Headless no arrancó), por lo que
-    el escaneo se realizó solo con el spider tradicional. En Lovable sí corrió
-    el ajax spider. Esta diferencia en las condiciones del escaneo debe tenerse
-    en cuenta al comparar el número de alertas entre herramientas.
-  interpretacion: |
-    ZAP detectó exclusivamente debilidades de capa web (cabeceras HTTP y
-    cookies), todas de severidad media o inferior. No detectó la escalada de
-    privilegios (B-F001) ni los avisos de funciones SECURITY DEFINER, que
-    residen en la lógica del backend.
- 
-# --- Observaciones cualitativas adicionales ---
-observaciones: |
-  - Bolt usa Bolt Database (Supabase por debajo), igual que Lovable Cloud usa
-    Supabase. La sección 2.6 del TFM sobre RLS aplica también a esta herramienta.
-  - Bolt incorpora un Security Audit propio (equivalente al scanner de Lovable),
-    pero con cobertura distinta: detecta los warnings de SECURITY DEFINER pero
-    no la escalada de privilegios vía UPDATE de profiles.
-  - Bolt no crea repositorio de GitHub automáticamente; el código se exporta
-    manualmente.
+      El fileFilter de Multer (app.js, configuración de upload) acepta
+      image/jpeg, image/png, image/gif y application/pdf comprobando
+      únicamente file.mimetype, un valor que declara el propio cliente en
+      la petición multipart y que puede falsificarse sin comprobar el
+      contenido real del fichero. El nombre de archivo sí se sanea
+      correctamente (regex que solo permite alfanuméricos, punto y guion).
+    owasp: "A04:2021 Diseño Inseguro"
+    cwe: "CWE-434 (Carga sin restricciones de fichero con tipo peligroso)"
+
+    # --- Observaciones cualitativas adicionales ---
+    observaciones: |
+      - Turnos hasta app funcional: 3. Los dos fallos del turno 2 y 3 son
+    fallos funcionales, no de seguridad (sintaxis EJS obsoleta primero,
+    ruta de include relativa incorrecta después) — se documentan aquí, no
+    como hallazgos GC-F00X.
