@@ -1,0 +1,8 @@
+{
+  "name": "Gestor de Tareas",
+  "description": "Una aplicación web completa para la gestión de tareas con roles de usuario, estadísticas y administración.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
