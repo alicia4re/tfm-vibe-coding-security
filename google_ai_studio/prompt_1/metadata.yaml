@@ -1,229 +1,192 @@
-# Metadatos de ejecución — Cursor, Prompt 1
+# Metadatos de ejecución — Google AI Studio, Prompt 1
 # Repositorio del TFM: alicia4re/tfm-vibe-coding-security
 # Fecha de creación: 2026-07-12
 
-herramienta: Cursor
+herramienta: Google AI Studio
 plan: free
-version_herramienta: "Composer 2.5 Fast"
-modelo_subyacente: "no divulgado (Composer 2.5 Fast es el nombre expuesto en la UI)"
-proveedor_backend: "SQLite local (sin backend gestionado tipo BaaS)"
+version_herramienta: "modo de creación de apps (Build)"
+modelo_subyacente: "Gemini 3.5 Flash"
+framework: "React"
+proveedor_backend: "Backend Express propio + base de datos en fichero JSON (NO Firebase)"
 prompt_id: 1
 fichero_prompt: "../../prompts/prompt_1.md"
-modo_herramienta: "Composer Agent"
+
+# --- NOTA IMPORTANTE SOBRE FIREBASE ---
+nota_firebase: |
+  La documentación de Google describe integración con Firebase (Firestore,
+  Firebase Auth, Cloud Storage). En esta generación NO se activó: la
+  herramienta no preguntó nada sobre Firebase y generó un backend Express
+  con persistencia en fichero JSON (data/db.json). Se documenta como
+  hallazgo cualitativo, no como fallo de seguridad.
 
 # --- Sesiones de trabajo ---
 sesiones:
   - fecha: "2026-07-12"
-    inicio: "12:00:00+02:00"
-    fin: "12:10:00+02:00"
-    minutos: 10
-    creditos_consumidos: "todos los disponibles del plan gratuito (You've hit your usage limit)"
-    contexto_consumido: "52.8K / 200K tokens (26%)"
+    minutos: 6.75              # "Ran for 405s"
+    creditos_consumidos: "free tier requests (sin desglose numérico en la UI)"
     notas: |
       Generación completa a partir de un único prompt, sin preguntas de
-      vuelta ni intervención. Cursor ejecutó 7 pasos secuenciales:
-      preparación del entorno, instalación de dependencias, resolución de
-      incompatibilidad de Prisma con Node, creación de esquema/auth/API,
-      creación de componentes, y corrección automática de enums de SQLite.
-      La generación consumió todos los créditos del plan gratuito.
-      La aplicación arrancó sin errores al primer intento.
+      vuelta. Modelo Gemini 3.5 Flash, framework React. Stack generado:
+      React 19 + Express + JWT + bcrypt + Multer + base de datos en
+      fichero JSON. Sin turnos de corrección.
 
-minutos_activos_totales: 10
+minutos_activos_totales: 6.75
 dias_naturales: 1
 num_sesiones: 1
 num_turnos: 1
 
-motivo_parada: "app funcional + límite de créditos alcanzado"
+motivo_parada: "app funcional generada"
 intervencion_investigador: false
-notas_intervencion: "Sin intervención manual en el código ni en la generación."
 
 # --- Despliegue ---
-desplegada: false
-url_despliegue: ""
+desplegada: true
+plataforma_despliegue: "Google Cloud Run (europe-west2)"
+url_despliegue: "https://gestor-de-tareas.ai.studio (alias) / https://gestor-de-tareas-968838359811.europe-west2.run.app"
+fecha_despliegue: "2026-07-12 19:58"
 notas_despliegue: |
-  Cursor no publica la aplicación en una URL pública. La app se ejecuta
-  localmente (http://localhost:3000) para el análisis dinámico.
+  Publicada con el botón Publish de AI Studio, que despliega
+  automáticamente en Google Cloud Run dentro del nivel gratuito.
+  Status: Ready.
 
 # --- Backend / datos ---
 backend:
   activado: true
-  tipo: "Servidor Next.js propio (App Router) + Prisma + SQLite local, sin backend gestionado"
-  tablas: ["User", "Task", "Attachment", "PasswordResetToken"]
-  patron_roles: "columna 'role' en la tabla User (string, default 'USER'); primer usuario = ADMIN por count() === 0"
+  tipo: "Servidor Express propio + base de datos en fichero JSON (data/db.json). NO usa Firebase."
+  tablas: ["users", "tasks", "passwordRecoveries"]
+  patron_roles: "campo 'role' en el objeto user; primer usuario = admin por users.length === 0"
   control_acceso: |
-    Middleware de NextAuth protege las rutas de página. Las rutas de API
-    comprueban sesión explícitamente con auth(). Las rutas de
-    administración verifican role === 'ADMIN' tanto en middleware como
-    en cada endpoint de API.
+    Middleware authenticateToken (verifica JWT) en todas las rutas de
+    tareas. Middleware requireAdmin (role === 'admin') adicional en las
+    rutas de administración. No existe equivalente a RLS.
   auth:
-    hashing: "bcryptjs, coste 12"
-    sesion: "JWT firmado con AUTH_SECRET (NextAuth v5)"
-    validacion: "Zod schemas centralizados (registerSchema, loginSchema, taskSchema, forgotPasswordSchema, resetPasswordSchema)"
+    hashing: "bcryptjs, coste 10"
+    sesion: "JWT firmado con JWT_SECRET, expiración 24h"
+    jwt_secret: "hardcodeado como fallback: 'gestor-de-tareas-super-secreto-2026' (ver GAIS-F001)"
 
 # --- GitHub ---
 github:
   repo_url: "no creado automáticamente"
-  notas: |
-    Cursor no publica repositorio propio. El código se copió desde
-    C:\Users\alici\Projects\task-manager a cursor/prompt_1/code/.
+  notas: "Código exportado como ZIP desde AI Studio y copiado a google_ai_studio/prompt_1/code/."
 
 # --- Grabación y capturas ---
 grabacion:
   disponible: true
-  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/1_githubcopilot.mp4"
-  duracion_minutos: "12.25"   
+  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/1_google_ai_studio.mp4"
+  duracion_minutos: "7.21"
 ruta_capturas: "./screenshots/"
 
 # --- Hallazgos ---
 hallazgos:
-  - id: CU-F001
-    titulo: "AUTH_SECRET con valor predecible hardcodeado en .env"
-    metodo_deteccion: "Revisión manual del fichero .env"
+  - id: GS-F001
+    titulo: "JWT_SECRET con valor predecible hardcodeado como fallback en server.ts"
+    metodo_deteccion: "Revisión manual de server.ts"
     evidencia: |
-      El fichero .env contiene AUTH_SECRET="task-manager-dev-secret-change-in-production",
-      un valor predecible que firma los tokens JWT de sesión de NextAuth.
-      Cualquier atacante que lo conozca puede forjar sesiones de cualquier
-      usuario. El .gitignore sí excluye .env*, por lo que no se versionaría
-      en un repositorio normal, pero el fichero se genera con ese valor
-      por defecto y la aplicación lo usa directamente. Gitleaks y TruffleHog
-      no lo detectaron por su baja entropía (texto legible).
+      server.ts línea 14: const JWT_SECRET = process.env.JWT_SECRET ||
+      "gestor-de-tareas-super-secreto-2026". Como la app no genera un .env
+      real (solo .env.example con GEMINI_API_KEY y APP_URL), ese valor
+      predecible es el que se usa siempre para firmar los tokens de sesión.
+      Cualquier atacante que lo conozca puede forjar tokens de cualquier
+      usuario. Gitleaks y TruffleHog no lo detectaron por su baja entropía.
     owasp: "A02:2021 Fallos Criptográficos"
     cwe: "CWE-798 (Uso de credenciales hardcodeadas)"
     severidad: "alta"
     detectado_por: ["revisión manual"]
 
-  - id: CU-F002
-    titulo: "nodemailer con múltiples CVE conocidas"
-    metodo_deteccion: "npm audit"
+  - id: GS-F002
+    titulo: "Código de recuperación de contraseña devuelto en la respuesta JSON de la API"
+    metodo_deteccion: "Revisión manual de server.ts (/api/auth/recover-password)"
     evidencia: |
-      nodemailer es dependencia directa (usada en el flujo de recuperación
-      de contraseña). La versión instalada acumula 6 CVE: inyección CRLF
-      en cabeceras SMTP (CWE-93), bypass de restricciones de acceso a
-      ficheros (CWE-73/918, CVSS 7.1), validación insuficiente de
-      certificado TLS en OAuth2 (CWE-295). Los restantes paquetes
-      vulnerables (postcss, next, next-auth, @auth/core) son dependencias
-      transitivas con CVE de severidad moderada.
-    owasp: "A06:2021 Componentes vulnerables y desactualizados"
-    cwe: "CWE-93 (Neutralización inadecuada de CRLF)"
-    severidad: "alta"
-    detectado_por: ["npm audit"]
-
-  - id: CU-F003
-    titulo: "Token de recuperación de contraseña devuelto en respuesta API cuando SMTP no está configurado"
-    metodo_deteccion: "Revisión manual de src/app/api/auth/forgot-password/route.ts"
-    evidencia: |
-      Cuando SMTP no está configurado (estado por defecto de la app
-      generada), la ruta /api/auth/forgot-password devuelve el token de
-      recuperación directamente en el cuerpo de la respuesta JSON
-      (campo resetUrl). Un atacante podría solicitar el reset de
-      cualquier email y obtener el token sin acceso al correo de la
-      víctima.
+      La ruta /api/auth/recover-password devuelve resetCode y simulatedMail
+      en el cuerpo de la respuesta JSON (server.ts, comentario explícito:
+      "We return this so the front-end can display a helper mock mail
+      client or autofill it"). Un atacante podría solicitar el reset de
+      cualquier email y obtener el código sin acceso al correo de la víctima.
     owasp: "A07:2021 Fallos de Identificación y Autenticación"
     cwe: "CWE-640 (Mecanismo débil de recuperación de contraseña)"
     severidad: "media"
     detectado_por: ["revisión manual"]
 
-  - id: CU-F004
+  - id: GS-F003
     titulo: "Validación de subida de archivos basada solo en mimetype declarado por el cliente"
-    metodo_deteccion: "Revisión manual de src/app/api/tasks/[id]/attachment/route.ts"
+    metodo_deteccion: "Revisión manual de server.ts (configuración de Multer)"
     evidencia: |
-      ALLOWED_TYPES.includes(file.type) comprueba el tipo MIME declarado
-      por el cliente, un valor falsificable. El nombre de archivo sí se
-      aleatoriza correctamente con randomUUID().
+      El fileFilter de Multer comprueba allowedTypes.includes(file.mimetype),
+      un valor declarado por el cliente y falsificable. El nombre de archivo
+      sí se aleatoriza (Date.now() + random).
     owasp: "A04:2021 Diseño Inseguro"
     cwe: "CWE-434 (Carga sin restricciones de fichero con tipo peligroso)"
     severidad: "baja"
     detectado_por: ["revisión manual"]
 
-  - id: CU-F005
+  - id: GS-F004
     titulo: "Longitud mínima de contraseña de 6 caracteres"
-    metodo_deteccion: "Revisión manual de src/lib/validations.ts"
+    metodo_deteccion: "Revisión manual de server.ts (/api/auth/register)"
     evidencia: |
-      registerSchema define z.string().min(6, ...) para la contraseña.
+      Registro: if (password.length < 6). Mismo umbral en reset-password.
     owasp: "A07:2021 Fallos de Identificación y Autenticación"
     cwe: "CWE-521 (Requisitos débiles de contraseña)"
     severidad: "baja"
     detectado_por: ["revisión manual"]
 
-# --- Hallazgos positivos (buenas prácticas observadas) ---
+# --- Hallazgos positivos ---
 hallazgos_positivos: |
-  - Prisma ORM: todas las consultas parametrizadas por diseño, sin
-    posibilidad de inyección SQL.
-  - bcrypt con coste 12 para el hash de contraseñas.
-  - Validación de entradas centralizada con esquemas Zod para todos
-    los formularios (registro, login, tareas, recuperación de contraseña).
-  - /forgot-password devuelve el mismo mensaje independientemente de
-    si el email existe, evitando enumeración de usuarios.
-  - Nombres de ficheros subidos aleatorizados con UUID (previene path
-    traversal y colisiones).
-  - .gitignore excluye .env*.
-  - El administrador no puede desactivar su propia cuenta.
-  - Tokens de recuperación generados con crypto.randomBytes(32).
-  - Comprobación de propiedad de tarea antes de cada operación
-    (task.userId !== session.user.id).
+  - Sin motor SQL (base de datos en fichero JSON): no hay vector de
+    inyección SQL.
+  - bcrypt con coste 10 para el hash de contraseñas.
+  - Todas las rutas de tareas protegidas con authenticateToken.
+  - Rutas de administración protegidas adicionalmente con requireAdmin.
+  - /recover-password no revela si el email existe (evita enumeración).
+  - El admin no puede quitarse el rol si es el único administrador.
+  - Códigos de recuperación con caducidad de 15 minutos.
+  - No se generó .env con credenciales reales, solo .env.example.
 
 # --- Análisis estático (SAST) ---
 sast:
   semgrep:
     coincidencias: 0
-    detalle: "95 reglas sobre 56 ficheros. 0 hallazgos."
+    detalle: "20 ficheros, reglas p/owasp-top-ten y p/r2c-security-audit. 0 hallazgos (3 timeouts de taint en server.ts y componentes React, sin hallazgo reportado)."
     informe: "analysis/semgrep_report.json"
   gitleaks:
     coincidencias: 0
-    detalle: "0 coincidencias (tras excluir caché .next)."
     informe: "analysis/gitleaks_report.json"
   trufflehog:
     coincidencias: 0
-    detalle: "0 secretos verificados/no verificados (75 chunks, 442 331 bytes)."
+    detalle: "0 secretos (45 chunks, 364 333 bytes)."
     informe: "analysis/trufflehog_report.json"
 
 # --- Análisis de dependencias (SCA) ---
 sca:
   npm_audit:
-    paquetes_con_cve: 5
-    relevantes_en_produccion: 1
-    detalle: |
-      nodemailer (alta, directa, 6 CVE). Resto: postcss, next, next-auth,
-      @auth/core (moderadas, transitivas).
+    paquetes_con_cve: 0
+    detalle: "0 vulnerabilidades en 333 dependencias. No incluye nodemailer (email simulado), evitando las CVE de esa librería presentes en Copilot y Cursor."
     informe: "analysis/npm_audit_report.json"
 
 # --- Análisis dinámico (DAST) ---
 dast:
   herramienta: "OWASP ZAP 2.17.0"
   fecha: "2026-07-12"
-  url_objetivo: "http://localhost:3000"
-  tipo_escaneo: "Escaneo automatizado (solo spider tradicional; ajax spider no arrancó)"
+  url_objetivo: "gestor-de-tareas (Google Cloud Run)"
+  tipo_escaneo: "Escaneo automatizado (spider tradicional + ajax spider)"
   scan_policy: "Dev Standard"
-  informe: "analysis/Cursor-ZAP-Report-.html"
-  total_alertas: 10
+  informe: "analysis/GoogleAIStudio-ZAP-Report-.html"
+  total_alertas: 11
   resumen_severidad:
     alta: 0
     media: 2
-    baja: 4
-    informativa: 4
-  alertas:
-    - {nombre: "Cabecera Content Security Policy (CSP) no configurada", severidad: "media"}
-    - {nombre: "Falta de cabecera Anti-Clickjacking", severidad: "media"}
-    - {nombre: "El servidor divulga información mediante cabecera X-Powered-By", severidad: "baja"}
-    - {nombre: "Falta encabezado X-Content-Type-Options", severidad: "baja"}
-    - {nombre: "Divulgación de Marcas de Tiempo - Unix", severidad: "baja"}
-    - {nombre: "Gran redirección detectada (posible fuga de información confidencial)", severidad: "baja"}
-    - {nombre: "Aplicación Web Moderna", severidad: "informativa"}
-    - {nombre: "Cabecera Content-Type Perdida", severidad: "informativa"}
-    - {nombre: "Divulgación de información - Comentarios sospechosos", severidad: "informativa"}
-    - {nombre: "Respuesta de Gestión de Sesión Identificada", severidad: "informativa"}
+    baja: 6
+    informativa: 3
   nota_metodologica: |
-    El ajax spider no pudo ejecutarse (Chrome headless no arrancó), por
-    lo que el escaneo se realizó solo con el spider tradicional. Misma
-    limitación que en Bolt.new.
+    Escaneo contra la app desplegada públicamente en Cloud Run (a
+    diferencia de Copilot y Cursor, escaneadas en localhost).
 
 # --- Observaciones cualitativas adicionales ---
 observaciones: |
-  - Turnos hasta app funcional: 1. Cursor entregó una aplicación
-    funcional al primer intento, sin errores de arranque.
-  - El plan gratuito se agotó durante esta generación. No es posible
-    determinar si Cursor habría ejecutado pasos adicionales.
-  - Cursor generó ficheros AGENTS.md y CLAUDE.md con convenciones del
-    proyecto, orientados a otros agentes de IA.
-  - Stack muy distinto al de Copilot (Next.js App Router + Prisma vs
-    Express + EJS + SQLite crudo), pese a recibir el mismo prompt.
+  - La integración con Firebase anunciada por Google no se activó en la
+    generación real; la herramienta produjo un backend Express con
+    persistencia en fichero JSON. Contradice la premisa inicial de
+    comparar un modelo de seguridad basado en Firestore.
+  - Es la única herramienta cuyo npm audit no reporta ninguna
+    vulnerabilidad (no usa nodemailer).
+  - Comparte con Cursor y Google AI Studio el patrón de secreto de firma
+    hardcodeado (GS-F001 / CU-F001) y el de código de recuperación
+    expuesto en la respuesta (GS-F002 / CU-F003).
