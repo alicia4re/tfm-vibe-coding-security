@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper to check if user is editor
+    function isEditor() {
+      return request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'editor';
+    }
+
+    // Helper to check if user is author
+    function isAuthor() {
+      return request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'autor';
+    }
+
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || isEditor());
+      // Anyone can create their profile when they register
+      allow create: if request.auth != null && request.auth.uid == userId;
+      // Only the user themselves can update their apiToken/email, but they can't change their role unless they are editor
+      allow update: if request.auth != null && (
+        isEditor() || 
+        (request.auth.uid == userId && request.resource.data.role == resource.data.role)
+      );
+      allow delete: if isEditor();
+    }
+
+    match /articles/{articleId} {
+      // Anyone can read a published article.
+      // Drafts or reviews can only be read by their author or an editor.
+      allow read: if resource == null || 
+        resource.data.status == 'publicado' || 
+        (request.auth != null && (request.auth.uid == resource.data.authorId || isEditor()));
+
+      // Auth users can create.
+      allow create: if request.auth != null;
+
+      // Editors can update anything. Authors can update their own articles.
+      allow update: if request.auth != null && (
+        isEditor() || 
+        (request.auth.uid == resource.data.authorId)
+      );
+
+      // Only editors or the author can delete.
+      allow delete: if request.auth != null && (
+        isEditor() || 
+        (request.auth.uid == resource.data.authorId)
+      );
+    }
+
+    match /comments/{commentId} {
+      // Anyone can read comments.
+      allow read: if true;
+      // Authenticated users can write comments.
+      allow create: if request.auth != null;
+      // Editors can delete comments. Authors can delete their own.
+      allow delete: if request.auth != null && (
+        isEditor() || 
+        request.auth.uid == resource.data.authorId
+      );
+      allow update: if request.auth != null && request.auth.uid == resource.data.authorId;
+    }
+  }
+}

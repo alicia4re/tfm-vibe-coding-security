@@ -1,0 +1,6 @@
+{
+  "name": "Mesa Redonda",
+  "description": "Plataforma de blog multi-autor con roles de usuario (Lector, Autor, Editor), previsualización automatizada de enlaces y API pública.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

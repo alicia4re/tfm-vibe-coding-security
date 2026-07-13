@@ -1,0 +1,22 @@
+[
+ {
+  "RuleID": "gcp-api-key",
+  "Description": "Uncovered a GCP API key, which could lead to unauthorized access to Google Cloud services and data breaches.",
+  "StartLine": 4,
+  "EndLine": 4,
+  "StartColumn": 15,
+  "EndColumn": 54,
+  "Match": "AIzaSyATocOb6flKgYDkM4xIYgx-qNzNGEDVlTc\"",
+  "Secret": "AIzaSyATocOb6flKgYDkM4xIYgx-qNzNGEDVlTc",
+  "File": "code/firebase-applet-config.json",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 4.7212996,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "code/firebase-applet-config.json:gcp-api-key:4"
+ }
+]
