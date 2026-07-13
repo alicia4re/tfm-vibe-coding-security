@@ -1,0 +1,3074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZAP por Informe de Escaneo Checkmarx</title>
+<link
+	href="ZAP-Report-/normalize/normalize.css" rel="stylesheet">
+<link
+	href="ZAP-Report-/themes/original/main.css" rel="stylesheet">
+<link
+	href="ZAP-Report-/themes/original/colors.css" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<h1>ZAP por Informe de Escaneo Checkmarx</h1>
+		<p>
+			<span>Generated with</span> <a href="https://zaproxy.org"><img
+				src="ZAP-Report-/zap32x32.png" alt="The ZAP logo" class="zap-logo">ZAP</a>
+			<span>on lun 13 jul 2026, at 20:53:30</span>
+		</p>
+		<p>ZAP Versión: 2.17.0</p>
+		<p>
+			ZAP by <a href="https://checkmarx.com/">Checkmarx</a>
+		</p>
+	</header>
+
+	<main>
+
+		<section id="contents" class="contents">
+			<h2>Contents</h2>
+			<nav>
+				<ol>
+					<li><a
+						href="#about-this-report">About This Report</a>
+						<ol>
+							
+							<li><a
+								href="#report-parameters">Report Parameters</a></li>
+						</ol></li>
+					<data-th-block>
+					<li><a
+						href="#summaries">Summaries</a>
+						<ol>
+							<li><a
+								href="#risk-confidence-counts">Alert Counts by Risk and Confidence</a></li>
+							<li><a
+								href="#site-risk-counts">Alert Counts by Site and Risk</a></li>
+							<li><a
+								href="#alert-type-counts">Alert Counts by Alert Type</a></li>
+							
+						</ol></li>
+					<li><a
+						href="#alerts">Alerts</a>
+						<ol>
+							
+							
+							
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-3-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Alto</span>, <span>Confidence</span>=<span
+									class="confidence-level">Media</span> <span>(1)</span></a></li>
+							
+							
+							  
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-2-confidence-3"><span>Risk</span>=<span
+									class="risk-level">Medio</span>, <span>Confidence</span>=<span
+									class="confidence-level">Alta</span> <span>(2)</span></a></li>
+							
+							<li><a
+								href="#alerts--risk-2-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Medio</span>, <span>Confidence</span>=<span
+									class="confidence-level">Media</span> <span>(1)</span></a></li>
+							
+							
+							  
+							
+							
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-1-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+									class="confidence-level">Media</span> <span>(1)</span></a></li>
+							
+							<li><a
+								href="#alerts--risk-1-confidence-1"><span>Risk</span>=<span
+									class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+									class="confidence-level">Baja</span> <span>(1)</span></a></li>
+							  
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-0-confidence-3"><span>Risk</span>=<span
+									class="risk-level">Informativo</span>, <span>Confidence</span>=<span
+									class="confidence-level">Alta</span> <span>(1)</span></a></li>
+							
+							
+							
+							<li><a
+								href="#alerts--risk-0-confidence-1"><span>Risk</span>=<span
+									class="risk-level">Informativo</span>, <span>Confidence</span>=<span
+									class="confidence-level">Baja</span> <span>(2)</span></a></li>
+							  
+						</ol></li>
+					<li><a
+						href="#appendix">Appendix</a>
+						<ol>
+							<li><a
+								href="#alert-types">Alert Types</a></li>
+						</ol></li>
+					</data-th-block>
+				</ol>
+			</nav>
+		</section>
+
+		<section
+			id="about-this-report" class="about-this-report">
+			<h2>About This Report</h2>
+
+			
+
+			<section
+				id="report-parameters">
+				<h3>Report Parameters</h3>
+				<div class="report-parameters--container">
+					<h4>Contexts</h4>
+					
+					
+					<p>No contexts were selected, so all contexts were included by default.</p>
+					  
+
+					<h4>Sites</h4>
+					
+					<p>The following sites were included:</p>
+					<ul class="sites-list">
+						<li><span class="site">https://author-verse-write.lovable.app</span></li>
+					</ul>
+					
+					<p>(If no sites were selected, all sites were included by default.)</p>
+					<p>An included site must also be within one of the included contexts for its data to be included in the report.</p>
+
+					<h4>Risk levels</h4>
+					<p>
+						<span>Included</span>:
+						 
+						<span class="included-risk-codes"><span class="risk-level">Alto</span>, <span class="risk-level">Medio</span>, <span class="risk-level">Bajo</span>, <span class="risk-level">Informativo</span></span>
+					</p>
+					<p>
+						<span>Excluded</span>:
+						 <span>None</span>
+						
+					</p>
+
+					<h4>Confidence levels</h4>
+					<p>
+						<span>Included</span>:
+						
+						
+						<span class="included-confidence-codes"><span class="confidence-level">Confirmado por Usuario</span>, <span class="confidence-level">Alta</span>, <span class="confidence-level">Media</span>, <span class="confidence-level">Baja</span></span>
+					</p>
+					<p>
+						<span>Excluded</span>:
+						
+						
+						<span class="included-confidence-codes"> <span class="confidence-level">Confirmado por Usuario</span>, <span class="confidence-level">Alta</span>, <span class="confidence-level">Media</span>, <span class="confidence-level">Baja</span>, <span class="confidence-level">Falso positivo</span></span>
+					</p>
+				</div>
+			</section>
+		</section>
+
+		
+		<section>
+			
+		</section>
+		
+		<section id="summaries" class="summaries">
+			<h2>Summaries</h2>
+
+			<section
+				id="risk-confidence-counts">
+				<h3>Alert Counts by Risk and Confidence</h3>
+				<table class="risk-confidence-counts-table">
+					<caption>
+						<p>This table shows the number of alerts for each level of risk and confidence included in the report.</p>
+						<p>(The percentages in brackets represent the count as a percentage of the total number of alerts included in the report, rounded to one decimal place.)</p>
+					</caption>
+					<colgroup>
+						<col>
+						<col>
+					</colgroup>
+					<colgroup>
+						<col
+							style="width: 14.0%"><col
+							style="width: 14.0%"><col
+							style="width: 14.0%"><col
+							style="width: 14.0%">
+						<col style="width: 14.0%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2"></td>
+							<th scope="colgroup"
+								colspan="5">Confidence</th>
+						</tr>
+						<tr>
+							<th scope="col">Confirmado por Usuario</th>
+							<th scope="col">Alta</th>
+							<th scope="col">Media</th>
+							<th scope="col">Baja</th>
+							<th scope="col">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="rowgroup"
+								rowspan="5">Risk</th>
+							<th scope="row">Alto</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(11,1 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span class="additional-info-percentages">(11,1 %)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Medio</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(22,2 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(11,1 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>3</span><br> <span class="additional-info-percentages">(33,3 %)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Bajo</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(11,1 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(11,1 %)</span></td>
+							<td><span>2</span><br> <span class="additional-info-percentages">(22,2 %)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Informativo</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(11,1 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(22,2 %)</span></td>
+							<td><span>3</span><br> <span class="additional-info-percentages">(33,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row">Total</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+							<td><span>9</span><br> <span
+								class="additional-info-percentages">(100%)</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section
+				id="site-risk-counts">
+				<h3>Alert Counts by Site and Risk</h3>
+				<table class="site-risk-counts-table">
+					<caption>
+						<p>This table shows, for each site for which one or more alerts were raised, the number of alerts raised at each risk level.</p>
+						<p>Alerts with a confidence level of &quot;False Positive&quot; have been excluded from these counts.</p>
+						<p>(The numbers in brackets are the number of alerts raised for the site at or above that risk level.)</p>
+					</caption>
+					<colgroup>
+						<col>
+						<col>
+					</colgroup>
+					<colgroup>
+						<col
+							style="width: 16.25%"><col
+							style="width: 16.25%"><col
+							style="width: 16.25%"><col
+							style="width: 16.25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2"></td>
+							<th scope="colgroup" colspan="4">Risk</th>
+						</tr>
+						<tr>
+							<th scope="col">
+								<span>Alto</span><br>  <span
+									class="additional-info-percentages">(= Alto)</span>  
+							</th>
+							<th scope="col">
+								<span>Medio</span><br>   <span
+									class="additional-info-percentages">(&gt;= Medio)</span> 
+							</th>
+							<th scope="col">
+								<span>Bajo</span><br>   <span
+									class="additional-info-percentages">(&gt;= Bajo)</span> 
+							</th>
+							<th scope="col">
+								<span>Informativo</span><br>   <span
+									class="additional-info-percentages">(&gt;= Informativo)</span> 
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="rowgroup"
+								rowspan="1">Site</th>
+							<th scope="row">https://author-verse-write.lovable.app</th>
+							
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(1)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(4)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(6)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(9)</span></td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section
+				id="alert-type-counts">
+				<h3>Alert Counts by Alert Type</h3>
+				<table class="alert-type-counts-table">
+					<caption>
+						<p>This table shows the number of alerts of each alert type, together with the alert type&#39;s risk level.</p>
+						<p>(The percentages in brackets represent each count as a percentage, rounded to one decimal place, of the total number of alerts included in this report.)</p>
+					</caption>
+					<thead>
+						<tr>
+							<th scope="col">Alert type</th>
+							<th scope="col">Risk</th>
+							<th scope="col">Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-0">Cross Site Scripting (Reflected)</a></th>
+							<td class="risk-level">Alto</td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(11,1 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-1">Cabecera Content Security Policy (CSP) no configurada</a></th>
+							<td class="risk-level">Medio</td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-2">Falta atributo de integridad de recursos secundarios</a></th>
+							<td class="risk-level">Medio</td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-3">Falta de cabecera Anti-Clickjacking</a></th>
+							<td class="risk-level">Medio</td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-4">Cookie con el atributo SameSite a None</a></th>
+							<td class="risk-level">Bajo</td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-5">Divulgación de Marcas de Tiempo - Unix</a></th>
+							<td class="risk-level">Bajo</td>
+							<td><span>4</span><br> <span
+								class="additional-info-percentages">(44,4 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-6">Loosely Scoped Cookie</a></th>
+							<td class="risk-level">Informativo</td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-7">Reexaminar las Directivas de Control de Caché</a></th>
+							<td class="risk-level">Informativo</td>
+							<td><span>5</span><br> <span
+								class="additional-info-percentages">(55,6 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-8">Respuesta de Gestión de Sesión Identificada</a></th>
+							<td class="risk-level">Informativo</td>
+							<td><span>4</span><br> <span
+								class="additional-info-percentages">(44,4 %)</span></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th scope="row">Total</th>
+							<td></td>
+							<td>9</td>
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+			
+			
+		</section>
+
+		<section id="alerts" class="alerts">
+			<h2>Alerts</h2>
+			<ol>
+				
+				 
+				
+				
+				
+				
+				<li id="alerts--risk-3-confidence-2">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Alto</span>, <span>Confidence</span>=<span
+							class="confidence-level">Media</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">https://author-verse-write.lovable.app</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-0">Cross Site Scripting (Reflected)</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET https://author-verse-write.lovable.app/auth?mode=%27%3Balert%281%29%3B%27</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/79.html">CWE-79</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_SEQUENCE = </span>
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/A03_2021-Injection/">OWASP_2021_A03</a></span> 
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#compliance">PCI_DSS</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/01-Testing_for_Reflected_Cross_Site_Scripting">WSTG-v42-INPV-01</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_CICD = </span>
+				</li>
+				<li>
+					 <span>POLICY_DEV_CICD = </span>
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A05_2025-Injection/">OWASP_2025_A05</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_DEV_FULL = </span>
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_QA_FULL = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#compliance">HIPAA</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS).html">OWASP_2017_A07</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_DEV_STD = </span>
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>Cross_site Scripting (XSS) es una técnica de ataque que comprende hacer eco del código que fue proporcionado por el atacante en la instancia del navegador de un usuario. Una instancia de navegador puede ser un cliente de navegador web corriente, o un objeto de navegador integrado e un producto de software, como el navegador que se encuentra dentro de WinAmp, un lector de RSS o un cliente de correos electrónicos. El código por sí mismo se encuentra escrito en HTML/JavaScript, pero también puede extenderse a VBScript, ActiveX, Jave, Flash o cualquier otra tecnología que sea compatible con el navegador.</p>
+
+<p>Cuando un atacante consigue el navegador de un usuario para poder ejecutar su código, el código se ejecutará dentro del contexto de seguridad (o zona) del sitio web de hospedaje. Con este nivel de privilegio, el código tiene la extensión de leer, modificar y transmitir cualquier dato que sea sensible al que pueda ingresar al navegador. Un usuario de Cross-Site Scripted puede ser que tenga su cuenta secuetrada (robo de cookies), su navegador redirigido a otra ubicación, posiblemente mostrando contenido ilegal entregado por el sitio web que están visitando. Los ataques de scripting entre los sitios relativamente comprometen la relación de la confianza entre el usuario y el sitio web. Las aplicaciones que usan instancias de objetos del navegador que suben contenido desde el sistema de archivos puede activar el código bajo la zona de lam máquina, lo cual permite que el sistema se vea comprometido.</p>
+
+<p>Hay tres tipos de ataques diferentes de scripting entre los sitios: no persistentes, persistentes y basados en DOM.</p>
+
+<p>Los ataques que no son persistentes y los basados en DOM necesitan que el usuario visite un enlace que fue diseñado con código maliciosos o visite alguna página web maliciosa que incluya un formulario web que, cuando se publique en el sitio que es vulnerable, originará el ataque. El uso de un formulario que es malicioso normalmente tendrá lugarcuando el recurso que es vulnerable solo acepte las solicitudes HTTP POST. En tal caso, el formulario puede se enviado de forma automática, sin el conocimiento de la víctima (por ejemplo, por medio de JavaScript). Al hacer clic en el enlace que es malicioso o al enviar el formulario malicioso, la carga que es útil de CSS recibirá eco y será interpretada por el navegador del usuario y se activará. Otra técnica para poder prevenir solicitudes casi arbitrarias (GET y POST) es por medio del uso de un cliente integrado, como adobe Flash.</p>
+
+<p>Los ataques continuos se originan cuando el código que es malicioso se envía a un sitio web donde se almacena durante un período de tiempo. Algunos ejemplos de los objetivos preferidos de los atacantes incluyen mensajes en carteleras de anuncios, mensajes de correo electrónico y programas de chat. El usuario desprevenido no tendrá que interactuar con ningún sitio/enlace adicional (por ejemplo, un sitio o link malicioso enviado por correo electrónico), solamente bastará con abrir la página web que contiene el código.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (578 bytes)</summary>
+				
+				<pre><code>GET https://author-verse-write.lovable.app/auth?mode=%27%3Balert%281%29%3B%27 HTTP/1.1
+host: author-verse-write.lovable.app
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+referer: https://author-verse-write.lovable.app/auth?mode=signin
+Cookie: __cf_bm=mJhm3588PICSfkfXQLkfVlW2tBw12tz79Ek7gWCsmqI-1783968015.588311-1.0.1.1-0H28jKPP4aKw5JK4cRPu8CoWFPk.TtglwdYPOfzoHotcjRCXbIdpAtrVHx.xqwBkicKESuo499tfWkIz5P.2LeqEJDSbEIeFX3d5MtYqNOxakU9B7EYkOs7dGLk1cikD
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (412 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 500 Internal Server Error
+Date: Mon, 13 Jul 2026 18:40:41 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache, must-revalidate, max-age=0
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+Server: cloudflare
+CF-RAY: a1aa6ae36b592b49-MAD
+content-length: 15130
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (15130 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;es&quot;&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/styles-B3H5GssB.css&quot; data-precedence=&quot;default&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;amp;family=Inter:wght@400;500;600;700&amp;amp;display=swap&quot; data-precedence=&quot;default&quot;/&gt;&lt;title&gt;Entrar — Prisma&lt;/title&gt;&lt;meta name=&quot;description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta name=&quot;author&quot; content=&quot;Prisma&quot;/&gt;&lt;meta property=&quot;og:title&quot; content=&quot;Prisma — Últimos artículos&quot;/&gt;&lt;meta property=&quot;og:description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;/&gt;&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;/&gt;&lt;meta name=&quot;twitter:title&quot; content=&quot;Prisma — Últimos artículos&quot;/&gt;&lt;meta name=&quot;twitter:description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta property=&quot;og:image&quot; content=&quot;https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f2206183-ff32-4301-a8f3-d32a1b7ad84f/id-preview-28fc8d9f--1ca972b0-484a-43f6-80b4-64f36a8ec587.lovable.app-1783942668035.png&quot;/&gt;&lt;meta name=&quot;twitter:image&quot; content=&quot;https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f2206183-ff32-4301-a8f3-d32a1b7ad84f/id-preview-28fc8d9f--1ca972b0-484a-43f6-80b4-64f36a8ec587.lovable.app-1783942668035.png&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/index-B6ieQ-ud.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useRouter-D-xeXV9i.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/client-BGxZm-v7.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useStore-DfZx4Sm_.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/link-5b2yvcev.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/matchContext-CNkLOHpA.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/redirect-BB44wZa9.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/auth-C2lTURsb.js&quot;/&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;/&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin=&quot;anonymous&quot;/&gt;&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; type=&quot;image/x-icon&quot;/&gt;
+&lt;style&gt;
+	@font-face {
+		font-family: &#39;CameraPlainVariable&#39;;
+		src: url(&#39;https://cdn.gpteng.co/mcp-widgets/v1/fonts/CameraPlainVariable.woff2&#39;) format(&#39;woff2&#39;);
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: CameraPlainVariable, &quot;CameraPlainVariable Fallback&quot;, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+	}
+
+	#lovable-badge-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--badge-gap);
+		padding: 0 var(--badge-padding);
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
+
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
+
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
+
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
+
+	#lovable-badge-text {
+		line-height: 1;
+	}
+
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
+
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
+
+	#lovable-badge-close:focus {
+		outline: none;
+	}
+
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
+
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
+
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
+
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+&lt;/style&gt;
+&lt;script defer src=&quot;/~flock.js&quot; data-proxy-url=&quot;/~api/analytics&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;min-h-screen flex flex-col&quot;&gt;&lt;header class=&quot;border-b border-border bg-background/80 backdrop-blur sticky top-0 z-40&quot;&gt;&lt;div class=&quot;max-w-6xl mx-auto flex items-center justify-between px-4 py-3&quot;&gt;&lt;a href=&quot;/&quot; class=&quot;flex items-center gap-2 font-serif text-xl font-semibold&quot;&gt;&lt;span class=&quot;w-8 h-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center font-bold&quot;&gt;P&lt;/span&gt;Prisma&lt;/a&gt;&lt;nav class=&quot;flex items-center gap-2&quot;&gt;&lt;a class=&quot;inline-flex items-center gap-1.5 rounded-md bg-primary text-primary-foreground px-3 py-1.5 text-sm font-medium hover:bg-primary/90 active&quot; href=&quot;/auth&quot; data-status=&quot;active&quot; aria-current=&quot;page&quot;&gt;Entrar&lt;/a&gt;&lt;/nav&gt;&lt;/div&gt;&lt;/header&gt;&lt;main class=&quot;flex-1&quot;&gt;&lt;!--$--&gt;&lt;div style=&quot;padding:.5rem;max-width:100%&quot;&gt;&lt;div style=&quot;display:flex;align-items:center;gap:.5rem&quot;&gt;&lt;strong style=&quot;font-size:1rem&quot;&gt;Something went wrong!&lt;/strong&gt;&lt;button style=&quot;appearance:none;font-size:.6em;border:1px solid currentColor;padding:.1rem .2rem;font-weight:bold;border-radius:.25rem&quot;&gt;Show Error&lt;/button&gt;&lt;/div&gt;&lt;div style=&quot;height:.25rem&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;script&gt;(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||&quot;{}&quot;)}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&amp;&amp;Number.isFinite(s)){if(t===&quot;window&quot;)scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&amp;&amp;(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&amp;&amp;e.scrollIntoView(t)}return}scrollTo(0,0)})(&quot;tsr-scroll-restoration-v1_3&quot;);document.currentScript.remove()&lt;/script&gt;&lt;!--/$--&gt;&lt;/main&gt;&lt;footer class=&quot;border-t border-border py-6 text-center text-xs text-muted-foreground&quot;&gt;Prisma · Blog colaborativo&lt;/footer&gt;&lt;/div&gt;&lt;section aria-label=&quot;Notifications alt+T&quot; tabindex=&quot;-1&quot; aria-live=&quot;polite&quot; aria-relevant=&quot;additions text&quot; aria-atomic=&quot;false&quot;&gt;&lt;/section&gt;&lt;script class=&quot;$tsr&quot; id=&quot;$tsr-stream-barrier&quot;&gt;(self.$R=self.$R||{})[&quot;tsr&quot;]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&amp;&amp;this.streamEnded&amp;&amp;(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=&gt;$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=[&quot;/assets/index-B6ieQ-ud.js&quot;,&quot;/assets/useRouter-D-xeXV9i.js&quot;,&quot;/assets/client-BGxZm-v7.js&quot;,&quot;/assets/useStore-DfZx4Sm_.js&quot;,&quot;/assets/link-5b2yvcev.js&quot;,&quot;/assets/matchContext-CNkLOHpA.js&quot;,&quot;/assets/redirect-BB44wZa9.js&quot;],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:&quot;module&quot;,async:!0,src:&quot;/assets/index-B6ieQ-ud.js&quot;}}]},&quot;/auth&quot;:$R[8]={preloads:$R[9]=[&quot;/assets/auth-C2lTURsb.js&quot;]}}},matches:$R[10]=[$R[11]={i:&quot;__root__ &quot;,u:1783968041661,s:&quot;success&quot;,ssr:!0},$R[12]={i:&quot; auth auth&quot;,u:1783968041661,s:&quot;error&quot;,e:$R[13]=new Error(&quot;[\n  {\n    \&quot;received\&quot;: \&quot;&#39;;alert(1);&#39;\&quot;,\n    \&quot;code\&quot;: \&quot;invalid_enum_value\&quot;,\n    \&quot;options\&quot;: [\n      \&quot;signin\&quot;,\n      \&quot;signup\&quot;,\n      \&quot;forgot\&quot;\n    ],\n    \&quot;path\&quot;: [\n      \&quot;mode\&quot;\n    ],\n    \&quot;message\&quot;: \&quot;Invalid enum value. Expected &#39;signin&#39; | &#39;signup&#39; | &#39;forgot&#39;, received &#39;&#39;;alert(1);&#39;&#39;\&quot;\n  }\n]&quot;),ssr:!0}],lastMatchId:&quot; auth auth&quot;})($R[&quot;tsr&quot;]);$_TSR.e();document.currentScript.remove()&lt;/script&gt;&lt;script type=&quot;module&quot; async=&quot;&quot; src=&quot;/assets/index-B6ieQ-ud.js&quot;&gt;&lt;/script&gt;
+&lt;aside
+	id=&quot;lovable-badge&quot;
+	role=&quot;complementary&quot;
+	dir=&quot;ltr&quot;
+	lang=&quot;en&quot;
+	aria-label=&quot;Edit with Lovable&quot;&gt;
+	&lt;a
+		id=&quot;lovable-badge-cta&quot; 
+		target=&quot;_blank&quot; 
+		href=&quot;https://lovable.dev/projects/1ca972b0-484a-43f6-80b4-64f36a8ec587?utm_source=lovable-badge&quot;
+		rel=&quot;noopener nofollow&quot;
+		aria-label=&quot;Edit with Lovable&quot;&gt;
+		&lt;span id=&quot;lovable-badge-text&quot;&gt;Edit with&lt;/span&gt;
+		&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;52&quot; height=&quot;16&quot; fill=&quot;none&quot; viewBox=&quot;0 0 52 16&quot;&gt;
+  &lt;path fill=&quot;#FCFBF8&quot; fill-rule=&quot;evenodd&quot; d=&quot;M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z&quot; clip-rule=&quot;evenodd&quot;/&gt;
+  &lt;path fill=&quot;#FCFBF8&quot; d=&quot;m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z&quot;/&gt;
+  &lt;path fill=&quot;url(#a)&quot; fill-rule=&quot;evenodd&quot; d=&quot;M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z&quot; clip-rule=&quot;evenodd&quot;/&gt;
+  &lt;defs&gt;
+    &lt;radialGradient id=&quot;a&quot; cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;1&quot; gradientTransform=&quot;matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)&quot; gradientUnits=&quot;userSpaceOnUse&quot;&gt;
+      &lt;stop offset=&quot;.106&quot; stop-color=&quot;#FE7B02&quot;/&gt;
+      &lt;stop offset=&quot;.394&quot; stop-color=&quot;#FE3F21&quot;/&gt;
+      &lt;stop offset=&quot;.608&quot; stop-color=&quot;#F858BC&quot;/&gt;
+      &lt;stop offset=&quot;.929&quot; stop-color=&quot;#575ECF&quot;/&gt;
+    &lt;/radialGradient&gt;
+  &lt;/defs&gt;
+&lt;/svg&gt;
+
+
+	&lt;/a&gt;
+	
+	&lt;span id=&quot;lovable-badge-divider&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+	
+	&lt;button 
+		id=&quot;lovable-badge-close&quot;
+		aria-label=&quot;Dismiss&quot;
+		title=&quot;Dismiss&quot;
+		type=&quot;button&quot;&gt;
+		&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; viewBox=&quot;0 0 16 16&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;path d=&quot;M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z&quot;/&gt;
+		&lt;/svg&gt;
+	&lt;/button&gt;
+&lt;/aside&gt;
+&lt;script&gt;
+	// Don&#39;t show the lovable-badge if the page is in an iframe or if it&#39;s being rendered by puppeteer (screenshot service)
+	if (window.self !== window.top || navigator.userAgent.includes(&#39;puppeteer&#39;)) {
+		var badge = document.getElementById(&#39;lovable-badge&#39;);
+		if (badge) {
+			badge.style.display = &#39;none&#39;;
+		}
+	}
+
+	// Add click event listener to close button with animation
+	var closeButton = document.getElementById(&#39;lovable-badge-close&#39;);
+	if (closeButton) {
+		closeButton.addEventListener(&#39;click&#39;, function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			var badge = document.getElementById(&#39;lovable-badge&#39;);
+			if (badge) {
+				badge.classList.add(&#39;closing&#39;);
+				setTimeout(function() {
+					if (badge) {
+						badge.style.display = &#39;none&#39;;
+					}
+				}, 240);
+			}
+		});
+	}
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>mode</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Attack</th>
+		<td><pre><code>&#39;;alert(1);&#39;</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>&#39;;alert(1);&#39;</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Fase: Arquitectura y Diseño</p>
+
+<p>Utilizar una biblioteca o framework verificado y confiable que evite esta vulnerabilidad o proporcione elementos que faciliten evitarla.</p>
+
+<p>Los ejemplos de las bibliotecas y marcos que facilitan el origen de resultados que son codificados de forma correcta incluyen la biblioteca Anti-XSS de Microsoft, el módulo de codificación OWASP ESAPI y Apache Wicket.</p>
+
+<p>Fases: Implementación; Arquitectura y Diseño</p>
+
+<p>Comprenda el contexto en el que se va a utilizar sus datos y la condificación que se va a esperar. Esto es fundamentalmente importante cuando se transmiten los datos entre diferentes componentes o cuando se generan las salidas que pueden comprender múltiples codificaciones al mismo tiempo, como paginas web o mensajes de correos de varias zonas. Estudie todos los protocolos de comunicacón y representaciones de los datos que son esperadas para poder determinar las estrategias de codificación que son necesarias.</p>
+
+<p>Por cualquier dato que se enviará a otra página web, en especial cualquier dato recibido de las entradas externas, utiice la codificación que sea conveniente en todos los caracteres que no sean alfanuméricos.</p>
+
+<p>Consulte la hoja de referencia de prevención de CSS para poder obtener más información detallada de los diferentes tipos de condificación y escape que se requieren.</p>
+
+<p>Fase: Arquitectura y Diseño</p>
+
+<p>Cualquier comprobación de seguridad que se vaya a realizar en el lado del cliente, asegúrese de que estas comprobaciones se encuentre duplicadas en el lado del servidor, para evitar el CWE-602. Los atacantes pueden eludir las comprobaciones del lado del cliente modificando los valores después de que se hayan realizado las comprobaciones, o cambiando al cliente para poder eliminar de forma completa las comprobaciones del lado del cliente. Después, estos valores que fueron modificados serán enviados al servidor.</p>
+
+<p>Si se encuentra disponible, utilice los mecanismos estructurados que apliquen de forma automática la separación entre los datos y códigos. Estos mecanismos pueden otorgar la cotización, codificación y validación relevantes de manera automática, en lugar de confiar en que el desarrollador proporcione esta capacidad en cada uno de los puntos donde se origina la salida.</p>
+
+<p>Fase: Implementación</p>
+
+<p>Para cada una de las páginas web que se origina, utilice y especifique una codificación de caracteres como ISO-8859 o UTF-8. Cuando no se puede especificar una condificación, el navegador web podría selaccionar una codificación distinta adivinando que codificiación está siendo utilizada en verdad por la página web. Esto puede permitir que el navegador web trate varias secuencias como especiales, abriendo al cliente a leves ataques XSS. Consulte CWE-116 para conseguir más mitigaciones con respecto a la codificación/escape.</p>
+
+<p>Para ayudar a mitigar los ataques XSS contra las cookies de la sesión del usuario, es necesario establecer que la cookie de la sesión sea HttpOnly. En navegadores que son compatibles con la característica HttpOnly (como las versiones más actualizadas de internet explorer y firefox), esta característica puede prevenir que la cookie de sesión del usuario sea accesible para las secuencias de comandos del lado del cliente malignas que utilizan document.cookie. Esta no es una solución muy completa, ya que HttpOnly no es compatible con todos los navegadores que hay. Más importante aún, XMLHTTPRequest y otras tecnologías poderosas de navegador otorgan acceso de lectura a los encabezados HTTP, incluido el encabezado Set-Cookie en el cual se establece el indicador HttpOnly.</p>
+
+<p>Asuma que toda la entrada es maliciosa. Utilizar una estrategia de validación de entradas de tipo &quot;aceptar lo bueno conocido&quot;, es decir, utilizar una lista de entradas aceptables que se ajusten estrictamente a las especificaciones. Rechace cualquier entrada que no se adapte de forma estricta a las especificaciones, o cambielas por algo que sí lo haga. No confíe exclusivamente en la búsqueda de entradas maliciosas o malformadas (es decir, no confíe en una lista de denegación). Sin embargo, las listas de denegación pueden ser útiles para detectar posibles ataques o para determinar qué entradas están tan malformadas que deben ser rechazadas directamente.</p>
+
+<p>Al realizar la validación de entrada, usted debe considerar todas las propiedades potencialmente destacadas, incluida la longitud, el tipo de entrada, el rango completo de valores aceptables, las entradas faltantes o adicionales, la sintaxis, el sentido entre los campos que se encuentran relacionados y la conformidad con todas las reglas comerciales. Como ejemplo de lógica de regla de negocio, &quot;barco&quot; puede ser sintácticamente válido porque sólo contiene caracteres alfanuméricos, pero no es válido si se esperan colores como &quot;rojo&quot; o &quot;azul&quot;.</p>
+
+<p>Asegúrese de realizar la validación de entradas en interfaces bien definidas dentro de la aplicación. Esto ayudará a cuidar la aplicación, incluso si un elemento se utiliza de nuevo o traslada a otro sitio.</p>
+
+<p>	</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				
+				  
+				 
+				
+				
+				<li id="alerts--risk-2-confidence-3">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Medio</span>, <span>Confidence</span>=<span
+							class="confidence-level">Alta</span> <span>(2)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">https://author-verse-write.lovable.app</span> <span>(2)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-1">Cabecera Content Security Policy (CSP) no configurada</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET https://author-verse-write.lovable.app</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/">OWASP_2021_A05</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/693.html">CWE-693</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/">OWASP_2025_A02</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>La Política de seguridad de contenido (CSP) es una capa adicional de seguridad que ayuda a detectar y mitigar ciertos tipos de ataques, incluidos Cross Site Scripting (XSS) y ataques de inyección de datos. Estos ataques se utilizan para todo, desde el robo de datos hasta la desfiguración del sitio o la distribución de malware. CSP proporciona un conjunto de encabezados HTTP estándar que permiten a los propietarios de sitios web declarar fuentes de contenido aprobadas que los navegadores deberían poder cargar en esa página; los tipos cubiertos son JavaScript, CSS, marcos HTML, fuentes, imágenes y objetos incrustados como applets de Java, ActiveX, archivos de audio y video.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (261 bytes)</summary>
+				
+				<pre><code>GET https://author-verse-write.lovable.app HTTP/1.1
+host: author-verse-write.lovable.app
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (796 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Date: Mon, 13 Jul 2026 18:40:15 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache, must-revalidate, max-age=0
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+x-deployment-id: d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29
+set-cookie: __cf_bm=g0JLgwWnk7mT4afC9Yj1tU5T_VYawQY2_e5k1tP5X9o-1783968014.789073-1.0.1.1-zixSrX4tHUszMvnCbuxQWpATIRwmr1qu.m5A3lViboHETcVxYZGKJ4_HPyit0Sq26XfwjM1LMw1VrBwOKsvicVRrieLcIdy_x2eJ3JEm0rn.xJIZhAe6Ejc7Mp1KH_yE; HttpOnly; SameSite=None; Secure; Path=/; Domain=lovable.app; Expires=Mon, 13 Jul 2026 19:10:15 GMT
+Server: cloudflare
+CF-RAY: a1aa6a3c68e0b0d7-MAD
+content-length: 16351
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (16351 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;es&quot;&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/styles-B3H5GssB.css&quot; data-precedence=&quot;default&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;amp;family=Inter:wght@400;500;600;700&amp;amp;display=swap&quot; data-precedence=&quot;default&quot;/&gt;&lt;title&gt;Prisma — Últimos artículos&lt;/title&gt;&lt;meta name=&quot;author&quot; content=&quot;Prisma&quot;/&gt;&lt;meta property=&quot;og:title&quot; content=&quot;Prisma — Últimos artículos&quot;/&gt;&lt;meta property=&quot;og:description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;/&gt;&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;/&gt;&lt;meta name=&quot;twitter:title&quot; content=&quot;Prisma — Últimos artículos&quot;/&gt;&lt;meta name=&quot;twitter:description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta property=&quot;og:image&quot; content=&quot;https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f2206183-ff32-4301-a8f3-d32a1b7ad84f/id-preview-28fc8d9f--1ca972b0-484a-43f6-80b4-64f36a8ec587.lovable.app-1783942668035.png&quot;/&gt;&lt;meta name=&quot;twitter:image&quot; content=&quot;https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f2206183-ff32-4301-a8f3-d32a1b7ad84f/id-preview-28fc8d9f--1ca972b0-484a-43f6-80b4-64f36a8ec587.lovable.app-1783942668035.png&quot;/&gt;&lt;meta name=&quot;description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/index-B6ieQ-ud.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useRouter-D-xeXV9i.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/client-BGxZm-v7.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useStore-DfZx4Sm_.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/link-5b2yvcev.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/matchContext-CNkLOHpA.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/redirect-BB44wZa9.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/routes-BWUpxvjJ.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useQuery-BSEt-GZY.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/calendar-C4_emIJ2.js&quot;/&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;/&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin=&quot;anonymous&quot;/&gt;&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; type=&quot;image/x-icon&quot;/&gt;
+&lt;style&gt;
+	@font-face {
+		font-family: &#39;CameraPlainVariable&#39;;
+		src: url(&#39;https://cdn.gpteng.co/mcp-widgets/v1/fonts/CameraPlainVariable.woff2&#39;) format(&#39;woff2&#39;);
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: CameraPlainVariable, &quot;CameraPlainVariable Fallback&quot;, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+	}
+
+	#lovable-badge-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--badge-gap);
+		padding: 0 var(--badge-padding);
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
+
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
+
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
+
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
+
+	#lovable-badge-text {
+		line-height: 1;
+	}
+
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
+
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
+
+	#lovable-badge-close:focus {
+		outline: none;
+	}
+
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
+
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
+
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
+
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+&lt;/style&gt;
+&lt;script defer src=&quot;/~flock.js&quot; data-proxy-url=&quot;/~api/analytics&quot;&gt;&lt;/script&gt;&lt;script defer src=&quot;/__l5e/events.js&quot; data-artifact-kind=&quot;dwl_content_hash&quot; data-artifact-id=&quot;d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29&quot; data-commit-sha=&quot;7b089a941dee35a0ee016bd158c1cbce095552af&quot; data-context-token=&quot;v1.eyJwcm9qZWN0X2lkIjoiMWNhOTcyYjAtNDg0YS00M2Y2LTgwYjQtNjRmMzZhOGVjNTg3IiwiYXJ0aWZhY3Rfa2luZCI6ImR3bF9jb250ZW50X2hhc2giLCJhcnRpZmFjdF9pZCI6ImQwZTBlM2JmNDdkNGJmMjM4MjU4MWQ5ZmEzNGJiZDhjYTZkZWEzNjY1YmY1MWM5YTg4MjZlYWMxMmZhMzJlMjkiLCJjb21taXRfc2hhIjoiN2IwODlhOTQxZGVlMzVhMGVlMDE2YmQxNThjMWNiY2UwOTU1NTJhZiIsImV4cCI6MTc4Mzk3MTYxNX0.mt03Elmt31vECIJapPOhXrNZgt4_fBTK9IH33Rv9D74&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;min-h-screen flex flex-col&quot;&gt;&lt;header class=&quot;border-b border-border bg-background/80 backdrop-blur sticky top-0 z-40&quot;&gt;&lt;div class=&quot;max-w-6xl mx-auto flex items-center justify-between px-4 py-3&quot;&gt;&lt;a class=&quot;flex items-center gap-2 font-serif text-xl font-semibold active&quot; href=&quot;/&quot; data-status=&quot;active&quot; aria-current=&quot;page&quot;&gt;&lt;span class=&quot;w-8 h-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center font-bold&quot;&gt;P&lt;/span&gt;Prisma&lt;/a&gt;&lt;nav class=&quot;flex items-center gap-2&quot;&gt;&lt;a href=&quot;/auth&quot; class=&quot;inline-flex items-center gap-1.5 rounded-md bg-primary text-primary-foreground px-3 py-1.5 text-sm font-medium hover:bg-primary/90&quot;&gt;Entrar&lt;/a&gt;&lt;/nav&gt;&lt;/div&gt;&lt;/header&gt;&lt;main class=&quot;flex-1&quot;&gt;&lt;!--$--&gt;&lt;div class=&quot;max-w-6xl mx-auto px-4 py-10&quot;&gt;&lt;section class=&quot;mb-10 max-w-3xl&quot;&gt;&lt;h1 class=&quot;text-5xl font-serif font-semibold tracking-tight&quot;&gt;Ideas que se leen, se editan y se publican en equipo.&lt;/h1&gt;&lt;p class=&quot;mt-4 text-lg text-muted-foreground&quot;&gt;Un blog multi-autor con flujo editorial: escribe borradores, envíalos a revisión y publica cuando estén listos.&lt;/p&gt;&lt;/section&gt;&lt;div class=&quot;mb-8 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center&quot;&gt;&lt;div class=&quot;relative flex-1&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; class=&quot;lucide lucide-search w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;m21 21-4.34-4.34&quot;&gt;&lt;/path&gt;&lt;circle cx=&quot;11&quot; cy=&quot;11&quot; r=&quot;8&quot;&gt;&lt;/circle&gt;&lt;/svg&gt;&lt;input placeholder=&quot;Buscar por título, contenido o etiqueta&quot; class=&quot;w-full pl-9 pr-3 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring&quot; value=&quot;&quot;/&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class=&quot;text-muted-foreground&quot;&gt;Cargando…&lt;/p&gt;&lt;/div&gt;&lt;script&gt;(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||&quot;{}&quot;)}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&amp;&amp;Number.isFinite(s)){if(t===&quot;window&quot;)scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&amp;&amp;(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&amp;&amp;e.scrollIntoView(t)}return}scrollTo(0,0)})(&quot;tsr-scroll-restoration-v1_3&quot;);document.currentScript.remove()&lt;/script&gt;&lt;!--/$--&gt;&lt;/main&gt;&lt;footer class=&quot;border-t border-border py-6 text-center text-xs text-muted-foreground&quot;&gt;Prisma · Blog colaborativo&lt;/footer&gt;&lt;/div&gt;&lt;section aria-label=&quot;Notifications alt+T&quot; tabindex=&quot;-1&quot; aria-live=&quot;polite&quot; aria-relevant=&quot;additions text&quot; aria-atomic=&quot;false&quot;&gt;&lt;/section&gt;&lt;script class=&quot;$tsr&quot; id=&quot;$tsr-stream-barrier&quot;&gt;(self.$R=self.$R||{})[&quot;tsr&quot;]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&amp;&amp;this.streamEnded&amp;&amp;(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=&gt;$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=[&quot;/assets/index-B6ieQ-ud.js&quot;,&quot;/assets/useRouter-D-xeXV9i.js&quot;,&quot;/assets/client-BGxZm-v7.js&quot;,&quot;/assets/useStore-DfZx4Sm_.js&quot;,&quot;/assets/link-5b2yvcev.js&quot;,&quot;/assets/matchContext-CNkLOHpA.js&quot;,&quot;/assets/redirect-BB44wZa9.js&quot;],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:&quot;module&quot;,async:!0,src:&quot;/assets/index-B6ieQ-ud.js&quot;}}]},&quot;/&quot;:$R[8]={preloads:$R[9]=[&quot;/assets/routes-BWUpxvjJ.js&quot;,&quot;/assets/useQuery-BSEt-GZY.js&quot;,&quot;/assets/calendar-C4_emIJ2.js&quot;]}}},matches:$R[10]=[$R[11]={i:&quot;__root__ &quot;,u:1783968015372,s:&quot;success&quot;,ssr:!0},$R[12]={i:&quot;  &quot;,u:1783968015372,s:&quot;success&quot;,ssr:!0}],lastMatchId:&quot;  &quot;})($R[&quot;tsr&quot;]);$_TSR.e();document.currentScript.remove()&lt;/script&gt;&lt;script type=&quot;module&quot; async=&quot;&quot; src=&quot;/assets/index-B6ieQ-ud.js&quot;&gt;&lt;/script&gt;
+&lt;aside
+	id=&quot;lovable-badge&quot;
+	role=&quot;complementary&quot;
+	dir=&quot;ltr&quot;
+	lang=&quot;en&quot;
+	aria-label=&quot;Edit with Lovable&quot;&gt;
+	&lt;a
+		id=&quot;lovable-badge-cta&quot; 
+		target=&quot;_blank&quot; 
+		href=&quot;https://lovable.dev/projects/1ca972b0-484a-43f6-80b4-64f36a8ec587?utm_source=lovable-badge&quot;
+		rel=&quot;noopener nofollow&quot;
+		aria-label=&quot;Edit with Lovable&quot;&gt;
+		&lt;span id=&quot;lovable-badge-text&quot;&gt;Edit with&lt;/span&gt;
+		&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;52&quot; height=&quot;16&quot; fill=&quot;none&quot; viewBox=&quot;0 0 52 16&quot;&gt;
+  &lt;path fill=&quot;#FCFBF8&quot; fill-rule=&quot;evenodd&quot; d=&quot;M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z&quot; clip-rule=&quot;evenodd&quot;/&gt;
+  &lt;path fill=&quot;#FCFBF8&quot; d=&quot;m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z&quot;/&gt;
+  &lt;path fill=&quot;url(#a)&quot; fill-rule=&quot;evenodd&quot; d=&quot;M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z&quot; clip-rule=&quot;evenodd&quot;/&gt;
+  &lt;defs&gt;
+    &lt;radialGradient id=&quot;a&quot; cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;1&quot; gradientTransform=&quot;matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)&quot; gradientUnits=&quot;userSpaceOnUse&quot;&gt;
+      &lt;stop offset=&quot;.106&quot; stop-color=&quot;#FE7B02&quot;/&gt;
+      &lt;stop offset=&quot;.394&quot; stop-color=&quot;#FE3F21&quot;/&gt;
+      &lt;stop offset=&quot;.608&quot; stop-color=&quot;#F858BC&quot;/&gt;
+      &lt;stop offset=&quot;.929&quot; stop-color=&quot;#575ECF&quot;/&gt;
+    &lt;/radialGradient&gt;
+  &lt;/defs&gt;
+&lt;/svg&gt;
+
+
+	&lt;/a&gt;
+	
+	&lt;span id=&quot;lovable-badge-divider&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+	
+	&lt;button 
+		id=&quot;lovable-badge-close&quot;
+		aria-label=&quot;Dismiss&quot;
+		title=&quot;Dismiss&quot;
+		type=&quot;button&quot;&gt;
+		&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; viewBox=&quot;0 0 16 16&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;path d=&quot;M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z&quot;/&gt;
+		&lt;/svg&gt;
+	&lt;/button&gt;
+&lt;/aside&gt;
+&lt;script&gt;
+	// Don&#39;t show the lovable-badge if the page is in an iframe or if it&#39;s being rendered by puppeteer (screenshot service)
+	if (window.self !== window.top || navigator.userAgent.includes(&#39;puppeteer&#39;)) {
+		var badge = document.getElementById(&#39;lovable-badge&#39;);
+		if (badge) {
+			badge.style.display = &#39;none&#39;;
+		}
+	}
+
+	// Add click event listener to close button with animation
+	var closeButton = document.getElementById(&#39;lovable-badge-close&#39;);
+	if (closeButton) {
+		closeButton.addEventListener(&#39;click&#39;, function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			var badge = document.getElementById(&#39;lovable-badge&#39;);
+			if (badge) {
+				badge.classList.add(&#39;closing&#39;);
+				setTimeout(function() {
+					if (badge) {
+						badge.style.display = &#39;none&#39;;
+					}
+				}, 240);
+			}
+		});
+	}
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	
+	
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. esté configurado para establecer la cabecera Content-Security-Policy.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-2">Falta atributo de integridad de recursos secundarios</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET https://author-verse-write.lovable.app/auth?mode=signin</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/345.html">CWE-345</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/">OWASP_2021_A05</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/">OWASP_2025_A02</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_DEV_STD = </span>
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>Falta el atributo de integridad en una etiqueta de script o enlace servida por un servidor externo. La etiqueta de integridad evita que un atacante que haya obtenido acceso a este servidor inyecte un contenido malicioso.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (548 bytes)</summary>
+				
+				<pre><code>GET https://author-verse-write.lovable.app/auth?mode=signin HTTP/1.1
+host: author-verse-write.lovable.app
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+referer: https://author-verse-write.lovable.app/auth
+Cookie: __cf_bm=mJhm3588PICSfkfXQLkfVlW2tBw12tz79Ek7gWCsmqI-1783968015.588311-1.0.1.1-0H28jKPP4aKw5JK4cRPu8CoWFPk.TtglwdYPOfzoHotcjRCXbIdpAtrVHx.xqwBkicKESuo499tfWkIz5P.2LeqEJDSbEIeFX3d5MtYqNOxakU9B7EYkOs7dGLk1cikD
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (476 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Date: Mon, 13 Jul 2026 18:40:15 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache, must-revalidate, max-age=0
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+x-deployment-id: d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29
+Server: cloudflare
+CF-RAY: a1aa6a436e5ce8a1-MAD
+content-length: 16367
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (16367 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;es&quot;&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/styles-B3H5GssB.css&quot; data-precedence=&quot;default&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;amp;family=Inter:wght@400;500;600;700&amp;amp;display=swap&quot; data-precedence=&quot;default&quot;/&gt;&lt;title&gt;Entrar — Prisma&lt;/title&gt;&lt;meta name=&quot;description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta name=&quot;author&quot; content=&quot;Prisma&quot;/&gt;&lt;meta property=&quot;og:title&quot; content=&quot;Prisma — Últimos artículos&quot;/&gt;&lt;meta property=&quot;og:description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;/&gt;&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;/&gt;&lt;meta name=&quot;twitter:title&quot; content=&quot;Prisma — Últimos artículos&quot;/&gt;&lt;meta name=&quot;twitter:description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta property=&quot;og:image&quot; content=&quot;https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f2206183-ff32-4301-a8f3-d32a1b7ad84f/id-preview-28fc8d9f--1ca972b0-484a-43f6-80b4-64f36a8ec587.lovable.app-1783942668035.png&quot;/&gt;&lt;meta name=&quot;twitter:image&quot; content=&quot;https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f2206183-ff32-4301-a8f3-d32a1b7ad84f/id-preview-28fc8d9f--1ca972b0-484a-43f6-80b4-64f36a8ec587.lovable.app-1783942668035.png&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/index-B6ieQ-ud.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useRouter-D-xeXV9i.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/client-BGxZm-v7.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useStore-DfZx4Sm_.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/link-5b2yvcev.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/matchContext-CNkLOHpA.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/redirect-BB44wZa9.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/auth-C2lTURsb.js&quot;/&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;/&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin=&quot;anonymous&quot;/&gt;&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; type=&quot;image/x-icon&quot;/&gt;
+&lt;style&gt;
+	@font-face {
+		font-family: &#39;CameraPlainVariable&#39;;
+		src: url(&#39;https://cdn.gpteng.co/mcp-widgets/v1/fonts/CameraPlainVariable.woff2&#39;) format(&#39;woff2&#39;);
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: CameraPlainVariable, &quot;CameraPlainVariable Fallback&quot;, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+	}
+
+	#lovable-badge-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--badge-gap);
+		padding: 0 var(--badge-padding);
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
+
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
+
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
+
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
+
+	#lovable-badge-text {
+		line-height: 1;
+	}
+
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
+
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
+
+	#lovable-badge-close:focus {
+		outline: none;
+	}
+
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
+
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
+
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
+
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+&lt;/style&gt;
+&lt;script defer src=&quot;/~flock.js&quot; data-proxy-url=&quot;/~api/analytics&quot;&gt;&lt;/script&gt;&lt;script defer src=&quot;/__l5e/events.js&quot; data-artifact-kind=&quot;dwl_content_hash&quot; data-artifact-id=&quot;d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29&quot; data-commit-sha=&quot;7b089a941dee35a0ee016bd158c1cbce095552af&quot; data-context-token=&quot;v1.eyJwcm9qZWN0X2lkIjoiMWNhOTcyYjAtNDg0YS00M2Y2LTgwYjQtNjRmMzZhOGVjNTg3IiwiYXJ0aWZhY3Rfa2luZCI6ImR3bF9jb250ZW50X2hhc2giLCJhcnRpZmFjdF9pZCI6ImQwZTBlM2JmNDdkNGJmMjM4MjU4MWQ5ZmEzNGJiZDhjYTZkZWEzNjY1YmY1MWM5YTg4MjZlYWMxMmZhMzJlMjkiLCJjb21taXRfc2hhIjoiN2IwODlhOTQxZGVlMzVhMGVlMDE2YmQxNThjMWNiY2UwOTU1NTJhZiIsImV4cCI6MTc4Mzk3MTYxNX0.mt03Elmt31vECIJapPOhXrNZgt4_fBTK9IH33Rv9D74&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;min-h-screen flex flex-col&quot;&gt;&lt;header class=&quot;border-b border-border bg-background/80 backdrop-blur sticky top-0 z-40&quot;&gt;&lt;div class=&quot;max-w-6xl mx-auto flex items-center justify-between px-4 py-3&quot;&gt;&lt;a href=&quot;/&quot; class=&quot;flex items-center gap-2 font-serif text-xl font-semibold&quot;&gt;&lt;span class=&quot;w-8 h-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center font-bold&quot;&gt;P&lt;/span&gt;Prisma&lt;/a&gt;&lt;nav class=&quot;flex items-center gap-2&quot;&gt;&lt;a class=&quot;inline-flex items-center gap-1.5 rounded-md bg-primary text-primary-foreground px-3 py-1.5 text-sm font-medium hover:bg-primary/90 active&quot; href=&quot;/auth&quot; data-status=&quot;active&quot; aria-current=&quot;page&quot;&gt;Entrar&lt;/a&gt;&lt;/nav&gt;&lt;/div&gt;&lt;/header&gt;&lt;main class=&quot;flex-1&quot;&gt;&lt;!--$--&gt;&lt;div class=&quot;max-w-md mx-auto px-4 py-16&quot;&gt;&lt;div class=&quot;border border-border rounded-lg p-6 sm:p-8 bg-card&quot;&gt;&lt;h1 class=&quot;text-2xl font-serif font-semibold mb-1&quot;&gt;Entrar&lt;/h1&gt;&lt;p class=&quot;text-sm text-muted-foreground mb-6&quot;&gt;Accede a tu cuenta.&lt;/p&gt;&lt;form class=&quot;space-y-4&quot;&gt;&lt;div&gt;&lt;label class=&quot;block text-sm font-medium mb-1.5&quot;&gt;Email&lt;/label&gt;&lt;input type=&quot;email&quot; required=&quot;&quot; class=&quot;w-full px-3 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring&quot; placeholder=&quot;tu@email.com&quot; value=&quot;&quot;/&gt;&lt;/div&gt;&lt;div&gt;&lt;label class=&quot;block text-sm font-medium mb-1.5&quot;&gt;Contraseña&lt;/label&gt;&lt;input type=&quot;password&quot; required=&quot;&quot; minLength=&quot;6&quot; class=&quot;w-full px-3 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring&quot; placeholder=&quot;••••••••&quot; value=&quot;&quot;/&gt;&lt;/div&gt;&lt;button type=&quot;submit&quot; class=&quot;w-full bg-primary text-primary-foreground rounded-md py-2.5 font-medium hover:bg-primary/90 disabled:opacity-50&quot;&gt;Entrar&lt;/button&gt;&lt;/form&gt;&lt;div class=&quot;mt-6 pt-6 border-t border-border text-sm space-y-2 text-center&quot;&gt;&lt;div&gt;¿No tienes cuenta?&lt;!-- --&gt; &lt;a href=&quot;/auth?mode=signup&quot; class=&quot;text-primary hover:underline&quot;&gt;Crear una&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;a href=&quot;/auth?mode=forgot&quot; class=&quot;text-muted-foreground hover:text-primary hover:underline&quot;&gt;Olvidé mi contraseña&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;script&gt;(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||&quot;{}&quot;)}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&amp;&amp;Number.isFinite(s)){if(t===&quot;window&quot;)scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&amp;&amp;(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&amp;&amp;e.scrollIntoView(t)}return}scrollTo(0,0)})(&quot;tsr-scroll-restoration-v1_3&quot;);document.currentScript.remove()&lt;/script&gt;&lt;!--/$--&gt;&lt;/main&gt;&lt;footer class=&quot;border-t border-border py-6 text-center text-xs text-muted-foreground&quot;&gt;Prisma · Blog colaborativo&lt;/footer&gt;&lt;/div&gt;&lt;section aria-label=&quot;Notifications alt+T&quot; tabindex=&quot;-1&quot; aria-live=&quot;polite&quot; aria-relevant=&quot;additions text&quot; aria-atomic=&quot;false&quot;&gt;&lt;/section&gt;&lt;script class=&quot;$tsr&quot; id=&quot;$tsr-stream-barrier&quot;&gt;(self.$R=self.$R||{})[&quot;tsr&quot;]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&amp;&amp;this.streamEnded&amp;&amp;(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=&gt;$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=[&quot;/assets/index-B6ieQ-ud.js&quot;,&quot;/assets/useRouter-D-xeXV9i.js&quot;,&quot;/assets/client-BGxZm-v7.js&quot;,&quot;/assets/useStore-DfZx4Sm_.js&quot;,&quot;/assets/link-5b2yvcev.js&quot;,&quot;/assets/matchContext-CNkLOHpA.js&quot;,&quot;/assets/redirect-BB44wZa9.js&quot;],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:&quot;module&quot;,async:!0,src:&quot;/assets/index-B6ieQ-ud.js&quot;}}]},&quot;/auth&quot;:$R[8]={preloads:$R[9]=[&quot;/assets/auth-C2lTURsb.js&quot;]}}},matches:$R[10]=[$R[11]={i:&quot;__root__ &quot;,u:1783968015909,s:&quot;success&quot;,ssr:!0},$R[12]={i:&quot; auth auth&quot;,u:1783968015909,s:&quot;success&quot;,ssr:!0}],lastMatchId:&quot; auth auth&quot;})($R[&quot;tsr&quot;]);$_TSR.e();document.currentScript.remove()&lt;/script&gt;&lt;script type=&quot;module&quot; async=&quot;&quot; src=&quot;/assets/index-B6ieQ-ud.js&quot;&gt;&lt;/script&gt;
+&lt;aside
+	id=&quot;lovable-badge&quot;
+	role=&quot;complementary&quot;
+	dir=&quot;ltr&quot;
+	lang=&quot;en&quot;
+	aria-label=&quot;Edit with Lovable&quot;&gt;
+	&lt;a
+		id=&quot;lovable-badge-cta&quot; 
+		target=&quot;_blank&quot; 
+		href=&quot;https://lovable.dev/projects/1ca972b0-484a-43f6-80b4-64f36a8ec587?utm_source=lovable-badge&quot;
+		rel=&quot;noopener nofollow&quot;
+		aria-label=&quot;Edit with Lovable&quot;&gt;
+		&lt;span id=&quot;lovable-badge-text&quot;&gt;Edit with&lt;/span&gt;
+		&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;52&quot; height=&quot;16&quot; fill=&quot;none&quot; viewBox=&quot;0 0 52 16&quot;&gt;
+  &lt;path fill=&quot;#FCFBF8&quot; fill-rule=&quot;evenodd&quot; d=&quot;M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z&quot; clip-rule=&quot;evenodd&quot;/&gt;
+  &lt;path fill=&quot;#FCFBF8&quot; d=&quot;m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z&quot;/&gt;
+  &lt;path fill=&quot;url(#a)&quot; fill-rule=&quot;evenodd&quot; d=&quot;M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z&quot; clip-rule=&quot;evenodd&quot;/&gt;
+  &lt;defs&gt;
+    &lt;radialGradient id=&quot;a&quot; cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;1&quot; gradientTransform=&quot;matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)&quot; gradientUnits=&quot;userSpaceOnUse&quot;&gt;
+      &lt;stop offset=&quot;.106&quot; stop-color=&quot;#FE7B02&quot;/&gt;
+      &lt;stop offset=&quot;.394&quot; stop-color=&quot;#FE3F21&quot;/&gt;
+      &lt;stop offset=&quot;.608&quot; stop-color=&quot;#F858BC&quot;/&gt;
+      &lt;stop offset=&quot;.929&quot; stop-color=&quot;#575ECF&quot;/&gt;
+    &lt;/radialGradient&gt;
+  &lt;/defs&gt;
+&lt;/svg&gt;
+
+
+	&lt;/a&gt;
+	
+	&lt;span id=&quot;lovable-badge-divider&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+	
+	&lt;button 
+		id=&quot;lovable-badge-close&quot;
+		aria-label=&quot;Dismiss&quot;
+		title=&quot;Dismiss&quot;
+		type=&quot;button&quot;&gt;
+		&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; viewBox=&quot;0 0 16 16&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;path d=&quot;M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z&quot;/&gt;
+		&lt;/svg&gt;
+	&lt;/button&gt;
+&lt;/aside&gt;
+&lt;script&gt;
+	// Don&#39;t show the lovable-badge if the page is in an iframe or if it&#39;s being rendered by puppeteer (screenshot service)
+	if (window.self !== window.top || navigator.userAgent.includes(&#39;puppeteer&#39;)) {
+		var badge = document.getElementById(&#39;lovable-badge&#39;);
+		if (badge) {
+			badge.style.display = &#39;none&#39;;
+		}
+	}
+
+	// Add click event listener to close button with animation
+	var closeButton = document.getElementById(&#39;lovable-badge-close&#39;);
+	if (closeButton) {
+		closeButton.addEventListener(&#39;click&#39;, function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			var badge = document.getElementById(&#39;lovable-badge&#39;);
+			if (badge) {
+				badge.classList.add(&#39;closing&#39;);
+				setTimeout(function() {
+					if (badge) {
+						badge.style.display = &#39;none&#39;;
+					}
+				}, 240);
+			}
+		});
+	}
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;amp;family=Inter:wght@400;500;600;700&amp;amp;display=swap&quot; data-precedence=&quot;default&quot;/&gt;</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Proporcionar un atributo de integridad válido a la etiqueta.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				<li id="alerts--risk-2-confidence-2">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Medio</span>, <span>Confidence</span>=<span
+							class="confidence-level">Media</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">https://author-verse-write.lovable.app</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-3">Falta de cabecera Anti-Clickjacking</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET https://author-verse-write.lovable.app</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/">OWASP_2021_A05</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/1021.html">CWE-1021</a></span> 
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/11-Client-side_Testing/09-Testing_for_Clickjacking">WSTG-v42-CLNT-09</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/">OWASP_2025_A02</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>La respuesta no protege contra ataques de &quot;ClickJacking&quot;. Debes incluir Content-Security-Policy con la directiva &quot;frame-ancestors&quot; o X-Frame-Options.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (261 bytes)</summary>
+				
+				<pre><code>GET https://author-verse-write.lovable.app HTTP/1.1
+host: author-verse-write.lovable.app
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (797 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Date: Mon, 13 Jul 2026 18:40:15 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache, must-revalidate, max-age=0
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+x-deployment-id: d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29
+set-cookie: __cf_bm=swIUuPxT3qh91zBF8JR97W2VSr9OsGGy57I89BjjOFA-1783968015.5875747-1.0.1.1-RqZwn_07nBvzhz3czXvY3_GYxq7Q67trNG1_3TbraypKsj62DMiazzRQO3w.JjqWeCKEBRLB2uX6Vi6iT2SVI_2uU4Apje3c.LV0SLdk4bIRVq9de7bwxYDBDRTBIRjq; HttpOnly; SameSite=None; Secure; Path=/; Domain=lovable.app; Expires=Mon, 13 Jul 2026 19:10:15 GMT
+Server: cloudflare
+CF-RAY: a1aa6a416b052d40-MAD
+content-length: 16351
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (16351 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;es&quot;&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/styles-B3H5GssB.css&quot; data-precedence=&quot;default&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;amp;family=Inter:wght@400;500;600;700&amp;amp;display=swap&quot; data-precedence=&quot;default&quot;/&gt;&lt;title&gt;Prisma — Últimos artículos&lt;/title&gt;&lt;meta name=&quot;author&quot; content=&quot;Prisma&quot;/&gt;&lt;meta property=&quot;og:title&quot; content=&quot;Prisma — Últimos artículos&quot;/&gt;&lt;meta property=&quot;og:description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;/&gt;&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;/&gt;&lt;meta name=&quot;twitter:title&quot; content=&quot;Prisma — Últimos artículos&quot;/&gt;&lt;meta name=&quot;twitter:description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;meta property=&quot;og:image&quot; content=&quot;https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f2206183-ff32-4301-a8f3-d32a1b7ad84f/id-preview-28fc8d9f--1ca972b0-484a-43f6-80b4-64f36a8ec587.lovable.app-1783942668035.png&quot;/&gt;&lt;meta name=&quot;twitter:image&quot; content=&quot;https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f2206183-ff32-4301-a8f3-d32a1b7ad84f/id-preview-28fc8d9f--1ca972b0-484a-43f6-80b4-64f36a8ec587.lovable.app-1783942668035.png&quot;/&gt;&lt;meta name=&quot;description&quot; content=&quot;Explora los artículos más recientes publicados por nuestra comunidad de autores.&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/index-B6ieQ-ud.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useRouter-D-xeXV9i.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/client-BGxZm-v7.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useStore-DfZx4Sm_.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/link-5b2yvcev.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/matchContext-CNkLOHpA.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/redirect-BB44wZa9.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/routes-BWUpxvjJ.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/useQuery-BSEt-GZY.js&quot;/&gt;&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/calendar-C4_emIJ2.js&quot;/&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;/&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin=&quot;anonymous&quot;/&gt;&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; type=&quot;image/x-icon&quot;/&gt;
+&lt;style&gt;
+	@font-face {
+		font-family: &#39;CameraPlainVariable&#39;;
+		src: url(&#39;https://cdn.gpteng.co/mcp-widgets/v1/fonts/CameraPlainVariable.woff2&#39;) format(&#39;woff2&#39;);
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: CameraPlainVariable, &quot;CameraPlainVariable Fallback&quot;, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+	}
+
+	#lovable-badge-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--badge-gap);
+		padding: 0 var(--badge-padding);
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
+
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
+
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
+
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
+
+	#lovable-badge-text {
+		line-height: 1;
+	}
+
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
+
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
+
+	#lovable-badge-close:focus {
+		outline: none;
+	}
+
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
+
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
+
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
+
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+&lt;/style&gt;
+&lt;script defer src=&quot;/~flock.js&quot; data-proxy-url=&quot;/~api/analytics&quot;&gt;&lt;/script&gt;&lt;script defer src=&quot;/__l5e/events.js&quot; data-artifact-kind=&quot;dwl_content_hash&quot; data-artifact-id=&quot;d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29&quot; data-commit-sha=&quot;7b089a941dee35a0ee016bd158c1cbce095552af&quot; data-context-token=&quot;v1.eyJwcm9qZWN0X2lkIjoiMWNhOTcyYjAtNDg0YS00M2Y2LTgwYjQtNjRmMzZhOGVjNTg3IiwiYXJ0aWZhY3Rfa2luZCI6ImR3bF9jb250ZW50X2hhc2giLCJhcnRpZmFjdF9pZCI6ImQwZTBlM2JmNDdkNGJmMjM4MjU4MWQ5ZmEzNGJiZDhjYTZkZWEzNjY1YmY1MWM5YTg4MjZlYWMxMmZhMzJlMjkiLCJjb21taXRfc2hhIjoiN2IwODlhOTQxZGVlMzVhMGVlMDE2YmQxNThjMWNiY2UwOTU1NTJhZiIsImV4cCI6MTc4Mzk3MTYxNX0.mt03Elmt31vECIJapPOhXrNZgt4_fBTK9IH33Rv9D74&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;min-h-screen flex flex-col&quot;&gt;&lt;header class=&quot;border-b border-border bg-background/80 backdrop-blur sticky top-0 z-40&quot;&gt;&lt;div class=&quot;max-w-6xl mx-auto flex items-center justify-between px-4 py-3&quot;&gt;&lt;a class=&quot;flex items-center gap-2 font-serif text-xl font-semibold active&quot; href=&quot;/&quot; data-status=&quot;active&quot; aria-current=&quot;page&quot;&gt;&lt;span class=&quot;w-8 h-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center font-bold&quot;&gt;P&lt;/span&gt;Prisma&lt;/a&gt;&lt;nav class=&quot;flex items-center gap-2&quot;&gt;&lt;a href=&quot;/auth&quot; class=&quot;inline-flex items-center gap-1.5 rounded-md bg-primary text-primary-foreground px-3 py-1.5 text-sm font-medium hover:bg-primary/90&quot;&gt;Entrar&lt;/a&gt;&lt;/nav&gt;&lt;/div&gt;&lt;/header&gt;&lt;main class=&quot;flex-1&quot;&gt;&lt;!--$--&gt;&lt;div class=&quot;max-w-6xl mx-auto px-4 py-10&quot;&gt;&lt;section class=&quot;mb-10 max-w-3xl&quot;&gt;&lt;h1 class=&quot;text-5xl font-serif font-semibold tracking-tight&quot;&gt;Ideas que se leen, se editan y se publican en equipo.&lt;/h1&gt;&lt;p class=&quot;mt-4 text-lg text-muted-foreground&quot;&gt;Un blog multi-autor con flujo editorial: escribe borradores, envíalos a revisión y publica cuando estén listos.&lt;/p&gt;&lt;/section&gt;&lt;div class=&quot;mb-8 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center&quot;&gt;&lt;div class=&quot;relative flex-1&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; class=&quot;lucide lucide-search w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;m21 21-4.34-4.34&quot;&gt;&lt;/path&gt;&lt;circle cx=&quot;11&quot; cy=&quot;11&quot; r=&quot;8&quot;&gt;&lt;/circle&gt;&lt;/svg&gt;&lt;input placeholder=&quot;Buscar por título, contenido o etiqueta&quot; class=&quot;w-full pl-9 pr-3 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring&quot; value=&quot;&quot;/&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class=&quot;text-muted-foreground&quot;&gt;Cargando…&lt;/p&gt;&lt;/div&gt;&lt;script&gt;(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||&quot;{}&quot;)}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&amp;&amp;Number.isFinite(s)){if(t===&quot;window&quot;)scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&amp;&amp;(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&amp;&amp;e.scrollIntoView(t)}return}scrollTo(0,0)})(&quot;tsr-scroll-restoration-v1_3&quot;);document.currentScript.remove()&lt;/script&gt;&lt;!--/$--&gt;&lt;/main&gt;&lt;footer class=&quot;border-t border-border py-6 text-center text-xs text-muted-foreground&quot;&gt;Prisma · Blog colaborativo&lt;/footer&gt;&lt;/div&gt;&lt;section aria-label=&quot;Notifications alt+T&quot; tabindex=&quot;-1&quot; aria-live=&quot;polite&quot; aria-relevant=&quot;additions text&quot; aria-atomic=&quot;false&quot;&gt;&lt;/section&gt;&lt;script class=&quot;$tsr&quot; id=&quot;$tsr-stream-barrier&quot;&gt;(self.$R=self.$R||{})[&quot;tsr&quot;]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&amp;&amp;this.streamEnded&amp;&amp;(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=&gt;$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=[&quot;/assets/index-B6ieQ-ud.js&quot;,&quot;/assets/useRouter-D-xeXV9i.js&quot;,&quot;/assets/client-BGxZm-v7.js&quot;,&quot;/assets/useStore-DfZx4Sm_.js&quot;,&quot;/assets/link-5b2yvcev.js&quot;,&quot;/assets/matchContext-CNkLOHpA.js&quot;,&quot;/assets/redirect-BB44wZa9.js&quot;],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:&quot;module&quot;,async:!0,src:&quot;/assets/index-B6ieQ-ud.js&quot;}}]},&quot;/&quot;:$R[8]={preloads:$R[9]=[&quot;/assets/routes-BWUpxvjJ.js&quot;,&quot;/assets/useQuery-BSEt-GZY.js&quot;,&quot;/assets/calendar-C4_emIJ2.js&quot;]}}},matches:$R[10]=[$R[11]={i:&quot;__root__ &quot;,u:1783968015725,s:&quot;success&quot;,ssr:!0},$R[12]={i:&quot;  &quot;,u:1783968015725,s:&quot;success&quot;,ssr:!0}],lastMatchId:&quot;  &quot;})($R[&quot;tsr&quot;]);$_TSR.e();document.currentScript.remove()&lt;/script&gt;&lt;script type=&quot;module&quot; async=&quot;&quot; src=&quot;/assets/index-B6ieQ-ud.js&quot;&gt;&lt;/script&gt;
+&lt;aside
+	id=&quot;lovable-badge&quot;
+	role=&quot;complementary&quot;
+	dir=&quot;ltr&quot;
+	lang=&quot;en&quot;
+	aria-label=&quot;Edit with Lovable&quot;&gt;
+	&lt;a
+		id=&quot;lovable-badge-cta&quot; 
+		target=&quot;_blank&quot; 
+		href=&quot;https://lovable.dev/projects/1ca972b0-484a-43f6-80b4-64f36a8ec587?utm_source=lovable-badge&quot;
+		rel=&quot;noopener nofollow&quot;
+		aria-label=&quot;Edit with Lovable&quot;&gt;
+		&lt;span id=&quot;lovable-badge-text&quot;&gt;Edit with&lt;/span&gt;
+		&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;52&quot; height=&quot;16&quot; fill=&quot;none&quot; viewBox=&quot;0 0 52 16&quot;&gt;
+  &lt;path fill=&quot;#FCFBF8&quot; fill-rule=&quot;evenodd&quot; d=&quot;M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z&quot; clip-rule=&quot;evenodd&quot;/&gt;
+  &lt;path fill=&quot;#FCFBF8&quot; d=&quot;m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z&quot;/&gt;
+  &lt;path fill=&quot;url(#a)&quot; fill-rule=&quot;evenodd&quot; d=&quot;M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z&quot; clip-rule=&quot;evenodd&quot;/&gt;
+  &lt;defs&gt;
+    &lt;radialGradient id=&quot;a&quot; cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;1&quot; gradientTransform=&quot;matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)&quot; gradientUnits=&quot;userSpaceOnUse&quot;&gt;
+      &lt;stop offset=&quot;.106&quot; stop-color=&quot;#FE7B02&quot;/&gt;
+      &lt;stop offset=&quot;.394&quot; stop-color=&quot;#FE3F21&quot;/&gt;
+      &lt;stop offset=&quot;.608&quot; stop-color=&quot;#F858BC&quot;/&gt;
+      &lt;stop offset=&quot;.929&quot; stop-color=&quot;#575ECF&quot;/&gt;
+    &lt;/radialGradient&gt;
+  &lt;/defs&gt;
+&lt;/svg&gt;
+
+
+	&lt;/a&gt;
+	
+	&lt;span id=&quot;lovable-badge-divider&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+	
+	&lt;button 
+		id=&quot;lovable-badge-close&quot;
+		aria-label=&quot;Dismiss&quot;
+		title=&quot;Dismiss&quot;
+		type=&quot;button&quot;&gt;
+		&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; viewBox=&quot;0 0 16 16&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;path d=&quot;M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z&quot;/&gt;
+		&lt;/svg&gt;
+	&lt;/button&gt;
+&lt;/aside&gt;
+&lt;script&gt;
+	// Don&#39;t show the lovable-badge if the page is in an iframe or if it&#39;s being rendered by puppeteer (screenshot service)
+	if (window.self !== window.top || navigator.userAgent.includes(&#39;puppeteer&#39;)) {
+		var badge = document.getElementById(&#39;lovable-badge&#39;);
+		if (badge) {
+			badge.style.display = &#39;none&#39;;
+		}
+	}
+
+	// Add click event listener to close button with animation
+	var closeButton = document.getElementById(&#39;lovable-badge-close&#39;);
+	if (closeButton) {
+		closeButton.addEventListener(&#39;click&#39;, function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			var badge = document.getElementById(&#39;lovable-badge&#39;);
+			if (badge) {
+				badge.classList.add(&#39;closing&#39;);
+				setTimeout(function() {
+					if (badge) {
+						badge.style.display = &#39;none&#39;;
+					}
+				}, 240);
+			}
+		});
+	}
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>x-frame-options</code></pre></td>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Los navegadores web modernos admiten las cabeceras HTTP Content-Security-Policy y X-Frame-Options. Asegúrese de que una de ellas está configurada en todas las páginas web devueltas por su sitio/aplicación.</p>
+
+<p>Si espera que la página esté enmarcada solo por páginas en su servidor (por ejemplo, si forma parte de un FRAMESET), utilice SAMEORIGIN; de lo contrario, si no espera que la página esté enmarcada, utilice DENY. Alternativamente, considere implementar la directiva &quot;frame-ancestors&quot; de la Política de Seguridad de Contenidos.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				
+				  
+				 
+				
+				
+				
+				
+				<li id="alerts--risk-1-confidence-2">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+							class="confidence-level">Media</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">https://author-verse-write.lovable.app</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-4">Cookie con el atributo SameSite a None</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET https://author-verse-write.lovable.app/robots.txt</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/">OWASP_2021_A01</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes">WSTG-v42-SESS-02</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/1275.html">CWE-1275</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/">OWASP_2025_A01</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control.html">OWASP_2017_A05</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_DEV_STD = </span>
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>Se ha establecido una cookie con su atributo SameSite establecido en «none», lo que significa que la cookie puede ser enviada como resultado de una solicitud &#39;cross-site&#39;. El atributo SameSite es una medida efectiva para contrarrestar la falsificación de peticiones cross-site, la inclusión de scripts cross-site y los ataques de sincronización.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (272 bytes)</summary>
+				
+				<pre><code>GET https://author-verse-write.lovable.app/robots.txt HTTP/1.1
+host: author-verse-write.lovable.app
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (764 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Date: Mon, 13 Jul 2026 18:40:15 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 23
+Connection: keep-alive
+Accept-Ranges: bytes
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+x-deployment-id: d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29
+set-cookie: __cf_bm=jzSIMnjC9Gejlovm.ZrDeKpqqBRFKkbebKyNXy_vXQY-1783968015.5887303-1.0.1.1-YULJUP4f_DoTwcAEcYw7zWdkxY5msJuvXUrXPqSPNaZOqhu8VpywBmUrjM5HSz03gpEuBMtIuRsdFuyDu.zH8xKTClh_WvOraPAF0j28RV7cXcSLc_u89jJ58PsSzn_E; HttpOnly; SameSite=None; Secure; Path=/; Domain=lovable.app; Expires=Mon, 13 Jul 2026 19:10:15 GMT
+Server: cloudflare
+CF-RAY: a1aa6a416d160349-MAD
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (23 bytes)</summary>
+				
+				<pre><code>User-agent: *
+Allow: /
+</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>__cf_bm</code></pre></td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>set-cookie: __cf_bm</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Asegúrese que el atributo SameSite está establecido como &#39;lax&#39; o idealmente &#39;strict&#39; para todas las cookies.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				<li id="alerts--risk-1-confidence-1">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+							class="confidence-level">Baja</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">https://author-verse-write.lovable.app</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-5">Divulgación de Marcas de Tiempo - Unix</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET https://author-verse-write.lovable.app/robots.txt</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/">OWASP_2021_A01</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure.html">OWASP_2017_A03</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/">OWASP_2025_A01</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/497.html">CWE-497</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>Una marca de tiempo fue revelada por la aplicación/servidor web. - Unix</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>1783968015, que se evalúa como: 2026-07-13 20:40:15.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (272 bytes)</summary>
+				
+				<pre><code>GET https://author-verse-write.lovable.app/robots.txt HTTP/1.1
+host: author-verse-write.lovable.app
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (764 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Date: Mon, 13 Jul 2026 18:40:15 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 23
+Connection: keep-alive
+Accept-Ranges: bytes
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+x-deployment-id: d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29
+set-cookie: __cf_bm=jzSIMnjC9Gejlovm.ZrDeKpqqBRFKkbebKyNXy_vXQY-1783968015.5887303-1.0.1.1-YULJUP4f_DoTwcAEcYw7zWdkxY5msJuvXUrXPqSPNaZOqhu8VpywBmUrjM5HSz03gpEuBMtIuRsdFuyDu.zH8xKTClh_WvOraPAF0j28RV7cXcSLc_u89jJ58PsSzn_E; HttpOnly; SameSite=None; Secure; Path=/; Domain=lovable.app; Expires=Mon, 13 Jul 2026 19:10:15 GMT
+Server: cloudflare
+CF-RAY: a1aa6a416d160349-MAD
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (23 bytes)</summary>
+				
+				<pre><code>User-agent: *
+Allow: /
+</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>set-cookie</code></pre></td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>1783968015</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Confirmar que los datos encontrados de información sobre la marca de tiempo no son sensibles, ni se pueden usar en patrones explotables de divulgación.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				  
+				 
+				
+				
+				<li id="alerts--risk-0-confidence-3">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Informativo</span>, <span>Confidence</span>=<span
+							class="confidence-level">Alta</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">https://author-verse-write.lovable.app</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-8">Respuesta de Gestión de Sesión Identificada</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET https://author-verse-write.lovable.app/sitemap.xml</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>Se ha identificado que la respuesta dada contiene un token de gestión de sesión. El campo &#39;Other Info&#39; contiene un conjunto de tokens de cabecera que pueden utilizarse en el método Header Based Session Management (gestión de sesión basado en cabecera). Si la petición se encuentra en un contexto que tiene un método Session Management establecido en &quot;Auto-Detect&quot;, esta regla cambiará la gestión de sesión para utilizar los tokens identificados.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>cookie:__cf_bm</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (273 bytes)</summary>
+				
+				<pre><code>GET https://author-verse-write.lovable.app/sitemap.xml HTTP/1.1
+host: author-verse-write.lovable.app
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (769 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Date: Mon, 13 Jul 2026 18:40:15 GMT
+Content-Type: application/xml
+Content-Length: 311
+Connection: keep-alive
+Cache-Control: public, max-age=3600
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+x-deployment-id: d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29
+set-cookie: __cf_bm=mJhm3588PICSfkfXQLkfVlW2tBw12tz79Ek7gWCsmqI-1783968015.588311-1.0.1.1-0H28jKPP4aKw5JK4cRPu8CoWFPk.TtglwdYPOfzoHotcjRCXbIdpAtrVHx.xqwBkicKESuo499tfWkIz5P.2LeqEJDSbEIeFX3d5MtYqNOxakU9B7EYkOs7dGLk1cikD; HttpOnly; SameSite=None; Secure; Path=/; Domain=lovable.app; Expires=Mon, 13 Jul 2026 19:10:15 GMT
+Server: cloudflare
+CF-RAY: a1aa6a416882e8a1-MAD
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (311 bytes)</summary>
+				
+				<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
+  &lt;url&gt;
+    &lt;loc&gt;/&lt;/loc&gt;
+    &lt;changefreq&gt;daily&lt;/changefreq&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;/auth&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.3&lt;/priority&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>__cf_bm</code></pre></td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>__cf_bm</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Se trata de una alerta informativa y no de una vulnerabilidad, por lo que no hay nada que corregir.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				
+				
+				<li id="alerts--risk-0-confidence-1">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Informativo</span>, <span>Confidence</span>=<span
+							class="confidence-level">Baja</span> <span>(2)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">https://author-verse-write.lovable.app</span> <span>(2)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-6">Loosely Scoped Cookie</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET https://author-verse-write.lovable.app/robots.txt</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/565.html">CWE-565</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A08_2025-Software_or_Data_Integrity_Failures/">OWASP_2025_A08</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes">WSTG-v42-SESS-02</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/">OWASP_2021_A08</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_DEV_STD = </span>
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>Las Cookies pueden ser delimitadas por dominio o ruta. Esta comprobación solo se considera con ámbito de dominio. El ámbito de dominio aplicado a una cookie determina cuales dominios lo pueden acceder. Por ejemplo, una cookie puede ser delimitada estrictamente a un subdominio por ejemplo, www.nottrusted.com, o libremente delimitada a un dominio padre por ejemplo, nottrusted.com. En el último caso, cualquier subdominio de nottrusted.com puede acceder a la cookie. Las cookies libremente delimitadas son comunes en mega-aplicaciones como google.com y live.com. las cookies establecidas desde un subdominio como app.foo.bar son transmitidas solo al dominio del navegador. Sin embargo, las cookies delimitadas a un dominio de nivel de padre podría ser transmitida al padre, o cualquier subdominio del padre.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>El dominio de origen utilizado para la comparación fue:</p>
+
+<p>author-verse-write.lovable.app</p>
+
+<p>Cookie name: __cf_bm</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (272 bytes)</summary>
+				
+				<pre><code>GET https://author-verse-write.lovable.app/robots.txt HTTP/1.1
+host: author-verse-write.lovable.app
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (764 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Date: Mon, 13 Jul 2026 18:40:15 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 23
+Connection: keep-alive
+Accept-Ranges: bytes
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+x-deployment-id: d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29
+set-cookie: __cf_bm=jzSIMnjC9Gejlovm.ZrDeKpqqBRFKkbebKyNXy_vXQY-1783968015.5887303-1.0.1.1-YULJUP4f_DoTwcAEcYw7zWdkxY5msJuvXUrXPqSPNaZOqhu8VpywBmUrjM5HSz03gpEuBMtIuRsdFuyDu.zH8xKTClh_WvOraPAF0j28RV7cXcSLc_u89jJ58PsSzn_E; HttpOnly; SameSite=None; Secure; Path=/; Domain=lovable.app; Expires=Mon, 13 Jul 2026 19:10:15 GMT
+Server: cloudflare
+CF-RAY: a1aa6a416d160349-MAD
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (23 bytes)</summary>
+				
+				<pre><code>User-agent: *
+Allow: /
+</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>Domain=lovable.app</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Siempre delimitar las cookies a FQDN (Fully Qualified Domain Name).</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-7">Reexaminar las Directivas de Control de Caché</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET https://author-verse-write.lovable.app/robots.txt</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/">OWASP_2025_A07</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/525.html">CWE-525</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/">OWASP_2021_A07</a></span> 
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/04-Authentication_Testing/06-Testing_for_Browser_Cache_Weaknesses">WSTG-v42-ATHN-06</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A2_2017-Broken_Authentication.html">OWASP_2017_A02</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>La cabecera cache-control no se ha configurado correctamente o falta, lo que permite al navegador y a los proxies almacenar contenido en caché. Para activos estáticos como css, js, o archivos de imagen esto puede ser intencionado, sin embargo, los recursos deben ser revisados para asegurar que ningún contenido sensible será cacheado.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (272 bytes)</summary>
+				
+				<pre><code>GET https://author-verse-write.lovable.app/robots.txt HTTP/1.1
+host: author-verse-write.lovable.app
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (764 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Date: Mon, 13 Jul 2026 18:40:15 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 23
+Connection: keep-alive
+Accept-Ranges: bytes
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+x-deployment-id: d0e0e3bf47d4bf2382581d9fa34bbd8ca6dea3665bf51c9a8826eac12fa32e29
+set-cookie: __cf_bm=jzSIMnjC9Gejlovm.ZrDeKpqqBRFKkbebKyNXy_vXQY-1783968015.5887303-1.0.1.1-YULJUP4f_DoTwcAEcYw7zWdkxY5msJuvXUrXPqSPNaZOqhu8VpywBmUrjM5HSz03gpEuBMtIuRsdFuyDu.zH8xKTClh_WvOraPAF0j28RV7cXcSLc_u89jJ58PsSzn_E; HttpOnly; SameSite=None; Secure; Path=/; Domain=lovable.app; Expires=Mon, 13 Jul 2026 19:10:15 GMT
+Server: cloudflare
+CF-RAY: a1aa6a416d160349-MAD
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (23 bytes)</summary>
+				
+				<pre><code>User-agent: *
+Allow: /
+</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>cache-control</code></pre></td>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Para contenido seguro, asegúrese de que la cabecera HTTP cache-control está configurada con «no-cache, no-store, must-revalidate». Si un activo debe almacenarse en caché, considere establecer las directivas «public, max-age, immutable».</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				  
+			</ol>
+		</section>
+
+		<section id="appendix" class="appendix">
+			<h2>Appendix</h2>
+
+			<section id="alert-types" class="alert-types">
+				<h3>Alert Types</h3>
+				<p class="alert-types-intro">This section contains additional information on the types of alerts in the report.</p>
+				<ol>
+					<li
+						id="alert-type-0">
+						<h4>Cross Site Scripting (Reflected)</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by an active scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/40012/">Cross Site Scripting (Reflected)</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/79.html">79</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>8</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://owasp.org/www-community/attacks/xss/">https://owasp.org/www-community/attacks/xss/</a></li>
+										<li><a
+											href="https://cwe.mitre.org/data/definitions/79.html">https://cwe.mitre.org/data/definitions/79.html</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-1">
+						<h4>Cabecera Content Security Policy (CSP) no configurada</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10038/">Cabecera Content Security Policy (CSP) no configurada</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP">https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</a></li>
+										<li><a
+											href="https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</a></li>
+										<li><a
+											href="https://www.w3.org/TR/CSP/">https://www.w3.org/TR/CSP/</a></li>
+										<li><a
+											href="https://w3c.github.io/webappsec-csp/">https://w3c.github.io/webappsec-csp/</a></li>
+										<li><a
+											href="https://web.dev/articles/csp">https://web.dev/articles/csp</a></li>
+										<li><a
+											href="https://caniuse.com/#feat=contentsecuritypolicy">https://caniuse.com/#feat=contentsecuritypolicy</a></li>
+										<li><a
+											href="https://content-security-policy.com/">https://content-security-policy.com/</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-2">
+						<h4>Falta atributo de integridad de recursos secundarios</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/90003/">Falta atributo de integridad de recursos secundarios</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/345.html">345</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-3">
+						<h4>Falta de cabecera Anti-Clickjacking</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10020/">Cabecera Anti-Clickjacking</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/1021.html">1021</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options">https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-4">
+						<h4>Cookie con el atributo SameSite a None</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10054/">Cookie sin el atributo SameSite</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/1275.html">1275</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>13</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cookie-same-site">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cookie-same-site</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-5">
+						<h4>Divulgación de Marcas de Tiempo - Unix</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10096/">Divulgación de Marcas de Tiempo</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/497.html">497</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>13</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-6">
+						<h4>Loosely Scoped Cookie</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/90033/">Loosely Scoped Cookie</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/565.html">565</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://datatracker.ietf.org/doc/html/rfc6265#section-4.1">https://datatracker.ietf.org/doc/html/rfc6265#section-4.1</a></li>
+										<li><a
+											href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</a></li>
+										<li><a
+											href="https://code.google.com/archive/p/browsersec/wikis/Part2.wiki">https://code.google.com/archive/p/browsersec/wikis/Part2.wiki</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-7">
+						<h4>Reexaminar las Directivas de Control de Caché</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10015/">Reexaminar las Directivas de Control de Caché</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/525.html">525</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>13</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching">https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</a></li>
+										<li><a
+											href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control">https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control</a></li>
+										<li><a
+											href="https://grayduck.mn/2021/09/13/cache-control-recommendations/">https://grayduck.mn/2021/09/13/cache-control-recommendations/</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-8">
+						<h4>Respuesta de Gestión de Sesión Identificada</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10112/">Respuesta de Gestión de Sesión Identificada</a>)
+									</span>   
+								</td>
+							</tr>
+							
+							
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id/">https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id/</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ol>
+			</section>
+		</section>
+		 
+	</main>
+</body>
+</html>
+
+
+
