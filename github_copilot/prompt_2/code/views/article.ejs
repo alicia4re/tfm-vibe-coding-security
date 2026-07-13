@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+<section class="hero">
+  <div class="meta">Por <%= article.author_name %> · <span class="badge"><%= article.status %></span></div>
+  <h1><%= article.title %></h1>
+  <% if (article.featured_image_url) { %>
+    <img src="<%= article.featured_image_url %>" alt="Imagen destacada" style="width:100%;max-height:320px;object-fit:cover;border-radius:16px;" />
+  <% } %>
+</section>
+<section class="panel">
+  <div><%- article.content %></div>
+  <% if (article.tags) { %>
+    <p class="meta">Etiquetas: <%= article.tags %></p>
+  <% } %>
+  <% if (user && user.role === 'editor') { %>
+    <form method="post" action="/articles/<%= article.id %>/status" style="margin-top:1rem;">
+      <label>Cambiar estado
+        <select name="status">
+          <option value="draft" <%= article.status === 'draft' ? 'selected' : '' %>>Borrador</option>
+          <option value="in_review" <%= article.status === 'in_review' ? 'selected' : '' %>>En revisión</option>
+          <option value="published" <%= article.status === 'published' ? 'selected' : '' %>>Publicado</option>
+        </select>
+      </label>
+      <button type="submit">Aplicar</button>
+    </form>
+  <% } %>
+  <% if (canEdit) { %>
+    <p><a href="/articles/<%= article.id %>/edit">Editar artículo</a></p>
+  <% } %>
+</section>
+<section class="panel" style="margin-top:1rem;">
+  <h3>Comentarios</h3>
+  <% if (user) { %>
+    <form method="post" action="/articles/<%= article.id %>/comments">
+      <label>Tu comentario
+        <textarea name="content" required></textarea>
+      </label>
+      <button type="submit">Publicar comentario</button>
+    </form>
+  <% } else { %>
+    <p>Inicia sesión para comentar este artículo.</p>
+  <% } %>
+  <div class="list" style="margin-top:1rem;">
+    <% comments.forEach(comment => { %>
+      <div class="panel">
+        <div class="meta"><%= comment.author_name %> · <%= new Date(comment.created_at).toLocaleString('es-ES') %></div>
+        <div><%- comment.content %></div>
+      </div>
+    <% }) %>
+  </div>
+</section>
+<%- include('partials/footer') %>

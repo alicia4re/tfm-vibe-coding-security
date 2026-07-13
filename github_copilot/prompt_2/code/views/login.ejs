@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+<section class="grid grid-2" style="margin-top:2rem;">
+  <div class="panel">
+    <h2>Iniciar sesión</h2>
+    <form method="post" action="/login">
+      <label>Correo
+        <input type="email" name="email" required />
+      </label>
+      <label>Contraseña
+        <input type="password" name="password" required />
+      </label>
+      <button type="submit">Entrar</button>
+    </form>
+    <p><a href="/request-reset">He olvidado mi contraseña</a></p>
+  </div>
+  <div class="panel">
+    <h2>¿Aún no tienes cuenta?</h2>
+    <p>Regístrate para comentar, crear artículos o revisar contenidos como editor.</p>
+    <a href="/register"><button class="secondary" type="button">Crear cuenta</button></a>
+  </div>
+</section>
+<%- include('partials/footer') %>

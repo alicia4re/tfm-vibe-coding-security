@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+<section class="panel" style="margin-top:2rem;">
+  <h2>Recuperar contraseña</h2>
+  <form method="post" action="/request-reset">
+    <label>Correo
+      <input type="email" name="email" required />
+    </label>
+    <button type="submit">Enviar enlace</button>
+  </form>
+</section>
+<%- include('partials/footer') %>

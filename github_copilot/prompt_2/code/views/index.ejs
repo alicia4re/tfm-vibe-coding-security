@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+<section class="hero">
+  <h1>Publica, revisa y descubre historias</h1>
+  <p>BlogFlow reúne autores, editores y lectores en un único espacio con control de acceso, comentarios y una API pública para integrar contenidos.</p>
+</section>
+<section class="panel">
+  <form method="get" action="/">
+    <label>Buscar artículos
+      <input name="q" placeholder="Por título, contenido o etiqueta" value="<%= search %>" />
+    </label>
+    <button type="submit">Buscar</button>
+  </form>
+</section>
+<section class="list" style="margin-top:1rem;">
+  <% articles.forEach(article => { %>
+    <article class="article-card">
+      <div class="meta">Por <%= article.author_name %> · <%= new Date(article.created_at).toLocaleDateString('es-ES') %></div>
+      <h3><a href="/articles/<%= article.id %>"><%= article.title %></a></h3>
+      <p><%= stripHtml(article.content).slice(0, 180) %>...</p>
+      <% if (article.tags) { %>
+        <div class="meta">Etiquetas: <%= article.tags %></div>
+      <% } %>
+      <a href="/articles/<%= article.id %>">Leer artículo</a>
+    </article>
+  <% }) %>
+</section>
+<%- include('partials/footer') %>

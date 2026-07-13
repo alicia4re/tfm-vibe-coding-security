@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+<section class="hero">
+  <h1>Mis artículos</h1>
+  <p>Gestiona borradores, envíos a revisión y contenidos publicados desde aquí.</p>
+</section>
+<section class="list">
+  <% articles.forEach(article => { %>
+    <article class="article-card">
+      <div class="meta">Estado: <span class="badge"><%= article.status %></span></div>
+      <h3><a href="/articles/<%= article.id %>"><%= article.title %></a></h3>
+      <p><%= stripHtml(article.content).slice(0, 140) %>...</p>
+      <div class="meta">Última actualización: <%= new Date(article.updated_at).toLocaleString('es-ES') %></div>
+      <a href="/articles/<%= article.id %>/edit">Editar</a>
+    </article>
+  <% }) %>
+</section>
+<%- include('partials/footer') %>

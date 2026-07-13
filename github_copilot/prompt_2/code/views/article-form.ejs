@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+<section class="panel" style="margin-top:2rem;">
+  <h2><%= mode === 'edit' ? 'Editar artículo' : 'Nuevo artículo' %></h2>
+  <form method="post" action="<%= mode === 'edit' ? '/articles/' + article.id + '/edit' : '/articles/new' %>">
+    <label>Título
+      <input name="title" required value="<%= article ? article.title : '' %>" />
+    </label>
+    <label>Imagen destacada (URL)
+      <input name="featured_image_url" value="<%= article ? article.featured_image_url || '' : '' %>" />
+    </label>
+    <label>Etiquetas
+      <input name="tags" placeholder="react, tecnologia" value="<%= article ? article.tags || '' : '' %>" />
+    </label>
+    <label>Estado
+      <select name="status">
+        <option value="draft" <%= article && article.status === 'draft' ? 'selected' : '' %>>Borrador</option>
+        <option value="in_review" <%= article && article.status === 'in_review' ? 'selected' : '' %>>En revisión</option>
+        <option value="published" <%= article && article.status === 'published' ? 'selected' : '' %>>Publicado</option>
+      </select>
+    </label>
+    <div class="panel" data-editor-root>
+      <div class="toolbar">
+        <button type="button" data-command="bold">Negrita</button>
+        <button type="button" data-command="italic">Cursiva</button>
+        <button type="button" data-command="insertOrderedList">Lista</button>
+        <button type="button" data-command="createLink">Enlace</button>
+        <button type="button" data-command="insertImage">Imagen</button>
+      </div>
+      <div class="editor" contenteditable="true" data-editor></div>
+      <textarea name="content" data-editor-target hidden><%= article ? article.content || '' : '' %></textarea>
+    </div>
+    <label>Enlace externo para vista previa
+      <input data-preview-url name="external_link" placeholder="https://ejemplo.com" />
+    </label>
+    <div data-preview-output></div>
+    <button type="submit">Guardar artículo</button>
+  </form>
+</section>
+<%- include('partials/footer') %>

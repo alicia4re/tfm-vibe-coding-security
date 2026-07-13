@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> · BlogFlow</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a class="brand" href="/">BlogFlow</a>
+          <div class="nav-links">
+            <a href="/">Inicio</a>
+            <% if (user) { %>
+              <a href="/dashboard">Mis artículos</a>
+              <a href="/articles/new">Nuevo artículo</a>
+              <form action="/logout" method="post" style="display:inline;">
+                <button class="secondary" type="submit">Cerrar sesión</button>
+              </form>
+            <% } else { %>
+              <a href="/login">Iniciar sesión</a>
+              <a href="/register">Registro</a>
+            <% } %>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <% if (typeof flash !== 'undefined' && flash) { %>
+        <div class="flash <%= flash.type %>"><%= flash.message %></div>
+      <% } %>
