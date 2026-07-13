@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "file:/app/data/dev.db"
+      JWT_SECRET: "dev-secret-change-me-8f3a1c9e2b7d4f6a0e5c8b1d3f7a9e2c"
+      APP_URL: "http://localhost:3000"
+      NODE_ENV: "production"
+    volumes:
+      - task_app_data:/app/data
+      - task_app_uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  task_app_data:
+  task_app_uploads:

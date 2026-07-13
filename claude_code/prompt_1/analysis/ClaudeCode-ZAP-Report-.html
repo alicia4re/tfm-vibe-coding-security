@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZAP por Informe de Escaneo Checkmarx</title>
+<link
+	href="ClaudeCode-ZAP-Report-/normalize/normalize.css" rel="stylesheet">
+<link
+	href="ClaudeCode-ZAP-Report-/themes/original/main.css" rel="stylesheet">
+<link
+	href="ClaudeCode-ZAP-Report-/themes/original/colors.css" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<h1>ZAP por Informe de Escaneo Checkmarx</h1>
+		<p>
+			<span>Generated with</span> <a href="https://zaproxy.org"><img
+				src="ClaudeCode-ZAP-Report-/zap32x32.png" alt="The ZAP logo" class="zap-logo">ZAP</a>
+			<span>on lun 13 jul 2026, at 10:53:14</span>
+		</p>
+		<p>ZAP Versión: 2.17.0</p>
+		<p>
+			ZAP by <a href="https://checkmarx.com/">Checkmarx</a>
+		</p>
+	</header>
+
+	<main>
+
+		<section id="contents" class="contents">
+			<h2>Contents</h2>
+			<nav>
+				<ol>
+					<li><a
+						href="#about-this-report">About This Report</a>
+						<ol>
+							
+							<li><a
+								href="#report-parameters">Report Parameters</a></li>
+						</ol></li>
+					<data-th-block>
+					<li><a
+						href="#summaries">Summaries</a>
+						<ol>
+							<li><a
+								href="#risk-confidence-counts">Alert Counts by Risk and Confidence</a></li>
+							<li><a
+								href="#site-risk-counts">Alert Counts by Site and Risk</a></li>
+							<li><a
+								href="#alert-type-counts">Alert Counts by Alert Type</a></li>
+							
+						</ol></li>
+					<li><a
+						href="#alerts">Alerts</a>
+						<ol>
+							
+							 
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-2-confidence-3"><span>Risk</span>=<span
+									class="risk-level">Medio</span>, <span>Confidence</span>=<span
+									class="confidence-level">Alta</span> <span>(1)</span></a></li>
+							
+							<li><a
+								href="#alerts--risk-2-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Medio</span>, <span>Confidence</span>=<span
+									class="confidence-level">Media</span> <span>(1)</span></a></li>
+							
+							
+							  
+							
+							
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-1-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+									class="confidence-level">Media</span> <span>(3)</span></a></li>
+							
+							
+							  
+							
+							
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-0-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Informativo</span>, <span>Confidence</span>=<span
+									class="confidence-level">Media</span> <span>(1)</span></a></li>
+							
+							
+							  
+						</ol></li>
+					<li><a
+						href="#appendix">Appendix</a>
+						<ol>
+							<li><a
+								href="#alert-types">Alert Types</a></li>
+						</ol></li>
+					</data-th-block>
+				</ol>
+			</nav>
+		</section>
+
+		<section
+			id="about-this-report" class="about-this-report">
+			<h2>About This Report</h2>
+
+			
+
+			<section
+				id="report-parameters">
+				<h3>Report Parameters</h3>
+				<div class="report-parameters--container">
+					<h4>Contexts</h4>
+					
+					
+					<p>No contexts were selected, so all contexts were included by default.</p>
+					  
+
+					<h4>Sites</h4>
+					
+					<p>The following sites were included:</p>
+					<ul class="sites-list">
+						<li><span class="site">http://localhost:3000</span></li>
+					</ul>
+					
+					<p>(If no sites were selected, all sites were included by default.)</p>
+					<p>An included site must also be within one of the included contexts for its data to be included in the report.</p>
+
+					<h4>Risk levels</h4>
+					<p>
+						<span>Included</span>:
+						 
+						<span class="included-risk-codes"><span class="risk-level">Alto</span>, <span class="risk-level">Medio</span>, <span class="risk-level">Bajo</span>, <span class="risk-level">Informativo</span></span>
+					</p>
+					<p>
+						<span>Excluded</span>:
+						 <span>None</span>
+						
+					</p>
+
+					<h4>Confidence levels</h4>
+					<p>
+						<span>Included</span>:
+						
+						
+						<span class="included-confidence-codes"><span class="confidence-level">Confirmado por Usuario</span>, <span class="confidence-level">Alta</span>, <span class="confidence-level">Media</span>, <span class="confidence-level">Baja</span></span>
+					</p>
+					<p>
+						<span>Excluded</span>:
+						
+						
+						<span class="included-confidence-codes"> <span class="confidence-level">Confirmado por Usuario</span>, <span class="confidence-level">Alta</span>, <span class="confidence-level">Media</span>, <span class="confidence-level">Baja</span>, <span class="confidence-level">Falso positivo</span></span>
+					</p>
+				</div>
+			</section>
+		</section>
+
+		
+		<section>
+			
+		</section>
+		
+		<section id="summaries" class="summaries">
+			<h2>Summaries</h2>
+
+			<section
+				id="risk-confidence-counts">
+				<h3>Alert Counts by Risk and Confidence</h3>
+				<table class="risk-confidence-counts-table">
+					<caption>
+						<p>This table shows the number of alerts for each level of risk and confidence included in the report.</p>
+						<p>(The percentages in brackets represent the count as a percentage of the total number of alerts included in the report, rounded to one decimal place.)</p>
+					</caption>
+					<colgroup>
+						<col>
+						<col>
+					</colgroup>
+					<colgroup>
+						<col
+							style="width: 14.0%"><col
+							style="width: 14.0%"><col
+							style="width: 14.0%"><col
+							style="width: 14.0%">
+						<col style="width: 14.0%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2"></td>
+							<th scope="colgroup"
+								colspan="5">Confidence</th>
+						</tr>
+						<tr>
+							<th scope="col">Confirmado por Usuario</th>
+							<th scope="col">Alta</th>
+							<th scope="col">Media</th>
+							<th scope="col">Baja</th>
+							<th scope="col">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="rowgroup"
+								rowspan="5">Risk</th>
+							<th scope="row">Alto</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span class="additional-info-percentages">(0,0 %)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Medio</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(16,7 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(16,7 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>2</span><br> <span class="additional-info-percentages">(33,3 %)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Bajo</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(50,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>3</span><br> <span class="additional-info-percentages">(50,0 %)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Informativo</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(16,7 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span class="additional-info-percentages">(16,7 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row">Total</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(16,7 %)</span></td>
+							<td><span>5</span><br> <span
+								class="additional-info-percentages">(83,3 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>6</span><br> <span
+								class="additional-info-percentages">(100%)</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section
+				id="site-risk-counts">
+				<h3>Alert Counts by Site and Risk</h3>
+				<table class="site-risk-counts-table">
+					<caption>
+						<p>This table shows, for each site for which one or more alerts were raised, the number of alerts raised at each risk level.</p>
+						<p>Alerts with a confidence level of &quot;False Positive&quot; have been excluded from these counts.</p>
+						<p>(The numbers in brackets are the number of alerts raised for the site at or above that risk level.)</p>
+					</caption>
+					<colgroup>
+						<col>
+						<col>
+					</colgroup>
+					<colgroup>
+						<col
+							style="width: 16.25%"><col
+							style="width: 16.25%"><col
+							style="width: 16.25%"><col
+							style="width: 16.25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2"></td>
+							<th scope="colgroup" colspan="4">Risk</th>
+						</tr>
+						<tr>
+							<th scope="col">
+								<span>Alto</span><br>  <span
+									class="additional-info-percentages">(= Alto)</span>  
+							</th>
+							<th scope="col">
+								<span>Medio</span><br>   <span
+									class="additional-info-percentages">(&gt;= Medio)</span> 
+							</th>
+							<th scope="col">
+								<span>Bajo</span><br>   <span
+									class="additional-info-percentages">(&gt;= Bajo)</span> 
+							</th>
+							<th scope="col">
+								<span>Informativo</span><br>   <span
+									class="additional-info-percentages">(&gt;= Informativo)</span> 
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="rowgroup"
+								rowspan="1">Site</th>
+							<th scope="row">http://localhost:3000</th>
+							
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(2)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(5)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(6)</span></td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section
+				id="alert-type-counts">
+				<h3>Alert Counts by Alert Type</h3>
+				<table class="alert-type-counts-table">
+					<caption>
+						<p>This table shows the number of alerts of each alert type, together with the alert type&#39;s risk level.</p>
+						<p>(The percentages in brackets represent each count as a percentage, rounded to one decimal place, of the total number of alerts included in this report.)</p>
+					</caption>
+					<thead>
+						<tr>
+							<th scope="col">Alert type</th>
+							<th scope="col">Risk</th>
+							<th scope="col">Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-0">Cabecera Content Security Policy (CSP) no configurada</a></th>
+							<td class="risk-level">Medio</td>
+							<td><span>5</span><br> <span
+								class="additional-info-percentages">(83,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-1">Falta de cabecera Anti-Clickjacking</a></th>
+							<td class="risk-level">Medio</td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(50,0 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-2">El servidor divulga información mediante un campo(s) de encabezado de respuesta HTTP &#39;&#39;&#39;&#39;X-Powered-By&#39;&#39;&#39;&#39;</a></th>
+							<td class="risk-level">Bajo</td>
+							<td><span>5</span><br> <span
+								class="additional-info-percentages">(83,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-3">Falta encabezado X-Content-Type-Options</a></th>
+							<td class="risk-level">Bajo</td>
+							<td><span>5</span><br> <span
+								class="additional-info-percentages">(83,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-4">Gran redirección detectada (posible fuga de información confidencial)</a></th>
+							<td class="risk-level">Bajo</td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(16,7 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-5">Aplicación Web Moderna</a></th>
+							<td class="risk-level">Informativo</td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(50,0 %)</span></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th scope="row">Total</th>
+							<td></td>
+							<td>6</td>
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+			
+			
+		</section>
+
+		<section id="alerts" class="alerts">
+			<h2>Alerts</h2>
+			<ol>
+				
+				 
+				 
+				
+				
+				<li id="alerts--risk-2-confidence-3">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Medio</span>, <span>Confidence</span>=<span
+							class="confidence-level">Alta</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:3000</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-0">Cabecera Content Security Policy (CSP) no configurada</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000/robots.txt</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/">OWASP_2021_A05</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/693.html">CWE-693</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/">OWASP_2025_A02</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>La Política de seguridad de contenido (CSP) es una capa adicional de seguridad que ayuda a detectar y mitigar ciertos tipos de ataques, incluidos Cross Site Scripting (XSS) y ataques de inyección de datos. Estos ataques se utilizan para todo, desde el robo de datos hasta la desfiguración del sitio o la distribución de malware. CSP proporciona un conjunto de encabezados HTTP estándar que permiten a los propietarios de sitios web declarar fuentes de contenido aprobadas que los navegadores deberían poder cargar en esa página; los tipos cubiertos son JavaScript, CSS, marcos HTML, fuentes, imágenes y objetos incrustados como applets de Java, ActiveX, archivos de audio y video.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (239 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000/robots.txt HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (487 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 404 Not Found
+Cache-Control: private, no-cache, no-store, max-age=0, must-revalidate
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+x-nextjs-cache: HIT
+x-nextjs-prerender: 1
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+X-Powered-By: Next.js
+ETag: &quot;6el7chl9kh787&quot;
+Content-Type: text/html; charset=utf-8
+Content-Length: 9375
+Date: Mon, 13 Jul 2026 08:52:37 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (9375 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;es&quot; class=&quot;geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased&quot;&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/_next/static/chunks/2--41e9dr5k0c.css&quot; data-precedence=&quot;next&quot;/&gt;&lt;link rel=&quot;preload&quot; as=&quot;script&quot; fetchPriority=&quot;low&quot; href=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/27jktro2p5rq9.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/43_bvheqq33cs.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2y9f-agwmqhef.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/turbopack-0wyufvu3bxs8d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2lirpf2zolb8_.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/14mrh2-p_w84d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;meta name=&quot;robots&quot; content=&quot;noindex&quot;/&gt;&lt;meta name=&quot;next-size-adjust&quot; content=&quot;&quot;/&gt;&lt;title&gt;404: This page could not be found.&lt;/title&gt;&lt;title&gt;Gestión de Tareas&lt;/title&gt;&lt;meta name=&quot;description&quot; content=&quot;Aplicación de gestión de tareas con roles y panel de administración&quot;/&gt;&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico?favicon.2vob68tjqpejf.ico&quot; sizes=&quot;256x256&quot; type=&quot;image/x-icon&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/0cz1d0mv5g_q7.js&quot; noModule=&quot;&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body class=&quot;min-h-full flex flex-col bg-slate-50 text-slate-900&quot;&gt;&lt;div hidden=&quot;&quot;&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;/div&gt;&lt;div style=&quot;font-family:system-ui,&amp;quot;Segoe UI&amp;quot;,Roboto,Helvetica,Arial,sans-serif,&amp;quot;Apple Color Emoji&amp;quot;,&amp;quot;Segoe UI Emoji&amp;quot;;height:100vh;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center&quot;&gt;&lt;div&gt;&lt;style&gt;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}&lt;/style&gt;&lt;h1 class=&quot;next-error-h1&quot; style=&quot;display:inline-block;margin:0 20px 0 0;padding:0 23px 0 0;font-size:24px;font-weight:500;vertical-align:top;line-height:49px&quot;&gt;404&lt;/h1&gt;&lt;div style=&quot;display:inline-block&quot;&gt;&lt;h2 style=&quot;font-size:14px;font-weight:400;line-height:49px;margin:0&quot;&gt;This page could not be found.&lt;/h2&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;div class=&quot;fixed bottom-4 right-4 z-50 flex flex-col gap-2 w-[calc(100%-2rem)] max-w-sm&quot;&gt;&lt;/div&gt;&lt;script src=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot; id=&quot;_R_&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script&gt;(self.__next_f=self.__next_f||[]).push([0])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;1:\&quot;$Sreact.fragment\&quot;\n2:I[83036,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ToastProvider\&quot;]\n3:I[39756,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n4:I[37457,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n5:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;OutletBoundary\&quot;]\n6:\&quot;$Sreact.suspense\&quot;\n9:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ViewportBoundary\&quot;]\nb:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;MetadataBoundary\&quot;]\nd:I[68027,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;,1]\n:HL[\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;style\&quot;]\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;0:{\&quot;P\&quot;:null,\&quot;c\&quot;:[\&quot;\&quot;,\&quot;_not-found\&quot;],\&quot;q\&quot;:\&quot;\&quot;,\&quot;i\&quot;:false,\&quot;f\&quot;:[[[\&quot;\&quot;,{\&quot;children\&quot;:[\&quot;/_not-found\&quot;,{\&quot;children\&quot;:[\&quot;__PAGE__\&quot;,{}]}]},\&quot;$undefined\&quot;,\&quot;$undefined\&quot;,16],[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-0\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-1\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]],[\&quot;$\&quot;,\&quot;html\&quot;,null,{\&quot;lang\&quot;:\&quot;es\&quot;,\&quot;className\&quot;:\&quot;geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;body\&quot;,null,{\&quot;className\&quot;:\&quot;min-h-full flex flex-col bg-slate-50 text-slate-900\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L2\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L3\&quot;,null,{\&quot;parallelRouterKey\&quot;:\&quot;children\&quot;,\&quot;error\&quot;:\&quot;$undefined\&quot;,\&quot;errorStyles\&quot;:\&quot;$undefined\&quot;,\&quot;errorScripts\&quot;:\&quot;$undefined\&quot;,\&quot;template\&quot;:[\&quot;$\&quot;,\&quot;$L4\&quot;,null,{}],\&quot;templateStyles\&quot;:\&quot;$undefined\&quot;,\&quot;templateScripts\&quot;:\&quot;$undefined\&quot;,\&quot;notFound\&quot;:[[[\&quot;$\&quot;,\&quot;title\&quot;,null,{\&quot;children\&quot;:\&quot;404: This page could not be found.\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;fontFamily\&quot;:\&quot;system-ui,\\\&quot;Segoe UI\\\&quot;,Roboto,Helvetica,Arial,sans-serif,\\\&quot;Apple Color Emoji\\\&quot;,\\\&quot;Segoe UI Emoji\\\&quot;\&quot;,\&quot;height\&quot;:\&quot;100vh\&quot;,\&quot;textAlign\&quot;:\&quot;center\&quot;,\&quot;display\&quot;:\&quot;flex\&quot;,\&quot;flexDirection\&quot;:\&quot;column\&quot;,\&quot;alignItems\&quot;:\&quot;center\&quot;,\&quot;justifyContent\&quot;:\&quot;center\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;style\&quot;,null,{\&quot;dangerouslySetInnerHTML\&quot;:{\&quot;__html\&quot;:\&quot;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\&quot;}}],[\&quot;$\&quot;,\&quot;h1\&quot;,null,{\&quot;className\&quot;:\&quot;next-error-h1\&quot;,\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;,\&quot;margin\&quot;:\&quot;0 20px 0 0\&quot;,\&quot;padding\&quot;:\&quot;0 23px 0 0\&quot;,\&quot;fontSize\&quot;:24,\&quot;fontWeight\&quot;:500,\&quot;verticalAlign\&quot;:\&quot;top\&quot;,\&quot;lineHeight\&quot;:\&quot;49px\&quot;},\&quot;children\&quot;:404}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;h2\&quot;,null,{\&quot;style\&quot;:{\&quot;fontSize\&quot;:14,\&quot;fontWeight\&quot;:400,\&quot;lineHeight\&quot;:\&quot;49px\&quot;,\&quot;margin\&quot;:0},\&quot;children\&quot;:\&quot;This page could not be found.\&quot;}]}]]}]}]],[]],\&quot;forbidden\&quot;:\&quot;$undefined\&quot;,\&quot;unauthorized\&quot;:\&quot;$undefined\&quot;}]}]}]}]]}],{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[null,[\&quot;$\&quot;,\&quot;$L3\&quot;,null,{\&quot;parallelRouterKey\&quot;:\&quot;children\&quot;,\&quot;error\&quot;:\&quot;$undefined\&quot;,\&quot;errorStyles\&quot;:\&quot;$undefined\&quot;,\&quot;errorScripts\&quot;:\&quot;$undefined\&quot;,\&quot;template\&quot;:[\&quot;$\&quot;,\&quot;$L4\&quot;,null,{}],\&quot;templateStyles\&quot;:\&quot;$undefined\&quot;,\&quot;templateScripts\&quot;:\&quot;$undefined\&quot;,\&quot;notFound\&quot;:\&quot;$undefined\&quot;,\&quot;forbidden\&quot;:\&quot;$undefined\&quot;,\&quot;unauthorized\&quot;:\&quot;$undefined\&quot;}]]}],{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[[[\&quot;$\&quot;,\&quot;title\&quot;,null,{\&quot;children\&quot;:\&quot;404: This page could not be found.\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:style\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;style\&quot;,null,{\&quot;dangerouslySetInnerHTML\&quot;:{\&quot;__html\&quot;:\&quot;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\&quot;}}],[\&quot;$\&quot;,\&quot;h1\&quot;,null,{\&quot;className\&quot;:\&quot;next-error-h1\&quot;,\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:1:props:style\&quot;,\&quot;children\&quot;:404}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:style\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;h2\&quot;,null,{\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style\&quot;,\&quot;children\&quot;:\&quot;This page could not be found.\&quot;}]}]]}]}]],null,[\&quot;$\&quot;,\&quot;$L5\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$6\&quot;,null,{\&quot;name\&quot;:\&quot;Next.MetadataOutlet\&quot;,\&quot;children\&quot;:\&quot;$@7\&quot;}]}]]}],{},null,false,null]},null,false,\&quot;$@8\&quot;]},null,false,null],[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;h\&quot;,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;meta\&quot;,null,{\&quot;name\&quot;:\&quot;robots\&quot;,\&quot;content\&quot;:\&quot;noindex\&quot;}],[\&quot;$\&quot;,\&quot;$L9\&quot;,null,{\&quot;children\&quot;:\&quot;$La\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;hidden\&quot;:true,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$Lb\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$6\&quot;,null,{\&quot;name\&quot;:\&quot;Next.Metadata\&quot;,\&quot;children\&quot;:\&quot;$Lc\&quot;}]}]}],[\&quot;$\&quot;,\&quot;meta\&quot;,null,{\&quot;name\&quot;:\&quot;next-size-adjust\&quot;,\&quot;content\&quot;:\&quot;\&quot;}]]}],false]],\&quot;m\&quot;:\&quot;$undefined\&quot;,\&quot;G\&quot;:[\&quot;$d\&quot;,[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]]],\&quot;S\&quot;:true,\&quot;h\&quot;:null,\&quot;s\&quot;:\&quot;$undefined\&quot;,\&quot;l\&quot;:\&quot;$undefined\&quot;,\&quot;p\&quot;:\&quot;$undefined\&quot;,\&quot;d\&quot;:\&quot;$undefined\&quot;,\&quot;b\&quot;:\&quot;r6PjIMGFiAecQFMDCwFpX\&quot;}\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;e:[]\n8:\&quot;$We\&quot;\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;a:[[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;0\&quot;,{\&quot;charSet\&quot;:\&quot;utf-8\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;viewport\&quot;,\&quot;content\&quot;:\&quot;width=device-width, initial-scale=1\&quot;}]]\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;f:I[27201,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;IconMark\&quot;]\n7:null\nc:[[\&quot;$\&quot;,\&quot;title\&quot;,\&quot;0\&quot;,{\&quot;children\&quot;:\&quot;Gestión de Tareas\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;description\&quot;,\&quot;content\&quot;:\&quot;Aplicación de gestión de tareas con roles y panel de administración\&quot;}],[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;2\&quot;,{\&quot;rel\&quot;:\&quot;icon\&quot;,\&quot;href\&quot;:\&quot;/favicon.ico?favicon.2vob68tjqpejf.ico\&quot;,\&quot;sizes\&quot;:\&quot;256x256\&quot;,\&quot;type\&quot;:\&quot;image/x-icon\&quot;}],[\&quot;$\&quot;,\&quot;$Lf\&quot;,\&quot;3\&quot;,{}]]\n&quot;])&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	
+	
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. esté configurado para establecer la cabecera Content-Security-Policy.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				<li id="alerts--risk-2-confidence-2">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Medio</span>, <span>Confidence</span>=<span
+							class="confidence-level">Media</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:3000</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-1">Falta de cabecera Anti-Clickjacking</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/">OWASP_2021_A05</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/1021.html">CWE-1021</a></span> 
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/11-Client-side_Testing/09-Testing_for_Clickjacking">WSTG-v42-CLNT-09</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/">OWASP_2025_A02</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>La respuesta no protege contra ataques de &quot;ClickJacking&quot;. Debes incluir Content-Security-Policy con la directiva &quot;frame-ancestors&quot; o X-Frame-Options.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (228 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000 HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (442 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+x-nextjs-cache: HIT
+x-nextjs-prerender: 1
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+X-Powered-By: Next.js
+Cache-Control: s-maxage=31536000
+ETag: &quot;5r1k69cjf272i&quot;
+Content-Type: text/html; charset=utf-8
+Content-Length: 9175
+Date: Mon, 13 Jul 2026 08:52:37 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (9175 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;es&quot; class=&quot;geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased&quot;&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;&lt;link rel=&quot;preload&quot; href=&quot;/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2&quot; as=&quot;font&quot; crossorigin=&quot;&quot; type=&quot;font/woff2&quot;/&gt;&lt;link rel=&quot;preload&quot; href=&quot;/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2&quot; as=&quot;font&quot; crossorigin=&quot;&quot; type=&quot;font/woff2&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/_next/static/chunks/2--41e9dr5k0c.css&quot; data-precedence=&quot;next&quot;/&gt;&lt;link rel=&quot;preload&quot; as=&quot;script&quot; fetchPriority=&quot;low&quot; href=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/27jktro2p5rq9.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/43_bvheqq33cs.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2y9f-agwmqhef.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/turbopack-0wyufvu3bxs8d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2lirpf2zolb8_.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/14mrh2-p_w84d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/0skok6whp29r9.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;meta name=&quot;next-size-adjust&quot; content=&quot;&quot;/&gt;&lt;title&gt;Gestión de Tareas&lt;/title&gt;&lt;meta name=&quot;description&quot; content=&quot;Aplicación de gestión de tareas con roles y panel de administración&quot;/&gt;&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico?favicon.2vob68tjqpejf.ico&quot; sizes=&quot;256x256&quot; type=&quot;image/x-icon&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/0cz1d0mv5g_q7.js&quot; noModule=&quot;&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body class=&quot;min-h-full flex flex-col bg-slate-50 text-slate-900&quot;&gt;&lt;div hidden=&quot;&quot;&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;/div&gt;&lt;div class=&quot;flex min-h-screen flex-1 items-center justify-center bg-slate-50 px-4 py-12&quot;&gt;&lt;div class=&quot;w-full max-w-sm&quot;&gt;&lt;div class=&quot;mb-6 text-center&quot;&gt;&lt;span class=&quot;mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-600 text-xl text-white&quot;&gt;✓&lt;/span&gt;&lt;h1 class=&quot;mt-4 text-2xl font-bold text-slate-900&quot;&gt;Iniciar sesión&lt;/h1&gt;&lt;p class=&quot;mt-1 text-sm text-slate-500&quot;&gt;Accede a tu gestor de tareas&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;rounded-2xl border border-slate-200 bg-white p-6 shadow-sm&quot;&gt;&lt;!--$!--&gt;&lt;template data-dgst=&quot;BAILOUT_TO_CLIENT_SIDE_RENDERING&quot;&gt;&lt;/template&gt;&lt;!--/$--&gt;&lt;/div&gt;&lt;p class=&quot;mt-6 text-center text-sm text-slate-600&quot;&gt;¿No tienes cuenta?&lt;!-- --&gt; &lt;a class=&quot;font-medium text-indigo-600 hover:text-indigo-700&quot; href=&quot;/register&quot;&gt;Regístrate&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;div class=&quot;fixed bottom-4 right-4 z-50 flex flex-col gap-2 w-[calc(100%-2rem)] max-w-sm&quot;&gt;&lt;/div&gt;&lt;script src=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot; id=&quot;_R_&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script&gt;(self.__next_f=self.__next_f||[]).push([0])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;1:\&quot;$Sreact.fragment\&quot;\n2:I[83036,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ToastProvider\&quot;]\n3:I[39756,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n4:I[37457,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n5:I[47257,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ClientPageRoot\&quot;]\n6:I[94542,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;,\&quot;/_next/static/chunks/0skok6whp29r9.js\&quot;],\&quot;default\&quot;]\n9:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;OutletBoundary\&quot;]\na:\&quot;$Sreact.suspense\&quot;\nd:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ViewportBoundary\&quot;]\nf:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;MetadataBoundary\&quot;]\n11:I[68027,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;,1]\n:HL[\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;style\&quot;]\n:HL[\&quot;/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\&quot;,\&quot;font\&quot;,{\&quot;crossOrigin\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;font/woff2\&quot;}]\n:HL[\&quot;/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\&quot;,\&quot;font\&quot;,{\&quot;crossOrigin\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;font/woff2\&quot;}]\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;0:{\&quot;P\&quot;:null,\&quot;c\&quot;:[\&quot;\&quot;,\&quot;login\&quot;],\&quot;q\&quot;:\&quot;\&quot;,\&quot;i\&quot;:false,\&quot;f\&quot;:[[[\&quot;\&quot;,{\&quot;children\&quot;:[\&quot;login\&quot;,{\&quot;children\&quot;:[\&quot;__PAGE__\&quot;,{}]}]},\&quot;$undefined\&quot;,\&quot;$undefined\&quot;,16],[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-0\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-1\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]],[\&quot;$\&quot;,\&quot;html\&quot;,null,{\&quot;lang\&quot;:\&quot;es\&quot;,\&quot;className\&quot;:\&quot;geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;body\&quot;,null,{\&quot;className\&quot;:\&quot;min-h-full flex flex-col bg-slate-50 text-slate-900\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L2\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L3\&quot;,null,{\&quot;parallelRouterKey\&quot;:\&quot;children\&quot;,\&quot;error\&quot;:\&quot;$undefined\&quot;,\&quot;errorStyles\&quot;:\&quot;$undefined\&quot;,\&quot;errorScripts\&quot;:\&quot;$undefined\&quot;,\&quot;template\&quot;:[\&quot;$\&quot;,\&quot;$L4\&quot;,null,{}],\&quot;templateStyles\&quot;:\&quot;$undefined\&quot;,\&quot;templateScripts\&quot;:\&quot;$undefined\&quot;,\&quot;notFound\&quot;:[[[\&quot;$\&quot;,\&quot;title\&quot;,null,{\&quot;children\&quot;:\&quot;404: This page could not be found.\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;fontFamily\&quot;:\&quot;system-ui,\\\&quot;Segoe UI\\\&quot;,Roboto,Helvetica,Arial,sans-serif,\\\&quot;Apple Color Emoji\\\&quot;,\\\&quot;Segoe UI Emoji\\\&quot;\&quot;,\&quot;height\&quot;:\&quot;100vh\&quot;,\&quot;textAlign\&quot;:\&quot;center\&quot;,\&quot;display\&quot;:\&quot;flex\&quot;,\&quot;flexDirection\&quot;:\&quot;column\&quot;,\&quot;alignItems\&quot;:\&quot;center\&quot;,\&quot;justifyContent\&quot;:\&quot;center\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;style\&quot;,null,{\&quot;dangerouslySetInnerHTML\&quot;:{\&quot;__html\&quot;:\&quot;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\&quot;}}],[\&quot;$\&quot;,\&quot;h1\&quot;,null,{\&quot;className\&quot;:\&quot;next-error-h1\&quot;,\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;,\&quot;margin\&quot;:\&quot;0 20px 0 0\&quot;,\&quot;padding\&quot;:\&quot;0 23px 0 0\&quot;,\&quot;fontSize\&quot;:24,\&quot;fontWeight\&quot;:500,\&quot;verticalAlign\&quot;:\&quot;top\&quot;,\&quot;lineHeight\&quot;:\&quot;49px\&quot;},\&quot;children\&quot;:404}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;h2\&quot;,null,{\&quot;style\&quot;:{\&quot;fontSize\&quot;:14,\&quot;fontWeight\&quot;:400,\&quot;lineHeight\&quot;:\&quot;49px\&quot;,\&quot;margin\&quot;:0},\&quot;children\&quot;:\&quot;This page could not be found.\&quot;}]}]]}]}]],[]],\&quot;forbidden\&quot;:\&quot;$undefined\&quot;,\&quot;unauthorized\&quot;:\&quot;$undefined\&quot;}]}]}]}]]}],{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[null,[\&quot;$\&quot;,\&quot;$L3\&quot;,null,{\&quot;parallelRouterKey\&quot;:\&quot;children\&quot;,\&quot;error\&quot;:\&quot;$undefined\&quot;,\&quot;errorStyles\&quot;:\&quot;$undefined\&quot;,\&quot;errorScripts\&quot;:\&quot;$undefined\&quot;,\&quot;template\&quot;:[\&quot;$\&quot;,\&quot;$L4\&quot;,null,{}],\&quot;templateStyles\&quot;:\&quot;$undefined\&quot;,\&quot;templateScripts\&quot;:\&quot;$undefined\&quot;,\&quot;notFound\&quot;:\&quot;$undefined\&quot;,\&quot;forbidden\&quot;:\&quot;$undefined\&quot;,\&quot;unauthorized\&quot;:\&quot;$undefined\&quot;}]]}],{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$L5\&quot;,null,{\&quot;Component\&quot;:\&quot;$6\&quot;,\&quot;serverProvidedParams\&quot;:{\&quot;searchParams\&quot;:{},\&quot;params\&quot;:{},\&quot;promises\&quot;:[\&quot;$@7\&quot;,\&quot;$@8\&quot;]}}],[[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-0\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/0skok6whp29r9.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]],[\&quot;$\&quot;,\&quot;$L9\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$a\&quot;,null,{\&quot;name\&quot;:\&quot;Next.MetadataOutlet\&quot;,\&quot;children\&quot;:\&quot;$@b\&quot;}]}]]}],{},null,false,null]},null,false,\&quot;$@c\&quot;]},null,false,null],[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;h\&quot;,{\&quot;children\&quot;:[null,[\&quot;$\&quot;,\&quot;$Ld\&quot;,null,{\&quot;children\&quot;:\&quot;$Le\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;hidden\&quot;:true,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$Lf\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$a\&quot;,null,{\&quot;name\&quot;:\&quot;Next.Metadata\&quot;,\&quot;children\&quot;:\&quot;$L10\&quot;}]}]}],[\&quot;$\&quot;,\&quot;meta\&quot;,null,{\&quot;name\&quot;:\&quot;next-size-adjust\&quot;,\&quot;content\&quot;:\&quot;\&quot;}]]}],false]],\&quot;m\&quot;:\&quot;$undefined\&quot;,\&quot;G\&quot;:[\&quot;$11\&quot;,[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]]],\&quot;S\&quot;:true,\&quot;h\&quot;:null,\&quot;s\&quot;:\&quot;$undefined\&quot;,\&quot;l\&quot;:\&quot;$undefined\&quot;,\&quot;p\&quot;:\&quot;$undefined\&quot;,\&quot;d\&quot;:\&quot;$undefined\&quot;,\&quot;b\&quot;:\&quot;r6PjIMGFiAecQFMDCwFpX\&quot;}\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;12:[]\nc:\&quot;$W12\&quot;\n7:{}\n8:\&quot;$0:f:0:1:1:children:1:children:0:props:children:0:props:serverProvidedParams:params\&quot;\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;e:[[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;0\&quot;,{\&quot;charSet\&quot;:\&quot;utf-8\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;viewport\&quot;,\&quot;content\&quot;:\&quot;width=device-width, initial-scale=1\&quot;}]]\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;13:I[27201,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;IconMark\&quot;]\nb:null\n10:[[\&quot;$\&quot;,\&quot;title\&quot;,\&quot;0\&quot;,{\&quot;children\&quot;:\&quot;Gestión de Tareas\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;description\&quot;,\&quot;content\&quot;:\&quot;Aplicación de gestión de tareas con roles y panel de administración\&quot;}],[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;2\&quot;,{\&quot;rel\&quot;:\&quot;icon\&quot;,\&quot;href\&quot;:\&quot;/favicon.ico?favicon.2vob68tjqpejf.ico\&quot;,\&quot;sizes\&quot;:\&quot;256x256\&quot;,\&quot;type\&quot;:\&quot;image/x-icon\&quot;}],[\&quot;$\&quot;,\&quot;$L13\&quot;,\&quot;3\&quot;,{}]]\n&quot;])&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>x-frame-options</code></pre></td>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Los navegadores web modernos admiten las cabeceras HTTP Content-Security-Policy y X-Frame-Options. Asegúrese de que una de ellas está configurada en todas las páginas web devueltas por su sitio/aplicación.</p>
+
+<p>Si espera que la página esté enmarcada solo por páginas en su servidor (por ejemplo, si forma parte de un FRAMESET), utilice SAMEORIGIN; de lo contrario, si no espera que la página esté enmarcada, utilice DENY. Alternativamente, considere implementar la directiva &quot;frame-ancestors&quot; de la Política de Seguridad de Contenidos.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				
+				  
+				 
+				
+				
+				
+				
+				<li id="alerts--risk-1-confidence-2">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+							class="confidence-level">Media</span> <span>(3)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:3000</span> <span>(3)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-2">El servidor divulga información mediante un campo(s) de encabezado de respuesta HTTP &#39;&#39;&#39;&#39;X-Powered-By&#39;&#39;&#39;&#39;</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000/robots.txt</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/">OWASP_2021_A01</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework">WSTG-v42-INFO-08</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure.html">OWASP_2017_A03</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/">OWASP_2025_A01</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/497.html">CWE-497</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>El servidor de la web/aplicación está divulgando información mediante uno o más encabezados de respuesta HTTP &#39;&#39;&#39;&#39;X-Powered-By&#39;&#39;&#39;&#39;. El acceso a tal información podría facilitarle a los atacantes la identificación de otros marcos/componentes de los que su aplicación web depende y las vulnerabilidades a las que pueden estar sujetos tales componentes.</p>
+ </td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (239 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000/robots.txt HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (487 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 404 Not Found
+Cache-Control: private, no-cache, no-store, max-age=0, must-revalidate
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+x-nextjs-cache: HIT
+x-nextjs-prerender: 1
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+X-Powered-By: Next.js
+ETag: &quot;6el7chl9kh787&quot;
+Content-Type: text/html; charset=utf-8
+Content-Length: 9375
+Date: Mon, 13 Jul 2026 08:52:37 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (9375 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;es&quot; class=&quot;geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased&quot;&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/_next/static/chunks/2--41e9dr5k0c.css&quot; data-precedence=&quot;next&quot;/&gt;&lt;link rel=&quot;preload&quot; as=&quot;script&quot; fetchPriority=&quot;low&quot; href=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/27jktro2p5rq9.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/43_bvheqq33cs.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2y9f-agwmqhef.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/turbopack-0wyufvu3bxs8d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2lirpf2zolb8_.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/14mrh2-p_w84d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;meta name=&quot;robots&quot; content=&quot;noindex&quot;/&gt;&lt;meta name=&quot;next-size-adjust&quot; content=&quot;&quot;/&gt;&lt;title&gt;404: This page could not be found.&lt;/title&gt;&lt;title&gt;Gestión de Tareas&lt;/title&gt;&lt;meta name=&quot;description&quot; content=&quot;Aplicación de gestión de tareas con roles y panel de administración&quot;/&gt;&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico?favicon.2vob68tjqpejf.ico&quot; sizes=&quot;256x256&quot; type=&quot;image/x-icon&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/0cz1d0mv5g_q7.js&quot; noModule=&quot;&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body class=&quot;min-h-full flex flex-col bg-slate-50 text-slate-900&quot;&gt;&lt;div hidden=&quot;&quot;&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;/div&gt;&lt;div style=&quot;font-family:system-ui,&amp;quot;Segoe UI&amp;quot;,Roboto,Helvetica,Arial,sans-serif,&amp;quot;Apple Color Emoji&amp;quot;,&amp;quot;Segoe UI Emoji&amp;quot;;height:100vh;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center&quot;&gt;&lt;div&gt;&lt;style&gt;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}&lt;/style&gt;&lt;h1 class=&quot;next-error-h1&quot; style=&quot;display:inline-block;margin:0 20px 0 0;padding:0 23px 0 0;font-size:24px;font-weight:500;vertical-align:top;line-height:49px&quot;&gt;404&lt;/h1&gt;&lt;div style=&quot;display:inline-block&quot;&gt;&lt;h2 style=&quot;font-size:14px;font-weight:400;line-height:49px;margin:0&quot;&gt;This page could not be found.&lt;/h2&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;div class=&quot;fixed bottom-4 right-4 z-50 flex flex-col gap-2 w-[calc(100%-2rem)] max-w-sm&quot;&gt;&lt;/div&gt;&lt;script src=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot; id=&quot;_R_&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script&gt;(self.__next_f=self.__next_f||[]).push([0])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;1:\&quot;$Sreact.fragment\&quot;\n2:I[83036,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ToastProvider\&quot;]\n3:I[39756,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n4:I[37457,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n5:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;OutletBoundary\&quot;]\n6:\&quot;$Sreact.suspense\&quot;\n9:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ViewportBoundary\&quot;]\nb:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;MetadataBoundary\&quot;]\nd:I[68027,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;,1]\n:HL[\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;style\&quot;]\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;0:{\&quot;P\&quot;:null,\&quot;c\&quot;:[\&quot;\&quot;,\&quot;_not-found\&quot;],\&quot;q\&quot;:\&quot;\&quot;,\&quot;i\&quot;:false,\&quot;f\&quot;:[[[\&quot;\&quot;,{\&quot;children\&quot;:[\&quot;/_not-found\&quot;,{\&quot;children\&quot;:[\&quot;__PAGE__\&quot;,{}]}]},\&quot;$undefined\&quot;,\&quot;$undefined\&quot;,16],[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-0\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-1\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]],[\&quot;$\&quot;,\&quot;html\&quot;,null,{\&quot;lang\&quot;:\&quot;es\&quot;,\&quot;className\&quot;:\&quot;geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;body\&quot;,null,{\&quot;className\&quot;:\&quot;min-h-full flex flex-col bg-slate-50 text-slate-900\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L2\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L3\&quot;,null,{\&quot;parallelRouterKey\&quot;:\&quot;children\&quot;,\&quot;error\&quot;:\&quot;$undefined\&quot;,\&quot;errorStyles\&quot;:\&quot;$undefined\&quot;,\&quot;errorScripts\&quot;:\&quot;$undefined\&quot;,\&quot;template\&quot;:[\&quot;$\&quot;,\&quot;$L4\&quot;,null,{}],\&quot;templateStyles\&quot;:\&quot;$undefined\&quot;,\&quot;templateScripts\&quot;:\&quot;$undefined\&quot;,\&quot;notFound\&quot;:[[[\&quot;$\&quot;,\&quot;title\&quot;,null,{\&quot;children\&quot;:\&quot;404: This page could not be found.\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;fontFamily\&quot;:\&quot;system-ui,\\\&quot;Segoe UI\\\&quot;,Roboto,Helvetica,Arial,sans-serif,\\\&quot;Apple Color Emoji\\\&quot;,\\\&quot;Segoe UI Emoji\\\&quot;\&quot;,\&quot;height\&quot;:\&quot;100vh\&quot;,\&quot;textAlign\&quot;:\&quot;center\&quot;,\&quot;display\&quot;:\&quot;flex\&quot;,\&quot;flexDirection\&quot;:\&quot;column\&quot;,\&quot;alignItems\&quot;:\&quot;center\&quot;,\&quot;justifyContent\&quot;:\&quot;center\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;style\&quot;,null,{\&quot;dangerouslySetInnerHTML\&quot;:{\&quot;__html\&quot;:\&quot;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\&quot;}}],[\&quot;$\&quot;,\&quot;h1\&quot;,null,{\&quot;className\&quot;:\&quot;next-error-h1\&quot;,\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;,\&quot;margin\&quot;:\&quot;0 20px 0 0\&quot;,\&quot;padding\&quot;:\&quot;0 23px 0 0\&quot;,\&quot;fontSize\&quot;:24,\&quot;fontWeight\&quot;:500,\&quot;verticalAlign\&quot;:\&quot;top\&quot;,\&quot;lineHeight\&quot;:\&quot;49px\&quot;},\&quot;children\&quot;:404}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;h2\&quot;,null,{\&quot;style\&quot;:{\&quot;fontSize\&quot;:14,\&quot;fontWeight\&quot;:400,\&quot;lineHeight\&quot;:\&quot;49px\&quot;,\&quot;margin\&quot;:0},\&quot;children\&quot;:\&quot;This page could not be found.\&quot;}]}]]}]}]],[]],\&quot;forbidden\&quot;:\&quot;$undefined\&quot;,\&quot;unauthorized\&quot;:\&quot;$undefined\&quot;}]}]}]}]]}],{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[null,[\&quot;$\&quot;,\&quot;$L3\&quot;,null,{\&quot;parallelRouterKey\&quot;:\&quot;children\&quot;,\&quot;error\&quot;:\&quot;$undefined\&quot;,\&quot;errorStyles\&quot;:\&quot;$undefined\&quot;,\&quot;errorScripts\&quot;:\&quot;$undefined\&quot;,\&quot;template\&quot;:[\&quot;$\&quot;,\&quot;$L4\&quot;,null,{}],\&quot;templateStyles\&quot;:\&quot;$undefined\&quot;,\&quot;templateScripts\&quot;:\&quot;$undefined\&quot;,\&quot;notFound\&quot;:\&quot;$undefined\&quot;,\&quot;forbidden\&quot;:\&quot;$undefined\&quot;,\&quot;unauthorized\&quot;:\&quot;$undefined\&quot;}]]}],{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[[[\&quot;$\&quot;,\&quot;title\&quot;,null,{\&quot;children\&quot;:\&quot;404: This page could not be found.\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:style\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;style\&quot;,null,{\&quot;dangerouslySetInnerHTML\&quot;:{\&quot;__html\&quot;:\&quot;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\&quot;}}],[\&quot;$\&quot;,\&quot;h1\&quot;,null,{\&quot;className\&quot;:\&quot;next-error-h1\&quot;,\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:1:props:style\&quot;,\&quot;children\&quot;:404}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:style\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;h2\&quot;,null,{\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style\&quot;,\&quot;children\&quot;:\&quot;This page could not be found.\&quot;}]}]]}]}]],null,[\&quot;$\&quot;,\&quot;$L5\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$6\&quot;,null,{\&quot;name\&quot;:\&quot;Next.MetadataOutlet\&quot;,\&quot;children\&quot;:\&quot;$@7\&quot;}]}]]}],{},null,false,null]},null,false,\&quot;$@8\&quot;]},null,false,null],[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;h\&quot;,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;meta\&quot;,null,{\&quot;name\&quot;:\&quot;robots\&quot;,\&quot;content\&quot;:\&quot;noindex\&quot;}],[\&quot;$\&quot;,\&quot;$L9\&quot;,null,{\&quot;children\&quot;:\&quot;$La\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;hidden\&quot;:true,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$Lb\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$6\&quot;,null,{\&quot;name\&quot;:\&quot;Next.Metadata\&quot;,\&quot;children\&quot;:\&quot;$Lc\&quot;}]}]}],[\&quot;$\&quot;,\&quot;meta\&quot;,null,{\&quot;name\&quot;:\&quot;next-size-adjust\&quot;,\&quot;content\&quot;:\&quot;\&quot;}]]}],false]],\&quot;m\&quot;:\&quot;$undefined\&quot;,\&quot;G\&quot;:[\&quot;$d\&quot;,[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]]],\&quot;S\&quot;:true,\&quot;h\&quot;:null,\&quot;s\&quot;:\&quot;$undefined\&quot;,\&quot;l\&quot;:\&quot;$undefined\&quot;,\&quot;p\&quot;:\&quot;$undefined\&quot;,\&quot;d\&quot;:\&quot;$undefined\&quot;,\&quot;b\&quot;:\&quot;r6PjIMGFiAecQFMDCwFpX\&quot;}\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;e:[]\n8:\&quot;$We\&quot;\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;a:[[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;0\&quot;,{\&quot;charSet\&quot;:\&quot;utf-8\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;viewport\&quot;,\&quot;content\&quot;:\&quot;width=device-width, initial-scale=1\&quot;}]]\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;f:I[27201,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;IconMark\&quot;]\n7:null\nc:[[\&quot;$\&quot;,\&quot;title\&quot;,\&quot;0\&quot;,{\&quot;children\&quot;:\&quot;Gestión de Tareas\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;description\&quot;,\&quot;content\&quot;:\&quot;Aplicación de gestión de tareas con roles y panel de administración\&quot;}],[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;2\&quot;,{\&quot;rel\&quot;:\&quot;icon\&quot;,\&quot;href\&quot;:\&quot;/favicon.ico?favicon.2vob68tjqpejf.ico\&quot;,\&quot;sizes\&quot;:\&quot;256x256\&quot;,\&quot;type\&quot;:\&quot;image/x-icon\&quot;}],[\&quot;$\&quot;,\&quot;$Lf\&quot;,\&quot;3\&quot;,{}]]\n&quot;])&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>X-Powered-By: Next.js</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir las cabeceras &quot;X-Powered-By&quot;.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-3">Falta encabezado X-Content-Type-Options</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/">OWASP_2021_A05</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/693.html">CWE-693</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/">OWASP_2025_A02</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>La cabecera Anti-MIME-Sniffing X-Content-Type-Options no se ha establecido en &#39;nosniff&#39;. Esto permite que las versiones anteriores de Internet Explorer y Chrome realicen MIME-sniffing en el cuerpo de la respuesta, lo que puede provocar que el cuerpo dé la respuesta se interprete y se muestre como un tipo de contenido distinto del tipo de contenido declarado. Las versiones actuales (principios de 2014) y heredadas de Firefox utilizarán el tipo de contenido declarado (si se establece uno), en lugar de realizar MIME-sniffing.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>Este problema aún se aplica a las páginas de tipo error (401, 403, 500, etc.), ya que esas páginas a menudo se ven afectadas por problemas de inyección, en cuyo caso aún existe la preocupación de que los navegadores husmeen las páginas lejos de su tipo de contenido real.</p>
+
+<p>En el umbral «Alto» esta regla de análisis no alertará sobre respuestas de error del cliente o servidor.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (320 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2 HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+referer: http://localhost:3000
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (300 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+Cache-Control: public, max-age=31536000, immutable
+Accept-Ranges: bytes
+Last-Modified: Mon, 13 Jul 2026 08:10:16 GMT
+ETag: W/&quot;7268-19f5a86de40&quot;
+Content-Type: font/woff2
+Content-Length: 29288
+Date: Mon, 13 Jul 2026 08:52:37 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (29288 bytes)</summary>
+				
+				<pre><code>wOF2     rh     ð  qõ                       L?HVAR[?MVAR&lt;`?STAT8 /~
+öhÞ#B 0¨h6$  Iñ5âi&#39;ðCvªÒÚyy¨Ý-Â&quot;!G##Ø8 ÐLôÿtÈÐÀ\¥­®êýzLR&amp;¨`decÔ1ZCUí8ì­æÄ&quot;ÑEÊ¤¡³+Õ_¸A«af=Ìµ¸ó^E[rÄY=:&lt; +Üþ1Ãôÿ&#39;ë)T¯¶ÐÚ×%=IÎ	ÉmøaþÐyä§ñí¦Io·L6ýYÊèÁm&amp;Ï{Û¤;8hòaVø^¦3À©#zh­Þª×==»ûBsAG¬Ñ!`ûOTX8àùy~nî{oõlc1Æ£Æ`Á8R$ZQ1
+²A£ýXÑQJMñË
+¾_@üñÕ¹ý&gt;#0£Í¬)FOºù%ZAÂJ6d»Ë%wIî.Éå2I 5³þºÚVmKÇvÿ-tÌv¯ÿy§Ö_»:u(âÎd(ü·g?ñkÏºÊÿ&amp;1ERdÙXdàC;LAmP*2ðßÛXxþ¹w·±^{ ÿi@OÓ5÷rÎóñ~Ó¾4æoúCn}¾ B¨$à2Æ~­¸ÍR·Ë©=öÚÓøWG!iîMÙæ»+0Ñ;¿²ÙûzzfwXüOG#Q*ÃpzW`s
+e;ó`N+IÇIJ0Ðtf	z@§×Áãw¿e¼!ÌtÔI²d­ZK¡ìë×1âtH­~½zëåh4êÀ¦®úÊ©ßf$lXu ö/{9td/_®{¹|æ)ùe7`;pDÿÈíAämYC¹íÀ?&lt;üß»?vy&#39;P»½Ú¯½¯·ªÀLU7Yu}yì=Ó5R÷¾VÕù&lt;dÉûEµe´VçVeÃÔ/ §BK&amp;Áy¼XSÊç¿¿÷å3ë§;(Á¦ÒÊ?Z@Kq¨F#¨ù{S­Òÿ Bhp\#ó©uk?wÏ`m¬]1&gt;ºð2ÛýÚR gMÎ¨jg23ocp4RÀ9cÏ¹»÷II§[ö3é¬ÎûìðÜGñÑÔÑÕav¡óÿ³óææ·Êæ§öOèB.
+ÜD8l$.ÉìÉÏËd(mZ[zO§4YªÅ*&lt;]¡Bâÿ·Ö§ÞÝ±pDuNÂûªº?ôLv`i^×Ôô¤?,PÔFÑñö÷_÷UÀ:!Tr7O²v[¡=Ä/P&#39;gâOû&lt;¥¢eá#üõJ¿óÝ¨¾úé»·®F
+)B!!HpC¾+5&#39;QSihÙ¯²fuhÝJ?O)Ec1B¤1u)mÙÝ³ï_!Ü\ÀzÀËe(FJ$O&gt;@&lt;ÉÐa`&gt;
+âÓ	L,:¯æ !&quot;ÜÛZ4$Vní*æûFþL#*
+C«,Dî*Y2C`3@Æ³ ôMoÒ|$xj²ÈD ß8°7`P ÿ°ÓÀ!¸ï^Ö¼ ?w&#39;&gt;÷|#±±àZ«eB£Ùj&amp;¤ýÒãò%ùyåó
+£jôycÊ8j0.³fÒ7Z^°¦­9;î NÜuº§Ýsî÷û)÷9ïy{#÷w=(í&lt;Øóàê×&lt;,Í¦Î&gt;ÜöðìW&lt;¼rÝæùäúÔúôúYël8Í[7f7vm³éÌlîØ:Þh6¥pé.½ey9¶5³}ÖÉpìÄ^üÄ¯0)&amp;Ã»gî×å¥8uÒ­½¯ºv6Õ»¨ßéó|¬¿§Ë³³Aoi©Æúá¹È¹fÔCK¢åH#KF¥ñãXsiC¤mgvnSf0Ï³tb&#39;w¨¹5Òpc7wMÓÃñz¢0VÂIxÞÌ[z{ÚcÒRVñ1|:5`2fùååt|
+»w}Ê»6gÍ%Æ8ÎIÒùüÎÎd÷ÅWÁ1  WÃr¼(&amp;)Ír.¤F¦´+N )FÁ4 àïCCjDUÎ@,@©À	B ï³óå³î{Øæøñ &lt;ºÈIÙñá¬ù ;åwQ(À)8PÜ³åä+r2@5yÈO5Û AfyZé×L=L&gt;h#è ýÒÅ¢@H4¡%4a:·¬~BapEp	!&lt;uÉlä¦©©^bÿqT9-õrÅ&amp;XØM $GÍË ÃU²îDU²ÿáHÙlåù|Mä¶¿Ë3qAsofØ¿½ÔTu*HÜ´Ot~{§Üóè)µÿ½¼x.9%4	ða¬üq6l`-W³¥äECDWqÓ-n¤l&#39;Õp[;Ä»¿ÚÀ×¾Ør)%%J°·Ë\EER?We0r¥_SÈFn¦&amp;»²!¥~V¥+mÝxÛ è£«q¬gA ýèï )SvßWî/&lt;?ºÃrsí2&amp;õXÕ¬A§?ÊJ6 ·Yå#ûÑ½	§ò0aM»rÛµ«Î»zÉð8zÅðäeÃëõ¯nó$ÛUy4ñ?
+:§ÝyÔ^8²ÝuÙ°ÍZçôJ[9ëò!jËÖYËÉ­[jãÉ&#39;¤¼]â&amp;Ê­â?$Ö°£(&amp;Ôý@uä;RÔæ&amp;fG5RO9èóAj}åäè¾®;Ùs$NG_ÆF ¨, Ñd$ç
+R9b¸±¡{ÖX4no])²Úl`$)¬ ]ÄDs¸¤ïèÎ]§Ä9;Ë`!I§HÄîÆf&gt;ëÄw´aÎøî°ÿ¡\&quot;S¼l·GxD½ºÀ2,·¹.\ûí g ìØÊjÛÊ!·:zc¥° ­t0vh=D8E!|¼×+7[LÙ¥º¨tØÿøò!òbÝRÔWUÂáeñÁ®O-9ÿír²TÊÜüõd!
+RÔÅ¥ñXëÏ¯!ò°ûÿæ`Û¦X²h =ÓA¢Äó¨ß_%BZüV=ïArã$¦ETër¦Xú«þäÕÀl£³ÌYW2-²æÁ©Ç&amp;5ýÇ³«Xw@ÆðXîÎÊz&#39;©`7	 ³Ç2x±Áü
+kØ#¸ÖuÎ:t&#39;;~÷ç-
+Ûu½³r!fg$¶tLTM°
+# Õðåû(b6rX
+?¦àÎîMãÉða129®eV@D]m¶nv6ÙR+Àäbý1:I«È*!x(ÎHð:á·K4ù q¸l&quot;ÎÎ`%ÙQ&amp;³LD`	êeÐ`[*£d«^ü/ìe&gt;}ÉÊJ8°© ­¦ÿ±ÆnnzM¯*ô»¸ÎJÏ£çqcéËÝ¡Ø2p¾kw^×Rã.Ío£²¹ÜÑòv&lt;uÁ¹Wýþ¾û³öéø{Ó¾=ÂíyÞô£·Æ¦&gt;òò|¥¤t}æØâ 	4´wÎáæG0ÚíÚkuâèÔö´T÷üØ[¡jÕö¥¿Óø|ò¸-^=­	ÇOýx ýô&lt;x¬+ÚëZßáâdNyoS´Ù¥ÓOügÀ5Q`yÙk³c÷hi¬÷TQÍ#·ÍÈb| ¦jÇ?`Q~ÿn7&gt;êå¼&amp;wK¶´MÖþoaü¤%C]²îÕó1]P·Ï)èÎtþx?Ë§oïÕ&#39;×xuÁlß¶)ÞqyDwßåÁ0Kk¨Ö}$~ÑûÖ¶Ásc?¶£Ú¼Ëd¾ô=óÐyåÖSØVØ.+µB«Y)V¢Tr®¹îêÔkÒ¢Õ}µëÐ¥G¯^yí÷üíÿúÏÿ	aÄjg?tR¸Á­&amp;a!SÄV1B¥pe¤ÊY©kIÞ&#39;¦ ·î`¨ÇÔ§G+¾ûÄüD:Ô­©[/&gt;t/Ð¼z£Éò¸Þxí`äíLNÂw1|¥lbÄ®Àcê[aE|X²X«W¥b&quot;q(²è@c%BWfjOõê´vÏRÖ?­ç8rÌéTÿ¥PMµ&gt;gx!\ïS &quot; =aéy@9â¶çúú¿úqï¯­±)ÔÑWêècÙûKµ¯Ñ{×7P.@kVyøýòÒgvÑE*÷!g J6¨QVoSò§rYcZSÅ¹â×Å§QQÀe¸hÿ¨P:.x(;sZúþ®zúTúYHÑÑÁg!Es­Oc©þç.¯ë=¹®¥ªÎRIÛg^çQéwwZiNý&gt;7jôã%ÔðAVÓRKa9;*RC;9þ{¹º³#=kSU®2fJÝE
+ù¥ÛÜóæÍÊnâðx¬X4ã,HyPsGYe?ml²á3ïó»çc9W³FUY¦¥´EåMRlJaSÛÃrt°X`©²¥_FWëô;ãt{~&#39;çÓDZÄõ.ñî½ÚAIiyQõ&#39;ò¨ú´$ñÁûÃ÷ù6ðáßÓ¾;ÛQló%Vá&#39;/C°=*/ÖÞÀG²M$e,j(¸ÎRz£ë¡&lt;ë×¸%B»ê§
+E´ÑÊEiýl|©,gÐÍÇÄ5·/¢D«!Z=rMú»æÌñÚÓ-P-··)Gps\l2µ½`i&lt;As&quot;bNuóÍ3ÇÕ¶«¼Xñ&#39;Å:FEÌtÎq[´o¡jÊÈ£³ÓI¶%¼ÿuÀé%ðQ %]À&gt;Z	º/¬CzÝøwkLÝÀK+Ôn£).Ý&amp;Ç\+a`6M¨^äf\ßãÈÛGd#Å=d£`Ä}ß%|·íðvy9SIQp|äMÄY©-1÷êª?L7Ç$µOôx·*|°&lt;îÅeFkpdMn|C°nÆY½%%JQ½¨Þ0ºã¸iôF·&#39;¯fÌóÐ&lt;ÂÅàFY¾l]O±ÅðRR¢êq|³ù 8â)×,eíêãº+øB/á7Bß´&#39;=ÓÍâþÀ0äÒâ]hZs#_ÅJ	{óe=¥õ$¤z+tIÅÏþW·Ñõþ%%#¡Yt\èyÀ[70qìÄ|6b_üü_ªwþ¡é	ÆÑ¦¤oÍ/¹4i¥÷¢µýçã	Y#vQC¿ã®Oü+kOÌ¶+öìð_Ì¡ºe1¶}Ûüh^#öâEöC)îµ¾ºÜîð$-¸ûÖ¶FXÊç7«¾Oë&#39;ûüÆ¾g_&#39;7×éo#_áFÅÔ_ûä¬o«ø¬{\³à¬¦¤ DöSºKxYâ]È·ÙÁ§élªg&gt;JÁ¸Èb{ÿ7ïZkEÛlfºÐ¯waì­þfT0½é3+úÜêâÇ«J4õ&#39;oiÖt»Xñýh=¨&quot;y[9ß[FÅëfßf*è°sËÆEÏ¥|Rf=Ê{òÝ(nE!&gt;%KHJ¢Ó}ÈþÎwæu¾º`åa~*Jbb5âeÖ¾Ðf­§á¦ø4ç¦5«tIÅ9ûzÁ¬F0×:õ¥Í;ÝÿUÏ¦¯ûäõw&#39;µ®twúî²©Å	Ü:&gt;`Óæ;a Pw÷À&#39;ÜgîzÚ¸uVC8záe½*ÏoÁ?%[7nMålÊÊà£RWJcÌJd9	:)Ì;EðàüdãÚ+¯uügã=¶&gt;¦Òñµ²}¾LI®Úu@ps¹öRîÃÐ¯]KóMïjk»èkVÝ¤t¯ÜÖ£¿=GÑUøðhíX3¸divÈßY²¨AÎYÛNà×0o^vG6uTm»ñm¶úà9.s½Ã;R·ôÔgRr}~ñ_­ÑÍ$!QîâÖÏì?ÙwÎàø lµý3«ìÛp&quot;ÏgÔó_åY(ýãÌLGIÛFDíUEÕóL´²¤½¾q×p°ÒÑ2w ãÕÜý/	­½R¾2þMÇ÷?¢¹?2HÿG&gt;®#®9Fþ÷§.ù·¢ðë-ôØZùCGGß&gt;Ø
+òþ»×¡r·zËQ|ë-!g?hÁ!ýË»ß7ä)¬ùÇI¯Ý¨@ßºPU®©S¦~; RÓ×jqß:/¸Y»N[t_p»^¯íðæ½Þ¿õ&gt;Áa?ÌÑÓfÔ¢É-­u»AÛ«ìGdhdQ_Ld_rðd%°#ëÊ¸i2.¸ìZS\s¡Ò÷a%\1K¯ZsÆó²7ÊÄòU§J­Èt8pX¥
+«¦ï%w\dr&gt;f©³³§ÀVQXÙ³®K]ÈÝtÝq­wÈl7}Äuâ[ERW»ØkL-Ûð3^PàDÂËp9PÀ©âN3ó±í¶Ú
+û®}ú©Ü)ièÒÉ¢6u0EfiÔSarÖbüa¡#6ÂÃãC¬YÃIØAäìI)8`£8AyÀ©i ZZ8Ä&#39;a|qøñcÅ_ ®@$#DDJ11eÌh %KYb*Ts`æfy4i0óÍG.fø2-Ä°Èb,K,!²Ôr,¹rÙÈ³P¾||«P(THfµÕ&lt;YXx+RÄ X1%ÔJ)SÆK¹r*TÐ¹æ:n²U§À-·Ø¹ãGM¸iÑÂU«V*wÝåà{(÷Ý§õÄzí:têä¬KÝº9ëÑÃE¯^r}úØ{á¹^²÷ÊkNÞxCé½÷Üàãïà@Â0Ñ±°0H\l\\8{|&quot;bbî¬Y#IØÁÈÙcQPàqà@âãÌÎ55&amp;æXÍeááÍMèm]ì
+ÍF#F1z(ÂqBÄe»ÄÍÎYZ åLÎÑ0t¼hÉYÅÚ	)K½D;&gt;CãÀkô/°jÜQÅÅNï±!:õ¹çmy)ß~Q½Nì·iþ½9ÒL±ø¬xÐÑ3I6_ÛCÅ¦1ÆsñøÂÛc#@úþ©êâS$f²4KÑ#xòW	Í¼9û½ îoâ¡çáåCjÓ.-#+&#39;¯ KÏþûimè¥ªÝ!ÑTUUUUmmüöÎu-£6þ,A ,)&quot;hõ½&amp;ÛÑ¾ô,D
+&amp;Óûqù²ás+¬èMdÌ&quot;3{Cýu&gt;&#39;ÿ/òIxalyQ$I[?¦#¶;´shº[|¯Ûg7#½ÏØÆßëÛ±ý¶3¢^&quot;3;KÐY
+0I?7~âòhâ|ãCáwr&quot;§(ñNÇaÖ¢EüiÑÍiÑÙµÎÊ8¿8|,¼¬Rì2ÜcÉGHta¥ÆÆípÛæÛ#-ªÏÊ;=êÕR&quot;0!X+ììtx9 éû~[óûúÁ^?~m&lt;LWa]9_f ;ötvÄDXéÎ#ÏTJÕ$ÃCEó&quot;OÞ)dÍ Á%BtôjØÑ-ö3¿²0½×1ðÕlv£´Gæ=L3vÃÄYììÛIèlÄE¨~¬M$KÄiDý¸FÊHÐÑóHxb6ÀpqÈ/Ò0Ã|kÇèÍr4J*+dM­ÆFAHJtBéVlc|ìÁPMNJ8ÁfÚ rÀæM\¿}óPäáËóðÑÙ¥Ñ°´¿(jR
+ñÇðÆ©góÛ³sàåxvczÛJÑ¦Ì6Ê53!È?A £ðÜQÅÑLr£ÖqÜL)ÿOÓÂBDG8x(Er¥Ê ³Pågÿò$Ù2%g¼óÏú0gÖâÎs`@~9Üª,±tÖx	gÀaÀ&amp;îÁ(°Ó¤°ôÏ£qµdiaH ÌïrqÁ\ÞIVÊÓRËXg¬/]]ÊQÀ½%TRÌìoe84Ál!àñàó;6ù¿/øhîÀî9~ko¥þ(½+÷SýÔ&lt;_wÒø]¸òÁÿI÷§Ë`	ì^¸?õ@ðPïaüäêËÞþ:êÞÀºkÃ´¹o³«°½6gÏ÷Z
+«ð.ÛkmbØ¿§%s¤O6Éé&quot;´ïH-§
+O§&quot;)-+=W~¼2A¿J{Fæk\ë©.¬â£üþ[H	G÷Qq¡&lt;+§äeùqù%uY}^}A}Yu¨~µSÖ ýÏö~ýý=k~Öª´ÎYOZß´µÎ³î²ûwË·=¸õÛÇ¾Û´~ÍúÝßßóÃ?&lt;üÃó?nÚ¼tó®¼å5;[v®Ù¹çû¿¢w]ïúþýkûó ÐØJÐ`Ócó&gt;löÓÊo+ÃÖþàRþî¦qÿ·up/ ¸í9Á,°rµÜA
+DEºÈÕI83þÊ=C¹&amp;óà*7\ëGì¼½Âã¡µªÿøÿ uçQÀC 27 ; !£}9À&amp;HÀ.°ó¯»àôhRÿ=£hø1^ªtËX  Îg&amp;HîYHó¡ÅjêØÉXÖ¹wh¹ýhÏI|øÊ${V-TzõbyÅÁâÌÎ&amp;ÓD­ø¥v
+AÎ¿|5,äå¸\JcÊ¡K&#39;pî¼Q
+ÊRRÞT 1\ãèä¸Þq£pÈèØë$urìàg&gt;GDI)ù»m ü+g¹þûp´oþ?:OæBÎ&#39;6¸à¿ï«WàûÛ_îxyýåá³«8÷ÔEÜ0;Hà/ ð&amp;ÎÒ^ËÃ«­ä©¤ÜòJ³?CÀ¯=öD¿]wß5-n¸iÿºãOÌ9GÎÔ´t&lt;éy1òåÇ_ çZµe&lt;J &quot;Ee2Êhc$Jf6ETs¥/]L,¶ÄR¹úêY&quot;pÉmßý¥ßoÞåï­Ò(|Èa&gt;àmgbËOÞjÈN)Ð§Æq&#39;Ô£ÃhX8D¬Ù²%ÃãÄWîþ¥2741\°0#
+%AâM2ÎxÄj¦i¦mÿÌ²Pl9g9s2	èÖ£]§.`-&quot;ÆB¶!f2Ý7ô·­Å	vØEJÙø°K»L9ý+à
+*Ö&gt;·TÂ®¢kØÕtaãkEÝXÆW¶·`þ§¬&gt;ØdoÝº@y *¬_ÏNo&#39;¹2¡ã,Íf	,*rc!lV%6HpèDBrVï$91
+ñÌ¾õk-I×M+l(	&quot;HÛæÆá©Ô£Sàãsõd,¤	&quot;±}áä&quot;¶Ðpto$vA	7t×U4­|¬·)ÍÚèàQ³ÙÈÔéôÒ#¶B¤¼ÅýÐ)ªTì-¸GXÝcÿt¥eÒd¨s½ÑÈW¡IY\J}3WÆýff 2ä!Ó)çÇRÙ÷kÏ{Ú0LY®ßd)ëuaÚ9BËnùÒý,öÔv{Ñ6IqÖnÆáOÍJ%:8é×óF&gt;ãÊFî%ÀÚÔ}Ò?¼Ávip¬8´À.¯#.Ùùe`X³Eyqe2T©Cìï&gt;¡ð&#39;|\/MÍ])æ|¨¢4Ö*WKrª:)×p±XÉ¨k¸As_B;@ªýúæiÉ~Oíà¦¥×=ÊDKrÎ#@+`ËÒ:·h&quot;£¦ Uè?	ùZ0ºªb× ÿJü£fcõ~²îòºVqoÕ(³öqðuâ@¯ÉJÝQ±ü¼Õ¢-;®ÃËW!%©C/ö¹¢;GÃà9zÙáu9:BÊ¡ªmg![í9ÖÊr+ÛEUóÜôÉ½;WÃQÃ(9¶¥0Ú·AúÜkíaò?ÝßsIfØaß]Ãö&gt;ÁB/{R|æºzâ¸ö¹Ý©
+çöcH?ÿªF
+1\VÜÇÞ¸^ë-e;°¯^_y¤Yýª#I]P¦^-pÇ¤FG¼z¥­·BÜb .Lk ÚAÖÇ=ôÁçW9!^ Ué·èã#Vç:Þo}.@V®Ö»/såéû¸ªø¯ÌËmQnÞSnçQj&quot;Gøð?óÓjí£Pp[Ò¸þÛ/ú­GÇVÃ´lTQaOnèvSý¬?I|ÑÑí4GÔaìÞTsIN_®ìÙgA_î÷nAd=Ë&#39;ì.öEïjîåðíøã§P¶¶ËZY¥ËKAö°;cæüöÙÒ«d±~w4 HØ¾-sS+pbKcÊ2Ô¬
+l©¹®ci½bÌ5VÿRþÑê}9ÔqD(Õ¥ÆÇÊ»QN8£®akµíÑm¾[iIxmuud]åQS9ÈC ß¿w=ÊÞ­Æ½Ó­¦æê#Û|Ý»O·iÃÆ0æ8À@´-åØGió¹¿adlG:ìÏ
+æ\GêÐ¯&quot;hàª;5q­j§ý$ºó»½ýuÕÑ¦¥N©÷.uÿªAeüêäøëþb´J³h?ç¿z,ÜëöG÷}÷4Tuêjpë½^¹J¯øÎ&#39;÷£Gâ5rÀxúó©KOûûó¨º-¨QÛ?&amp; ãß®îm+ÞJ¨GÞxÓiÁá/~/ÛH«ABÍp£9Øg3FlQî0ÝõåvN¯Ãg÷yû¼üáM¯ý=æÀÆNÆ³|&amp;¡O 
+ÑýÄSz9ýnúªÒ¬øó­®øÂ¿n Ër&amp;½aaýÇ¡ß¯Ø¤&amp;,ú®#rÉ»Õl×ü|ÐM¤õ¥÷×%«çù°)ù2éNymºPþ}êý¹îÀù0\¨Eíß®9Ì÷sézµÐcVð¾8µRêåä2Å.ÇÚqgS¹ÿNÐ¿¬Ñ9ií£uòæl=Ëô­4ãÁ\4½ìa¥¿j0ÔºÆ8¸9ÛÕPûXkàüxÙ¸0ÔÞeð+h52P%¶ôRûÅ1µæù&quot;µj*òÈÓZax0J°c$,ÈÞ+ãô?m°-ÔþÅÄù;SÝæòäL7{ÓªVüÏúëÑqyî_Ø£sDá`¯6UUþoìSñÑhÙfµç²kZ8Xðä&amp;iÆæQªHï0÷×kÓâEÛÊöMSÐ*ÁAëîª`å2&gt;Ó~ê½ ÊÍÃqT7îîúÿÌÉØ/º`»
+þ@ÎodáÊ½Y[ÓÄénáZWàÒÍÜë*§Km©×+TRV5ÓrL¿9%Ã°ÅÃ
++ª-½Ñb»n¸Ã&gt;O£YÈFn0&gt;+&quot;_zérLûI§I1c.E,êóQ¬Ñ«j­tâ_êD#7(4[ïÎò\ýiD=¶W?_)×I	Íàjw*Ã¢g&#39;îþÖ;µÅdSçV§µU)ÞzøÂKp´âËû,ÅüaH²F?6o9Ïj`ÊïFóN@¨A;ü¢;&amp;ÄOax+_S£¤X&lt;I&amp;{¸xó¿eÓË¤Cüh3M$XFÁ¬Xº-y 7èÃÛ:ì{òæèýÍìÚÏ£ÚTò«§,[íFÇÏIÙ§ÉzÁò6¸t&gt;^×7Ú¡©g¥aKZ÷_=º+cKõ!syÚc¼ï¦ô2ïé|Ð+ûÕ¦ïûÍïý¼÷zÛæ­Üö¡s*ÿ^_4áô	ñQ¦öÑ¨\åwáþÄ0FÑ§¬«U 1ýÃæñTàÄø*V¼£hßØ¾êJp#Lz=aÅ¦é[ Q£§´þ[@7;µ&#39;B&amp;Oï¦¶Þ¸uiµØÓ&quot;yÄ°%3lÎÃHk®ma ÆZèõo°ÄôÛ87u÷½gOî
+nÛ¸qÛö¢5zzÒ$Ïè{?ßL¡S[[§ ½1îîöÙÝ­² QÖB$ÊÄýYRz½Ï/Ûó¶¸^ÿô]MÁÎºýò¿`&lt;)æi&amp;úàå£B«Ýº&quot;ê4à²¡UßÜaXí
+;w+óìvÄ¯ÉÚ¶i·¶õ.U	÷uþêg¿ÌðoÚ½[ÜÖ,ÿIÞðÓâóëýÌôH&amp;Ø¹½ß©áaßé½Ñ\^4Õ­y*%ËñX·9Ómé@p5ÖÙÜÌ&quot;ÐÏ.ìiõîíÃïDJ¨Qs!wÆ?±¬è;³ùåû·zTmíÀI¢+·iÕ¼$¦ÿÎÁbJ÷«È»*;î¢(vPè.°ê=ã§ÔfúgèÑ±Á|Þ}ïÐÞGjBµ4åw§=g
+ø=|ÃÎt¤·;á¾²Ë*¯ä·$&lt;yòR¹5O¬nP¤&#39;¼$¦yºUÆ6HÞ;%þ7±ÏËfLÖg9Cÿux«ÂÏXkA{X®(++Ã(Aé\áà6|ÈéJeBìÒõ±N%Fô¹ùö(+&amp;0òYU×Èz¼&lt;²´ÃÜLª¬¶X¿¼z^B¿3&quot;ìÀ}Äÿ,ÓT­aÕ§ÚGF%Ö !ùVáÍB\\°Gö{Éôfjôzvñ¶(?K&gt;mÏ«}¬6ûiêZ.¡!d?¿ÝÿÇÌëâF ¬_ÑO¿Ð&lt;Él£Á»¥6&gt;}±¶:lºo.Gæ-Æ±|÷Pî­ògÙKqùî´\¸¯!9\Lh3ª.º£çï9·K/uxN]¬±&amp;Ñ}r42ísý}ý+Xévá
+`EÍÔÒÇ¤µÔÓ7Ð´q}9;íøñ®ØZLS!§ÏDçU¢«b_!&lt;×ë2Y@¥º¼ké¦ÿÕ:4ëÖB¢áÇ&#39;a_g&lt;áëp(RnØjæFPâ=°iMÖ÷ ¸%)6ù&#39;Â¬1L¯ÅüLltM»²	v©3kÖB¤éÏ§&amp;ÜùöÎ!cQ9Ùe³µ!lÊÐ@G&quot;è_-Ú¬èÞÜ6´Å|ÇÆ`j~\pZßt&quot;õm	Ök1i(é&quot;RÞl¾aW/Q¤b?
+áÓpJ¥ðïÃdÝn&#39;ê&gt;à&#39;gðT4Äyç½aÖ#OZÜ^j¸ÃaöxCy¤¨ªiê+«.Râøçq	D,E½É@HjíüÙ¹Rl Â)D[|ZLo÷ùp3]Nâ.YùK¢o¸ÉÏE5Ï¿ß©Ïßós¡wÞªNÓñ%@ ÅÛ
+ßñw=ëh:O	üÍÆûàfO*ÚC4ìÖ¹u¼L-$·Ð4ñ2Xf¡l;zKZ+²~L:ÏT,ÊÂ×¥Xou¢¦Ãz`¢Mjn£FDåÕ*ä¡;¢ÁG	³ÌúäO4ÑTFÐê¢­¯;ô,´¶¢¯S
+I¸a£)KJú%sÐàKûdFÊ|R0üê7tSjÀAz6ÀU+ðÆÁz¢¯»¼µ­å#·&amp;ÌâG«ÏxB¦°ÃÑi\ò|*Çç-!«^M©Þ;í`I)nôÂ¬Í³¨ö6ÁRÉª(¶((ª»:bmhDÞâÃÃ¬ªIc³!Þ¸Ò¼æ[ÅØ ¨`M{ÚîÍk12¨MÞÐ½ÆNÙIÚbwy9Æf²Ùê´id¬fÛñ(w#t]Ìý½ÁKgpþ,d²+¢­&gt;­Û`sQ.3]NÝ0Í¶GQðÚ¿­Ç.nf=påv®?¿ñ|ìém8½®Õû·ï û/û\QzbfÛLö±¹ÿZÞ÷ÊþW@þn©9n¨ýÏüÄÍç»û¿J_;«Þ41ìÄOî?þaLªÿ´ú6ÕÖüê
+Í#ô67ÂM,(1×[ZYÛPî{Û(XÉ[(;4ZV/ñ$EIðÅS¤¼vÑyµêH|QIß&lt;´!øÐÑû$ÃÙÌÆ(rjh9½1ÆY³hØ&lt;3ÁDæàÎDó²ZHS7±3þFpiñAÜ,øÈ&amp;F¦Ù#]3ÒÛ©[pñA.ï§¯ñ0¾WUZØ¾~+¨´	¶ aR¦Â4hflî+GX,{DK}U¿È]­ÖÛ
+Õ»PTÓe- ×¦»Ü©.dµ¸Y+Z­ %Ç;ô;×#tä8óetlOÂÅ£¬õöiïÆj)b%¤»wÓ¶:ÖßéF*ù®n«©Ïå²õZM¸7æ&quot;5Çì«º 2UHTâÑùçO&quot;ÙCsTÜÞCqUh§ÉØ¶³+F&quot;¤çù-r_âR(øí3½9ð;NÿBDrCÓ×¶wDµ:}ñ¬§¬âß¸ÒëÃ9¥ÓWêÂzó&gt;_á-e}N¨uµÌ$vØÀ£ nv&quot;¹ôÓÀ¨Iepééc*±yÿ¬&amp;w[à*¨àv:;-æ~°ô]Ñ¿f6Z}ØÖ×a±¡
+&#39;v©|¯K¢T8Å&lt;BÉwÃ fû£ÖSCCÖÓÃ1Æ-§Q0DÜ9AêÏ:4±3ttÒÛèÙÅ·àheÿpñEÌzó­÷¿ú#ø·ïµz£r:®7&lt;î¨°ªÁQU&lt;é~+{&amp;xüjÃè§þgDCÝÉ$Ýår®¢nÔÔÜâB©[þätÙ&gt;ðáÞ/&gt;aè¯PV5?-T$~æÀY³8p´b¥©«¿ Ý[rícãïÝYùo#ØkT_&lt;Éùny×VS¬0¬¨Y±bù;õu+¾;LFÛo²FÞ¯Õªe×¡Ø#ª³?Z¿Öµ±ûôí÷¨Úþ]ÏiçÕ6Õp´T¿ÿjÀÌåÞ*«É£·yà¬ÑNyùøÝ8ùZÝÏrb~ñ:,+]äycqs»®3â÷QÜ¨i:b¹ë&#39;®Ì®±XqºKzºIeÚüÔÖnãóïm7qÏ×^«^6k¢Í.«¾,&amp;bçH°µ:¦_£]_ÆÚ¯¸	;?m°9hdH&#39;e*1ÝO7Îkgå2
+s½ß~ÀNc,K·@q9eõæÕÇci[aìu-8áï²X[®Û9Ò*]Ü,¾wxjíÜãëç&amp;Ló;/¨¯_5»ôÌ+Ï}õ|²©úD]ýê&amp;UêëÚÁ¦
+(·Æ¾¦kU8º .|Á&lt;Ô	®ÝpÅ=ÓÿKç+ÿO]ç;Û½åÃ	J|pKï§äwÒCV{ÿ ~&amp;@¥úW.òlïÄóïô?çÙôÚ«óm¯Z»A´×c5n÷«	Óön/XÈXÊlx¯!ØðÞIÐ»D&quot;õ1iGàÍ¢«;!OB8¢ èÐEZKzWÞÌkdjë çz*º§÷Ä7èçOÅ½KÅíàø+sàµ;+³xÀñvÝ?ï*LÍ¬¹Û±ÚÏGq
+&#39;öç©kAµ Bq/²câß9øHÒ¯Õj´ýÎ!æ\øíÏë.u°Ý`Ö4·ÄwÖ¶&quot;g¥¶&lt;EbÉo FáÊÞJëðm4sr0o;3²î$&lt;ßÚKÉÖôTËG&amp;Õ&quot;òkauoÒn×àÒCÇæ%0ö®òe£U*Cw²Õ¹ul×µçÕ7[ëoÚÊ.íQ¾Ïñ:êÅ-ÏÖy¥j¹ÌeçW§ãÒ¨ÙôþÀªó%¿ãòaêÏ*òÁù¥ÜþÿÒù÷©l½TÁËînqÊI?~Ý´»+&lt;Ï¯&lt;¼T*¹!fµbräãéÑëu Úg¤z
+bXz»TÑ¾¬ÎÞB°áÅAßü7þ´ÃY¦Bâ&lt;9&amp;Ðyr!ÖFÂP÷í¿*ë w¯&lt;*ñ´ï=°^*Ñ@	^NÖÕÔPó«ÿÿÐ²eO¢Õ`w©w\ËéÇ½&gt;ýX.7®÷úÆÒdÌçÕ£1iÊ7DsÙ,jö¸ÉTh&amp;4Y=¦¸FÕfµªlR|Óì+íq¯ÿK$ú]×Ì¾øFN(1J?dHq\6D#%-ZÓ.JGhï°§Ú´É¤mOìö6tûýn36CâÑ.ÔUæ]oCVIWß®ªýeiåµ*ßÔ­±-[kÓv[]NS|}µ^ÊOS×&lt;qLâÑ±Ë%PZ(vYhj¬i1_×ØXÇçqÛ-´xoJìM*CþRqà¥Rëh³¬8÷ ¦õôð©ã´ûn7¦ôúÑ(&gt;ÜüûþùS§~Ú02&gt;&gt;Z76&gt;6ÔñúQed2&gt;ò_ &amp;º_WQ#fgËfe¤.«W Uò¦B¢@YQµQÉ+ÜÞ^½=³9ÂÂD7WíðXõouî2fiÞ(!fk¤WN²¡.­7-Úæ÷·û2]ZÈ38³íQÛ¢PÔÓ²5àoÙÅ!k8¾Èg&quot;HO§åÒoø¾lü~ªúÀ 9m[P±bofÃuzm$¥2{RrÙ÷y3Ë,oùÛgÂOG{¾&gt;áÝÄ4qå 1M$·}Ö½K¼»t&amp;àï&amp;úúò­lTòêêrZ[Ûy¯6÷fâi·ÕEå§¹ÖÑ7&gt;X²4ÓWJ_Ö\ñ&#39;ñÒÎ&#39;&#39;K/t5 õyÓÝ/éó¬ÒjÈ+gä?³oßm+O«S°Õñ@¿ã7 Ø4ÚÐÅ8ÐöñÂ¡À^&amp;
+#¡(
+Å`hV»K$¤Oõäå±ÓÿÒxüñ:V£é-¦vìÌSSÛ~FÀ,
+ I6I3KÁx(º9éØ$!Æ¢Jt,CñÌçwY&lt;NÑqcÓ­
+£sí6&quot;èè=³½|´üç7(n¯à,\dbwT¨WàÂ*Ù¢?F®Zhê÷Bw1»y_òsë
+	ÉNv ¾1)1	ö¾£ÿÓ½;=µ]8/]Ò_O±G/w_jaÕÚD·I`ÕW&gt;~yÑ­Jþ¯èµõWÝ @þw&gt;äÀ ¶°§ÇÜþ8nã*x`6´	¹[l?Ì°17&gt;äQ¥ATV°`l$ì¡AÆÐñ
+ÖPò
+ý;
+K±3îV
+Ùp-ÈÛ5,¸w¢ÅzgUðàHìÅLåÊÕÊçcÿÂáaT5×ZØÓ59ìdeCäB¥ÇG¤&#39;¼)e«ô¾$ö4´#ËcåblÓÒvÏüäë9&amp;?Â4Gú#ÅãMNNDP B´2â	bscÉwK2of3à.Ràz1EL©&#39;udwc! ©0gT2ÎHËÆòÇÂ+úÛ+n^É¯^i÷Ê{åÿg*¦Ú;	þ¿OÕ)uZQgÕ9u.ÐýR¤³écÂiÁYÃy\ ZÙüôÝUGðÎ¤~üÌ³Ù Î¨xÔº¶@_gÑ§·¸íu¦ÝÆ.#Ù¸ðçì¾º¸1MH¬¯;tSªípMq+
+uóR þÃ&gt;´/º¨&lt;èù³âdçÆyq&gt;þõ_=ëÚg_·¿ù¿¾¼x×£_ºªæþäÊR^ÕÚyxíº¢Ô¼t%Ú&gt;­i¸.­U}9Xû¼l×25jkv)§&quot;^w÷0ékØks¨ÍÅµ=ò²¯OîC=õôÄÈl÷rh:8mî^M(1 ]Ï`+ÞFÃA¢ó`°V3ñb51Zþ[µ	°aÝð ¿ZÀçÃfR+]YsFtºØYVÝoÊ8AäTÙ£]?ßÎÊÁÍà.IÿqæÂK7riSÒpøN\J¼5ùUÃhÉr$k³¼¥åÎàe©ÈÒ§amPî1¤M¦ê©îBø0ÚÜHèÝÄÕ:ñTyÊÅ ÄRe[Só,âËK§ÃUkë C$VFÅÀØÃWÃ¬&quot;PÄBN ù3M(ñ¤õw6¦ãu}~²ddO°;ó°Âª&amp;ÃØ&lt;¬ÒçGe§^XËg:EU7ñùXU^{G45K¥úpMä^×î~­ÖD²¼I²ÕçòkúVÃ)«ðÿ¿ëÈA =7FÆ!GµrÐÉÜë/ÛlQÅz¤ÉÈáÎÔP¦C	-Ñ²©Lêò©ô+°«Õ¯F×;kO7ÝeuçKóoóÚ¶½miÚÕÖ×Gö½ºêíïô»=×Û}gÂdîü&gt;½4N_½&amp;gM¦E¤)KçQ^Äsüÿ¶¢ÃèºþwÍy6&amp;Õð&#39;4çY¶¹Æ3|#çU&lt;-Iùì*u«Õ:Í)­Eé}PËU¢Í:­z(Vv}¡*«ñÄ3ÛÌ7OûiÞ{þv¾wùõÓËçø&amp;?Ëïg&quot;ÓÉ b6PE5µÜ&amp;GÕ/	&lt;É3é&lt;x£÷øxãbKtÄ8ß½§ßþ7ÿìbhòIþûìýscº¦±ÊBi*;fWî±ý+¼Ô¤;F¾ðo5j×k5xM¼f]Í±/kµLm_íºÚ]µgk¨ý¨ö;NGÀ±rBÎÎgóQ]IÝ¿êÑúî;¥ãïh&lt;×4¿©¯é}®;Éæ¾ÃýWÊsó¼u¼#¼Gx?ñKøüýüøÏñ?â+(,(QÁà	ÁkÂa0(Ìû·ï&gt;&amp;ü¯ðYáÂOßMB ²m|ß|C
+Vìë_&quot;ÿ«ÍzB¢yléw÷ß¨QÎàÿó¾C3§©L5sÆcõøk|þ!dø%PPÀÁ+óõ&#39;Íã¢ !ÎÂ&amp;?es9smRíËüÃXa %?h
+ËÀyê:K~Mº¼n:üûAùôÓsüU[ß­7ìu/öÆÃ~¿*[h}ê&#39;ãïoy?fáqÕu¡ÉÂÁÿ#(Oþ]wIû´z¡°zkðÆäú;pÏÿþß#Âö)ûâÆ?jPNPÊézNÔìªma 4¡eJ\U÷0]Gz×ì~HwÆ[BêÄdcÞíñâÄ¹äEbÞ&amp;)²B-¹Í©ÀWMh
+`J&#39;
+êjñ±HD;(ûí½ÛyÕÂ²P¸»G´m»&amp;á2_ON.5.zzZþ¹ºÊ¤iP9
+&lt;hgDj$£ÉnÂbc53³ÏáµIÿhÃùßn=óTÅ@6?¿ZÔ+5¨Wdÿò¾¯R¦k(8e@~¾Sã£8ÀUÏYÊò÷úVß90¸Ê~­oÂ\é Ê](J)©JÕëæoU\ygp#²¸Ö]£wypóéAê8àó*¯qú(·õ~Æ]Nm§½æòJðÍ±²{¦îràâÇpç¨&amp;ù6¹=ÛÉR2MÑ`yJé#ÝßójñYY¸³;~üiS¸x1õ U
+%P»×ýïôÚÛ	Ã18îqµv®+tUXÝ&quot;}:K;c;M«RÝ ?ã#TTà¢yLµ¹uÀf©7Ê{õiùæKÕüÏ+E!AnÛk-8_~½µ¹ý.Lt1»J­8+¨iMça¯´[÷Ö &gt;ÿ}vüôô&amp;5l°EÅåjíññËÅÁ}Tj¶§²7rðbKXY]¹ýìlC÷óÀâx`Í#ÅuÚ_(:`ÙÝÀØ:(/V±Bs7í_TÀ¾Å½äx¶IS
+ ¬fPúQ^ñA³Ñ±lX)¡^Ép	JB.TÝQK&gt;üH­âW)°o Ôu½Zý_/QUeA&#39;á®2\9¸ÇTPíD&quot;ÜiÎtÏÛJÕ_Hxp×â?a&gt;UZþ3ô6jÎ¼ù`f-¥µ·¨îööª¥lpzsü1Fºcéqú¿óèÐÓÉÍx(®±ãÿèË_ÿú×__E6oáÔÍÆ4ÚGö~ &quot;Ï³eõúr.Ujl	¼¾¨)\¹ùôñË÷cáýÞR©ìêCõÆ§c°¬áÞCÖJIW(Å§Pô´Yº¨§0tó¡*g²e¸ë¦=¬£lÝÂÏ	D0¦Ñ=.*5ZCøßë²ü,¨,oB?^vsíÏ¤CM\{{¯=óqlr[¶ëIïÝ[ÀW;©|½ë,	WÎW-[7ã8QìË?×Æ^é¤NpÒ38ß_êÖÑÉÅ¿,¼,¥ROm§ËóáìÉ@aYÛµ:h)Áfå§ÜáN§çÚK½¶¶J&gt;p$&lt;×%è ¥DçX&quot;¢­úþBþw¶Hpâ2ÜL­UùÃEåÝT
+ØdªÇß«úö°Æõorêù®ÙJ×sÔ¨ãÍ®êìQµXø¤!ÆV ÷r¸·ÂYH~¢ÁJÖ-AU©×ÍD»?kiÐ~±gõXL½Â9^XLÑºiËqþÕµJýõ¯p­UU9:	¹ªÐwæÂÛID*F:oÕà¬r¶c&#39;NÕ×ây©¢aUø ë0Ê]Àí£Aé&lt;ÂBWÀúS²Åj:=H8°ð©^ZWàj1s©$E(è¥©!ê×1f¾Hõ1(åÀÑÖé®¥a´*Ã-«nóÔpV5âN4­Ï«á:©Ã¡/Â,¢½ÚCCVqy&#39;Sxf6)ªKÓ±µC*)¶lÁP¡5«)÷Ú*pÉoz£K´»&lt;1«dÖN-ÃË3©Ö@ýµ]jÆVX-4Y5],(pØDÕ#ø|JÒåÊ°ÖóÏP:÷àRuÓräE+9¨ÝbYµn´Óä»Rò sO&gt;neÊµjv#¢4ó®c»õë³IÅ|ºðRýj(kì¢æÜ)µú©«_ö&amp;KK¨¸½il;°¢n±N®&quot;6¸\&lt;¬c»DÕòÅ2E-Þ¼îkýÌi;5Ã±U²-&quot;¤S &quot;+¤Ím´Ð T:Ô¦È9kXB(´Bö(,úh®êÛîjTó&amp;V5½^HÊ16ZdÛz*¬¬H[O&gt;Y~aÈÔÂì²à²ê}&amp;g²½tP
+l&#39;öU0s)ªCºpØ*ýC5ò.Ð©^Ø²v`lz±/üò%wÙ¯¾FÿriÿÒà§KýcsVú}Åô&#39;Á*êÒq»ÅÔ¥#ã§1aüÎ¹÷ëÁEÃ/¡CTpabD1ûý*Ø«ø=¯¬övHÿ&#39;3ìú;_&quot;`h°	Ó?Ý.	x4QiÜV¿-ãoNÆ/F´èflãIBÊú-~ÀvÑ£ÁâçÿïÆ&gt;§|¾àÂâ½rc«Ù\ÉXWªÛîHê¢XE6]¤²ÜFÝ÷Jiõ©&amp;&quot;9jXäawH ¦Û/ íT8Ìd´îÏJB&quot;[#Ðs(\¸EÈ©ÉñÒòêb$@À§«¶²ä@u2Mi§£úâW3¸É{&#39;!FHbåW6ê*ß&lt;3þ ®åkAÎ ÞqclìaàGÜ[ttd&amp;ë©wÁ:UO;M5bößÁ¹VN_rv&#39;¦ÛÙ\&lt;ÑdEªs¯wäI(&amp;|IÆJÕúÓ*ñ!0ï&lt;¿ÞO°_Ib;ªièùAÑ£æÙàrÕOÆ9£ËÅ´vl¿üÖ¹u¾Ë¶9Ìx°­Í±$ôCüØm×Z#ãPUß	ádjõbèDÔd$ºúGÊ&gt;4;ÏN	O(.$µÍ»-æ]&lt;× &gt;¥£4#ÇêÕ×¶0fÜÌñ8¦]{úi3uÔÀ²S¶2aVÚösù&lt;\Ñ;2OÊW(å oÛ¹°C_ÊWÉãdoNYl¬÷rèþïÑfg¿ðh( }2PÕ[$ý	©£X0u]ëñÚæ,¦¿ª¢½ü¦ni`æÃE&quot;Ý&lt;9·w$íØ¡$YÍù:åÐí»·4+ ûH/s]°úM± 7ó}ÔF®ádgMD1lzálú{:â-düN&lt;v&#39;y)Çà4H¨¡78*ldi:ë®z\ðcvïÓfdñ!UM.
+)J¤EÜÈY&lt;Ú¯¦Ó[hþ¦&amp; Æp©òp«©=u²6EÝ00Íï &amp;±ONïlÖ°;±@Ê¸&gt;Îµn);Yj=9¦NÁ¸YR(÷§ZHä}/PE1äCãmYÄf»8FVrÃI ÌÁhe&#39;+UØ84ÆðÊóI?ºî[,U&amp;f¤Ù,8qndÜ6ÝX¡Âa¢³òìcµ¦ñ0À#=Æ¥¦¦ÐS-QEõó¤o¬B%À¾øEþÊÆ?ð^wOi&quot;,»If¸TÁrþRÉí(íòÈ»í4ö^¸,í6· NCÝ	¶rü¥mùT=Îè&gt;õM:ýÀµÏ&amp;Cp	v 1ÔºÝ{}×aöFBÆÇ&#39;(àµ{¯Àc¿`Ñ¾¥«[8MÓÅ©ß $²% £	Ê÷ÎCàÊPU¸2. +ëGH&#39;Ü/¿JÀy©~Àºx`\ö¬³¦ëH&#39;íîììP)kæG	6Â?­MýàcÒpÆa®\ÿÍÙ´Û¡8sÈ3p¡KU¿4Hõ¨Ó%
+l-ZèRÐXX7Æ°9ç¹&lt;. Æ­é¼FÚðtFÄ¨víz=ãF3:Ä©¬Â¸ïkcó+ÙSè;Ù.­:¯vH}\pøC¹I¹Ä¦½õÕÓ|.S~f{_ªz¬»gæÂ½&lt;ÎÉïÐ\¼Ïäy:b^OJÕLqÃzNz&amp;­äÂÞÆíÓ Tu rmK2Á½ó1|átîÅÝ	ø`
+ÚF=ëoyëzøWÔ#&quot;ÎºáÞ¢¥ñxéÔ*¸Ø»ÃX.î&gt;¾*Ø¡Da©ÖèÝÁ§ùN¸zÅÃtèÙø`OXå_&quot;÷=g¯ÏºgKßiä2R_Ð¥kI;Ë­s	,BYÔWæ2¬¸¾_hÿu..HðJ¾ÒLvvÎ&amp;{i©7òe¢v¡,HëUk²ÌÅZènª07§Ì,z:mÉ3pÎ&lt;Ùm}¨EÑ¨VÈJ©jØ&quot;MhDiàè@=ÉÃz&gt;ÚZ-Ê}Ý©°JÃW&quot;WU6¤ØÑrd-ùÊÉCí÷q¯CaóÌäôìt86&gt;zØÑê,ºN`þø
+3ð«¤W8ÊÔ¤!,Õ+ÿ»ÂòÞ(É£ÑÕâLYJÐþ=p
+&#39;9E4ÿÄá¢4¨ñ×Ûï&lt;âþæeßùÐn[¶-6&quot;Ga&lt;yVñèjw½þdß®¬jSLÝ]&amp;´`Æ.2Ò@1	[ÍG§yIm5ÿÆPEnN×Ìz½áûN/uØ*}3JÅgZ¤5´Ë\úi::±{øi÷Ùµ1â½ñ89mM5O»	Æ&amp;ØïÀ~8$0ûì.Að6Ïð-dW)aD&gt;ß,´!ñ4(çî°VÜg·gólØ¸ûe#çò¦ßFtô&amp;ÂÉCí_Dî«~F#Ã¬&gt;ÆÓ¥«ìb-³ÊRvÎýÙæHÕB;MX	ìfÍ.=@¬©q9Q¦±CebtÔà@R\nPe³WÙAð%Ó·âZ»(ê5áÙ¦@òxÉ%Yn×³è¸]r®Ph¶5&#39;wîÄ4(Û&gt;Ujö¾!LuUçª»&#39;ÚkÂûCÉ¡~êv­uPà N¶R)&#39;alî¦§N^V:t&amp;T#	_=jJ-#µxÿA:¹q§Ø¬ïÅüùóÏ-]wjWÔÑ¾­ëñåsB÷1Þ(,Åà¬]¢A*m×{äIKÊ¯N×D49õ[Î¡à·MÁìóD¢Ud¹bKE4¯d÷ª¹ Cs&#39;ÅÇ ¯|ÇH&lt;Â4PäE	¾/w=óÌe*¼KÃG§Ç
+1þáÚ)HylOX-£Ý&lt;uBg=ª¨´i`:&#39;ñ²%ñy±.´gF¯¨6ÍÈf\ÅnØ5-¾JrBouòÈ¹­	ÄÈÅSí©sÔ(íCõÜv!ä!«en%qÏµ}%ªgJÝ¬&amp;n»&amp;OÚÅ3pÎ1Iy¯Í9vOÌ¡Ýö°4¥&lt;0×®IÈQx§g)ñ¹=¿ú 	ïñR]ÂB¯Ù_ÌÖìÜÇ6QÝÙ¬vEÉdØ³&#39;}&gt;WsÆÏÏí5¤&gt;ø&lt;ôC3£¾ë,ã~ëg=X* Cxk1û¿3O&lt;gxFçäDÃdPTO{u
+ë¼?çµP*wsùRfg BQ?]ùÝæqxÚI¼¯ÕPJ¹Ã }Õ¦;ÐYdUî°òhp3{8Vub¡3UÜ]`²bKFøðÃoÚ&gt;çàª,)[\ã÷ÚSÎüÜóÝywRð3ÝÙõÄÈÐ&gt; ý[¿%Ç¶À656ÂÖÒ?¶PYÖrÚ/IH6¡núÏÝDN&quot;ÖG­T6&gt;½ê$&gt;þ|wzò±Ñ¡oÝC
+ìÉûÃ`^¾¢Læ7²cÚ}ÈãÐè[fôñÛÁ¾ëúèa#ãÉ/áVØd¡¸¤ÜêfÐ]»ÇÛÁ	 &lt;¥kØx¿R«üGiû2Ïc©ÝýÜw[)Îêí¶¦	¨ñ&#39;×Å_Ü7ÒwÃÌ&amp;ÖVïÒê{2}YKð{W &lt;ÔwÕýßÁNºÏ[üôÓ	ì%ô:ÀÒ§áöÝhØ»0dqY;õóv`ïQ/PµaßÝû?üütÇÿáð¢CáÏP&gt;àÀíîÖ:G¬KJl¹\QìZ¬ÛZÔíò:W2Ëâ0É+6¶°ê,j4JçÃ»=_l0(ÑÌBmOqK@d§Ü
+òññ ¨»©°,Çd²&lt;ºRmú&gt;yð &lt;õçrÖdïE`i|5ó#nù¶Ðh§¾ßµ¸Ó.&gt;l·¡@m«,UtrfZÂzJ)¿%&#39;ÜJ°#$v^8Ða4I`g£¶n³ÍjØ³ð¬Ãg#8ýÏ©9ðcõÅ/Ï`z&lt;füD&quot;Ö¹ÎçB+ÈÝaS\$ï3ÔKDþ|1`b-@äàfÝéBé´IËS¶þOU£ã9ßÍWHK Ir&#39;Vw2k{Ë¥dcËRô¹¸ÎÛÛ
+[òWcçRMûÖ*Ðsâýë¯mUXmßóbXVl§u($L-(ÛP¬ÒÆÃ³h\¾ìÐ»E¹õÀ«Ð£P bûÛÛ«ûónT²p0&gt;ñ±ü/×ì`V®½àM®[WRT.ïÖAâ¥5/ô¨µüP±8$Ï÷ÃáÃÂÓÉ`EnbÆ¾9ÏfúQ$&#39;KB
+Ûlr!iYcYÝRrd2d \òÝÄûÇ»Á°.Ç¤üqaBdrú:Eé|ÆãÃ­Ã;Ýð8}íóýµã#I¿K!¬%Ï÷g÷Aàný$Jàxikí1¼Va=?ÒÉYF#.póY 6]|ûUÎ,ÖÜúàÜ+ôÁu|ñ£pèªs?þ]¸ðÐÃatXia	KnâZ¿&lt;êH¡ãøòÔÆ¶±BIu¾Á §	æHQr¼x T!Öê4½\^¦_ã)öâé*=äù|ÎÅVçêGïèC|OÐj	qÍ_ÐJ]¬íÈütÞ$ï?o:yã±ÒK&quot;-Zü¸õ=U:Ø£ItØÓÇ,À
+Twêi5¡EÊÀE´L ²ujmÆ#lfà$ì()\(5ÄðLVÂ
+B³z=sHJDä©RnÉñåÑC­³r&#39;g ±¤À;Ë­DL
+_ãú¼Iú£E-Üúkn.I±Ç$àßÐºëÙ»,ÈªÊÆ,	Æ¶Ú£yYXóO3^.óX|«ãa¸Æ-´`º­ù[âïp¦Ã Q	÷1/~ç¡´ð5øÚøÚ°ZÓ²øOZ³¸kk£ dJOøVÒúÔÒ lÓaÛöjõ÷C©IA£1-JÆÄa¨Qx&amp;«wGJñvÆuv?@ f½à3
+B!GG¥§s½¤¦ÛúHWÊ#ì~ædÎôÄDÄæþÌv%Ñ
+²RgÖó¶0FSm(*´w_½n(@&#39;ö/«yõûrÒ;;ð	=8WÕJ×iK®ËtA6XÁãþÄ&#39;)å°Üsf1+çQÍHF.»
+ARèÿü1XË6¼ÞîJ §akR4Âq¬Eæ&amp;u*ÅÝ;½¯ÉRÏeàìÑ£Á¤¡9¹ï.¶V$K6æW~ÓeF
+À§?£txø&gt;÷Ã^yµÑSI_4V¯ÊRÿBa yº|nxÇ&quot;ë`eó£½Ã!=ÍÒÌjKÙ«ögç¦wev,².UöO£åØv¨&quot;8¹Á3Ýr¶1»÷öâáí¸õö]³Â{Ì°þ¡wª#AüZÆK¡­ÈÍM-A­ê-ì£ôC!pX
+ÑY^õ²u³¼s³,CcUqbÖ&#39;ocÁÂä-Fpíý(èvÍ :uútÊÄÜÏÒ¸ËÙöRdY2S1ô¾þ°Ô²[ÇÏI	))¬#ð÷­Îa»ÁW*{\[ ,Jm¢`Ñôê$/Ñ¨¶]GÈpRÈ°UWÄ1ª±Á±Ds2q7QEìþCc9°v§G/ägsA1ØZqOâú-\ÓÎø¼,ì½ùð×ïN&gt;¶W{Ï¼n¾0ÝN¹ßKXÚk2XÅQÐ}5ÞCHÔòÙ&quot;g¤0îöÛõømM½Ø[«SâªÎÅüº÷ì#óÔL)Q¢QÁzØzïYÙuÑ£º§# i6¬NÇÙ¨]ªuê×cÂmâï@[Ì·Ùº4 }o°Ü.;bº§·âqt?9&#39;âÌ©&#39;)cA¨ö¡ªØKWz¨)¬îqÇ®2]æô¨ôÅHØ«!r¥ìùaèûPP.C¦	Æ-I-8
+rgëÍæuNÃéAlª¦·«LçXw3%7ÏÇÒ«rqÙ8ËÙÐ£îí7Án×ÐCi
+F*H©ÁPÙ/ÕL&amp;.íÙ¢hË¤¨m /áÔØ®fÀª$º(«NÊ.u5ÈÃ®øÑq&lt;YDQÌ¸wû#dAâ+GÝä!È:\ñ@Â]ïòT.vQ² ì¸qó° Ú-$zf·ÐRñ2×Wy¾DRÐk ÊÁAL¤	n¯AÖã¢9Q@&#39;´3VÝúRàr©lÛÕ ¢ß²+[A¥¶±CgËeEÛmb)	÷.
+Qå¥êÈ¾HLsbà2î(J6,wzø
+]µÂ8nrã,+sÖ©ò°Ñª%î×Û(|0¬éBá(Ð=TQÚû#{«¦Æx+4¾áTTº\cB§b°f2í(÷&lt;gÆÛëãn9¬)ÓCUeÇÄq!a ¤»/Xk&#39;HÇ:Ëéß~}7)ªW¯¢¦$Ó¼P:^|Ò§Üª=&lt;¦ÔYã¸çgH·2¬WÝ^Á¦þú5#ë&quot;ó@*ÑÞRÄæ`klõ¼f-Áe ÔSa×)Iif&quot;þ%¤&amp;ç±¶0ÞÆ/-òO[W±ªZ«äLH´7H0+	N
+o pÙ3NÉ¬à@bñ¢Ù@ü3
+ãOP`êºêBlÙ`}3üÑõ&#39;ûôÓv ]B2ç4à|æm®	;c4.ØÑ´ßî&quot;ß¹ë5}ãù&amp;	¹ÝKÚ_tX2/ó¸
+%pTñþBg¶c½x´îÒÁ´ë}|3\Ü«øV¬58ÃÜ{2ÅÅ0DÝ+lF&amp;Úf¥BØdíðîºÁzÎvvû¹F&gt;¸-O=À&quot;ÇÞ°ÒÚiaµÈ²0}9íÃ÷ §w¹¦ª®ùÃ:M×¥§;ÙÄ¡uÎùûMÁñÚFQ{.¨¾,ö2qF£­õ;×«2ÏT*/ËWé½gØ«hâ¢ÅëåíL&lt;öT¹)À,~Üvdä{ä.: Ð®¿ÉQCH[î@3Ô{K^(®&gt;DE¨P=¨36õÑôÙAõ©ib¨×ß7Ã@«Ò=­VÙåã¼qóý0DXæ	ÄA¾È¢;t`lâ#¿Y è½lÆþÓõÄÇ»-Ý·/N:lJâ8n-2,ík7ú°PUº n0J¦¤pØõ:ôg&gt;¤èX²¿Åé#^}ÕÖXE¿OàKþÎP¦yÜ,2;cváb¾ò:Äé½g¼Ýx0úS(½Ä=¤Pü·»Nvðî=ÿ7vt%ÿ~ô4¤$z¡¼®W*û1ûá©=QrãÚT.&#39;]üä;ðå&gt; ªlÜ;¾çx[½Ï(;¡8 TáÇùõÄ¿ky;íûGv8äwªê52$GÕNcli¨·QÜNg§·«f_/MÁÜ¾¬ÆÞ2¡&#39;Ñ»mÅÕqÃ	söëgfü}¥guà|&quot;&#39;pþVM=|ÞÆhDY gðná¼4üåÂÂ(/-/ÀÉ÷ç¡ÀÆÄäûYþv¦2és¡µÎ¾úâàõæêª e=¯àLX@X¨®À/G+bMOÌ
+äÂ¶e&amp; ²(hí «&amp;ÞzÞ¾ùgtÁ®Ò !)@&lt;EZ^_¾~wÄ©tAô_q*PÓÇÚjqøÓcìv£Î#Ý~T¿®C²DT)qüÌï,RÏ0:ìÃ9àcCp¸6áESå~fh¢$Æäj&#39;C¸ ¢¦¨ê5UórÄ#uA¨FJ@Ô/cQtÒ®qÓ&quot;ë%ÓÙì&lt;	ÇXlÚçÑÀT£]ÆlyÐ$õ@ÎûìãO½n×9J¡ôÃ¹ÙYÏ¶ fý:óºVJÇú¡z½¸·Ú¥À.%¬âÅûÑ@s2UUåSõGS&#39;aKUÐàB,Hì¼ê¤F&gt;Í7S¶[¾øâ\Èà0EiÚÝºñø­DÇ1q{ÚE¡îÙ6¸ê+ÇÅôâîzZõÄ¶Þï®­êWÀQf?a;Û·_]®. Ødház¿çÚB&lt; Gg±Òç Ôáð×B×ð9{²L$°Q±ì¢Üñ%ûÿzø¦ÞÍ]Ç_Ó³æ·¶þÜ»A{ø]¾â7øë?W)`ïæDÊ·øÏVrâ¿3¿´ óõôüõW¸`-ZÞ¯qÜöØ·ý^kÑj	EôZ}[ {¯ìj*î´Þ,/ÐÄÍU©ýÂ{þuòóív0­~Õt}iËßSÕå»õHfÞN«?ï¸4Ð·y°í&#39;lÙõú&#39;ñdÎøÛ¥Òf[Cäª%ñN_uznCM@eë(±Ùùbÿ«»Âßá8©t&quot;%Äù]=Bú ¾RêtÞd ÓßÏlvg&amp;ñÂñfÇÏkµøNg·±}Aôå§áu^Z×5¸9L ÐK½ùWðÍ£tÇ=Nm¹±ÎÄÔ~Òô`OdAÉ_ø¹OÉ^èdkaà¦lÁB­6ñm(ÿÂþÞ:ÂÑÃÍ3Ê­¾&quot;]I»Ø¨ªÅMCBpúÒ¨åÊ±M£ ]nK{d]­±®²²
+PRÅM&quot;# 
+q¼Ò SÍs9:Ñ¿P6ózaPó£K-0ÍBKVIckêkÈ-T·mt»NÁiÿÚ¡¬ñaD=pOdJEYÍsjèBEÌH¦*ÿÒ{À&gt;¶Ðí±¼ulÇÓ{,.¦¡^c5ÕIa÷ÄÉ%@ã9¶óCÅ`Rb¥|°ÒR§¤#ÐªÇ³lôªUy@j1¶Sªv¾¿ÜÅÂj2iS²\«à»ÙWpÆ&amp;û&amp;·wW0IØibkt&amp;ÆJBa&quot;_Üor{uÖ¹âÇO¿ïeÕARã,3.ÅØô_µLÖ²óqZ4W0´ÌaDB­a
+¸GÚuW*¶}¹ÎÝÑ[üéÏ
+cPãÀØ·~Út°?ØSábÈÎ±%IöÕ¬
+gã­%¨PÕÁÃüî´ÏIÈñ+	Ö {ì¿^åÖi;4Ã&amp;þ\Æ¤ÿý`ýï¸¢&quot;o8½©ñ¾XÏ¯n »Ôµ/#híã®åÁ¿ÅóÎ6b/.!Å­¦ $×8vf*ÅâDñ°·¯R#[Ç!íà#»=ÈX&quot;}a¸q~Ñ¦¢1ÅÐmGG¤V×õ¸õm·ÁP©¥L(nûµjFJ£4Ü°Ðùçí¤?Èy¤lÐGüf¼+hnÌÊä~Ó[ÂÅpVV7ö´á|gg$ÝKb9=_²êaRC*ø¨Sâ±úë¾¢½ÀyÆ}§©ý£ô~ÏË¯È/¼ÆgÔôP­6)ik¹ÖºçÆÓtVýfÜpajÜNmF¨íjãã5:ã&gt;D³
+iØî èÏ¢jïL´/_Ån±¡b¬V0¯ÒôK×rvr7Á1D1&quot;î&quot;Ï-Á.¼Ñûq§áºG]×ÌÍp!äKf×[Ã.¢z.300¸W¦pþ o¹iC5Ã¾mÈEÔ*Õ0+²»_qdÿ¨ø,R	&quot;@$ç6èö~ÒJ@CÍþjÍ¢,s6)ß2LkáQÒa&quot;ÌxàÎ;í«°¬BìÖ,àRËÅZtF¦åÔey²deO´ÇÔ6ÃýªºY&gt;vBQ¯B¨lU§Frå^ä$ê©&quot;Ô¦©ÄÄ5è;Aª¨g{]#HBÀÁ*òmÜÈ. úL?«E8Ù p;ó¿sýp-ÿ×·õyþoÓÉ$[B=Ã=y~iu-ò æ¡LãÃi`¸r(e¬HI±|ÍRC(@á]VKø1¦8Õ÷jås¢¥°x­ôeÍ*aZ1´O(BÔÖRPâ&quot;Ëiæÿ[Ö ËÆ¿©9R÷E R!¡ÓòlÖl!w ³Bô¯¦;	/ÁT×¡ÿï÷9HH+i°|dôÚ O6r-ì=_¶wnÐÃtÄè±sIÅ¼)AÖ,cº»²õ÷LðÚèoÙ4Ãm B¥âÕRÛÂê°Ñ:¹`l×:P?~9@0r:¾¿vÿTn«§lVwv1®&lt;pFµsÂÍÈp÷È¨J­m«]t.»õaÞ}Ï!+ñÓèr4[jW&lt;!~Ð#i¡È\ZmðæÌå¡àjå9e¸®ÐjppÉ¤EÒ;³Û&lt;^¸±IÊJ°D¥&quot;kø&lt;|9Â(Þd\öáFAøÝEm°m)&#39;M÷j^
++V4Ûä&lt;VmÃ¥¬fÙ4uÇJ¢ÐõÆ¢ãúE/Z8¿%e³&amp;¥¹x©P©&gt;/e]Pã¹ÄêøÓHâÚÝ	±*juX¢eÍ&amp;U©	yo»X#³ÕJÑBÓ&lt;IÂ¾TxèªMèv½bÁ5ÂÎ3wA ýÚTrñÉã3ívÔ®kCÄ	%búå¥a7*fàn#3@bÀÅ3p´sâ§U½¤_ñõp/öÆ{Ýòê¢?Kä&#39;×_nzbÐhsª6ÁÈ¨*³F½ãÂôg÷¥N&quot;å,èêìßÖÙSS,{¡Uµ×&lt;K&quot;âvÜÕóW&lt;÷5®JwäQ¸ZÇa~CMËF-¼8^(q#0,^¬ÉSýôææê£ÏTQÉzá~òý«Ç£).¢¯;²­$	ÌÊ¥(ßYÒ&quot;è=·f§×âT¥fôV»r|¶½+up ¤³iÞ1pÖö³ëá§Ã·Ð);Êñ@ÐñVÚû§ä´ÚWëo©-ØÃl±&amp;wöµ4S:xóéî¸¸ &amp;[É½RÒáÆê2gèBäB.A ¢³Ñ^||00	ïn&#39;ÑÕÌÊ·T0ö­E0ÿÚÕ÷1n9øØcØje|ìbüÐÝÇ8t¢TàÁÚÎL!­ýYCèõ»ÄÃU»w8c;¦	^¼,Æ&lt;ôMó
+ püÈìÉ{êô	¹6Epâ ÑÐ~°¶1vâÏ±=VÇÎ»ÜB¼ÂC]h.++1XâO^E×îqgÑEaìIÀ¿)á5å÷r&gt;@å¢ûMï¥éØTß=ÅwQ$·6Íé^º°ð{éy Zåâ&quot;ò¶U%ìôaËBð¿4{ÆUÕ=âAõ;*B[á·¦ALsÚU|bAäÓ
+1¿PdÐmÌCü-èê¸Ö×1z;agÈtë²[«­¶/à$\g1,®p§ønÐ(ãª[ºC î¸BétõWÏ­ÌD[BSÈ}N*}\ÞWüÏ7ë\6X?g\=MnT`ZK¢¯Àg¡ÓxÑ¢·1­!ÞÐdËrÏ-÷ÜzãWaù§[ï¸G|Ç­7Ý8ÄMHÿ}&#39;PÑÛ,FýÌök¨±§94:¦«í4\­&quot;=nõ%O&quot;2ópýåy&amp;ØÀÀt»rn»Í-À-+?óÁ¾U]V{§ ¯:òQæÀ®Ôj%ÀîÒÏM­Õ¹îToÚãÈzuuë}Ï)eµ&#39;K3Ñ»wgÙ?Ú°{;²´@ ¥°ØxÇ)4Çö3â¸Æ.¢	&gt;Ö°û§î&quot;©¤ùù&amp;õ×þ½	^&lt; yôÎ°È!öCnd7	-æpªE}pî¼W@1¦06fBî²îö¼Nt·7Ë{´^&lt;&lt;ç7yQóDñ9}áÉEFý2!¶]Í£¢J4êcÕ»§Âfj3*°À,Åï«5Êmãh£É +I»v,&quot;Ü¹d(BÈ#ÒI­Î­è]»]¹¨²6éÚÞN´-Rá¦:|Öa³Î[öÇ&amp;kJ`yÛ½¼É!frAZR\;ÐCHLÆLÀ¼¿kû)§Iß²âûó$æbÓ´lÇ%´püË¦Ò8¥åCâª;VURX85Á°Ör&#39;¿Æí]¿#K?6=lén&gt;´$)º*ñ&gt;}ÚÈöPr­ºQ&quot;cµÊG+&lt;^`ÃLó-)ÐÒYÂ» VL&#39;$	NÕTä¥³4ÞØöÃùi x3&quot;ÀÓ®@&amp;¶ @ÔÝ?ÑÌ3ÉX¤Vv©p&quot;ÉBKjÂbaÀ0ÍsV%½N×°bR±MVfdJÜ;jKT-,&#39;DÿNîÛUK0ßX¾y&lt;FèæôÍÙußÙIÒ&quot;ðµú úrHçö¿xM¿Ïï]¦õlO®BûzÈë¾;øðþ-&gt;ã8u#ÃQï(Ývé^Õ7zv¬.ËèØ/Y8±Î,Ø@yì7uÑÝ_ÿ=&quot;áe.¡¬à# =@Þ à³g¿;/çKâø ~¹gö¸øÊÍ]1Mª@@pºîôÊËªãºÍªvÕêWþnD±ÛîùRusýmº³¶É]ëµÜÅ éÏáÕÂÉÌ(­÷úì=ôZe)U9¬XïÀÚ«×z¾¥SgH@Á$âære¥À¯Ã¼ÜÐÚVq®F`ÏâÕ
+j¬md´~&amp;VzÁËº@ÅÄè*­÷úr2ö¦ÛqòPÕ$OÑuJ¤²ßÑHæÍU,eëJì]Ç	ªIPyß¬G]ãX2 5©æ ¨Cs@\fT:ÅaxA_ôAÉ{¥o)%8ÈL¶VXØOA2Ju¿¢PTõ n¼S¦«ûÌ©éOb*Ãé½ZhöÆs©L±ÿpy¢Éã-?ÀÉÌ¾¾D¦yYáÐ¥FZ&quot;m-B´Tå§PTMÆOje`,íõî
+ÊMÙâeFgxLÌýâZ¹·ªÆë+¾-ÈÌs9ÑxJcÙÐY+ÐâRµÌ`zßÐ¡*&amp;¡3%Gi
+CZU2ÄN¥UÛùÍhá°ìwÙ{©¤L@*i 0Sç?xCÀYF r­HjúGÛf:84° x²dI%0^a§ÏCåÑTÑ¥ÇÓb`eÂf5â(I¢ÆÊ7#ôÆØ&quot;ñäh ;¾!9Æ©F@q@®ÐP0åGÄf&#39;ÆgÆÆ¸&quot;!!¥&quot;ÿÄ°ûÞÎ/Ï©X·â³Q&quot;²×Òï-&amp;1Ê5ýÂB{1¼M³÷v§£ .&gt;pÁX{1¥¤&amp;#z51Mú@ÚÄw&gt;cdýóÞßY3cÁZæ±|Úæ¥fØh·ÓÉ&#39;Cyz±$NCO¢èÓa³%«¯Àð
+o&amp;±ëT¼³ïÂLÇØÔÍd²/üÎBX¸â°9XFÞ2#½ñ¦@&#39;Gw%2(v²Gåã	Á¢?Ó.Ög¤&amp;9DJÆJë[gð=»2À.Z&amp;Ó0ÃIë¸RÉÍ[*³4ku;j÷Ü÷ÀCÚà§«óÝg3xä±9ZïÓ¼}äcØìxÏÂÜ3ð °öÞð9xií&#39;/°W¤(¢½#Kc²Å&amp;Î·[d¥)ÅÂBôàù¡,3ÖryVÈµÏJgóÉxLTfDù
+üdÉ$3ûà)unev«
+D&#39;ä#NgçÝìÈC&quot;6â î;ÆúÏ®BEµV¢Rmi§\{:Hé¨ÎºèªR7®é÷§Qé®j5jÕé©&lt;^ôÖ+|ö#àd¿;JpÑ	È0uN6©¨×à¼j]tLµn¢!ã«þà¥T±
+åÖX@êëN-x&gt;ûâ#MsP(fa!a¢ºtëÑ«OBJá~Ö¡W§.}¡rS¹û²Õ%Â8Ïã¶@ìÃÝyUæè9&#39;vxÎ\üO¿&#39;µIÕñw¬u&amp;ÎÏ~ÕWé·PÌ+Ác³8ÎRAõÇÓ-²_õ©u).©`¤rút¾@ôQ{qq §¼ NÍ¯è&quot;@PQÔD ÈP$îR$ÖDD &quot;Jî $ &quot; ~I ÏÄ9LÄÇ`&lt;«»ÌEóø(`»KîÂ°ÈÓxä?ÝgÆ÷R~rbRH/{ê©-+ìüÀùpÈ¤ü§°¿ûÐw/ÜoþÜÁ=±hïZÁ²/a=&lt;¼[&#39;RXù±ÃÊÏ6ìy.ÕªßðcRø51&gt;o°Ð¼{P°1å»&quot;/Þèr#!Ñ.e¼®¥³EbK ó19©Büé.ÊÆà`/®,ä½á5¼±à)ZP&lt;û</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>x-content-type-options</code></pre></td>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Asegúrese de que la aplicación/servidor web establece el encabezado Content-Type adecuadamente, y que establece el encabezado X-Content-Type-Options a &#39;nosniff&#39; para todas las páginas web.</p>
+
+<p>Si es posible, asegúrese de que el usuario final utiliza un navegador web moderno y compatible con los estándares que no realiza MIME-sniffing en absoluto, o que puede ser dirigido por la aplicación web/servidor web para que no realice MIME-sniffing.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-4">Gran redirección detectada (posible fuga de información confidencial)</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A06_2025-Insecure_Design/">OWASP_2025_A06</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/A04_2021-Insecure_Design/">OWASP_2021_A04</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/05-Review_Webpage_Content_for_Information_Leakage">WSTG-v42-INFO-05</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure.html">OWASP_2017_A03</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/201.html">CWE-201</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>El servidor ha respondido con una redirección que parece proporcionar una respuesta larga. Esto puede indicar que aunque el servidor envió una redirección, también respondió con el contenido del cuerpo (que puede incluir detalles confidenciales, PII, etc.).</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>Longitud URI de la cabecera de ubicación: 6 [/login].</p>
+
+<p>Tamaño previsto de la respuesta: 306.</p>
+
+<p>Longitud del cuerpo de la respuesta: 6.622.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (228 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000 HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (650 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 307 Temporary Redirect
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+link: &lt;/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2&gt;; rel=preload; as=&quot;font&quot;; crossorigin=&quot;&quot;; type=&quot;font/woff2&quot;, &lt;/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2&gt;; rel=preload; as=&quot;font&quot;; crossorigin=&quot;&quot;; type=&quot;font/woff2&quot;
+location: /login
+X-Powered-By: Next.js
+Cache-Control: private, no-cache, no-store, max-age=0, must-revalidate
+Content-Type: text/html; charset=utf-8
+Date: Mon, 13 Jul 2026 08:52:37 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+content-length: 6622
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (6622 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;&lt;html id=&quot;__next_error__&quot;&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;&lt;link rel=&quot;preload&quot; as=&quot;script&quot; fetchPriority=&quot;low&quot; href=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/27jktro2p5rq9.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/43_bvheqq33cs.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2y9f-agwmqhef.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/turbopack-0wyufvu3bxs8d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2lirpf2zolb8_.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/14mrh2-p_w84d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;link rel=&quot;preload&quot; href=&quot;/_next/static/chunks/2--41e9dr5k0c.css&quot; as=&quot;style&quot;/&gt;&lt;title&gt;Gestión de Tareas&lt;/title&gt;&lt;meta name=&quot;description&quot; content=&quot;Aplicación de gestión de tareas con roles y panel de administración&quot;/&gt;&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico?favicon.2vob68tjqpejf.ico&quot; sizes=&quot;256x256&quot; type=&quot;image/x-icon&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/0cz1d0mv5g_q7.js&quot; noModule=&quot;&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;div hidden=&quot;&quot;&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;/div&gt;&lt;script src=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot; id=&quot;_R_&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script&gt;(self.__next_f=self.__next_f||[]).push([0])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;1:\&quot;$Sreact.fragment\&quot;\n2:I[83036,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ToastProvider\&quot;]\n3:I[39756,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n4:I[37457,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n6:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;OutletBoundary\&quot;]\n7:\&quot;$Sreact.suspense\&quot;\n9:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ViewportBoundary\&quot;]\nb:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;MetadataBoundary\&quot;]\nd:I[68027,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;,1]\ne:I[27201,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;IconMark\&quot;]\n:HL[\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;style\&quot;]\n:HL[\&quot;/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\&quot;,\&quot;font\&quot;,{\&quot;crossOrigin\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;font/woff2\&quot;}]\n:HL[\&quot;/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\&quot;,\&quot;font\&quot;,{\&quot;crossOrigin\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;font/woff2\&quot;}]\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;0:{\&quot;P\&quot;:null,\&quot;c\&quot;:[\&quot;\&quot;,\&quot;\&quot;],\&quot;q\&quot;:\&quot;\&quot;,\&quot;i\&quot;:false,\&quot;f\&quot;:[[[\&quot;\&quot;,{\&quot;children\&quot;:[\&quot;__PAGE__\&quot;,{}]},\&quot;$undefined\&quot;,\&quot;$undefined\&quot;,16],[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-0\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-1\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]],[\&quot;$\&quot;,\&quot;html\&quot;,null,{\&quot;lang\&quot;:\&quot;es\&quot;,\&quot;className\&quot;:\&quot;geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;body\&quot;,null,{\&quot;className\&quot;:\&quot;min-h-full flex flex-col bg-slate-50 text-slate-900\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L2\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L3\&quot;,null,{\&quot;parallelRouterKey\&quot;:\&quot;children\&quot;,\&quot;error\&quot;:\&quot;$undefined\&quot;,\&quot;errorStyles\&quot;:\&quot;$undefined\&quot;,\&quot;errorScripts\&quot;:\&quot;$undefined\&quot;,\&quot;template\&quot;:[\&quot;$\&quot;,\&quot;$L4\&quot;,null,{}],\&quot;templateStyles\&quot;:\&quot;$undefined\&quot;,\&quot;templateScripts\&quot;:\&quot;$undefined\&quot;,\&quot;notFound\&quot;:[[[\&quot;$\&quot;,\&quot;title\&quot;,null,{\&quot;children\&quot;:\&quot;404: This page could not be found.\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;fontFamily\&quot;:\&quot;system-ui,\\\&quot;Segoe UI\\\&quot;,Roboto,Helvetica,Arial,sans-serif,\\\&quot;Apple Color Emoji\\\&quot;,\\\&quot;Segoe UI Emoji\\\&quot;\&quot;,\&quot;height\&quot;:\&quot;100vh\&quot;,\&quot;textAlign\&quot;:\&quot;center\&quot;,\&quot;display\&quot;:\&quot;flex\&quot;,\&quot;flexDirection\&quot;:\&quot;column\&quot;,\&quot;alignItems\&quot;:\&quot;center\&quot;,\&quot;justifyContent\&quot;:\&quot;center\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;style\&quot;,null,{\&quot;dangerouslySetInnerHTML\&quot;:{\&quot;__html\&quot;:\&quot;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\&quot;}}],[\&quot;$\&quot;,\&quot;h1\&quot;,null,{\&quot;className\&quot;:\&quot;next-error-h1\&quot;,\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;,\&quot;margin\&quot;:\&quot;0 20px 0 0\&quot;,\&quot;padding\&quot;:\&quot;0 23px 0 0\&quot;,\&quot;fontSize\&quot;:24,\&quot;fontWeight\&quot;:500,\&quot;verticalAlign\&quot;:\&quot;top\&quot;,\&quot;lineHeight\&quot;:\&quot;49px\&quot;},\&quot;children\&quot;:404}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;h2\&quot;,null,{\&quot;style\&quot;:{\&quot;fontSize\&quot;:14,\&quot;fontWeight\&quot;:400,\&quot;lineHeight\&quot;:\&quot;49px\&quot;,\&quot;margin\&quot;:0},\&quot;children\&quot;:\&quot;This page could not be found.\&quot;}]}]]}]}]],[]],\&quot;forbidden\&quot;:\&quot;$undefined\&quot;,\&quot;unauthorized\&quot;:\&quot;$undefined\&quot;}]}]}]}]]}],{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[\&quot;$L5\&quot;,null,[\&quot;$\&quot;,\&quot;$L6\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$7\&quot;,null,{\&quot;name\&quot;:\&quot;Next.MetadataOutlet\&quot;,\&quot;children\&quot;:\&quot;$@8\&quot;}]}]]}],{},null,false,null]},null,false,null],[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;h\&quot;,{\&quot;children\&quot;:[null,[\&quot;$\&quot;,\&quot;$L9\&quot;,null,{\&quot;children\&quot;:\&quot;$La\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;hidden\&quot;:true,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$Lb\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$7\&quot;,null,{\&quot;name\&quot;:\&quot;Next.Metadata\&quot;,\&quot;children\&quot;:\&quot;$Lc\&quot;}]}]}],[\&quot;$\&quot;,\&quot;meta\&quot;,null,{\&quot;name\&quot;:\&quot;next-size-adjust\&quot;,\&quot;content\&quot;:\&quot;\&quot;}]]}],false]],\&quot;m\&quot;:\&quot;$undefined\&quot;,\&quot;G\&quot;:[\&quot;$d\&quot;,[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]]],\&quot;S\&quot;:false,\&quot;h\&quot;:null,\&quot;s\&quot;:\&quot;$undefined\&quot;,\&quot;l\&quot;:\&quot;$undefined\&quot;,\&quot;p\&quot;:\&quot;$undefined\&quot;,\&quot;d\&quot;:\&quot;$undefined\&quot;,\&quot;b\&quot;:\&quot;r6PjIMGFiAecQFMDCwFpX\&quot;}\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;a:[[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;0\&quot;,{\&quot;charSet\&quot;:\&quot;utf-8\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;viewport\&quot;,\&quot;content\&quot;:\&quot;width=device-width, initial-scale=1\&quot;}]]\n8:null\nc:[[\&quot;$\&quot;,\&quot;title\&quot;,\&quot;0\&quot;,{\&quot;children\&quot;:\&quot;Gestión de Tareas\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;description\&quot;,\&quot;content\&quot;:\&quot;Aplicación de gestión de tareas con roles y panel de administración\&quot;}],[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;2\&quot;,{\&quot;rel\&quot;:\&quot;icon\&quot;,\&quot;href\&quot;:\&quot;/favicon.ico?favicon.2vob68tjqpejf.ico\&quot;,\&quot;sizes\&quot;:\&quot;256x256\&quot;,\&quot;type\&quot;:\&quot;image/x-icon\&quot;}],[\&quot;$\&quot;,\&quot;$Le\&quot;,\&quot;3\&quot;,{}]]\n5:E{\&quot;digest\&quot;:\&quot;NEXT_REDIRECT;replace;/login;307;\&quot;}\n&quot;])&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	
+	
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Asegúrese de que no se filtre información confidencial a través de las respuestas de redirección. Las respuestas de redireccionamiento casi no deben tener contenido.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				
+				  
+				 
+				
+				
+				
+				
+				<li id="alerts--risk-0-confidence-2">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Informativo</span>, <span>Confidence</span>=<span
+							class="confidence-level">Media</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:3000</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-5">Aplicación Web Moderna</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:3000/robots.txt</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_DEV_STD = </span>
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>La aplicación parece ser una aplicación web moderna. Si necesita explorarla automáticamente, el Ajax Spider puede ser más eficaz que el estándar.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>No se han encontrado enlaces aunque sí scripts, lo que indica que se trata de una aplicación web moderna.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (239 bytes)</summary>
+				
+				<pre><code>GET http://localhost:3000/robots.txt HTTP/1.1
+host: localhost:3000
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (487 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 404 Not Found
+Cache-Control: private, no-cache, no-store, max-age=0, must-revalidate
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+x-nextjs-cache: HIT
+x-nextjs-prerender: 1
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+X-Powered-By: Next.js
+ETag: &quot;6el7chl9kh787&quot;
+Content-Type: text/html; charset=utf-8
+Content-Length: 9375
+Date: Mon, 13 Jul 2026 08:52:37 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (9375 bytes)</summary>
+				
+				<pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;es&quot; class=&quot;geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased&quot;&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/_next/static/chunks/2--41e9dr5k0c.css&quot; data-precedence=&quot;next&quot;/&gt;&lt;link rel=&quot;preload&quot; as=&quot;script&quot; fetchPriority=&quot;low&quot; href=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/27jktro2p5rq9.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/43_bvheqq33cs.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2y9f-agwmqhef.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/turbopack-0wyufvu3bxs8d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/2lirpf2zolb8_.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/_next/static/chunks/14mrh2-p_w84d.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;meta name=&quot;robots&quot; content=&quot;noindex&quot;/&gt;&lt;meta name=&quot;next-size-adjust&quot; content=&quot;&quot;/&gt;&lt;title&gt;404: This page could not be found.&lt;/title&gt;&lt;title&gt;Gestión de Tareas&lt;/title&gt;&lt;meta name=&quot;description&quot; content=&quot;Aplicación de gestión de tareas con roles y panel de administración&quot;/&gt;&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico?favicon.2vob68tjqpejf.ico&quot; sizes=&quot;256x256&quot; type=&quot;image/x-icon&quot;/&gt;&lt;script src=&quot;/_next/static/chunks/0cz1d0mv5g_q7.js&quot; noModule=&quot;&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body class=&quot;min-h-full flex flex-col bg-slate-50 text-slate-900&quot;&gt;&lt;div hidden=&quot;&quot;&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;/div&gt;&lt;div style=&quot;font-family:system-ui,&amp;quot;Segoe UI&amp;quot;,Roboto,Helvetica,Arial,sans-serif,&amp;quot;Apple Color Emoji&amp;quot;,&amp;quot;Segoe UI Emoji&amp;quot;;height:100vh;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center&quot;&gt;&lt;div&gt;&lt;style&gt;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}&lt;/style&gt;&lt;h1 class=&quot;next-error-h1&quot; style=&quot;display:inline-block;margin:0 20px 0 0;padding:0 23px 0 0;font-size:24px;font-weight:500;vertical-align:top;line-height:49px&quot;&gt;404&lt;/h1&gt;&lt;div style=&quot;display:inline-block&quot;&gt;&lt;h2 style=&quot;font-size:14px;font-weight:400;line-height:49px;margin:0&quot;&gt;This page could not be found.&lt;/h2&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;div class=&quot;fixed bottom-4 right-4 z-50 flex flex-col gap-2 w-[calc(100%-2rem)] max-w-sm&quot;&gt;&lt;/div&gt;&lt;script src=&quot;/_next/static/chunks/10qk6v6416kh8.js&quot; id=&quot;_R_&quot; async=&quot;&quot;&gt;&lt;/script&gt;&lt;script&gt;(self.__next_f=self.__next_f||[]).push([0])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;1:\&quot;$Sreact.fragment\&quot;\n2:I[83036,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ToastProvider\&quot;]\n3:I[39756,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n4:I[37457,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;]\n5:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;OutletBoundary\&quot;]\n6:\&quot;$Sreact.suspense\&quot;\n9:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;ViewportBoundary\&quot;]\nb:I[97367,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;MetadataBoundary\&quot;]\nd:I[68027,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;default\&quot;,1]\n:HL[\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;style\&quot;]\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;0:{\&quot;P\&quot;:null,\&quot;c\&quot;:[\&quot;\&quot;,\&quot;_not-found\&quot;],\&quot;q\&quot;:\&quot;\&quot;,\&quot;i\&quot;:false,\&quot;f\&quot;:[[[\&quot;\&quot;,{\&quot;children\&quot;:[\&quot;/_not-found\&quot;,{\&quot;children\&quot;:[\&quot;__PAGE__\&quot;,{}]}]},\&quot;$undefined\&quot;,\&quot;$undefined\&quot;,16],[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-0\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}],[\&quot;$\&quot;,\&quot;script\&quot;,\&quot;script-1\&quot;,{\&quot;src\&quot;:\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;,\&quot;async\&quot;:true,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]],[\&quot;$\&quot;,\&quot;html\&quot;,null,{\&quot;lang\&quot;:\&quot;es\&quot;,\&quot;className\&quot;:\&quot;geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;body\&quot;,null,{\&quot;className\&quot;:\&quot;min-h-full flex flex-col bg-slate-50 text-slate-900\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L2\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$L3\&quot;,null,{\&quot;parallelRouterKey\&quot;:\&quot;children\&quot;,\&quot;error\&quot;:\&quot;$undefined\&quot;,\&quot;errorStyles\&quot;:\&quot;$undefined\&quot;,\&quot;errorScripts\&quot;:\&quot;$undefined\&quot;,\&quot;template\&quot;:[\&quot;$\&quot;,\&quot;$L4\&quot;,null,{}],\&quot;templateStyles\&quot;:\&quot;$undefined\&quot;,\&quot;templateScripts\&quot;:\&quot;$undefined\&quot;,\&quot;notFound\&quot;:[[[\&quot;$\&quot;,\&quot;title\&quot;,null,{\&quot;children\&quot;:\&quot;404: This page could not be found.\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;fontFamily\&quot;:\&quot;system-ui,\\\&quot;Segoe UI\\\&quot;,Roboto,Helvetica,Arial,sans-serif,\\\&quot;Apple Color Emoji\\\&quot;,\\\&quot;Segoe UI Emoji\\\&quot;\&quot;,\&quot;height\&quot;:\&quot;100vh\&quot;,\&quot;textAlign\&quot;:\&quot;center\&quot;,\&quot;display\&quot;:\&quot;flex\&quot;,\&quot;flexDirection\&quot;:\&quot;column\&quot;,\&quot;alignItems\&quot;:\&quot;center\&quot;,\&quot;justifyContent\&quot;:\&quot;center\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;style\&quot;,null,{\&quot;dangerouslySetInnerHTML\&quot;:{\&quot;__html\&quot;:\&quot;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\&quot;}}],[\&quot;$\&quot;,\&quot;h1\&quot;,null,{\&quot;className\&quot;:\&quot;next-error-h1\&quot;,\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;,\&quot;margin\&quot;:\&quot;0 20px 0 0\&quot;,\&quot;padding\&quot;:\&quot;0 23px 0 0\&quot;,\&quot;fontSize\&quot;:24,\&quot;fontWeight\&quot;:500,\&quot;verticalAlign\&quot;:\&quot;top\&quot;,\&quot;lineHeight\&quot;:\&quot;49px\&quot;},\&quot;children\&quot;:404}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:{\&quot;display\&quot;:\&quot;inline-block\&quot;},\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;h2\&quot;,null,{\&quot;style\&quot;:{\&quot;fontSize\&quot;:14,\&quot;fontWeight\&quot;:400,\&quot;lineHeight\&quot;:\&quot;49px\&quot;,\&quot;margin\&quot;:0},\&quot;children\&quot;:\&quot;This page could not be found.\&quot;}]}]]}]}]],[]],\&quot;forbidden\&quot;:\&quot;$undefined\&quot;,\&quot;unauthorized\&quot;:\&quot;$undefined\&quot;}]}]}]}]]}],{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[null,[\&quot;$\&quot;,\&quot;$L3\&quot;,null,{\&quot;parallelRouterKey\&quot;:\&quot;children\&quot;,\&quot;error\&quot;:\&quot;$undefined\&quot;,\&quot;errorStyles\&quot;:\&quot;$undefined\&quot;,\&quot;errorScripts\&quot;:\&quot;$undefined\&quot;,\&quot;template\&quot;:[\&quot;$\&quot;,\&quot;$L4\&quot;,null,{}],\&quot;templateStyles\&quot;:\&quot;$undefined\&quot;,\&quot;templateScripts\&quot;:\&quot;$undefined\&quot;,\&quot;notFound\&quot;:\&quot;$undefined\&quot;,\&quot;forbidden\&quot;:\&quot;$undefined\&quot;,\&quot;unauthorized\&quot;:\&quot;$undefined\&quot;}]]}],{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;c\&quot;,{\&quot;children\&quot;:[[[\&quot;$\&quot;,\&quot;title\&quot;,null,{\&quot;children\&quot;:\&quot;404: This page could not be found.\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:style\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;style\&quot;,null,{\&quot;dangerouslySetInnerHTML\&quot;:{\&quot;__html\&quot;:\&quot;body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\&quot;}}],[\&quot;$\&quot;,\&quot;h1\&quot;,null,{\&quot;className\&quot;:\&quot;next-error-h1\&quot;,\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:1:props:style\&quot;,\&quot;children\&quot;:404}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:style\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;h2\&quot;,null,{\&quot;style\&quot;:\&quot;$0:f:0:1:0:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style\&quot;,\&quot;children\&quot;:\&quot;This page could not be found.\&quot;}]}]]}]}]],null,[\&quot;$\&quot;,\&quot;$L5\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$6\&quot;,null,{\&quot;name\&quot;:\&quot;Next.MetadataOutlet\&quot;,\&quot;children\&quot;:\&quot;$@7\&quot;}]}]]}],{},null,false,null]},null,false,\&quot;$@8\&quot;]},null,false,null],[\&quot;$\&quot;,\&quot;$1\&quot;,\&quot;h\&quot;,{\&quot;children\&quot;:[[\&quot;$\&quot;,\&quot;meta\&quot;,null,{\&quot;name\&quot;:\&quot;robots\&quot;,\&quot;content\&quot;:\&quot;noindex\&quot;}],[\&quot;$\&quot;,\&quot;$L9\&quot;,null,{\&quot;children\&quot;:\&quot;$La\&quot;}],[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;hidden\&quot;:true,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$Lb\&quot;,null,{\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;$6\&quot;,null,{\&quot;name\&quot;:\&quot;Next.Metadata\&quot;,\&quot;children\&quot;:\&quot;$Lc\&quot;}]}]}],[\&quot;$\&quot;,\&quot;meta\&quot;,null,{\&quot;name\&quot;:\&quot;next-size-adjust\&quot;,\&quot;content\&quot;:\&quot;\&quot;}]]}],false]],\&quot;m\&quot;:\&quot;$undefined\&quot;,\&quot;G\&quot;:[\&quot;$d\&quot;,[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/chunks/2--41e9dr5k0c.css\&quot;,\&quot;precedence\&quot;:\&quot;next\&quot;,\&quot;crossOrigin\&quot;:\&quot;$undefined\&quot;,\&quot;nonce\&quot;:\&quot;$undefined\&quot;}]]],\&quot;S\&quot;:true,\&quot;h\&quot;:null,\&quot;s\&quot;:\&quot;$undefined\&quot;,\&quot;l\&quot;:\&quot;$undefined\&quot;,\&quot;p\&quot;:\&quot;$undefined\&quot;,\&quot;d\&quot;:\&quot;$undefined\&quot;,\&quot;b\&quot;:\&quot;r6PjIMGFiAecQFMDCwFpX\&quot;}\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;e:[]\n8:\&quot;$We\&quot;\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;a:[[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;0\&quot;,{\&quot;charSet\&quot;:\&quot;utf-8\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;viewport\&quot;,\&quot;content\&quot;:\&quot;width=device-width, initial-scale=1\&quot;}]]\n&quot;])&lt;/script&gt;&lt;script&gt;self.__next_f.push([1,&quot;f:I[27201,[\&quot;/_next/static/chunks/2lirpf2zolb8_.js\&quot;,\&quot;/_next/static/chunks/14mrh2-p_w84d.js\&quot;],\&quot;IconMark\&quot;]\n7:null\nc:[[\&quot;$\&quot;,\&quot;title\&quot;,\&quot;0\&quot;,{\&quot;children\&quot;:\&quot;Gestión de Tareas\&quot;}],[\&quot;$\&quot;,\&quot;meta\&quot;,\&quot;1\&quot;,{\&quot;name\&quot;:\&quot;description\&quot;,\&quot;content\&quot;:\&quot;Aplicación de gestión de tareas con roles y panel de administración\&quot;}],[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;2\&quot;,{\&quot;rel\&quot;:\&quot;icon\&quot;,\&quot;href\&quot;:\&quot;/favicon.ico?favicon.2vob68tjqpejf.ico\&quot;,\&quot;sizes\&quot;:\&quot;256x256\&quot;,\&quot;type\&quot;:\&quot;image/x-icon\&quot;}],[\&quot;$\&quot;,\&quot;$Lf\&quot;,\&quot;3\&quot;,{}]]\n&quot;])&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>&lt;script src=&quot;/_next/static/chunks/27jktro2p5rq9.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Se trata de una alerta informativa, por lo que no es necesario realizar ningún cambio.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				
+				  
+			</ol>
+		</section>
+
+		<section id="appendix" class="appendix">
+			<h2>Appendix</h2>
+
+			<section id="alert-types" class="alert-types">
+				<h3>Alert Types</h3>
+				<p class="alert-types-intro">This section contains additional information on the types of alerts in the report.</p>
+				<ol>
+					<li
+						id="alert-type-0">
+						<h4>Cabecera Content Security Policy (CSP) no configurada</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10038/">Cabecera Content Security Policy (CSP) no configurada</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP">https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</a></li>
+										<li><a
+											href="https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</a></li>
+										<li><a
+											href="https://www.w3.org/TR/CSP/">https://www.w3.org/TR/CSP/</a></li>
+										<li><a
+											href="https://w3c.github.io/webappsec-csp/">https://w3c.github.io/webappsec-csp/</a></li>
+										<li><a
+											href="https://web.dev/articles/csp">https://web.dev/articles/csp</a></li>
+										<li><a
+											href="https://caniuse.com/#feat=contentsecuritypolicy">https://caniuse.com/#feat=contentsecuritypolicy</a></li>
+										<li><a
+											href="https://content-security-policy.com/">https://content-security-policy.com/</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-1">
+						<h4>Falta de cabecera Anti-Clickjacking</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10020/">Cabecera Anti-Clickjacking</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/1021.html">1021</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options">https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-2">
+						<h4>El servidor divulga información mediante un campo(s) de encabezado de respuesta HTTP &#39;&#39;&#39;&#39;X-Powered-By&#39;&#39;&#39;&#39;</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10037/">El servidor divulga información mediante un campo(s) de encabezado de respuesta HTTP &#39;&#39;&#39;&#39;X-Powered-By&#39;&#39;&#39;&#39;</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/497.html">497</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>13</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework">https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</a></li>
+										<li><a
+											href="https://www.troyhunt.com/shhh-dont-let-your-response-headers/">https://www.troyhunt.com/shhh-dont-let-your-response-headers/</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-3">
+						<h4>Falta encabezado X-Content-Type-Options</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10021/">Falta encabezado X-Content-Type-Options</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)">https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</a></li>
+										<li><a
+											href="https://owasp.org/www-community/Security_Headers">https://owasp.org/www-community/Security_Headers</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-4">
+						<h4>Gran redirección detectada (posible fuga de información confidencial)</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10044/">Gran redirección detectada (posible fuga de información confidencial)</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/201.html">201</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>13</td>
+							</tr>
+							
+						</table>
+					</li>
+					<li
+						id="alert-type-5">
+						<h4>Aplicación Web Moderna</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10109/">Aplicación Web Moderna</a>)
+									</span>   
+								</td>
+							</tr>
+							
+							
+							
+						</table>
+					</li>
+				</ol>
+			</section>
+		</section>
+		 
+	</main>
+</body>
+</html>
+
+
+
