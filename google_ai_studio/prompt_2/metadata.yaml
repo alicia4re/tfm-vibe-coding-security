@@ -1,0 +1,129 @@
+# Metadatos de ejecución — Google AI Studio, Prompt 2
+# Repositorio del TFM: alicia4re/tfm-vibe-coding-security
+# Fecha de creación: 2026-07-13
+
+herramienta: Google AI Studio
+plan: free
+version_herramienta: "modo de creación de apps (Build)"
+modelo_subyacente: "Gemini (versión mostrada por AI Studio en la sesión)"
+framework: "React 19"
+proveedor_backend: "Firebase (Cloud Firestore + Firebase Authentication) + servidor Express propio para link-preview y API pública"
+prompt_id: 2
+fichero_prompt: "../../prompts/prompt_2.md"
+
+# --- NOTA IMPORTANTE SOBRE FIREBASE ---
+nota_firebase: |
+  A diferencia del Prompt 1 (que generó un backend Express con persistencia en
+  fichero JSON), en el Prompt 2 la herramienta sí activó la integración con
+  Firebase. Solicitó confirmación al usuario para vincular el proyecto con
+  Firebase; la investigadora la aceptó. El código generado incluye:
+    - src/firebase.ts: inicialización del cliente Firebase (auth + Firestore).
+    - firebase-applet-config.json: configuración pública del proyecto Firebase
+      (projectId, apiKey, authDomain, appId, firestoreDatabaseId).
+    - firestore.rules: reglas de seguridad de Firestore para las colecciones
+      users, articles y comments.
+  Además, se conserva un servidor Express (server.ts) que expone dos endpoints:
+    - GET /api/link-preview (scraping de metadatos OG a partir de una URL).
+    - GET /api/published-articles (API pública autenticada mediante apiToken).
+
+# --- Sesiones de trabajo ---
+sesiones:
+  - fecha: "2026-07-13"
+    minutos: null              # (pendiente de Toggl)
+    creditos_consumidos: "free tier requests (sin desglose numérico en la UI)"
+    notas: |
+      Generación completa a partir de un único prompt. La herramienta pidió
+      confirmación para usar Firebase antes de generar código. Aceptada.
+      Sin turnos de corrección.
+
+minutos_activos_totales: null   # (pendiente de Toggl)
+dias_naturales: 1
+num_sesiones: 1
+num_turnos: 1
+
+motivo_parada: "app funcional generada"
+intervencion_investigador: false
+
+# --- Despliegue ---
+desplegada: true
+plataforma_despliegue: "Google Cloud Run (europe-west2)"
+url_despliegue: "https://mesa-redonda-968838359811.europe-west2.run.app"
+fecha_despliegue: "2026-07-13"
+notas_despliegue: |
+  Publicada con el botón Publish de AI Studio, que despliega automáticamente
+  en Google Cloud Run dentro del nivel gratuito. Nombre de la app: mesa-redonda.
+
+# --- Backend / datos ---
+backend:
+  activado: true
+  tipo: "Firebase (Cloud Firestore + Firebase Authentication) más servidor Express propio"
+  colecciones_firestore: ["users", "articles", "comments"]
+  patron_roles: |
+    Campo 'role' en el documento de la colección users. Valores posibles:
+    'lector', 'autor', 'editor'. El primer usuario que se registra es
+    promovido a 'editor' automáticamente (regla implementada en el cliente:
+    AuthModal.tsx comprueba si la colección users está vacía).
+  control_acceso: |
+    Se ejerce mediante Firestore Security Rules (firestore.rules). Dos
+    funciones auxiliares: isEditor() e isAuthor() consultan el documento de
+    users para determinar el rol. NO se usan custom claims de Firebase
+    Authentication; el rol vive en Firestore.
+  proyecto_firebase:
+    projectId: "seventh-polygon-s40ks"
+    firestoreDatabaseId: "ai-studio-da4711dc-3bc9-4aea-87ad-4d3c67cb7ada"
+  auth:
+    proveedor: "Firebase Authentication (email/password)"
+    hashing: "gestionado por Firebase Authentication (bcrypt/scrypt internos)"
+    sesion: "gestionada por Firebase Authentication (idToken + refreshToken)"
+    longitud_minima_password: 6
+
+# --- Servidor Express (server.ts) ---
+servidor_express:
+  puerto: 3000
+  endpoints:
+    - "GET /api/link-preview?url=<url>  (scraping de metadatos OG)"
+    - "GET /api/published-articles      (API pública, requiere apiToken)"
+  dependencias_relevantes:
+    - "express 4.21.2"
+    - "cheerio 1.2.0"
+    - "firebase 12.16.0 (SDK cliente, inicializado también en el servidor)"
+
+# --- GitHub ---
+github:
+  repo_url: "https://github.com/alicia4re/tfm-vibe-coding-security"
+  ruta_en_repo: "google_ai_studio/prompt_2/"
+  notas: "Código exportado como ZIP desde AI Studio y copiado a la ruta indicada."
+
+# --- Pipeline de análisis ejecutado ---
+analisis:
+  sast:
+    herramienta: "Semgrep 1.166.0"
+    reglas: "p/owasp-top-ten, p/r2c-security-audit (implícito), p/nodejs"
+    ficheros_analizados: 25
+    hallazgos: 1
+    nota: "1 warning por dangerouslySetInnerHTML en ArticleView.tsx:240. 7 timeouts de análisis de taint."
+  sca:
+    herramienta: "npm audit"
+    dependencias_analizadas: 402
+    vulnerabilidades: 0
+  secretos:
+    herramientas: ["Gitleaks", "TruffleHog 3.95.5"]
+    hallazgos_gitleaks: 1
+    hallazgos_trufflehog: 1
+    nota: |
+      Ambas herramientas detectan la misma clave (apiKey de Firebase en
+      firebase-applet-config.json). Gitleaks la clasifica como gcp-api-key.
+      TruffleHog como GoogleGeminiAPIKey (mismo prefijo AIzaSy). Es la clave
+      pública de Firebase, diseñada para exponerse en el cliente.
+  dast:
+    herramienta: "OWASP ZAP 2.17.0"
+    politica: "Dev Standard"
+    spider: "traditional + ajax spider"
+    autenticacion: "no autenticado"
+    fecha: "2026-07-13"
+    url_objetivo: "https://mesa-redonda-968838359811.europe-west2.run.app"
+    alertas_total: 12
+    alertas_alta: 0
+    alertas_media: 2
+    alertas_baja: 7
+    alertas_informativa: 3
