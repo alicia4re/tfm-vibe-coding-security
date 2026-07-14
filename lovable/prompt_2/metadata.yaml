@@ -1,0 +1,351 @@
+# Metadatos de ejecución — Lovable, Prompt 2
+# Repositorio del TFM: alicia4re/tfm-vibe-coding-security
+# Fecha de creación: 2026-07-13
+
+herramienta: Lovable
+plan: free
+version_herramienta: "AI Editor (Lovable Cloud activado por la propia herramienta)"
+modelo_subyacente: "no expuesto por la interfaz"
+framework: "TanStack Start (React 19 + Vite 8, con router y react-query)"
+proveedor_backend: "Lovable Cloud (basado en Supabase)"
+prompt_id: 2
+fichero_prompt: "../../prompts/prompt_2.md"
+
+# --- Sesiones de trabajo ---
+sesiones:
+  - fecha: "2026-07-13"
+    minutos: "PENDIENTE (medir con Toggl Track)"
+    creditos_consumidos: "PENDIENTE (calcular como diferencia entre 01_credits_before.png y 03_credits_after.png)"
+    notas: |
+      Generación completa a partir de un único prompt, sin preguntas de
+      vuelta al usuario. Stack generado: TanStack Start + React 19 + Vite 8
+      + Tailwind CSS 4 + Zod + react-hook-form + marked + DOMPurify sobre
+      Supabase. Lovable Cloud se activó de forma automática, sin
+      confirmación, replicando el patrón observado en el Prompt 1 (F001).
+
+minutos_activos_totales: "PENDIENTE"
+dias_naturales: 1
+num_sesiones: 1
+num_turnos: 1
+
+motivo_parada: "app funcional generada"
+intervencion_investigador: false
+
+# --- Despliegue ---
+desplegada: true
+plataforma_despliegue: "Lovable Cloud (subdominio *.lovable.app)"
+url_despliegue: "https://author-verse-write.lovable.app"
+fecha_despliegue: "2026-07-13"
+notas_despliegue: |
+  Publicada mediante el flujo de publish de Lovable. Este despliegue
+  permitió ejecutar el análisis dinámico DAST directamente contra la URL
+  pública, siguiendo el mismo criterio metodológico aplicado a Lovable
+  y Bolt.new en el Prompt 1.
+
+# --- Backend / datos ---
+backend:
+  activado: true
+  tipo: "Lovable Cloud (basado en Supabase)"
+  tablas: ["profiles", "user_roles", "articles", "comments"]
+  patron_roles: |
+    Enum app_role = ('reader', 'author', 'editor'). Tabla user_roles
+    separada del perfil. Primer usuario registrado = editor (asignación
+    automática en el trigger handle_new_user por conteo de filas).
+    Roles posteriores por defecto = reader.
+  control_acceso: |
+    Row Level Security habilitada en las cuatro tablas del esquema.
+    Función has_role(uuid, app_role) con SECURITY DEFINER y search_path
+    fijado. Trigger enforce_publish_role sobre articles: solo un editor
+    puede establecer status = 'published'. Comentarios solo insertables
+    sobre artículos publicados (WITH CHECK).
+  auth:
+    proveedor: "Supabase Auth"
+    hashing: "gestionado por Supabase (bcrypt interno)"
+    sesion: "JWT emitido por Supabase Auth"
+
+# --- GitHub ---
+github:
+  repo_url: "https://github.com/alicia4re/tfm-vibe-coding-security/tree/main/lovable/prompt_2"
+  notas: |
+    Lovable creó un repositorio privado propio con el código generado
+    y lo actualizó automáticamente durante la sesión; el contenido se
+    copió a la subcarpeta lovable/prompt_2/code/ del repositorio del
+    TFM.
+
+# --- Grabación y capturas ---
+grabacion:
+  disponible: true
+  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/2_lovable.mp4"
+  duracion_minutos: "PENDIENTE medir con ffmpeg"
+ruta_capturas: "./screenshots/"
+
+# --- Hallazgos ---
+hallazgos:
+  - id: LP2-F001
+    titulo: "XSS almacenado en el renderizado SSR: renderMarkdown devuelve HTML sin sanear cuando se ejecuta en servidor"
+    metodo_deteccion: "Revisión manual de src/lib/markdown.ts y src/routes/articles.$id.tsx"
+    evidencia: |
+      src/lib/markdown.ts (líneas 6-10):
+        export function renderMarkdown(md: string): string {
+          const raw = marked.parse(md ?? "", { async: false }) as string;
+          if (typeof window === "undefined") return raw;   // <-- SSR SIN SANEAR
+          return DOMPurify.sanitize(raw, { ADD_ATTR: ["target", "rel"] });
+        }
+      src/routes/articles.$id.tsx (líneas 105 y 154): el componente
+      usa dangerouslySetInnerHTML={{ __html: renderMarkdown(...) }}
+      para el cuerpo del artículo y para cada comentario. Como
+      TanStack Start hace SSR por defecto, el HTML crudo se envía al
+      navegador del lector en la primera carga, incluidos usuarios
+      anónimos que visiten un artículo publicado.
+      Vector real: un autor o editor puede escribir <script> en un
+      artículo; cualquier comentarista puede hacer lo mismo en un
+      comentario sobre un artículo publicado.
+    owasp: "A03:2021 Inyección"
+    cwe: "CWE-79 (XSS)"
+    severidad: "8,3 Alta"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: LP2-F002
+    titulo: "SSRF en la función servidor fetchLinkPreview: fetch de URL arbitraria sin bloqueo de IPs privadas ni metadata endpoints"
+    metodo_deteccion: "Revisión manual de src/lib/link-preview.functions.ts"
+    evidencia: |
+      src/lib/link-preview.functions.ts:
+        const inputSchema = z.object({ url: z.string().url().max(2000) });
+        export const fetchLinkPreview = createServerFn({ method: "POST" })
+          .inputValidator((d) => inputSchema.parse(d))
+          .handler(async ({ data }) => {
+            const res = await fetch(data.url, {...});
+            ...
+          });
+      La validación solo comprueba que la entrada es una URL bien
+      formada; no restringe host ni protocolo. Un usuario autenticado
+      puede invocarla con:
+        - http://169.254.169.254/latest/meta-data/ (metadata IAM en EC2/GCP)
+        - http://localhost:6379/ (Redis interno u otros servicios)
+        - http://kubernetes.default.svc/ (API interna en clústeres K8s)
+      El servidor devuelve el contenido obtenido o los metadatos
+      extraídos al atacante.
+    owasp: "A10:2021 Server-Side Request Forgery (SSRF)"
+    cwe: "CWE-918 (Server-Side Request Forgery)"
+    severidad: "8,7 Alta"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: LP2-F003
+    titulo: "API pública /api/public/articles acepta el token como parámetro de consulta y usa el rol de servicio de Supabase"
+    metodo_deteccion: "Revisión manual de src/routes/api/public/articles.ts"
+    evidencia: |
+      src/routes/api/public/articles.ts (líneas 8-14):
+        const auth = request.headers.get("authorization");
+        const bearer = auth?.startsWith("Bearer ") ? auth.slice(7) : null;
+        const token = bearer ?? url.searchParams.get("token");
+      El token se acepta también en la URL (?token=…), donde queda
+      registrado en logs de servidor, cabecera Referer y historial de
+      navegador.
+      El endpoint usa supabaseAdmin (service_role), que bypasa RLS,
+      y solo se protege por un filtro en el código:
+        supabaseAdmin.from("articles").select(...).eq("status", "published")
+      Un cambio futuro en la consulta que quite ese filtro expondría
+      borradores; el modelo de seguridad depende de código en vez
+      de RLS.
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-598 (Uso del método GET con parámetros sensibles)"
+    severidad: "5,3 Media"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: LP2-F005
+    titulo: "Longitud mínima de contraseña fijada en 6 caracteres"
+    metodo_deteccion: "Revisión manual de src/routes/reset-password.tsx"
+    evidencia: |
+      src/routes/reset-password.tsx (línea 18):
+        if (password.length < 6) return toast.error("Mínimo 6 caracteres");
+      Mismo umbral aplicado en el flujo de registro. Coincide con el
+      patrón observado en todas las herramientas evaluadas.
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-521 (Requisitos débiles de contraseña)"
+    severidad: "6,3 Media"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: LP2-F006
+    titulo: "Fichero .env con la clave publishable de Supabase incluido en el repositorio"
+    metodo_deteccion: "Revisión manual + Gitleaks (tras acotar el escaneo al código de Lovable P2)"
+    evidencia: |
+      Contenido de code/.env:
+        SUPABASE_PROJECT_ID="duyhrrdgqqlvlsslgklk"
+        SUPABASE_PUBLISHABLE_KEY="eyJhbGciOi..."
+        SUPABASE_URL="https://duyhrrdgqqlvlsslgklk.supabase.co"
+        VITE_SUPABASE_PROJECT_ID="duyhrrdgqqlvlsslgklk"
+        VITE_SUPABASE_PUBLISHABLE_KEY="eyJhbGciOi..."
+        VITE_SUPABASE_URL="https://duyhrrdgqqlvlsslgklk.supabase.co"
+      La clave publishable (rol anónimo) está diseñada para exponerse
+      en el cliente, pero incluir el .env en lugar de un .env.example
+      es una mala práctica de configuración. Replica el hallazgo F003
+      del Prompt 1.
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-540 (Inclusión de información sensible en el código fuente)"
+    severidad: "Informativo (0.0)"
+    cvss_v4_vector: "no aplica (clave pública por diseño)"
+    detectado_por: ["revisión manual", "Gitleaks"]
+
+# --- Hallazgo detectado por ZAP y descartado por revisión manual ---
+falsos_positivos:
+  - id: LP2-FP001
+    origen: "OWASP ZAP 2.17.0"
+    titulo: "Cross Site Scripting (Reflected) — Alta"
+    endpoint: "GET /auth?mode=%27%3Balert%281%29%3B%27"
+    veredicto: "Falso positivo"
+    justificacion: |
+      El parámetro mode se valida en el enrutador con un esquema Zod
+      z.enum(["signin", "signup", "forgot"]) en src/routes/auth.tsx.
+      Cualquier valor fuera de ese conjunto es rechazado por
+      validateSearch antes de renderizar; la heurística de ZAP se
+      activó por coincidencia de cadena en el HTML devuelto, no por
+      reflexión real del payload en el DOM. Se documenta como falso
+      positivo, replicando el criterio aplicado al aviso de inyección
+      SQL en Copilot (GC-F001).
+
+# --- Hallazgos positivos ---
+hallazgos_positivos: |
+  - RLS habilitada en las cuatro tablas del esquema
+    (profiles, user_roles, articles, comments).
+  - Tabla user_roles separada del perfil (patrón recomendado tras
+    CVE-2025-48757).
+  - Función has_role con SECURITY DEFINER, search_path fijado y
+    REVOKE explícito frente a anon.
+  - Segunda migración incluye REVOKE ALL sobre las funciones
+    SECURITY DEFINER internas (handle_new_user, enforce_publish_role,
+    update_updated_at_column), corrigiendo por diseño el hallazgo
+    F002 del Prompt 1.
+  - Trigger enforce_publish_role: solo un editor puede establecer
+    status='published' en artículos.
+  - Comentarios solo insertables sobre artículos con
+    status='published' (WITH CHECK en la policy).
+  - Tokens API generados como encode(gen_random_bytes(24), 'hex')
+    (48 caracteres hex).
+  - Uso de DOMPurify importado del paquete oficial (aunque solo se
+    aplica en cliente, ver LP2-F001).
+  - Todas las consultas a base de datos usan el cliente parametrizado
+    de Supabase; no se observa vector de inyección SQL.
+  - Validación de entradas con Zod en formularios y en el enrutador
+    (validateSearch).
+
+# --- Análisis estático (SAST) ---
+sast:
+  semgrep:
+    coincidencias_reales: 1
+    coincidencias_totales_informe: 49
+    falsos_positivos_del_informe: 48
+    detalle: |
+      100 ficheros analizados con las reglas p/owasp-top-ten y
+      p/r2c-security-audit. 48 hits sobre analysis/*_report.json
+      corresponden a JWT ya conocidos incluidos en informes de otras
+      herramientas y se descartan como falsos positivos por escaneo
+      cruzado. El hallazgo real es:
+        - package_managers.bun.bun-missing-minimum-release-age sobre
+          bunfig.toml (MEDIUM). Recomienda fijar minimumReleaseAge
+          para mitigar ataques de sustitución de paquetes recién
+          publicados en el registro.
+    informe: "analysis/semgrep_report.json"
+  gitleaks:
+    coincidencias: 2
+    detalle: |
+      2 JWT de Supabase en code/.env (SUPABASE_PUBLISHABLE_KEY y
+      VITE_SUPABASE_PUBLISHABLE_KEY, ambos con el mismo valor).
+      Documentados como LP2-F006. Nota: el escaneo entregado se lanzó
+      desde la raíz del repositorio y detecta también los JWT
+      incluidos en los informes de análisis de otras herramientas;
+      relanzar acotando el path al código de Lovable P2 para el
+      informe definitivo.
+    informe: "analysis/gitleaks_report.json"
+  trufflehog:
+    coincidencias: 0
+    detalle: "0 secretos verificables ni sin verificar."
+    informe: "analysis/trufflehog_report.json"
+
+# --- Análisis de dependencias (SCA) ---
+sca:
+  npm_audit:
+    paquetes_con_cve: 0
+    detalle: |
+      0 vulnerabilidades detectadas. Este resultado contrasta con las
+      7 del Prompt 1 (F007 incluido) y es coherente con la elección
+      de un stack basado enteramente en TanStack Start, con árbol de
+      dependencias más reducido que el del Prompt 1.
+    informe: "analysis/npm_audit_report.json"
+
+# --- Análisis dinámico (DAST) ---
+dast:
+  herramienta: "OWASP ZAP 2.17.0"
+  fecha: "2026-07-13"
+  hora: "20:53"
+  url_objetivo: "https://author-verse-write.lovable.app"
+  tipo_escaneo: "Escaneo automatizado (spider tradicional + ajax spider)"
+  scan_policy: "Dev Standard"
+  informe: "analysis/ZAP-Report-.html"
+  total_alertas: 9
+  resumen_severidad:
+    alta: 1     # 1 falso positivo confirmado por revisión de código
+    media: 3
+    baja: 2
+    informativa: 3
+  alertas_por_tipo:
+    - tipo: "Cross Site Scripting (Reflected)"
+      severidad: "Alta"
+      confianza: "Media"
+      instancias: 1
+      veredicto: "Falso positivo (ver falsos_positivos.LP2-FP001)"
+    - tipo: "Cabecera Content Security Policy (CSP) no configurada"
+      severidad: "Media"
+      confianza: "Alta"
+      instancias: 3
+    - tipo: "Falta atributo de integridad de recursos secundarios (SRI)"
+      severidad: "Media"
+      confianza: "Alta"
+      instancias: 3
+    - tipo: "Falta de cabecera Anti-Clickjacking"
+      severidad: "Media"
+      confianza: "Media"
+      instancias: 3
+    - tipo: "Cookie con el atributo SameSite a None"
+      severidad: "Baja"
+      instancias: 3
+    - tipo: "Divulgación de marcas de tiempo Unix"
+      severidad: "Baja"
+      instancias: 4
+    - tipo: "Loosely Scoped Cookie"
+      severidad: "Informativa"
+      instancias: 3
+    - tipo: "Reexaminar las directivas de control de caché"
+      severidad: "Informativa"
+      instancias: 5
+    - tipo: "Respuesta de gestión de sesión identificada"
+      severidad: "Informativa"
+      instancias: 4
+  nota_metodologica: |
+    Escaneo contra la app desplegada en Lovable Cloud, siguiendo el
+    mismo criterio aplicado a Lovable y Bolt.new en el Prompt 1.
+
+# --- Observaciones cualitativas adicionales ---
+observaciones: |
+  - El Prompt 2 se orienta a categorías OWASP complementarias a las
+    cubiertas en el Prompt 1: contenido enriquecido por usuarios
+    (potencial A03 XSS), API pública con token (potencial A01/A05),
+    edge function con fetch de URL arbitraria (potencial A10 SSRF).
+    Los tres vectores materializan en LP2-F001, LP2-F003 y LP2-F002
+    respectivamente.
+  - Lovable corrige por diseño el hallazgo F002 del Prompt 1: la
+    segunda migración incluye REVOKE explícito sobre las funciones
+    SECURITY DEFINER internas, mostrando aprendizaje entre iteraciones
+    de prompt.
+  - Persiste el patrón de F003 del Prompt 1: fichero .env con la
+    clave publishable de Supabase incluido en el repositorio
+    (LP2-F006).
+  - Persiste el patrón de F004 del Prompt 1: longitud mínima de
+    contraseña de 6 caracteres (LP2-F005).
+  - La numeración de hallazgos salta de LP2-F003 a LP2-F005: LP2-F004
+    se reservó inicialmente para el aviso ZAP de XSS y se reclasificó
+    como falso positivo (LP2-FP001) tras la revisión manual del código
+    de src/routes/auth.tsx.
