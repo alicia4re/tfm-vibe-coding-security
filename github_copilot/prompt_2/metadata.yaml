@@ -1,0 +1,299 @@
+# --- Identificación ---
+herramienta: "GitHub Copilot"
+prompt: "P2 (blog multi-autor)"
+fecha_ejecucion: "2026-07-13"
+categoria: "asistente técnico (extensión de IDE)"
+
+# --- Entorno ---
+entorno:
+  modelo: "Copilot Chat (modo Agent)"
+  interfaz: "vscode-extension"
+  workspace: "C:/Master Ciberseguridad/25-26/TFM/tfm-vibe-coding-security/github_copilot/prompt_2/"
+  plan: "gratuito"
+  version_herramienta: null  # rellenar desde VS Code > Extensiones
+  os: "Windows 11"
+  node: "v20.12.1"
+
+# --- Métricas de generación ---
+generacion:
+  turnos_hasta_funcional: null   # rellenar desde las capturas de conversación (04-08_conv.png)
+  tiempo_generacion_minutos: null  # rellenar desde Toggl
+  creditos_o_tokens_consumidos: null  # rellenar con capturas 01/03
+  pregunta_aclaracion_previa: false
+  errores_manuales_corregidos: false
+
+# --- Stack técnico generado ---
+stack:
+  frontend: "EJS (plantillas server-side rendering), CSS estático, contentEditable como editor de texto enriquecido"
+  backend: "Express 4.21.2 (server.js monolítico, 340 líneas)"
+  base_datos: "SQLite vía better-sqlite3 9.1.0 (blog.db)"
+  editor_texto_enriquecido: "contentEditable + document.execCommand() en public/app.js (sin librería)"
+  auth:
+    hashing: "bcryptjs 2.4.3, coste 10"
+    sesion: "express-session 1.5.0, cookie maxAge 8h, sin httpOnly/secure/sameSite explícito"
+    session_secret: >
+      Fallback hardcodeado: process.env.SESSION_SECRET || 'blog-secret-key' (ver GC-F005).
+      No se genera fichero .env.
+    api_token: "crypto.randomBytes(24).toString('hex') por usuario, para endpoint /api/articles"
+  email: "sendPasswordResetEmail() simulado (console.log del enlace + URL mostrada en la respuesta HTML, ver GC-F012)"
+
+# --- GitHub ---
+github:
+  repo_url: "https://github.com/alicia4re/tfm-vibe-coding-security/tree/main/github_copilot/prompt_2"
+  notas: "Código generado en VS Code con Copilot Chat Agent y copiado manualmente."
+
+# --- Grabación y capturas ---
+grabacion:
+  disponible: true
+  ubicacion: null  # rellenar con nombre del vídeo
+ruta_capturas: "./screenshots/"
+
+# --- Hallazgos ---
+hallazgos:
+  - id: GC-F005
+    titulo: "Session secret con valor predecible hardcodeado como fallback"
+    metodo_deteccion: "Revisión manual de server.js"
+    evidencia: |
+      server.js línea 18: session({ secret: process.env.SESSION_SECRET || 'blog-secret-key' }).
+      No se genera fichero .env, por lo que el valor 'blog-secret-key' es el que se usa
+      siempre. Un atacante que lo conozca puede forjar cookies de sesión firmadas y
+      suplantar a cualquier usuario, incluido un editor. Ni Gitleaks ni TruffleHog
+      lo detectaron (baja entropía).
+    owasp: "A02:2021 Fallos Criptográficos"
+    cwe: "CWE-798 (Uso de credenciales hardcodeadas)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N"
+      base_score: 9.3
+      severidad: "Crítica"
+    detectado_por: ["revisión manual"]
+
+  - id: GC-F006
+    titulo: "XSS almacenado por render de HTML sin escapar en artículos y comentarios (EJS <%- %>)"
+    metodo_deteccion: "Revisión manual de views/article.ejs y public/app.js"
+    evidencia: |
+      article.ejs usa <%- article.content %> (línea 10) y <%- comment.content %>
+      (línea 46), la sintaxis de EJS que renderiza HTML sin escapar. El contenido del
+      artículo se genera con document.execCommand() en el cliente (public/app.js) y
+      se envía sin sanitización al servidor, que lo persiste en SQLite y lo sirve
+      sin filtro a todos los visitantes. Un autor puede inyectar <script> o
+      <img onerror=...> en un artículo o comentario. Además, la vista previa de
+      enlaces en initPreview() interpola data.title y data.image devueltos por
+      /api/preview directamente en innerHTML sin escapar, ofreciendo un segundo
+      vector si el servidor externo devuelve HTML malicioso en el <title>.
+      El XSS de comentarios es especialmente grave porque cualquier usuario
+      autenticado (incluido un lector) puede publicar comentarios en artículos
+      publicados.
+    owasp: "A03:2021 Inyección"
+    cwe: "CWE-79 (Cross-Site Scripting)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      base_score: 8.5
+      severidad: "Alta"
+    detectado_por: ["revisión manual"]
+
+  - id: GC-F007
+    titulo: "SSRF sin autenticación en /api/preview"
+    metodo_deteccion: "Revisión manual de server.js (líneas 312-327)"
+    evidencia: |
+      GET /api/preview?url=<URL> acepta cualquier URL como parámetro GET, NO exige
+      autenticación (no usa requireAuth), y hace fetch() a esa URL desde el servidor.
+      No se filtran destinos privados (localhost, 127.0.0.0/8, 10.0.0.0/8,
+      172.16.0.0/12, 192.168.0.0/16), endpoints de metadata cloud (169.254.169.254),
+      ni esquemas peligrosos (file://). Al no requerir sesión, cualquier cliente
+      anónimo puede usar el endpoint como proxy para escanear la red interna.
+      El endpoint extrae el <title> y og:image de la respuesta, pero el contenido
+      completo de la respuesta se procesa en el servidor.
+    owasp: "A10:2021 Server-Side Request Forgery"
+    cwe: "CWE-918 (Server-Side Request Forgery)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:L/SI:N/SA:N"
+      base_score: 8.8
+      severidad: "Alta"
+    detectado_por: ["revisión manual"]
+
+  - id: GC-F008
+    titulo: "Enumeración de usuarios en /request-reset"
+    metodo_deteccion: "Revisión manual de server.js (líneas 181-192)"
+    evidencia: |
+      La ruta POST /request-reset responde con "No existe una cuenta con ese correo"
+      si el email no está registrado, y con el enlace de reset (!) si sí existe. Un
+      atacante puede comprobar qué cuentas están registradas y, además, recibir
+      directamente el enlace de reset sin acceso al correo de la víctima (ver GC-F012).
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-203 (Exposición de información por discrepancia observable)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+      base_score: 6.9
+      severidad: "Media"
+    detectado_por: ["revisión manual"]
+
+  - id: GC-F009
+    titulo: "Sin validación de longitud ni complejidad de contraseña"
+    metodo_deteccion: "Revisión manual de server.js (register y reset-password)"
+    evidencia: |
+      Las rutas /register y /reset-password no validan la longitud de la contraseña.
+      Aceptan incluso contraseñas de un solo carácter. No hay comprobación de
+      complejidad ni de listas de contraseñas comprometidas.
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-521 (Requisitos débiles de contraseña)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+      base_score: 6.9
+      severidad: "Media"
+    detectado_por: ["revisión manual"]
+
+  - id: GC-F010
+    titulo: "Cookie de sesión sin flags de seguridad (httpOnly, secure, sameSite)"
+    metodo_deteccion: "Semgrep (6 hallazgos express-cookie-settings) + revisión manual"
+    evidencia: |
+      express-session se configura solo con secret, resave, saveUninitialized y
+      cookie.maxAge. No se establece name (se usa el default connect.sid), httpOnly,
+      secure, sameSite, domain ni path. Semgrep reportó 6 hallazgos independientes
+      sobre esta misma configuración. La cookie queda expuesta a robo vía XSS
+      (especialmente grave dado GC-F006) y a envío sobre HTTP sin cifrar.
+      ZAP confirmó "Cookie sin el atributo SameSite" (1 ocurrencia, Bajo).
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-614 (Cookie sin flag Secure)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+      base_score: 6.9
+      severidad: "Media"
+    detectado_por: ["Semgrep", "OWASP ZAP", "revisión manual"]
+
+  - id: GC-F011
+    titulo: "Ausencia de tokens anti-CSRF en todos los formularios"
+    metodo_deteccion: "OWASP ZAP (5 ocurrencias, Medio) + revisión manual"
+    evidencia: |
+      Ninguno de los formularios (register, login, request-reset, reset-password,
+      new article, edit article, change status, add comment) incluye un token CSRF.
+      express-session no configura cookie sameSite, lo que no mitiga el riesgo.
+      Un atacante puede engañar a un editor autenticado para que publique un
+      artículo, cambie un estado o modifique una contraseña mediante un enlace
+      malicioso. ZAP reportó 5 ocurrencias de "Ausencia de Tokens Anti-CSRF"
+      con riesgo Medio.
+    owasp: "A01:2021 Control de Acceso Roto"
+    cwe: "CWE-352 (Cross-Site Request Forgery)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+      base_score: 6.9
+      severidad: "Media"
+    detectado_por: ["OWASP ZAP", "revisión manual"]
+
+  - id: GC-F012
+    titulo: "URL de reset de contraseña mostrada directamente en la respuesta HTML"
+    metodo_deteccion: "Revisión manual de server.js (líneas 190-192)"
+    evidencia: |
+      Tras solicitar el reset, la ruta /request-reset renderiza el enlace completo
+      en el HTML de la respuesta: "En esta demo el enlace es: http://localhost:3000/
+      reset-password?token=<TOKEN>". Cualquier persona con acceso a la sesión del
+      navegador o a la red (sin HTTPS) puede capturar el token. Combinado con la
+      enumeración (GC-F008), un atacante puede resetear la contraseña de cualquier
+      usuario sin acceso a su correo.
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-640 (Mecanismo débil de recuperación de contraseña)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+      base_score: 6.9
+      severidad: "Media"
+    detectado_por: ["revisión manual"]
+
+  - id: GC-F013
+    titulo: "Ausencia de cabeceras de seguridad HTTP (CSP, X-Frame-Options, X-Content-Type-Options)"
+    metodo_deteccion: "OWASP ZAP + revisión manual"
+    evidencia: |
+      No existe middleware que establezca cabeceras de seguridad. ZAP reportó CSP
+      no configurada (5, Medio), Anti-Clickjacking ausente (5, Medio),
+      X-Content-Type-Options ausente (5, Bajo) y X-Powered-By divulgado (5, Bajo).
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-693 (Fallo del mecanismo de protección)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+      base_score: 5.1
+      severidad: "Media"
+    detectado_por: ["OWASP ZAP", "revisión manual"]
+
+# --- Hallazgos positivos ---
+hallazgos_positivos: |
+  - Todas las consultas SQL usan parámetros (db.prepare con ?), sin excepción.
+  - bcryptjs con coste 10 para el hash de contraseñas.
+  - Token de reset con crypto.randomBytes(24), expiración 30 minutos, borrado tras uso.
+  - API pública (/api/articles) protegida con token de API (Bearer o X-Api-Key).
+  - Solo los artículos publicados son visibles para usuarios no autenticados.
+  - Solo los editores pueden cambiar el estado de un artículo (publish/draft/in_review).
+  - Los autores no pueden auto-publicar; si eligen status=published, se redirige a in_review.
+  - No se generaron ficheros .env con credenciales reales de terceros.
+
+# --- Análisis estático (SAST) ---
+sast:
+  semgrep:
+    coincidencias: 6
+    detalle: |
+      6 hallazgos, todos sobre la configuración de express-session() en server.js:
+      default name (connect.sid), no domain, no expires, no httpOnly, no path,
+      no secure. Se documentan como un único hallazgo consolidado (GC-F010).
+    informe: "analysis/semgrep_report.json"
+  gitleaks:
+    coincidencias: 0
+    informe: "analysis/gitleaks_report.json"
+  trufflehog:
+    coincidencias: 0
+    detalle: "0 secretos (2386 chunks, 18 092 420 bytes). TruffleHog 3.95.5."
+    informe: "analysis/trufflehog_report.json"
+
+# --- Análisis de dependencias (SCA) ---
+sca:
+  npm_audit:
+    paquetes_con_cve: 0
+    detalle: |
+      0 vulnerabilidades en 118 dependencias. Stack mínimo (express, express-session,
+      bcryptjs, better-sqlite3, ejs) sin dependencias transitivas problemáticas.
+      No incluye nodemailer (email simulado con console.log), lo que evita las CVE
+      que afectaron a Copilot P1.
+    informe: "analysis/npm_audit_report.json"
+
+# --- Análisis dinámico (DAST) ---
+dast:
+  herramienta: "OWASP ZAP 2.17.0"
+  fecha: "2026-07-14"
+  url_objetivo: "http://localhost:3000"
+  tipo_escaneo: "Escaneo automatizado (spider tradicional + ajax spider)"
+  scan_policy: "Dev Standard"
+  autenticacion: "sin autenticación"
+  informe: "analysis/ZAP-Report-.html"
+  total_tipos_alerta: 9
+  resumen_severidad:
+    alta: 0
+    media: 3
+    baja: 3
+    informativa: 3
+  alertas_detalle:
+    - "Ausencia de Tokens Anti-CSRF — 5 ocurrencias, Medio"
+    - "Cabecera Content Security Policy (CSP) no configurada — 5 ocurrencias, Medio"
+    - "Falta de cabecera Anti-Clickjacking — 5 ocurrencias, Medio"
+    - "Cookie sin el atributo SameSite — 1 ocurrencia, Bajo"
+    - "Servidor divulga información mediante X-Powered-By — 5 ocurrencias, Bajo"
+    - "Falta encabezado X-Content-Type-Options — 5 ocurrencias, Bajo"
+    - "Atributo de elemento HTML controlable por el usuario (XSS potencial) — 1 ocurrencia, Informativo"
+    - "Petición de Autenticación Identificada — 1 ocurrencia, Informativo"
+    - "Respuesta de Gestión de Sesión Identificada — 1 ocurrencia, Informativo"
+  nota_metodologica: |
+    Escaneo contra localhost:3000 (Express), consistente con P1. Sin autenticación
+    previa. ZAP detectó tokens CSRF ausentes (Medio), una alerta que no aparecía
+    en Cursor P2 porque Next.js usa cookies con sameSite=lax por defecto.
+
+# --- Observaciones cualitativas adicionales ---
+observaciones: |
+  - Stack minimalista: Express monolítico (server.js, 340 líneas) con EJS y
+    SQLite, sin framework de frontend ni bundler. 118 dependencias totales,
+    frente a las 550 de Cursor P2.
+  - Editor de texto enriquecido implementado con contentEditable y
+    document.execCommand() (API obsoleta según MDN), sin librería como TipTap
+    o ProseMirror.
+  - La función stripHtml() (server.js) se usa solo para el listado de la home
+    (resumen de artículos), no para sanitizar el contenido persistido.
+  - /api/preview es GET sin autenticación, a diferencia de Cursor P2 que usa
+    POST con sesión requerida. Esto agrava el SSRF.
+  - La versión de express-session (1.5.0) data de 2014 — no es la más reciente
+    (1.18.x), aunque npm audit no la reporta como vulnerable.
+  - Patrón recurrente con P1: misma herramienta, mismo tipo de cookie sin flags,
+    mismo hallazgo de Semgrep (6 reglas express-cookie-settings).
