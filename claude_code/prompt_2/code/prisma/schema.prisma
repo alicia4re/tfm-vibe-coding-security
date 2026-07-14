@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// SQLite has no native enum support in Prisma; roles/status are validated
+// in the application layer (see src/lib/constants.ts).
+// Role: "READER" | "AUTHOR" | "EDITOR"
+// ArticleStatus: "DRAFT" | "IN_REVIEW" | "PUBLISHED"
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String   @default("READER")
+  apiToken     String   @unique @default(cuid())
+  createdAt    DateTime @default(now())
+
+  articles       Article[]
+  comments       Comment[]
+  resetTokens    PasswordResetToken[]
+}
+
+model Article {
+  id          String        @id @default(cuid())
+  title       String
+  slug        String        @unique
+  content     String // sanitized rich HTML
+  excerpt     String        @default("")
+  coverImage  String?
+  status      String        @default("DRAFT")
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  publishedAt DateTime?
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+
+  tags     Tag[]
+  comments Comment[]
+
+  @@index([status])
+}
+
+model Tag {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  articles Article[]
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String // sanitized basic-formatted HTML
+  createdAt DateTime @default(now())
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  articleId String
+
+  @@index([articleId])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  @@index([token])
+}
+
+model EmailLog {
+  id        String   @id @default(cuid())
+  to        String
+  subject   String
+  html      String
+  createdAt DateTime @default(now())
+}
