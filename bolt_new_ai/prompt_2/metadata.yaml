@@ -1,0 +1,390 @@
+# Metadatos de ejecución — Bolt.new, Prompt 2
+# Repositorio del TFM: alicia4re/tfm-vibe-coding-security
+# Fecha de creación: 2026-07-13
+
+herramienta: Bolt.new
+plan: free
+version_herramienta: "editor web"
+modelo_subyacente: "no expuesto por la interfaz"
+framework: "Vite 5 + React 18 (SPA, sin SSR)"
+proveedor_backend: "Bolt Database (basado en Supabase) + Supabase Edge Functions (Deno)"
+prompt_id: 2
+fichero_prompt: "../../prompts/prompt_2.md"
+
+# --- Sesiones de trabajo ---
+sesiones:
+  - fecha: "2026-07-13"
+    minutos: "PENDIENTE (medir con Toggl Track)"
+    creditos_consumidos: "PENDIENTE (calcular como diferencia entre 01_credits_before.png y 03_credits_after.png)"
+    notas: |
+      Generación completa a partir de un único prompt, sin preguntas de
+      vuelta al usuario. Stack generado: Vite 5 + React 18 + Supabase JS
+      + Lucide React + Tailwind CSS 3, sobre Bolt Database. Dos edge
+      functions Deno: link-preview y public-api. No usa Zod ni
+      react-hook-form; validación de entrada limitada a atributos HTML
+      y comprobaciones del cliente de Supabase. Implementa un
+      sanitizador HTML propio (SafeHtml.tsx) con whitelist estricta en
+      lugar de DOMPurify.
+
+minutos_activos_totales: "PENDIENTE"
+dias_naturales: 1
+num_sesiones: 1
+num_turnos: 1
+
+motivo_parada: "app funcional generada"
+intervencion_investigador: false
+
+# --- Despliegue ---
+desplegada: true
+plataforma_despliegue: "Bolt.host (subdominio *.bolt.host)"
+url_despliegue: "https://multi-author-blog-we-7dib.bolt.host"
+fecha_despliegue: "2026-07-13"
+notas_despliegue: |
+  Publicada mediante el flujo de publish de Bolt.new. Este despliegue
+  permitió ejecutar el análisis dinámico DAST directamente contra la
+  URL pública, siguiendo el mismo criterio metodológico aplicado a
+  Lovable, Bolt.new y Google AI Studio en el Prompt 1.
+
+# --- Backend / datos ---
+backend:
+  activado: true
+  tipo: "Bolt Database (basado en Supabase)"
+  tablas: ["profiles", "articles", "comments"]
+  patron_roles: |
+    Enum implementado como CHECK constraint sobre columna text en la
+    propia tabla profiles: role IN ('reader', 'author', 'editor').
+    Primer usuario registrado = editor (asignación automática en el
+    trigger handle_new_user por conteo de filas). Roles posteriores
+    por defecto = reader.
+  control_acceso: |
+    Row Level Security habilitada en las tres tablas del esquema.
+    Trigger handle_new_user con SECURITY DEFINER. Las policies de
+    articles y comments dependen de subconsultas EXISTS contra
+    public.profiles para comprobar el rol del usuario actual. NO
+    existe una tabla user_roles separada (patrón usado por Lovable);
+    el rol vive en la misma tabla profiles y es alcanzable por el
+    propio usuario (ver BP2-F001).
+  auth:
+    proveedor: "Supabase Auth"
+    hashing: "gestionado por Supabase (bcrypt interno)"
+    sesion: "JWT emitido por Supabase Auth"
+    reset_password: "flujo estándar de Supabase (resetPasswordForEmail + redirectTo)"
+
+  edge_functions:
+    - nombre: "link-preview"
+      metodo: "POST"
+      auth: "no requiere autenticación explícita en el código; Supabase Edge Functions verifica JWT por defecto salvo desactivación"
+      valida_protocolo: true         # http|https
+      valida_host: false             # SSRF vigente
+      sigue_redirects: true          # redirect: "follow"
+      cors_origin: "*"
+      hallazgo: "BP2-F003"
+    - nombre: "public-api"
+      metodo: "GET"
+      auth: "Authorization: Bearer <api_token> (validado contra profiles.api_token)"
+      usa_service_role: true         # bypass RLS
+      filtro_status_en_codigo: ".eq('status', 'published')"
+      devuelve_email_en_respuesta: true  # PII innecesaria
+      hallazgo: "BP2-F004"
+
+# --- GitHub ---
+github:
+  repo_url: "no creado automáticamente"
+  notas: |
+    Bolt.new no crea repositorio Git de forma automática. El código
+    se exportó como ZIP desde la interfaz de Bolt y se copió a la
+    subcarpeta bolt_new_ai/prompt_2/code/ del repositorio del TFM.
+
+# --- Grabación y capturas ---
+grabacion:
+  disponible: true
+  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/2_bolt_new.mp4"
+  duracion_minutos: "PENDIENTE medir con ffmpeg"
+ruta_capturas: "./screenshots/"
+
+# --- Hallazgos ---
+hallazgos:
+  - id: BP2-F001
+    titulo: "Escalada de privilegios: un usuario puede ascenderse a editor editando la columna de rol de su propio perfil"
+    metodo_deteccion: "Revisión manual de la migración SQL"
+    evidencia: |
+      supabase/migrations/20260713181729_create_blog_schema.sql:
+        CREATE POLICY "profiles_update_self_or_editor"
+        ON public.profiles FOR UPDATE
+        TO authenticated
+        USING (auth.uid() = id OR EXISTS (SELECT 1 FROM public.profiles p WHERE p.id = auth.uid() AND p.role = 'editor'))
+        WITH CHECK (auth.uid() = id OR EXISTS (SELECT 1 FROM public.profiles p WHERE p.id = auth.uid() AND p.role = 'editor'));
+
+      La condición auth.uid() = id habilita UPDATE completo sobre el
+      propio perfil, sin restringir qué columnas pueden modificarse.
+      El rol vive como columna text en la misma tabla, por lo que:
+        UPDATE profiles SET role = 'editor' WHERE id = auth.uid();
+      convierte al usuario en editor sin intervención adicional.
+      Reproduce de forma exacta el hallazgo B-F001 del Prompt 1
+      (misma herramienta, esquema de datos distinto): patrón
+      sistemático de Bolt.new.
+    owasp: "A01:2021 Pérdida de Control de Acceso"
+    cwe: "CWE-269 (Gestión de privilegios incorrecta)"
+    severidad: "8,6 Alta"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: BP2-F002
+    titulo: "Publicación de artículos sin control de rol: cualquier usuario autenticado puede saltarse el flujo de revisión"
+    metodo_deteccion: "Revisión manual de la migración SQL"
+    evidencia: |
+      supabase/migrations/20260713181729_create_blog_schema.sql:
+        CREATE POLICY "articles_insert"
+        ON public.articles FOR INSERT
+        TO authenticated
+        WITH CHECK (auth.uid() = author_id);
+      La policy solo comprueba que author_id coincide con el usuario;
+      no valida el rol ni restringe el status inicial. Un usuario
+      recién registrado (rol por defecto = 'reader') puede ejecutar:
+        INSERT INTO articles (title, content, author_id, status)
+        VALUES ('X', 'Y', auth.uid(), 'published');
+      Se salta el flujo draft → review → published previsto. No hay
+      trigger equivalente al enforce_publish_role de Lovable P2, que
+      obligaría al rol editor para publicar.
+    owasp: "A01:2021 Pérdida de Control de Acceso"
+    cwe: "CWE-284 (Control de acceso inadecuado)"
+    severidad: "6,9 Media"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: BP2-F003
+    titulo: "SSRF en la edge function link-preview: fetch a URLs arbitrarias con seguimiento automático de redirecciones"
+    metodo_deteccion: "Revisión manual de supabase/functions/link-preview/index.ts"
+    evidencia: |
+      supabase/functions/link-preview/index.ts:
+        if (!/^https?:$/.test(parsed.protocol)) { ... return 400 }
+        resp = await fetch(parsed.toString(), {
+          signal: controller.signal,
+          headers: {...},
+          redirect: "follow",              // <-- SSRF vigente
+        });
+      Sí valida protocolo (mejora respecto a Lovable LP2-F002, que no
+      valida esquema), pero no restringe el host destino y sigue
+      redirecciones automáticamente. Un atacante autenticado puede
+      apuntar a una URL propia que devuelve 302 hacia
+      http://169.254.169.254/latest/meta-data/ (metadata IAM en
+      EC2/GCP), http://localhost:6379/ o cualquier servicio interno
+      del entorno de ejecución, y obtener el contenido del recurso a
+      través de los metadatos OpenGraph extraídos por la función.
+      Además, la respuesta incluye Access-Control-Allow-Origin: *,
+      permitiendo la invocación desde cualquier origen.
+    owasp: "A10:2021 Server-Side Request Forgery (SSRF)"
+    cwe: "CWE-918 (Server-Side Request Forgery)"
+    severidad: "7,3 Media"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: BP2-F004
+    titulo: "Edge function public-api usa el rol de servicio de Supabase y devuelve el email del titular del token en cada respuesta"
+    metodo_deteccion: "Revisión manual de supabase/functions/public-api/index.ts"
+    evidencia: |
+      supabase/functions/public-api/index.ts:
+        const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+        const admin = createClient(supabaseUrl, serviceKey, {...});
+        // token validado contra profiles.api_token
+        // consulta:
+        admin.from("articles").select(...).eq("status", "published")
+        // respuesta:
+        JSON.stringify({ user: { email: profile.email, role: profile.role }, ... })
+      Dos debilidades combinadas:
+      (1) Uso de SERVICE_ROLE_KEY, que bypasa RLS por diseño; la
+          protección depende del filtro manual .eq("status","published"),
+          patrón frágil ante modificaciones futuras del endpoint.
+      (2) Devuelve profile.email en el campo user de cada respuesta,
+          un dato personal que no es necesario para el consumo de
+          artículos publicados. Cualquier consumidor con el token
+          obtiene el email del propietario.
+      Mejora respecto a Lovable LP2-F003: el token se exige en la
+      cabecera Authorization: Bearer, no en query string.
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-359 (Exposición de información personal)"
+    severidad: "5,3 Media"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: BP2-F005
+    titulo: "Longitud mínima de contraseña fijada en 6 caracteres"
+    metodo_deteccion: "Revisión manual de src/pages/AuthPage.tsx y src/pages/ResetPasswordPage.tsx"
+    evidencia: |
+      src/pages/AuthPage.tsx L108:
+        <input id="password" type="password" required minLength={6} ...>
+      src/pages/ResetPasswordPage.tsx L51:
+        <input id="np" type="password" required minLength={6} ...>
+      Función errorMessage (línea 12):
+        if (m.includes('Password should be at least')) return 'Password must be at least 6 characters.';
+      Mismo umbral en registro, login y reset. Coincide con el patrón
+      observado en todas las herramientas evaluadas.
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-521 (Requisitos débiles de contraseña)"
+    severidad: "6,3 Media"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: BP2-F006
+    titulo: "Fichero .env con la clave anon de Supabase incluido en el repositorio"
+    metodo_deteccion: "Gitleaks + revisión manual"
+    evidencia: |
+      Contenido de code/.env:
+        VITE_SUPABASE_URL=https://vkworbweylilremdoigh.supabase.co
+        VITE_SUPABASE_ANON_KEY=eyJhbGciOi...
+      Gitleaks detecta 1 hit sobre code/.env L2 (regla jwt).
+      La clave anon publishable está diseñada para exponerse en el
+      cliente, pero incluir el .env en lugar de un .env.example es
+      una mala práctica de configuración. Replica el hallazgo B-F002
+      del Prompt 1.
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-540 (Inclusión de información sensible en el código fuente)"
+    severidad: "Informativo (0.0)"
+    cvss_v4_vector: "no aplica (clave pública por diseño)"
+    detectado_por: ["Gitleaks", "revisión manual"]
+
+# --- Hallazgos positivos ---
+hallazgos_positivos: |
+  - Sanitizador HTML propio (src/components/SafeHtml.tsx) con
+    whitelist estricta de etiquetas y filtrado de atributos, aplicado
+    de forma consistente en las tres páginas que muestran contenido
+    de usuario (ArticleViewPage, HomePage, ReviewQueuePage) tanto
+    para artículos como para comentarios.
+  - Filtrado explícito de href (solo http:, https:, mailto:) y src
+    (solo http:, https:, data:image/) en el sanitizador.
+  - Aplicación SPA (sin SSR): la superficie de fallo por rama SSR
+    sin saneado observada en Lovable (LP2-F001) no aplica aquí.
+  - RLS habilitada en las tres tablas del esquema
+    (profiles, articles, comments).
+  - Policy profiles_insert_self correcta (WITH CHECK (auth.uid() = id)):
+    previene la creación de perfiles con identificador ajeno (el
+    hallazgo F006 del Prompt 1 de Lovable no se reproduce).
+  - Comentarios solo insertables sobre artículos con status='published'
+    (WITH CHECK en la policy correspondiente).
+  - Tokens API generados como encode(gen_random_bytes(24), 'hex')
+    (48 caracteres hex).
+  - Trigger handle_new_user con SECURITY DEFINER para asignar rol
+    de editor al primer usuario.
+  - public-api exige el token en la cabecera Authorization: Bearer;
+    no acepta paso por query string (mejora respecto a Lovable
+    LP2-F003).
+  - link-preview valida el protocolo (http/https) e impone timeout
+    de 8 s (mejora respecto a Lovable LP2-F002, que no valida
+    esquema).
+  - Contraseñas gestionadas íntegramente por Supabase Auth (hashing
+    bcrypt interno).
+
+# --- Análisis estático (SAST) ---
+sast:
+  semgrep:
+    coincidencias: 0
+    detalle: "38 ficheros analizados con las reglas p/owasp-top-ten y p/r2c-security-audit. 0 hallazgos."
+    informe: "analysis/semgrep_report.json"
+  gitleaks:
+    coincidencias: 1
+    detalle: "1 JWT de Supabase (VITE_SUPABASE_ANON_KEY) en code/.env L2. Documentado como BP2-F006."
+    informe: "analysis/gitleaks_report.json"
+  trufflehog:
+    coincidencias: 0
+    detalle: "0 secretos verificables ni sin verificar."
+    informe: "analysis/trufflehog_report.json"
+
+# --- Análisis de dependencias (SCA) ---
+sca:
+  npm_audit:
+    paquetes_con_cve: 18
+    resumen_severidad:
+      info: 0
+      low: 2
+      moderate: 8
+      high: 8
+      critical: 0
+    detalle: |
+      18 paquetes con CVE conocidas: 2 low, 8 moderate y 8 high.
+      Todas dentro de devDependencies (herramientas de compilación)
+      o transitivas de Vite (@babel/*, esbuild, rollup, glob,
+      cross-spawn, minimatch, picomatch, ws, flatted, brace-expansion,
+      ajv, js-yaml, yaml, nanoid, @eslint/plugin-kit) y postcss como
+      devDependency directa. Ninguna alcanza el bundle desplegado.
+      Perfil idéntico al Prompt 1 de Bolt.new: mismo número (18) y
+      misma clasificación (todas de build/dev).
+    informe: "analysis/npm_audit_report.json"
+
+# --- Análisis dinámico (DAST) ---
+dast:
+  herramienta: "OWASP ZAP 2.17.0"
+  fecha: "2026-07-13"
+  hora: "20:38"
+  url_objetivo: "https://multi-author-blog-we-7dib.bolt.host"
+  tipo_escaneo: "Escaneo automatizado (spider tradicional + ajax spider)"
+  scan_policy: "Dev Standard"
+  informe: "analysis/ZAP-Report-.html"
+  total_alertas: 10
+  resumen_severidad:
+    alta: 0
+    media: 3
+    baja: 4
+    informativa: 3
+  alertas_por_tipo:
+    - tipo: "Cabecera Content Security Policy (CSP) no configurada"
+      severidad: "Media"
+      confianza: "Alta"
+      instancias: 4
+    - tipo: "Falta atributo de integridad de recursos secundarios (SRI)"
+      severidad: "Media"
+      confianza: "Alta"
+      instancias: 5
+    - tipo: "Falta de cabecera Anti-Clickjacking"
+      severidad: "Media"
+      confianza: "Media"
+      instancias: 4
+    - tipo: "El servidor divulga información mediante cabecera X-Powered-By"
+      severidad: "Baja"
+      instancias: 5
+    - tipo: "Falta encabezado X-Content-Type-Options"
+      severidad: "Baja"
+      instancias: 5
+    - tipo: "Inclusión de archivos fuente JavaScript entre dominios"
+      severidad: "Baja"
+      instancias: 4
+    - tipo: "Strict-Transport-Security no establecido"
+      severidad: "Baja"
+      instancias: 1
+    - tipo: "Aplicación web moderna"
+      severidad: "Informativa"
+      instancias: 4
+    - tipo: "Recuperado de la caché"
+      severidad: "Informativa"
+      instancias: 5
+    - tipo: "Reexaminar las directivas de control de caché"
+      severidad: "Informativa"
+      instancias: 4
+  nota_metodologica: |
+    Escaneo contra la app desplegada en Bolt.host, siguiendo el mismo
+    criterio aplicado a las herramientas visuales full-stack en el
+    Prompt 1.
+
+# --- Observaciones cualitativas adicionales ---
+observaciones: |
+  - Reproducción exacta del hallazgo B-F001 del Prompt 1 (escalada
+    de privilegios por columna de rol modificable), sobre un esquema
+    de datos distinto. Es evidencia de patrón sistemático de
+    Bolt.new: falla la misma decisión de arquitectura en dos
+    generaciones consecutivas con contextos independientes.
+  - El sanitizador HTML propio (SafeHtml.tsx) es una decisión de
+    diseño interesante: reemplaza a DOMPurify por una implementación
+    ad hoc de ~70 líneas basada en DOMParser + whitelist de tags.
+    No introduce vulnerabilidad detectable, pero DOMPurify es el
+    estándar y absorbe descubrimientos futuros de mutation XSS que
+    un sanitizador propio tendría que actualizar a mano. Se
+    documenta como observación cualitativa, no como hallazgo.
+  - Ausencia de Zod y react-hook-form: Bolt.new es la única
+    herramienta del conjunto que no incorpora una biblioteca de
+    validación de entrada; se apoya solo en atributos HTML y en las
+    comprobaciones del cliente de Supabase.
+  - Persiste el patrón F004 del Prompt 1 (longitud mínima de
+    contraseña 6 caracteres), presente en todas las herramientas
+    evaluadas.
+  - Persiste el patrón F002 del Prompt 1 (.env con la clave anon
+    versionada), presente en todas las plataformas basadas en
+    Supabase.
