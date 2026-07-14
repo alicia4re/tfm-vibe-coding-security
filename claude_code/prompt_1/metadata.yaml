@@ -1,0 +1,286 @@
+# Metadatos de ejecución — Claude Code, Prompt 1
+# Repositorio del TFM: alicia4re/tfm-vibe-coding-security
+# Fecha de creación: 2026-07-13
+
+herramienta: Claude Code
+plan: "cuenta asociada (plan no expuesto en la UI)"
+version_herramienta: "claude-code/2.1.207"
+interface: "vscode-extension"
+modelo_subyacente: "Claude (versión asociada a claude-code/2.1.207)"
+framework: "Next.js 16 (App Router)"
+proveedor_backend: "Servidor Next.js propio + Prisma + SQLite (base de datos en fichero, empaquetado con Docker Compose)"
+prompt_id: 1
+fichero_prompt: "../../prompts/prompt_1.md"
+
+# --- Sesiones de trabajo ---
+sesiones:
+  - fecha: "2026-07-13"
+    minutos: 26
+    creditos_consumidos: "no expuestos en la interfaz de la extensión de VS Code"
+    notas: |
+      Generación completa a partir de un único prompt, sin preguntas de
+      vuelta. Stack generado: Next.js 16.2.10 + React 19 + Prisma 5.22 +
+      SQLite + bcryptjs + jose + nodemailer + Zod, empaquetado con Docker
+      Compose. Arrancó al primer intento con `docker compose up`.
+
+minutos_activos_totales: 26
+dias_naturales: 1
+num_sesiones: 1
+num_turnos: 1
+
+motivo_parada: "app funcional generada"
+intervencion_investigador: false
+
+# --- Despliegue ---
+desplegada: false
+plataforma_despliegue: "localhost (Docker Compose)"
+url_despliegue: "http://localhost:3000"
+fecha_despliegue: "2026-07-13"
+notas_despliegue: |
+  Sin despliegue público. La aplicación se ejecuta en localhost:3000
+  dentro de un contenedor Docker Compose para el análisis dinámico,
+  siguiendo el mismo criterio aplicado a GitHub Copilot y Cursor.
+
+# --- Backend / datos ---
+backend:
+  activado: true
+  tipo: "Servidor Next.js propio + Prisma ORM + SQLite (fichero prisma/dev.db). Empaquetado con Docker Compose."
+  tablas: ["User", "Task", "PasswordResetToken"]
+  patron_roles: "campo 'role' en el modelo User (USER/ADMIN); primer usuario registrado = ADMIN por count === 0"
+  control_acceso: |
+    Middleware de Edge (src/middleware.ts) que verifica el JWT de sesión
+    en las rutas /dashboard y /admin. Además, cada route handler bajo
+    /api/* invoca requireUser() o requireAdmin() de forma explícita. No
+    existe RLS a nivel de base de datos.
+  auth:
+    hashing: "bcryptjs, coste 10"
+    sesion: "JWT firmado con JWT_SECRET (biblioteca jose, HS256), cookie httpOnly + sameSite=lax + secure en producción, duración 7 días"
+    jwt_secret: "hardcodeado en docker-compose.yml: 'dev-secret-change-me-8f3a1c9e2b7d4f6a0e5c8b1d3f7a9e2c' (ver CC-F001)"
+
+# --- GitHub ---
+github:
+  repo_url: "https://github.com/alicia4re/tfm-vibe-coding-security/tree/main/claude_code/prompt_1"
+  notas: |
+    Código generado en local y volcado a la subcarpeta claude_code/prompt_1/code/
+    del repositorio. La primera ejecución (descartada por contaminación con
+    los ficheros de Copilot) se conserva en claude_code/prompt_1_DESCARTADA_evidencia_CC-F000/.
+
+# --- Grabación y capturas ---
+grabacion:
+  disponible: true
+  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/1_claude_code.mp4"
+  duracion_minutos: "pendiente medir con ffmpeg"
+ruta_capturas: "./screenshots/"
+
+# --- Hallazgos ---
+hallazgos:
+  - id: CC-F001
+    titulo: "JWT_SECRET con valor predecible codificado en docker-compose.yml (versionado en el repositorio)"
+    metodo_deteccion: "Revisión manual de docker-compose.yml y .env"
+    evidencia: |
+      docker-compose.yml, servicio 'app', variable de entorno:
+        JWT_SECRET: "dev-secret-change-me-8f3a1c9e2b7d4f6a0e5c8b1d3f7a9e2c"
+      A diferencia de .env (excluido por .gitignore), docker-compose.yml
+      sí se versiona en el repositorio, por lo que el secreto que firma
+      los tokens de sesión queda publicado junto con el código. Cualquier
+      atacante que lo conozca puede forjar sesiones de cualquier usuario.
+      Gitleaks y TruffleHog no lo detectaron por la baja entropía del
+      prefijo textual "dev-secret-change-me-".
+    owasp: "A02:2021 Fallos Criptográficos / A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-798 (Uso de credenciales hardcodeadas)"
+    severidad: "9,3 Crítica"
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N"
+    detectado_por: ["revisión manual"]
+
+  - id: CC-F002
+    titulo: "Dependencia transitiva postcss <8.5.10 con XSS, afectando a next 16.2.10"
+    metodo_deteccion: "npm audit"
+    evidencia: |
+      npm audit reporta 2 vulnerabilidades moderadas:
+        - postcss <8.5.10 (GHSA-qx2v-qp2m-jg93, CWE-79, CVSS 3.1 = 6.1)
+        - next 16.2.10 (afectado vía postcss)
+      La corrección ofrecida es un downgrade a next 9.3.3 (semver major
+      hacia atrás), inviable en la práctica sobre una aplicación que usa
+      el App Router.
+    owasp: "A06:2021 Componentes Vulnerables y Desactualizados"
+    cwe: "CWE-79 (XSS)"
+    severidad: "Media (SCA)"
+    detectado_por: ["npm audit"]
+
+  - id: CC-F003
+    titulo: "Enlace de recuperación de contraseña devuelto en la respuesta JSON cuando SMTP no está configurado"
+    metodo_deteccion: "Revisión manual de /api/auth/forgot-password y src/lib/mailer.ts"
+    evidencia: |
+      src/lib/mailer.ts: cuando no hay SMTP_HOST configurado, se crea
+      automáticamente una cuenta de test en Ethereal Mail
+      (nodemailer.createTestAccount) y se retorna previewUrl.
+      src/app/api/auth/forgot-password/route.ts: si el usuario existe y
+      está activo, la respuesta JSON incluye ese previewUrl, una URL
+      pública donde se puede leer el correo enviado a la víctima y, con
+      él, el enlace de reset con el token válido.
+      Efecto adicional: la presencia condicional del campo previewUrl
+      convierte la respuesta en un oráculo de enumeración de usuarios
+      (aunque el mensaje textual sí sea genérico).
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-640 (Mecanismo débil de recuperación de contraseña)"
+    severidad: "9,3 Crítica"
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N"
+    detectado_por: ["revisión manual"]
+
+  - id: CC-F004
+    titulo: "Validación de subida de archivos basada solo en mimetype declarado por el cliente"
+    metodo_deteccion: "Revisión manual de /api/tasks/[id]/attachment y src/lib/storage.ts"
+    evidencia: |
+      route.ts, POST: if (!ALLOWED_ATTACHMENT_TYPES.includes(file.type))
+      El campo file.type es el MIME declarado por el cliente, falsificable
+      sin verificación del contenido real. El nombre del fichero sí se
+      aleatoriza con crypto.randomBytes(8) y la extensión se recorta a
+      diez caracteres.
+    owasp: "A04:2021 Diseño Inseguro"
+    cwe: "CWE-434 (Carga sin restricciones de fichero con tipo peligroso)"
+    severidad: "6,9 Media"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+  - id: CC-F005
+    titulo: "Enumeración de usuarios por respuestas diferenciadas en login y register"
+    metodo_deteccion: "Revisión manual de /api/auth/login y /api/auth/register"
+    evidencia: |
+      /api/auth/login:
+        - Si !user → 401 "Email o contraseña incorrectos"
+        - Si user existe y !user.active → 403 "Tu cuenta ha sido desactivada"
+        - Si user existe y contraseña incorrecta → 401 "Email o contraseña incorrectos"
+        La diferencia entre 401 y 403 permite distinguir cuentas inexistentes
+        de cuentas desactivadas.
+      /api/auth/register:
+        - Si existe usuario con ese email → 409 "Ya existe una cuenta con ese email"
+        Permite comprobar si un email está registrado.
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-204 (Divulgación de información por discrepancia de respuesta)"
+    severidad: "6,9 Media"
+    cvss_v4_vector: "pendiente confirmar con la biblioteca oficial de CVSS v4.0"
+    detectado_por: ["revisión manual"]
+
+# --- Hallazgo metodológico (documentado aparte, no en la tabla del capítulo) ---
+hallazgo_metodologico:
+  id: CC-F000
+  titulo: "Contaminación cruzada entre herramientas por acceso del agente a la raíz del repositorio"
+  descripcion: |
+    En una primera ejecución, Claude Code fue lanzado desde la raíz del
+    repositorio del TFM con permiso para explorar el árbol de ficheros.
+    Leyó el código previamente generado por GitHub Copilot (subcarpeta
+    github_copilot/prompt_1/code/) y reprodujo el mismo stack
+    (Node.js + Express + SQLite + React/Vite + nodemailer), rompiendo el
+    aislamiento metodológico entre herramientas. Los artefactos de esa
+    ejecución se conservan en:
+      claude_code/prompt_1_DESCARTADA_evidencia_CC-F000/
+    La ejecución que se reporta como definitiva es la repetición limpia,
+    realizada abriendo VS Code únicamente en la subcarpeta
+    claude_code/prompt_1/, sin acceso a los directorios de otras
+    herramientas. Se aplica el mismo criterio en todas las ejecuciones
+    posteriores del TFM.
+
+# --- Hallazgos positivos ---
+hallazgos_positivos: |
+  - Prisma ORM garantiza consultas parametrizadas por diseño (sin SQL manual).
+  - bcrypt con coste 10 para el hash de contraseñas.
+  - Longitud mínima de contraseña fijada en 8 caracteres (superior al umbral
+    de 6 observado en el resto de herramientas evaluadas).
+  - Cookie de sesión con httpOnly + sameSite=lax + secure en producción,
+    duración 7 días.
+  - Doble capa de control de acceso: middleware de Edge (src/middleware.ts)
+    y comprobación explícita con requireUser / requireAdmin en cada route
+    handler.
+  - Validación de entradas centralizada con Zod (registro, login, recuperación,
+    tareas).
+  - Tokens de recuperación con crypto.randomBytes(32), expiración 1h y flag
+    'used' aplicado dentro de una transacción de Prisma.
+  - Adjuntos guardados fuera de public/, con nombre aleatorizado por
+    crypto.randomBytes(8).
+  - El administrador no puede quitarse el rol ni desactivar su propia cuenta.
+  - .gitignore excluye .env*, dev.log, la base SQLite y los ficheros subidos.
+  - No se generó ningún .env con credenciales reales de producción.
+  - /api/auth/forgot-password devuelve mensaje genérico independientemente de
+    si el email existe (aunque el bug del previewUrl anula parcialmente esta
+    protección, ver CC-F003).
+
+# --- Análisis estático (SAST) ---
+sast:
+  semgrep:
+    coincidencias: "PENDIENTE ejecución"
+    detalle: "Ejecutar con p/owasp-top-ten y p/r2c-security-audit sobre claude_code/prompt_1/code/ y volcar aquí el número de ficheros, reglas y hallazgos."
+    informe: "analysis/semgrep_report.json"
+  gitleaks:
+    coincidencias: 0
+    detalle: "0 secretos detectados en el código generado. El JWT_SECRET de docker-compose.yml no se detecta por la baja entropía del prefijo 'dev-secret-change-me-'."
+    informe: "analysis/gitleaks_report.json"
+  trufflehog:
+    coincidencias: 0
+    detalle: "0 secretos verificables ni sin verificar."
+    informe: "analysis/trufflehog_report.json"
+
+# --- Análisis de dependencias (SCA) ---
+sca:
+  npm_audit:
+    paquetes_con_cve: 2
+    detalle: |
+      2 vulnerabilidades de severidad moderada:
+        - postcss <8.5.10 (GHSA-qx2v-qp2m-jg93, XSS por escape incorrecto)
+        - next 16.2.10 (afectado vía postcss)
+      El fix propuesto por npm audit es un downgrade a next 9.3.3
+      (isSemVerMajor: true), inviable en la práctica.
+    informe: "analysis/npm_audit_report.json"
+
+# --- Análisis dinámico (DAST) ---
+dast:
+  herramienta: "OWASP ZAP 2.17.0"
+  fecha: "2026-07-13"
+  url_objetivo: "http://localhost:3000 (contenedor Docker Compose)"
+  tipo_escaneo: "Escaneo automatizado (spider tradicional + ajax spider)"
+  scan_policy: "Dev Standard"
+  informe: "analysis/ClaudeCode-ZAP-Report-.html"
+  total_alertas: 6
+  resumen_severidad:
+    alta: 0
+    media: 2
+    baja: 3
+    informativa: 1
+  alertas_por_tipo:
+    - tipo: "Cabecera Content Security Policy (CSP) no configurada"
+      severidad: "Media"
+      confianza: "Alta"
+      instancias: 5
+    - tipo: "Falta de cabecera Anti-Clickjacking"
+      severidad: "Media"
+      confianza: "Media"
+      instancias: 3
+    - tipo: "El servidor divulga información mediante cabecera X-Powered-By"
+      severidad: "Baja"
+      instancias: 5
+    - tipo: "Falta encabezado X-Content-Type-Options"
+      severidad: "Baja"
+      instancias: 5
+    - tipo: "Gran redirección detectada (posible fuga de información confidencial)"
+      severidad: "Baja"
+      instancias: 1
+    - tipo: "Aplicación Web Moderna"
+      severidad: "Informativa"
+      instancias: 3
+  nota_metodologica: |
+    Escaneo contra la app arrancada en localhost:3000 mediante Docker Compose,
+    siguiendo el mismo criterio aplicado a GitHub Copilot y Cursor (los tres
+    asistentes técnicos).
+
+# --- Observaciones cualitativas adicionales ---
+observaciones: |
+  - Es la única herramienta que empaqueta la aplicación con Docker Compose
+    de forma automática, sin haberlo pedido el prompt.
+  - Es la única cuyo package.json declara "nodemailer": "^9.0.3", una versión
+    que no existe en el registro de npm (nodemailer va por la 6.x/7.x). En
+    la instalación real npm resuelve al último release de nodemailer 6.
+    Documentado como observación, no como hallazgo.
+  - Comparte con Google AI Studio (GS-F001) y Cursor (CU-F001) el patrón de
+    secreto de firma predecible, y con GS-F002 y CU-F003 el patrón de fuga
+    del enlace de recuperación de contraseña en la respuesta de la API.
+  - Es la única herramienta cuya longitud mínima de contraseña (8 caracteres)
+    supera el umbral de 6 observado en el resto.

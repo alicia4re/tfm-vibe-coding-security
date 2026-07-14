@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("READER")
+  apiToken  String?  @unique
+  createdAt DateTime @default(now())
+
+  articles              Article[]
+  comments              Comment[]
+  passwordResetTokens   PasswordResetToken[]
+}
+
+model Article {
+  id          String    @id @default(cuid())
+  title       String
+  content     String
+  status      String    @default("DRAFT")
+  authorId    String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  publishedAt DateTime?
+
+  author   User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  tags     ArticleTag[]
+  comments Comment[]
+}
+
+model Tag {
+  id   String @id @default(cuid())
+  name String @unique
+
+  articles ArticleTag[]
+}
+
+model ArticleTag {
+  articleId String
+  tagId     String
+
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  tag     Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([articleId, tagId])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  articleId String
+  userId    String
+  createdAt DateTime @default(now())
+
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

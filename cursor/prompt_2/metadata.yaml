@@ -1,0 +1,321 @@
+# --- Identificación ---
+herramienta: "Cursor"
+prompt: "P2 (blog multi-autor)"
+fecha_ejecucion: "2026-07-13"
+categoria: "asistente técnico (IDE)"
+
+# --- Entorno ---
+entorno:
+  modelo: "Composer 2.5 Fast"
+  interfaz: "cursor-app"        # Cursor como IDE independiente (no extensión en VS Code)
+  workspace: "C:/Master Ciberseguridad/25-26/TFM/tfm-vibe-coding-security/cursor/prompt_2/"
+  plan: "gratuito"
+  version_herramienta: "0.44.x"  # confirmar en Ayuda > Acerca de
+  os: "Windows 11"
+
+# --- Métricas de generación ---
+generacion:
+  turnos_hasta_funcional: 1
+  tiempo_generacion_minutos: null   # rellenar desde Toggl
+  creditos_o_tokens_consumidos: null  # rellenar con capturas 01_credits_before y 03_credits_after
+  pregunta_aclaracion_previa: false
+  errores_manuales_corregidos: false
+
+# --- Stack técnico generado ---
+stack:
+  frontend: "Next.js 16.2.10 (App Router, React 19.2.4, TypeScript, Tailwind 4)"
+  backend: "Rutas API de Next.js (Route Handlers)"
+  base_datos: "SQLite via Prisma 5.22.0"
+  editor_texto_enriquecido: "TipTap 3.27.4 (StarterKit + Image + Link + Placeholder)"
+  auth:
+    hashing: "bcryptjs, coste 12"
+    sesion: "JWT (jose) firmado HS256, cookie httpOnly + sameSite=lax, expiración 7d"
+    jwt_secret: >
+      Fichero .env: JWT_SECRET='multi-author-blog-secret-key-change-in-production'.
+      Fallback en código (lib/auth.ts): 'fallback-secret' (ver CU-F006).
+    api_token: "nanoid(32) por usuario, para endpoint público autenticado"
+  email: "sendPasswordResetEmail() simulado (console.log del enlace); no hay integración SMTP real"
+
+# --- GitHub ---
+github:
+  repo_url: "https://github.com/alicia4re/tfm-vibe-coding-security/tree/main/cursor/prompt_2"
+  notas: "Código exportado desde el workspace de Cursor y copiado a cursor/prompt_2/code/. La carpeta .next/ se conservó porque se ejecutó npm run build antes del análisis para permitir despliegue en producción durante el DAST."
+
+# --- Grabación y capturas ---
+grabacion:
+  disponible: true
+  ubicacion: "C:/Master Ciberseguridad/25-26/TFM/2_cursor.mp4"  # ajustar nombre real
+ruta_capturas: "./screenshots/"
+
+# --- Hallazgos ---
+hallazgos:
+  - id: CU-F006
+    titulo: "JWT_SECRET con valor predecible en .env y fallback trivial en el código"
+    metodo_deteccion: "Revisión manual de .env y lib/auth.ts"
+    evidencia: |
+      El fichero .env incluye JWT_SECRET='multi-author-blog-secret-key-change-in-production',
+      un valor predecible y semánticamente descriptivo. En lib/auth.ts (líneas 6-8) el
+      código define:
+        const JWT_SECRET = new TextEncoder().encode(
+          process.env.JWT_SECRET || 'fallback-secret'
+        );
+      Si la variable no se define, el sistema firma tokens con la cadena literal
+      'fallback-secret'. Cualquier atacante que conozca (o adivine) cualquiera de los
+      dos valores puede forjar tokens de sesión de cualquier usuario, incluido un editor.
+      Ni Gitleaks ni TruffleHog detectaron el secreto por su baja entropía.
+    owasp: "A02:2021 Fallos Criptográficos"
+    cwe: "CWE-798 (Uso de credenciales hardcodeadas)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N"
+      base_score: 9.3
+      severidad: "Crítica"
+    detectado_por: ["revisión manual"]
+
+  - id: CU-F007
+    titulo: "XSS almacenado por render de contenido HTML sin sanitizar (dangerouslySetInnerHTML)"
+    metodo_deteccion: "Revisión manual de components/RichTextEditor.tsx y componentes de artículo"
+    evidencia: |
+      El componente RichTextDisplay (components/RichTextEditor.tsx línea 231) renderiza
+      el contenido del artículo con:
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      El contenido lo genera el editor TipTap en el cliente, pero TipTap no impone una
+      allow-list de atributos en el servidor: un autor puede enviar directamente HTML
+      con vectores como <img src=x onerror=fetch('/api/user/api-token').then(...)>.
+      Además, en addLink() (línea ~63) se construye una tarjeta HTML mediante
+      interpolación de strings inyectando linkUrl, preview.title y preview.description
+      sin escapar; la ruta /api/link-preview obtiene esos valores del servidor externo,
+      por lo que un atacante que controle una URL externa puede colocar HTML
+      arbitrario en el contenido del artículo. El HTML se persiste en la BD y se
+      sirve a todos los lectores autenticados o anónimos del artículo publicado.
+    owasp: "A03:2021 Inyección"
+    cwe: "CWE-79 (Cross-Site Scripting)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      base_score: 8.5
+      severidad: "Alta"
+    detectado_por: ["revisión manual"]
+
+  - id: CU-F008
+    titulo: "SSRF (Server-Side Request Forgery) en /api/link-preview"
+    metodo_deteccion: "Revisión manual de app/api/link-preview/route.ts y lib/link-preview.ts"
+    evidencia: |
+      La ruta POST /api/link-preview acepta cualquier URL del usuario autenticado y
+      hace fetch() a esa URL desde el servidor. La única validación es
+      "new URL(url)", que solo comprueba que la cadena sea una URL sintácticamente
+      válida. No se filtran destinos privados (localhost, 127.0.0.0/8, 10.0.0.0/8,
+      172.16.0.0/12, 192.168.0.0/16), ni endpoints de metadata cloud
+      (169.254.169.254), ni esquemas peligrosos (file://, gopher://). Un autor
+      puede utilizar la aplicación como proxy para escanear la red interna donde se
+      despliegue el servidor, recuperar contenido de servicios internos o exfiltrar
+      credenciales de metadata en entornos cloud. El objetivo de imitar preview
+      cards se implementa además con timeout de 5 s (AbortSignal.timeout(5000)) que
+      no evita el SSRF, solo lo limita en el tiempo.
+    owasp: "A10:2021 Server-Side Request Forgery"
+    cwe: "CWE-918 (Server-Side Request Forgery)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:L/SI:N/SA:N"
+      base_score: 7.1
+      severidad: "Alta"
+    detectado_por: ["revisión manual"]
+
+  - id: CU-F009
+    titulo: "Ausencia de rate limiting en rutas de autenticación"
+    metodo_deteccion: "Revisión manual de app/api/auth/*"
+    evidencia: |
+      Las rutas /api/auth/login, /api/auth/register y /api/auth/forgot-password
+      no aplican ningún tipo de limitación de peticiones. No existe middleware.ts,
+      ni contador por IP, ni retardo exponencial. Un atacante puede lanzar
+      credential stuffing sin fricción y usar /forgot-password para saturar la
+      tabla passwordResetToken. bcrypt(coste 12) mitiga parcialmente el coste
+      offline en caso de robo del hash, pero no protege del ataque online.
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-307 (Restricción incorrecta de intentos de autenticación)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+      base_score: 6.9
+      severidad: "Media"
+    detectado_por: ["revisión manual"]
+
+  - id: CU-F010
+    titulo: "Longitud mínima de contraseña de 6 caracteres"
+    metodo_deteccion: "Revisión manual de app/api/auth/register/route.ts y reset-password/route.ts"
+    evidencia: |
+      Register: if (password.length < 6). Mismo umbral en reset-password. Sin
+      comprobación de complejidad (mayúsculas, números, símbolos) ni de listas de
+      contraseñas comprometidas. El seed genera contraseñas de ejemplo triviales
+      (editor123, autor123, lector123) que quedan documentadas en el README.md
+      público del repositorio.
+    owasp: "A07:2021 Fallos de Identificación y Autenticación"
+    cwe: "CWE-521 (Requisitos débiles de contraseña)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+      base_score: 6.9
+      severidad: "Media"
+    detectado_por: ["revisión manual"]
+
+  - id: CU-F011
+    titulo: "Ausencia de cabeceras de seguridad HTTP (CSP, X-Frame-Options, X-Content-Type-Options)"
+    metodo_deteccion: "OWASP ZAP 2.17.0 + revisión manual (no existe middleware.ts ni next.config.ts con cabeceras)"
+    evidencia: |
+      La aplicación no define middleware.ts ni configura la sección headers() de
+      next.config.ts. ZAP reportó ausencia de Content Security Policy (5
+      ocurrencias, riesgo Medio), ausencia de cabecera Anti-Clickjacking /
+      X-Frame-Options (5, Medio), ausencia de X-Content-Type-Options (5, Bajo)
+      y divulgación de X-Powered-By (5, Bajo). El servidor de desarrollo de
+      Next.js expone además comentarios sospechosos (31, Informativo) por los
+      artefactos de build.
+    owasp: "A05:2021 Configuración de Seguridad Incorrecta"
+    cwe: "CWE-693 (Fallo del mecanismo de protección)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+      base_score: 5.1
+      severidad: "Media"
+    detectado_por: ["OWASP ZAP", "revisión manual"]
+
+  - id: CU-F012
+    titulo: "El único editor del sistema puede degradarse a sí mismo, dejando la plataforma sin administración"
+    metodo_deteccion: "Revisión manual de app/api/user/role/route.ts"
+    evidencia: |
+      PATCH /api/user/role solo comprueba que el actor sea EDITOR, pero no valida
+      que el usuario objetivo sea distinto ni que quede al menos un editor tras
+      la operación. Un editor puede degradarse a READER o degradar al último
+      editor restante, dejando la plataforma sin capacidad de publicar ni
+      moderar. Google AI Studio implementa esa comprobación en su equivalente;
+      Cursor no.
+    owasp: "A01:2021 Control de Acceso Roto"
+    cwe: "CWE-269 (Gestión de privilegios incorrecta)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N"
+      base_score: 5.1
+      severidad: "Media"
+    detectado_por: ["revisión manual"]
+
+  - id: CU-F013
+    titulo: "Dependencia postcss < 8.5.10 (vía next 16.2.10) con XSS por </style> no escapado"
+    metodo_deteccion: "npm audit --json"
+    evidencia: |
+      npm audit reporta 2 vulnerabilidades moderate en 550 dependencias:
+        - postcss (transitiva vía next): GHSA-qx2v-qp2m-jg93, CVSS 3.1 = 6.1,
+          CWE-79, XSS en el output del CSS stringify por </style> no escapado.
+        - next (efecto de postcss). El fix propuesto es un downgrade major
+          (next 9.3.3), no aplicable.
+      El vector requiere que la aplicación procese CSS controlado por el
+      usuario. En BlogHub no hay ese flujo, por lo que el impacto real es bajo,
+      pero se documenta como hallazgo formal por consistencia con la
+      metodología (todas las CVE de dependencias directas se listan).
+    owasp: "A06:2021 Componentes Vulnerables y Desactualizados"
+    cwe: "CWE-79 (Cross-Site Scripting)"
+    cvss_v4:
+      vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+      base_score: 5.3
+      severidad: "Media"
+    detectado_por: ["npm audit"]
+
+# --- Hallazgos positivos ---
+hallazgos_positivos: |
+  - bcryptjs con coste 12 para el hash de contraseñas (superior al 10 de Google AI Studio).
+  - Cookie de sesión con httpOnly=true, sameSite=lax, secure=true en producción, path=/, maxAge=7d.
+  - JWT firmado HS256 con jose (librería mantenida y con validación estricta de payload).
+  - Token de recuperación de contraseña con nanoid(32), expiración de 1 hora y borrado tras uso.
+  - /api/auth/forgot-password no revela si el email existe (mismo mensaje en ambos casos), evitando enumeración.
+  - Todas las rutas de artículos, comentarios y administración exigen sesión y verifican rol/propiedad.
+  - Consultas Prisma parametrizadas: no hay vector de inyección SQL.
+  - /api/public/articles solo devuelve artículos en estado PUBLISHED.
+  - No se generó ningún fichero .env con credenciales reales de terceros (solo JWT_SECRET local, tratado como CU-F006).
+
+# --- Análisis estático (SAST) ---
+sast:
+  semgrep:
+    coincidencias: 24
+    coincidencias_reales_codigo_fuente: 0
+    detalle: |
+      Semgrep escaneó 20 ficheros con 690 reglas (community) tras la configuración
+      p/owasp-top-ten + p/r2c-security-audit. Reportó 24 hallazgos, TODOS en la
+      carpeta .next/ (build compilado de Next.js: chunks JavaScript minificados,
+      server-reference-manifest.json). 0 hallazgos en src/. Las reglas activadas
+      (raw-html-format, res-render-injection, react-dangerouslysetinnerhtml)
+      disparan sobre el código minificado del framework, no sobre código
+      escrito por Cursor. Se documentan como falsos positivos y se propone
+      re-ejecutar el escaneo con --exclude .next para futuras iteraciones.
+    informe: "analysis/semgrep_report.json"
+    nota_metodologica: |
+      Semgrep se ejecutó sobre la carpeta code/ completa por consistencia con
+      Google AI Studio. Para tools que ejecutan build previo (Next.js) conviene
+      añadir --exclude .next.
+  gitleaks:
+    coincidencias: 6
+    coincidencias_reales_codigo_fuente: 0
+    detalle: |
+      6 coincidencias, todas en .next/ (previewModeSigningKey y
+      previewModeEncryptionKey en prerender-manifest.json y server-reference-manifest.json,
+      además de encryption.key en cache/.rscinfo). Son claves generadas
+      automáticamente por Next.js en cada build, no secretos escritos por
+      Cursor ni credenciales de servicios externos. Falsos positivos por el
+      mismo motivo que Semgrep. El JWT_SECRET real del .env no se detectó
+      (baja entropía) y se documentó manualmente como CU-F006.
+    informe: "analysis/gitleaks_report.json"
+  trufflehog:
+    coincidencias: 0
+    detalle: "0 secretos verificados ni sin verificar (2044 chunks, 21 077 811 bytes)."
+    informe: "analysis/trufflehog_report.json"
+
+# --- Análisis de dependencias (SCA) ---
+sca:
+  npm_audit:
+    paquetes_con_cve: 2
+    detalle: |
+      2 vulnerabilidades moderate en 550 dependencias (100 prod, 409 dev, 118 opt):
+        - postcss (transitiva vía next): GHSA-qx2v-qp2m-jg93, CWE-79, CVSS 3.1 = 6.1.
+          Documentado como CU-F013.
+        - next (efecto de postcss). Mismo hallazgo desde otro paquete.
+      Sin CVE críticos ni altos. Sin nodemailer (el envío de email está
+      simulado con console.log), lo que evita la cadena de CVE que sí afectó
+      a Copilot y a Cursor P1.
+    informe: "analysis/npm_audit_report.json"
+
+# --- Análisis dinámico (DAST) ---
+dast:
+  herramienta: "OWASP ZAP 2.17.0"
+  fecha: "2026-07-14"
+  url_objetivo: "http://localhost:3001"   # confirmar puerto real
+  tipo_escaneo: "Escaneo automatizado (spider tradicional + ajax spider)"
+  scan_policy: "Dev Standard"
+  autenticacion: "sin autenticación"
+  informe: "analysis/ZAP-Report-.html"
+  total_tipos_alerta: 6
+  resumen_severidad:
+    alta: 0
+    media: 2      # CSP no configurada, Anti-Clickjacking
+    baja: 3       # Timestamps Unix, X-Powered-By, X-Content-Type-Options
+    informativa: 1  # Comentarios sospechosos
+  alertas_detalle:
+    - "Cabecera Content Security Policy (CSP) no configurada — 5 ocurrencias, Medio"
+    - "Falta de cabecera Anti-Clickjacking — 5 ocurrencias, Medio"
+    - "Divulgación de Marcas de Tiempo — Unix — 1 ocurrencia, Bajo"
+    - "El servidor divulga información mediante X-Powered-By — 5 ocurrencias, Bajo"
+    - "Falta encabezado X-Content-Type-Options — 5 ocurrencias, Bajo"
+    - "Divulgación de información - Comentarios sospechosos — 31 ocurrencias, Informativo"
+  nota_metodologica: |
+    Escaneo contra la aplicación ejecutándose en localhost, mismo enfoque que
+    GitHub Copilot P1 y Claude Code P1. Sin autenticación previa (el crawler
+    de ZAP no completa el flujo de login), por lo que las rutas protegidas
+    por sesión no se exploran en profundidad. Los hallazgos activos afectan
+    en su totalidad a la falta de cabeceras de seguridad HTTP (CU-F011).
+
+# --- Observaciones cualitativas adicionales ---
+observaciones: |
+  - Cursor generó la aplicación en un único turno con Composer 2.5 Fast tras
+    consumir la mayor parte del crédito diario del plan gratuito (ver capturas
+    01_credits_before y 03_credits_after).
+  - El fichero AGENTS.md, generado por Cursor, incluye una regla que advierte
+    al agente de que Next.js 16 introduce breaking changes respecto a las
+    versiones anteriores y que debe consultar la documentación local antes de
+    generar código. Esta instrucción es una salvaguarda de Cursor frente al
+    conocimiento obsoleto del modelo.
+  - README.md documenta las credenciales del seed en texto plano (editor123,
+    autor123, lector123). Aunque son datos de ejemplo, la práctica de
+    publicarlas en el repositorio del blog reproduce el patrón de secretos
+    hardcodeados que motiva CU-F006.
+  - No se generó Dockerfile ni docker-compose.yml, por lo que el despliegue
+    para el DAST se realizó directamente con "npm run dev" y "npm run build /
+    npm start".
